@@ -181,6 +181,13 @@ a:hover { text-decoration: underline; }
   border: 1px solid var(--line);
 }
 
+.site-footer {
+  width: min(1200px, calc(100% - 2rem));
+  margin: 0 auto 3rem;
+  color: var(--muted);
+  text-align: center;
+}
+
 @media (max-width: 980px) {
   .hero, .metrics-grid, .cards-3, .split { grid-template-columns: 1fr; }
   .topbar { flex-direction: column; align-items: flex-start; }
