@@ -14,6 +14,23 @@ Track 3-5 local Fresno esthetician / skincare brands and review them weekly for:
 ---
 
 ## Competitor 1
+**Brand:** Skin Remedy Aesthetics, LLC
+**Location:** Fresno area
+**Why track:** Strong direct Hydrafacial competitor with similar treatment ladder and corrective-service breadth.
+
+### Watch for
+- Hydrafacial pricing and package framing
+- acne / LED / corrective service messaging
+- menu breadth vs curated luxury presentation
+- use of deposits and booking confidence cues
+
+### Notes
+- Most direct booking-menu comparison to NCS found in this research pass
+- High-priority competitor to monitor weekly
+
+---
+
+## Competitor 2
 **Brand:** Sanctuary Beauty Co
 **Location:** Fresno area
 **Why track:** Soft-luxury esthetics positioning, likely useful benchmark for premium-but-approachable branding.
@@ -21,47 +38,31 @@ Track 3-5 local Fresno esthetician / skincare brands and review them weekly for:
 ### Watch for
 - signature facial naming
 - visual aesthetic consistency
-- before/after formatting
+- skin barrier / calming treatment language
 - story highlight structure
 - booking CTA language
 
 ### Notes
-- Potential benchmark for warm, feminine luxury presentation
+- Benchmark for warm, feminine luxury presentation
 - Compare how they frame glow vs corrective results
 
 ---
 
-## Competitor 2
-**Brand:** Glow And Go Aesthetics LLC
-**Location:** Fresno area
-**Why track:** Good benchmark for accessible facial marketing and mixed-service audience capture.
-
-### Watch for
-- pricing posture
-- convenience messaging
-- intro client offers
-- flash-sale or opening-fill promotions
-- short-form content hooks
-
-### Notes
-- Useful contrast brand against NCS, especially if they skew more casual or mid-market
-
----
-
 ## Competitor 3
-**Brand:** Fresno Hydrafacial / esthetician benchmark TBD
-**Location:** Fresno
-**Why track:** Need one direct Hydrafacial-heavy competitor with strong local Instagram execution.
+**Brand:** Polish & Peels by Skin Specialists
+**Location:** North East Fresno
+**Why track:** High-end prestige and advanced skin revision positioning with visible luxury and technology language.
 
 ### Watch for
-- Hydrafacial-specific content
-- package promotions
-- authority/education content
-- reel quality and consistency
-- how often they sell urgency
+- consultation-led booking strategy
+- prestige brand mentions and authority framing
+- advanced procedure messaging
+- Hydrafacial device positioning
+- skin revision language for acne, pigmentation, and aging
 
 ### Notes
-- Add once visually verified
+- Strong authority benchmark
+- Useful contrast to help NCS stay premium without becoming too clinical
 
 ---
 
