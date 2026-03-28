@@ -3,116 +3,87 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NCS Internal Task Hub</title>
+  <title>NCS Social Operating System</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <main class="simple-shell">
-    <h1>NCS Internal Task Hub</h1>
-    <p class="subtle">Internal workspace for Natalie input, task tracking, content production, approvals, and recurring jobs.</p>
-
-    <section class="simple-section">
-      <h2>1. Tasks Natalie Added</h2>
-      <ul>
-        <li><a href="./ops/natalie-task-board.md">General task board</a></li>
-        <li><a href="./ops/natalie-content-requests.md">Content requests</a></li>
-        <li><a href="./ops/natalie-approvals.md">Approvals</a></li>
-        <li><a href="./ops/natalie-notes.md">Notes</a></li>
-      </ul>
+  <main class="site-shell">
+    <section class="hero-panel">
+      <div>
+        <p class="eyebrow">NCS Aesthetics · Social Operating System</p>
+        <h1>From idea generation to Instagram approvals, in one calm dashboard.</h1>
+        <p class="lede">This internal site is the front door for Natalie’s approval-first marketing system. The machine does the prep work. Natalie mostly approves what is already strategically packaged.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="../mission-control/index.html">Open Mission Control</a>
+          <a class="button secondary" href="../README.md">Read repo overview</a>
+        </div>
+      </div>
+      <article class="hero-summary card">
+        <h2>How the system works</h2>
+        <ol>
+          <li>Generate daily ideas from offers, openings, and trends.</li>
+          <li>Build ready-to-approve briefs with hooks, CTA, and posting notes.</li>
+          <li>Ask Natalie for simple approve / tweak / reject decisions.</li>
+          <li>Move approved content into the weekly posting map.</li>
+        </ol>
+      </article>
     </section>
 
-    <section class="simple-section">
-      <h2>2. My Current Tasks</h2>
-      <ul>
-        <li>Keep Hydrafacial as the most visible offer</li>
-        <li>Use Custom Facial as the answer for unsure clients</li>
-        <li>Publish education and trust-building content</li>
-        <li>Track openings and push gap-fill content intentionally</li>
-        <li>Follow up on warm leads and rebooking opportunities</li>
-      </ul>
+    <section class="grid three">
+      <article class="card stat-card">
+        <span>Primary offer focus</span>
+        <strong>Hydrafacial</strong>
+        <p>Still the cleanest trust-builder and easiest revenue driver.</p>
+      </article>
+      <article class="card stat-card">
+        <span>Operator posture</span>
+        <strong>Approval-first</strong>
+        <p>Reduce Natalie’s workload to signoff, light edits, and priorities.</p>
+      </article>
+      <article class="card stat-card">
+        <span>System surface</span>
+        <strong>Static + local</strong>
+        <p>Easy to host anywhere now, easy to upgrade with a backend later.</p>
+      </article>
     </section>
 
-    <section class="simple-section">
-      <h2>3. Waiting / Needs Approval</h2>
-      <ul>
-        <li>New promos Natalie wants prioritized</li>
-        <li>Content requests that need signoff</li>
-        <li>Instagram or booking page edits needing approval</li>
-      </ul>
+    <section class="grid two sections-row">
+      <article class="card">
+        <p class="eyebrow">Core dashboards</p>
+        <h2>What to open first</h2>
+        <div id="dashboardLinks" class="link-grid"></div>
+      </article>
+
+      <article class="card">
+        <p class="eyebrow">Operating rhythm</p>
+        <h2>Daily workflow</h2>
+        <div id="workflowList" class="stack-list"></div>
+      </article>
     </section>
 
-    <section class="simple-section">
-      <h2>4. Ready to Post</h2>
-      <ul>
-        <li>Hydrafacial Glow Reset Reel</li>
-        <li>What Should I Book? Story Sequence</li>
-        <li>Monthly Maintenance Post</li>
-        <li>Hydrafacial vs Custom Facial Carousel</li>
-        <li>Peel Education Post</li>
-        <li>Luxury Self-Care Reminder Story</li>
-        <li>Opening Available Story</li>
-        <li>Event-Ready Skin Reel</li>
-      </ul>
-      <p><a href="./content/ready-to-post-board.md">Open ready-to-post board</a></p>
-      <p><a href="./content/post-ready-assets-pack.md">Open post-ready assets pack</a></p>
+    <section class="grid two sections-row">
+      <article class="card">
+        <p class="eyebrow">Built for this repo</p>
+        <h2>What changed in v2</h2>
+        <ul class="feature-list">
+          <li>Mission Control now behaves like a real content pipeline instead of a simple task board.</li>
+          <li>Approval queue is explicit, so Natalie can batch decisions quickly.</li>
+          <li>Posting map, KPI snapshot, briefs, and automation slots now live together.</li>
+          <li>Mock data demonstrates an autonomous Instagram operator for NCS Aesthetics.</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <p class="eyebrow">Useful repo references</p>
+        <h2>Docs and templates</h2>
+        <div id="resourceLinks" class="link-grid"></div>
+      </article>
     </section>
 
-    <section class="simple-section">
-      <h2>5. Publishing Schedule</h2>
-      <ul>
-        <li><strong>Monday:</strong> Hydrafacial Glow Reset Reel</li>
-        <li><strong>Tuesday:</strong> What Should I Book? Story Sequence</li>
-        <li><strong>Wednesday:</strong> Hydrafacial vs Custom Facial Carousel</li>
-        <li><strong>Thursday:</strong> Peel Education Post</li>
-        <li><strong>Friday:</strong> Opening Available Story</li>
-        <li><strong>Saturday:</strong> Luxury Self-Care Reminder Story</li>
-        <li><strong>Sunday:</strong> Monthly Maintenance Post</li>
-      </ul>
-      <p><a href="./content/weekly-publishing-board.md">Open weekly publishing board</a></p>
-    </section>
-
-    <section class="simple-section">
-      <h2>6. Recurring Jobs</h2>
-      <ul>
-        <li><strong>08:00 AM:</strong> Trend + Reel Idea</li>
-        <li><strong>10:00 AM:</strong> Booking Gap Fill Check</li>
-        <li><strong>04:00 PM:</strong> Daily Brief</li>
-      </ul>
-      <p><a href="./automation/scheduled-jobs.md">Open scheduled jobs</a></p>
-    </section>
-
-    <section class="simple-section">
-      <h2>7. Completed</h2>
-      <ul>
-        <li>Brand audit</li>
-        <li>Competitor deep dive</li>
-        <li>GlossGenius optimization</li>
-        <li>Instagram optimization</li>
-        <li>Sales scripts and SOPs</li>
-        <li>Dashboard build</li>
-      </ul>
-    </section>
-
-    <section class="simple-section">
-      <h2>8. Content Workflow</h2>
-      <ul>
-        <li><a href="./content/content-status-workflow.md">Content status workflow</a></li>
-        <li><a href="./content/posted-archive.md">Posted archive</a></li>
-        <li><a href="./content/asset-placeholders.md">Asset placeholders</a></li>
-      </ul>
-    </section>
-
-    <section class="simple-section">
-      <h2>9. Reference Docs</h2>
-      <ul>
-        <li><a href="./brand/brand-audit.md">Brand audit</a></li>
-        <li><a href="./brand/offer-ladder-strategy.md">Offer ladder</a></li>
-        <li><a href="./brand/glossgenius-optimization-recommendations.md">GlossGenius recommendations</a></li>
-        <li><a href="./content/30-day-content-plan.md">30-day content plan</a></li>
-        <li><a href="./ops/natalie-admin-sop.md">Admin SOP</a></li>
-        <li><a href="./ops/kpi-interpretation-guide.md">KPI interpretation</a></li>
-      </ul>
-    </section>
+    <footer class="footer-note">
+      <p>NCS internal operating system · <span data-current-year></span></p>
+    </footer>
   </main>
+  <script src="app.js"></script>
 </body>
 </html>
