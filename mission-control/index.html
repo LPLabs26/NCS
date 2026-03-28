@@ -7,75 +7,144 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <main class="app">
-    <header class="top">
+  <main class="app-shell">
+    <header class="hero card">
       <div>
-        <h1>NCS Mission Control</h1>
-        <p>Internal operations app for Natalie input, task execution, content pipeline, approvals, and recurring jobs.</p>
+        <p class="eyebrow">NCS Aesthetics · Instagram Mission Control</p>
+        <h1>Autonomous content ops, with Natalie as the final approver.</h1>
+        <p class="lede">A lightweight command center for idea generation, production, approvals, posting windows, and revenue-focused content decisions.</p>
       </div>
-      <div class="top-actions">
-        <button id="seedBtn">Seed demo data</button>
-        <button id="resetBtn" class="danger">Reset local data</button>
+      <div class="hero-actions">
+        <button id="seedBtn">Load demo week</button>
+        <button id="resetBtn" class="ghost danger">Reset local data</button>
       </div>
     </header>
 
-    <section class="grid metrics">
-      <article class="card"><h2>Open Tasks</h2><strong id="metric-open">0</strong></article>
-      <article class="card"><h2>Ready to Post</h2><strong id="metric-ready">0</strong></article>
-      <article class="card"><h2>Waiting Approval</h2><strong id="metric-approval">0</strong></article>
-      <article class="card"><h2>Completed</h2><strong id="metric-done">0</strong></article>
+    <section class="metrics-grid">
+      <article class="metric card accent-gold"><span>Awaiting approval</span><strong id="metric-approval">0</strong><small>Items Natalie can approve in one sweep</small></article>
+      <article class="metric card accent-rose"><span>Ready to schedule</span><strong id="metric-ready">0</strong><small>Fully packaged posts</small></article>
+      <article class="metric card accent-sage"><span>Pipeline active</span><strong id="metric-active">0</strong><small>Ideas being developed now</small></article>
+      <article class="metric card accent-ink"><span>Booked revenue focus</span><strong id="metric-focus">$0</strong><small>Goal attached to this week’s plan</small></article>
     </section>
 
-    <section class="grid two">
-      <article class="card">
-        <h2>Add Natalie Input</h2>
-        <form id="taskForm" class="stack">
-          <input name="title" placeholder="Task or request" required />
-          <select name="type">
-            <option value="task">Task</option>
-            <option value="content-request">Content Request</option>
-            <option value="approval">Approval</option>
-            <option value="note">Note</option>
-          </select>
-          <select name="priority">
-            <option value="high">High</option>
-            <option value="medium" selected>Medium</option>
-            <option value="low">Low</option>
-          </select>
-          <select name="status">
-            <option value="todo">To Do</option>
-            <option value="in-progress">In Progress</option>
-            <option value="waiting">Waiting Approval</option>
-            <option value="ready">Ready to Post</option>
-            <option value="done">Done</option>
-          </select>
-          <textarea name="notes" placeholder="Details / notes"></textarea>
-          <button type="submit">Add item</button>
-        </form>
-      </article>
+    <section class="layout-grid">
+      <section class="main-column stack-lg">
+        <article class="card">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Approval-first workflow</p>
+              <h2>Content pipeline</h2>
+            </div>
+            <p class="section-copy">Generated ideas move through production, approval, and scheduling. Natalie mostly approves, edits lightly, or rejects.</p>
+          </div>
+          <div class="pipeline-grid">
+            <div>
+              <div class="lane-head"><h3>Queued Ideas</h3><span id="count-queued">0</span></div>
+              <div id="queuedList" class="list"></div>
+            </div>
+            <div>
+              <div class="lane-head"><h3>In Production</h3><span id="count-production">0</span></div>
+              <div id="productionList" class="list"></div>
+            </div>
+            <div>
+              <div class="lane-head"><h3>Need Natalie</h3><span id="count-approval">0</span></div>
+              <div id="approvalList" class="list"></div>
+            </div>
+            <div>
+              <div class="lane-head"><h3>Ready / Scheduled</h3><span id="count-ready">0</span></div>
+              <div id="readyList" class="list"></div>
+            </div>
+          </div>
+        </article>
 
-      <article class="card">
-        <h2>Recurring Jobs</h2>
-        <ul id="jobsList" class="list"></ul>
-      </article>
-    </section>
+        <article class="card">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Operator intake</p>
+              <h2>Add a new request or post concept</h2>
+            </div>
+            <p class="section-copy">Use this to capture Natalie requests, revenue opportunities, or fresh content ideas as they come in.</p>
+          </div>
+          <form id="taskForm" class="form-grid">
+            <input name="title" placeholder="Post title, promo, or task" required />
+            <select name="type">
+              <option value="reel">Reel</option>
+              <option value="story">Story</option>
+              <option value="carousel">Carousel</option>
+              <option value="offer">Offer Push</option>
+              <option value="task">Task</option>
+            </select>
+            <select name="priority">
+              <option value="high">High priority</option>
+              <option value="medium" selected>Medium priority</option>
+              <option value="low">Low priority</option>
+            </select>
+            <select name="status">
+              <option value="idea">Queued Idea</option>
+              <option value="production">In Production</option>
+              <option value="approval">Need Natalie Approval</option>
+              <option value="ready">Ready / Scheduled</option>
+            </select>
+            <input name="cta" placeholder="Primary CTA (book Hydrafacial, DM, waitlist...)" />
+            <input name="slot" placeholder="Schedule slot (Tue 12:30 PM)" />
+            <textarea name="notes" placeholder="Notes, hook, shots, positioning, objections..."></textarea>
+            <button type="submit">Add to pipeline</button>
+          </form>
+        </article>
 
-    <section class="grid four-board">
-      <article class="card board"><h2>To Do</h2><div id="todoList" class="list"></div></article>
-      <article class="card board"><h2>In Progress</h2><div id="inProgressList" class="list"></div></article>
-      <article class="card board"><h2>Waiting Approval</h2><div id="waitingList" class="list"></div></article>
-      <article class="card board"><h2>Ready to Post / Done</h2><div id="readyDoneList" class="list"></div></article>
-    </section>
+        <article class="card two-col-card">
+          <section>
+            <div class="section-heading compact">
+              <div>
+                <p class="eyebrow">Upcoming calendar</p>
+                <h2>7-day posting map</h2>
+              </div>
+            </div>
+            <div id="calendarList" class="list"></div>
+          </section>
+          <section>
+            <div class="section-heading compact">
+              <div>
+                <p class="eyebrow">Approval queue</p>
+                <h2>What Natalie sees</h2>
+              </div>
+            </div>
+            <div id="approvalChecklist" class="list"></div>
+          </section>
+        </article>
+      </section>
 
-    <section class="grid two">
-      <article class="card">
-        <h2>Publishing Schedule</h2>
-        <ul id="scheduleList" class="list"></ul>
-      </article>
-      <article class="card">
-        <h2>Quick Notes</h2>
-        <p>This version stores data in the browser using localStorage. It works on phone or PC once hosted, but each browser/device will have its own saved data until a real backend is added.</p>
-      </article>
+      <aside class="sidebar stack-lg">
+        <article class="card">
+          <div class="section-heading compact">
+            <div>
+              <p class="eyebrow">Automation slots</p>
+              <h2>Daily operators</h2>
+            </div>
+          </div>
+          <div id="jobsList" class="list"></div>
+        </article>
+
+        <article class="card">
+          <div class="section-heading compact">
+            <div>
+              <p class="eyebrow">Performance pulse</p>
+              <h2>Instagram snapshot</h2>
+            </div>
+          </div>
+          <div id="kpiList" class="list"></div>
+        </article>
+
+        <article class="card">
+          <div class="section-heading compact">
+            <div>
+              <p class="eyebrow">Generated briefs</p>
+              <h2>Post packages</h2>
+            </div>
+          </div>
+          <div id="briefList" class="list"></div>
+        </article>
+      </aside>
     </section>
   </main>
   <script src="app.js"></script>

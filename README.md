@@ -27,12 +27,40 @@ This repo is structured to support:
 Build a lightweight but scalable executive assistant + social media operating system for Natalie Sanchez and NCS Aesthetics.
 
 
-## Mission Control v1
+## Mission Control v2
 
 A lightweight internal web app now lives in `mission-control/`.
 
 - Uses plain HTML/CSS/JS
 - Uses browser `localStorage` for temporary persistence
-- Supports on-page task entry and status changes
+- Supports an approval-first Instagram content pipeline
+- Includes demo data for ideas, production, approvals, posting schedule, KPI pulse, and post briefs
 - Intended for phone/PC access once hosted
 - A real backend can be added later
+
+## Internal site
+
+A clearer front door now lives in `site/`.
+
+- Explains the approval-first operating model
+- Links directly into Mission Control and supporting docs
+- Summarizes the daily workflow and key repo references
+
+## Run locally
+
+Because this repo is static, the quickest way to view it is to open the HTML files directly in a browser:
+
+- `site/index.html`
+- `mission-control/index.html`
+
+Or serve the repo root with any tiny local web server, for example:
+
+```bash
+cd /Users/jorgesanchez/Desktop/NCS
+python3 -m http.server 8080
+```
+
+Then visit:
+
+- `http://localhost:8080/site/`
+- `http://localhost:8080/mission-control/`
