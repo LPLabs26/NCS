@@ -1,0 +1,194 @@
+:root {
+  --bg: #f6f0eb;
+  --panel: rgba(255,255,255,0.72);
+  --panel-strong: #fffaf7;
+  --text: #43322d;
+  --muted: #8f7368;
+  --line: rgba(117, 84, 71, 0.14);
+  --accent: #c48f83;
+  --accent-deep: #9d6f65;
+  --shadow: 0 20px 40px rgba(78, 49, 41, 0.08);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: Inter, system-ui, sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top left, rgba(255,255,255,0.75), transparent 28%),
+    linear-gradient(180deg, #fbf7f4 0%, #f3eae3 100%);
+}
+
+a { color: var(--accent-deep); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  padding: 1.2rem 2rem;
+  backdrop-filter: blur(16px);
+  background: rgba(251, 247, 244, 0.85);
+  border-bottom: 1px solid var(--line);
+}
+
+.topbar h1, h2, h3, h4 { margin: 0; }
+.topbar nav { display: flex; gap: 1rem; flex-wrap: wrap; }
+.topbar nav a { font-size: 0.95rem; }
+
+.shell {
+  width: min(1200px, calc(100% - 2rem));
+  margin: 2rem auto 4rem;
+}
+
+.eyebrow, .section-eyebrow, .panel-label, .service-tag {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+  align-items: center;
+  padding: 2.2rem;
+}
+
+.hero h2,
+.section-heading h3,
+.card h4,
+.topbar h1 {
+  font-family: "Cormorant Garamond", serif;
+  line-height: 0.98;
+}
+
+.hero h2 { font-size: clamp(2.2rem, 4vw, 4.3rem); margin: 0.5rem 0 1rem; }
+.topbar h1 { font-size: 2rem; }
+.section-heading h3 { font-size: 2.1rem; }
+.card h4 { font-size: 1.65rem; margin-bottom: 0.75rem; }
+
+.hero p { max-width: 60ch; color: var(--muted); font-size: 1.02rem; }
+
+.card {
+  background: var(--panel);
+  border: 1px solid rgba(255,255,255,0.5);
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(14px);
+}
+
+.hero-panel {
+  padding: 1.4rem;
+  border-radius: 22px;
+  background: linear-gradient(180deg, rgba(255,250,247,0.9), rgba(250,240,236,0.78));
+  border: 1px solid var(--line);
+}
+
+.panel-value {
+  margin: 0.5rem 0 1rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.panel-list, .clean-list {
+  margin: 0;
+  padding-left: 1.1rem;
+  color: var(--muted);
+}
+.clean-list li { margin: 0.55rem 0; }
+.ordered { padding-left: 1.2rem; }
+
+.hero-actions {
+  display: flex;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+  margin-top: 1.25rem;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.9rem 1.2rem;
+  border-radius: 999px;
+  font-weight: 600;
+  border: 1px solid transparent;
+}
+.button.primary {
+  background: linear-gradient(135deg, var(--accent), #d7aba0);
+  color: white;
+}
+.button.secondary {
+  background: rgba(255,255,255,0.72);
+  border-color: var(--line);
+}
+.button:hover { text-decoration: none; }
+
+.metrics-grid,
+.cards-3,
+.split {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+.metrics-grid { grid-template-columns: repeat(4, 1fr); }
+.cards-3 { grid-template-columns: repeat(3, 1fr); }
+.split { grid-template-columns: repeat(2, 1fr); }
+
+.metric {
+  padding: 1.2rem;
+  min-height: 150px;
+}
+.metric-label {
+  display: block;
+  color: var(--muted);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.75rem;
+}
+.metric strong {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+.metric small { color: var(--muted); }
+
+.section-block { margin-top: 2.2rem; }
+.section-heading { margin-bottom: 0.8rem; }
+.service-card, .competitor, .split .card, .soft-accent { padding: 1.4rem; }
+.soft-accent { background: linear-gradient(180deg, rgba(255,250,247,0.88), rgba(255,255,255,0.72)); }
+
+.link-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.link-row a {
+  padding: 0.8rem 1rem;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.72);
+  border: 1px solid var(--line);
+}
+
+.site-footer {
+  width: min(1200px, calc(100% - 2rem));
+  margin: 0 auto 3rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+@media (max-width: 980px) {
+  .hero, .metrics-grid, .cards-3, .split { grid-template-columns: 1fr; }
+  .topbar { flex-direction: column; align-items: flex-start; }
+}
