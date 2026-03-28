@@ -23,3 +23,14 @@ This repo is structured to support:
 ## Initial objective
 
 Build a lightweight but scalable executive assistant + social media operating system for Natalie Sanchez and NCS Aesthetics.
+
+
+## Mission Control v1
+
+A lightweight internal web app now lives in `mission-control/`.
+
+- Uses plain HTML/CSS/JS
+- Uses browser `localStorage` for temporary persistence
+- Supports on-page task entry and status changes
+- Intended for phone/PC access once hosted
+- A real backend can be added later
