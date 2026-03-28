@@ -7,6 +7,8 @@ This repo is structured to support:
 - content planning
 - daily pulse checks
 - booking gap-fill marketing
+- autonomous Instagram team operations
+- approval and scheduling workflows
 - competitive research
 - SOPs for a luxury, high-touch esthetics business
 
