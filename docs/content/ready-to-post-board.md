@@ -74,6 +74,9 @@ Use this file to store content that is already drafted and can be posted with mi
 ## Posted Archive
 - Use this section later to move posts that have already gone live.
 
+## Full assets
+- See `post-ready-assets-pack.md` for fuller caption-ready versions of these drafts.
+
 ## Workflow statuses
 - Idea
 - Draft Ready
