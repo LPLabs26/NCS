@@ -95,6 +95,35 @@ const defaultData = {
       stage: 'In production',
       detail: 'Draft slides written, waiting for visual references and final service language.'
     }
+  ],
+  previews: [
+    {
+      title: 'Hydrafacial opening story pack',
+      format: 'Story set',
+      hook: 'Two Hydrafacial openings just opened this week ✨',
+      caption: 'Quick urgency-led story series with social proof, soft luxury tone, and booking sticker CTA.',
+      cta: 'Book your glow reset',
+      status: 'ready',
+      visual: 'Hydrafacial · soft cream background · gold accent · booking sticker'
+    },
+    {
+      title: 'Bridal glow countdown reel',
+      format: 'Reel',
+      hook: 'If your wedding is coming up, this is your skin prep timeline.',
+      caption: 'Short-form reel with 3 bridal prep checkpoints and a consultation CTA.',
+      cta: 'DM bridal glow',
+      status: 'approval',
+      visual: 'Bridal skin prep · elegant white typography · timeline overlay'
+    },
+    {
+      title: 'Custom facial vs Hydrafacial carousel',
+      format: 'Carousel',
+      hook: 'Not sure what to book? Start here.',
+      caption: 'Educational comparison carousel designed to reduce booking hesitation.',
+      cta: 'Send “which facial?”',
+      status: 'production',
+      visual: 'Comparison slides · blush neutrals · answer-the-objection layout'
+    }
   ]
 };
 
@@ -243,6 +272,26 @@ function renderBriefs() {
     .join('');
 }
 
+function renderPreviews() {
+  const previews = state.previews || [];
+  document.getElementById('previewGallery').innerHTML = previews.length
+    ? previews.map((preview) => `
+      <article class="preview-card ${preview.status}">
+        <div class="preview-canvas">
+          <div class="preview-badge">${preview.format}</div>
+          <div class="preview-hook">${preview.hook}</div>
+          <div class="preview-visual">${preview.visual}</div>
+        </div>
+        <div class="preview-meta">
+          <div class="mini-topline"><strong>${preview.title}</strong><span>${statusLabel(preview.status)}</span></div>
+          <p>${preview.caption}</p>
+          <div class="preview-cta">CTA: ${preview.cta}</div>
+        </div>
+      </article>
+    `).join('')
+    : '<div class="empty">No previews ready yet.</div>';
+}
+
 function wireStatusChanges() {
   document.querySelectorAll('select[data-id]').forEach((select) => {
     select.addEventListener('change', (event) => {
@@ -267,6 +316,7 @@ function render() {
   renderJobs();
   renderKpis();
   renderBriefs();
+  renderPreviews();
   wireStatusChanges();
 }
 
@@ -293,6 +343,17 @@ document.getElementById('taskForm').addEventListener('submit', (event) => {
       detail: `${item.type} package added from intake form. CTA: ${item.cta || 'TBD'}.`
     });
     state.briefs = state.briefs.slice(0, 6);
+
+    state.previews.unshift({
+      title: item.title,
+      format: item.type,
+      hook: item.title,
+      caption: item.notes || 'Freshly added from the intake form.',
+      cta: item.cta || 'TBD',
+      status: item.status,
+      visual: `Preview concept · ${item.type} · ${item.slot || 'schedule TBD'}`
+    });
+    state.previews = state.previews.slice(0, 8);
   }
 
   save();
