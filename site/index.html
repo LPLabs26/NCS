@@ -19,6 +19,8 @@
       <a href="#today">Today</a>
       <a href="#week">This Week</a>
       <a href="#board">Board</a>
+      <a href="#posts">Posts</a>
+      <a href="#automation">Automation</a>
       <a href="#natalie">Natalie</a>
       <a href="#references">References</a>
     </nav>
@@ -31,11 +33,11 @@
         <h2>I’m running NCS marketing, booking support, and execution.</h2>
         <p>
           This is the working dashboard for what I’m doing, what’s next, what’s blocked,
-          what Natalie wants added, and what has already been completed.
+          what Natalie wants added, what’s ready to post, and what recurring jobs are active.
         </p>
         <div class="hero-actions">
           <a class="button primary" href="../docs/ops/natalie-task-board.md">Open Natalie task board</a>
-          <a class="button secondary" href="../docs/ops/natalie-admin-sop.md">Open admin SOP</a>
+          <a class="button secondary" href="../docs/content/ready-to-post-board.md">Open ready-to-post board</a>
         </div>
       </div>
       <div class="hero-panel">
@@ -51,9 +53,24 @@
 
     <section class="metrics-grid">
       <article class="metric card"><span class="metric-label">Today</span><strong>3 priorities</strong><small>Content, bookings, follow-up</small></article>
-      <article class="metric card"><span class="metric-label">This Week</span><strong>Hero offer</strong><small>Hydrafacial</small></article>
-      <article class="metric card"><span class="metric-label">Waiting</span><strong>Approvals</strong><small>Natalie review / decisions</small></article>
+      <article class="metric card"><span class="metric-label">Ready to Post</span><strong>3 assets</strong><small>Drafted and prepared</small></article>
+      <article class="metric card"><span class="metric-label">Automation</span><strong>3 recurring jobs</strong><small>Trend, gap-fill, daily brief</small></article>
       <article class="metric card"><span class="metric-label">Status</span><strong>Executing</strong><small>Operator mode</small></article>
+    </section>
+
+    <section class="status-strip card">
+      <div>
+        <span class="service-tag">Last updated</span>
+        <strong>Current phase: execution and refinement</strong>
+      </div>
+      <div>
+        <span class="service-tag">Recommended move</span>
+        <strong>Keep using Natalie task board and ready-post board</strong>
+      </div>
+      <div>
+        <span class="service-tag">Current pressure point</span>
+        <strong>Turn planning into repeatable weekly action</strong>
+      </div>
     </section>
 
     <section id="week" class="section-block">
@@ -65,20 +82,20 @@
         <article class="card">
           <h4>Top priorities</h4>
           <ol class="clean-list ordered">
-            <li>Keep Hydrafacial as the most visible offer</li>
-            <li>Use Custom Facial as the answer for unsure clients</li>
-            <li>Publish education + trust-building content</li>
-            <li>Track openings and push gap-fill content intentionally</li>
-            <li>Follow up on warm leads and rebooking opportunities</li>
+            <li><span class="priority high">High</span> Keep Hydrafacial as the most visible offer</li>
+            <li><span class="priority high">High</span> Use Custom Facial as the answer for unsure clients</li>
+            <li><span class="priority medium">Medium</span> Publish education + trust-building content</li>
+            <li><span class="priority medium">Medium</span> Track openings and push gap-fill content intentionally</li>
+            <li><span class="priority medium">Medium</span> Follow up on warm leads and rebooking opportunities</li>
           </ol>
         </article>
         <article class="card">
           <h4>Booking & sales actions</h4>
           <ul class="clean-list">
-            <li>Watch for same-week openings</li>
-            <li>Use elegant urgency, not discount-heavy language</li>
-            <li>Guide inquiries toward the right offer fast</li>
-            <li>Support maintenance and package framing</li>
+            <li><span class="priority medium">Medium</span> Watch for same-week openings</li>
+            <li><span class="priority medium">Medium</span> Use elegant urgency, not discount-heavy language</li>
+            <li><span class="priority high">High</span> Guide inquiries toward the right offer fast</li>
+            <li><span class="priority medium">Medium</span> Support maintenance and package framing</li>
           </ul>
         </article>
       </div>
@@ -89,53 +106,101 @@
         <div class="section-eyebrow">Operator board</div>
         <h3>Execution queue</h3>
       </div>
-      <div class="cards-3">
-        <article class="card">
+      <div class="cards-3 kanban">
+        <article class="card kanban-col">
           <div class="service-tag">To Do</div>
           <h4>Queued</h4>
           <ul class="clean-list">
-            <li>Build live dashboard tracking workflow</li>
-            <li>Run 7-day launch pack</li>
-            <li>Refine profile and booking copy</li>
+            <li><span class="priority high">High</span> Build live dashboard tracking workflow</li>
+            <li><span class="priority medium">Medium</span> Run 7-day launch pack</li>
+            <li><span class="priority medium">Medium</span> Refine profile and booking copy</li>
           </ul>
         </article>
-        <article class="card">
+        <article class="card kanban-col">
           <div class="service-tag">In Progress</div>
           <h4>Active work</h4>
           <ul class="clean-list">
-            <li>Operator dashboard structure</li>
-            <li>Content system buildout</li>
-            <li>Booking and retention framework</li>
+            <li><span class="priority high">High</span> Operator dashboard structure</li>
+            <li><span class="priority medium">Medium</span> Content system buildout</li>
+            <li><span class="priority medium">Medium</span> Booking and retention framework</li>
           </ul>
         </article>
-        <article class="card">
+        <article class="card kanban-col">
           <div class="service-tag">Completed This Week</div>
           <h4>Done</h4>
           <ul class="clean-list">
-            <li>Brand audit</li>
-            <li>Competitor deep dive</li>
-            <li>GlossGenius + Instagram optimization</li>
-            <li>Sales scripts and SOPs</li>
-            <li>GitHub Pages dashboard build</li>
+            <li><span class="priority done">Done</span> Brand audit</li>
+            <li><span class="priority done">Done</span> Competitor deep dive</li>
+            <li><span class="priority done">Done</span> GlossGenius + Instagram optimization</li>
+            <li><span class="priority done">Done</span> Sales scripts and SOPs</li>
+            <li><span class="priority done">Done</span> GitHub Pages dashboard build</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="posts" class="section-block">
+      <div class="section-heading">
+        <div class="section-eyebrow">Ready to post</div>
+        <h3>Content pipeline</h3>
+      </div>
+      <div class="cards-3">
+        <article class="card">
+          <div class="service-tag">Ready to Film</div>
+          <h4>Hydrafacial Glow Reset Reel</h4>
+          <p>If your skin has been looking tired no matter what you use at home, this is your sign.</p>
+        </article>
+        <article class="card">
+          <div class="service-tag">Ready to Post</div>
+          <h4>What Should I Book? Story Sequence</h4>
+          <p>Hydrafacial for glow, Custom Facial for guidance, Peels for correction.</p>
+        </article>
+        <article class="card">
+          <div class="service-tag">Draft Ready</div>
+          <h4>Monthly Maintenance Post</h4>
+          <p>Great skin usually comes from consistency, not guesswork.</p>
+        </article>
+      </div>
+      <div class="link-row">
+        <a href="../docs/content/ready-to-post-board.md">Open ready-to-post board</a>
+      </div>
+    </section>
+
+    <section id="automation" class="section-block">
+      <div class="section-heading">
+        <div class="section-eyebrow">Automation</div>
+        <h3>Recurring jobs / cron-style work</h3>
+      </div>
+      <div class="split">
+        <article class="card soft-accent">
+          <h4>08:00 AM</h4>
+          <ul class="clean-list">
+            <li>Trend + Reel Idea</li>
+            <li>Output: hook, shots, caption, CTA</li>
+          </ul>
+        </article>
+        <article class="card soft-accent">
+          <h4>10:00 AM</h4>
+          <ul class="clean-list">
+            <li>Booking Gap Fill Check</li>
+            <li>Output: story copy, offer, CTA</li>
           </ul>
         </article>
       </div>
       <div class="split">
         <article class="card soft-accent">
-          <h4>Waiting / Needs Approval</h4>
+          <h4>04:00 PM</h4>
           <ul class="clean-list">
-            <li>Any new promo Natalie wants prioritized</li>
-            <li>Any content requests to move to the top of the queue</li>
-            <li>Any live booking-page / Instagram edits needing signoff</li>
+            <li>Daily Brief</li>
+            <li>Output: beauty / skincare update + next move</li>
           </ul>
         </article>
         <article class="card soft-accent">
-          <h4>Next recommended move</h4>
-          <ul class="clean-list">
-            <li>Use the Natalie task board for new requests</li>
-            <li>Track weekly wins and bottlenecks</li>
-            <li>Turn content priorities into a live production rhythm</li>
-          </ul>
+          <h4>Automation file</h4>
+          <p>Use the scheduled jobs file as the visible record of recurring execution tasks.</p>
+          <div class="link-row">
+            <a href="../docs/automation/scheduled-jobs.md">Open scheduled jobs</a>
+          </div>
         </article>
       </div>
     </section>
