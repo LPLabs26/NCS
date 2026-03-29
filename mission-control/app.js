@@ -4,58 +4,113 @@ const defaultData = {
   pipeline: [
     {
       id: crypto.randomUUID(),
-      title: 'Bridal glow countdown reel',
+      title: 'Hydrafacial glow reset reel',
       type: 'reel',
       priority: 'high',
-      status: 'approval',
-      cta: 'Book bridal prep consultation',
+      status: 'ready',
+      cta: 'Book your glow reset',
       slot: 'Mon 11:00 AM',
-      notes: 'Show 3 treatment milestones before the wedding. Natalie only needs to approve final hook + cover.',
-      owner: 'AI Content Operator'
+      notes: 'Built around Hydrafacial’s clinically proven glow, hydration, and tone/texture positioning.',
+      owner: 'Michael · Content Engine'
     },
     {
       id: crypto.randomUUID(),
-      title: 'Hydrafacial opening story pack',
+      title: 'Why Hydrafacial is a hero service carousel',
+      type: 'carousel',
+      priority: 'high',
+      status: 'ready',
+      cta: 'Reserve your Hydrafacial this week',
+      slot: 'Tue 09:15 AM',
+      notes: 'Explains why Hydrafacial stays central to the offer ladder without sounding too clinical.',
+      owner: 'Michael · Content Engine'
+    },
+    {
+      id: crypto.randomUUID(),
+      title: 'Not sure what to book? story set',
       type: 'story',
       priority: 'high',
       status: 'ready',
-      cta: 'Fill 2 open spots this week',
-      slot: 'Tue 9:15 AM',
-      notes: 'Urgency story with poll, social proof, and booking sticker copy.',
+      cta: 'Start with a custom facial',
+      slot: 'Tue 04:30 PM',
+      notes: 'Uses the custom facial as the confident bridge offer for unsure clients.',
+      owner: 'Michael · Content Engine'
+    },
+    {
+      id: crypto.randomUUID(),
+      title: 'Circadia day + night skin education carousel',
+      type: 'carousel',
+      priority: 'medium',
+      status: 'ready',
+      cta: 'Build a routine that works with your skin',
+      slot: 'Wed 12:30 PM',
+      notes: 'Science + nature angle: protect by day, repair by night.',
+      owner: 'Michael · Content Engine'
+    },
+    {
+      id: crypto.randomUUID(),
+      title: 'Bridal prep timeline reel',
+      type: 'reel',
+      priority: 'high',
+      status: 'ready',
+      cta: 'DM bridal glow',
+      slot: 'Thu 11:30 AM',
+      notes: 'High-value bridal prep positioning with a luxury, guided voice.',
+      owner: 'Michael · Content Engine'
+    },
+    {
+      id: crypto.randomUUID(),
+      title: 'Chemical peel myth-busting reel',
+      type: 'reel',
+      priority: 'medium',
+      status: 'ready',
+      cta: 'Book your corrective consultation',
+      slot: 'Thu 05:30 PM',
+      notes: 'Reframes peels as strategic and expert-guided, not scary.',
+      owner: 'Michael · Content Engine'
+    },
+    {
+      id: crypto.randomUUID(),
+      title: 'Monthly maintenance reminder story pack',
+      type: 'story',
+      priority: 'medium',
+      status: 'ready',
+      cta: 'Rebook your next treatment',
+      slot: 'Fri 10:00 AM',
+      notes: 'Maintenance and consistency angle to support retention.',
+      owner: 'Retention Workflow'
+    },
+    {
+      id: crypto.randomUUID(),
+      title: 'Circadia hydration feature post',
+      type: 'carousel',
+      priority: 'medium',
+      status: 'ready',
+      cta: 'Ask about homecare support',
+      slot: 'Fri 03:00 PM',
+      notes: 'Highlights hydrated, calm, radiant skin and supports retail conversation.',
+      owner: 'Michael · Content Engine'
+    },
+    {
+      id: crypto.randomUUID(),
+      title: 'Event-ready skin fast carousel',
+      type: 'carousel',
+      priority: 'high',
+      status: 'ready',
+      cta: 'Reserve your event-ready treatment',
+      slot: 'Sat 10:00 AM',
+      notes: 'Fast-turn event skin content built around visible glow and confidence.',
       owner: 'Gap Fill Workflow'
     },
     {
       id: crypto.randomUUID(),
-      title: 'Custom facial vs Hydrafacial carousel',
-      type: 'carousel',
-      priority: 'medium',
-      status: 'production',
-      cta: 'DM “which facial?”',
-      slot: 'Wed 12:30 PM',
-      notes: 'Answer the “what should I book?” objection using Natalie voice guide.',
-      owner: 'Content Assistant'
-    },
-    {
-      id: crypto.randomUUID(),
-      title: 'Peel myth-busting reel',
-      type: 'reel',
-      priority: 'medium',
-      status: 'idea',
-      cta: 'Save for peel season',
-      slot: 'Thu 5:30 PM',
-      notes: 'Lead with “No, a peel should not leave you terrified.”',
-      owner: 'Trend Scanner'
-    },
-    {
-      id: crypto.randomUUID(),
-      title: 'Membership retention reminder',
+      title: 'Personalized luxury care brand post',
       type: 'offer',
-      priority: 'low',
-      status: 'approval',
-      cta: 'Rebook monthly maintenance',
-      slot: 'Fri 1:00 PM',
-      notes: 'Simple educational graphic + soft CTA for existing clients.',
-      owner: 'Retention Workflow'
+      priority: 'medium',
+      status: 'ready',
+      cta: 'Book your appointment at NCS Aesthetics',
+      slot: 'Sun 06:00 PM',
+      notes: 'Warm, elevated brand post reinforcing tailored care and premium experience.',
+      owner: 'Brand Operator'
     }
   ],
   jobs: [
@@ -65,13 +120,16 @@ const defaultData = {
     { time: '16:00', name: 'Daily Executive Brief', output: 'Wins, blockers, tomorrow move, revenue note' }
   ],
   calendar: [
-    { day: 'Monday', slot: '11:00 AM', title: 'Bridal glow countdown reel', goal: 'Bridal prep bookings' },
-    { day: 'Tuesday', slot: '09:15 AM', title: 'Hydrafacial opening story pack', goal: 'Fill two open appointments' },
-    { day: 'Wednesday', slot: '12:30 PM', title: 'Custom facial vs Hydrafacial carousel', goal: 'Clarify offer selection' },
-    { day: 'Thursday', slot: '05:30 PM', title: 'Peel myth-busting reel', goal: 'Trust + saves' },
-    { day: 'Friday', slot: '01:00 PM', title: 'Membership retention reminder', goal: 'Maintenance rebooks' },
-    { day: 'Saturday', slot: '10:00 AM', title: 'Luxury self-care story set', goal: 'Weekend engagement' },
-    { day: 'Sunday', slot: '06:00 PM', title: 'Next week skin reset teaser', goal: 'Prime Monday bookings' }
+    { day: 'Monday', slot: '11:00 AM', title: 'Hydrafacial glow reset reel', goal: 'Glow reset bookings' },
+    { day: 'Tuesday', slot: '09:15 AM', title: 'Why Hydrafacial is a hero service carousel', goal: 'Hydrafacial authority' },
+    { day: 'Tuesday', slot: '04:30 PM', title: 'Not sure what to book? story set', goal: 'Reduce booking hesitation' },
+    { day: 'Wednesday', slot: '12:30 PM', title: 'Circadia day + night skin education carousel', goal: 'Education + saves' },
+    { day: 'Thursday', slot: '11:30 AM', title: 'Bridal prep timeline reel', goal: 'Bridal prep consults' },
+    { day: 'Thursday', slot: '05:30 PM', title: 'Chemical peel myth-busting reel', goal: 'Corrective consults' },
+    { day: 'Friday', slot: '10:00 AM', title: 'Monthly maintenance reminder story pack', goal: 'Retention + rebooks' },
+    { day: 'Friday', slot: '03:00 PM', title: 'Circadia hydration feature post', goal: 'Retail + trust' },
+    { day: 'Saturday', slot: '10:00 AM', title: 'Event-ready skin fast carousel', goal: 'Event bookings' },
+    { day: 'Sunday', slot: '06:00 PM', title: 'Personalized luxury care brand post', goal: 'Brand trust + bookings' }
   ],
   kpis: [
     { label: 'Reach', value: '18.4k', trend: '+12% vs last week' },
@@ -81,48 +139,121 @@ const defaultData = {
   ],
   briefs: [
     {
-      title: 'Hydrafacial opening story pack',
+      title: 'Hydrafacial glow reset reel',
       stage: 'Ready to post',
-      detail: 'Includes hook, 4 frame story flow, booking sticker CTA, and caption notes.'
+      detail: 'Hook, caption, on-screen text, and booking CTA packaged for a fast post.'
     },
     {
-      title: 'Bridal glow countdown reel',
-      stage: 'Needs Natalie approval',
-      detail: 'Cover text, shot list, CTA, and comment pin are bundled for quick signoff.'
+      title: 'Circadia day + night skin education carousel',
+      stage: 'Ready to post',
+      detail: 'Educational slide flow translating Circadia’s day/night rhythm into client-friendly language.'
     },
     {
-      title: 'Custom facial vs Hydrafacial carousel',
-      stage: 'In production',
-      detail: 'Draft slides written, waiting for visual references and final service language.'
+      title: 'Bridal prep timeline reel',
+      stage: 'Ready to post',
+      detail: 'Luxury bridal prep content with consultation CTA and milestone structure.'
+    },
+    {
+      title: 'Chemical peel myth-busting reel',
+      stage: 'Ready to post',
+      detail: 'Corrective-care angle that reduces fear and increases confidence.'
+    },
+    {
+      title: 'Circadia hydration feature post',
+      stage: 'Ready to post',
+      detail: 'Retail-supportive educational post focused on hydration and calm, radiant skin.'
     }
   ],
   previews: [
     {
-      title: 'Hydrafacial opening story pack',
-      format: 'Story set',
-      hook: 'Two Hydrafacial openings just opened this week ✨',
-      caption: 'Quick urgency-led story series with social proof, soft luxury tone, and booking sticker CTA.',
+      title: 'Hydrafacial glow reset reel',
+      format: 'Reel',
+      hook: 'Glowing skin can start with one well-chosen treatment.',
+      caption: 'Positioned around Hydrafacial’s glow, hydration, and texture benefits with a luxury but warm tone.',
       cta: 'Book your glow reset',
       status: 'ready',
-      visual: 'Hydrafacial · soft cream background · gold accent · booking sticker'
+      visual: 'Hydrafacial glow · champagne cream backdrop · radiant skin closeup'
     },
     {
-      title: 'Bridal glow countdown reel',
-      format: 'Reel',
-      hook: 'If your wedding is coming up, this is your skin prep timeline.',
-      caption: 'Short-form reel with 3 bridal prep checkpoints and a consultation CTA.',
-      cta: 'DM bridal glow',
-      status: 'approval',
-      visual: 'Bridal skin prep · elegant white typography · timeline overlay'
-    },
-    {
-      title: 'Custom facial vs Hydrafacial carousel',
+      title: 'Why Hydrafacial is a hero service carousel',
       format: 'Carousel',
-      hook: 'Not sure what to book? Start here.',
-      caption: 'Educational comparison carousel designed to reduce booking hesitation.',
-      cta: 'Send “which facial?”',
-      status: 'production',
-      visual: 'Comparison slides · blush neutrals · answer-the-objection layout'
+      hook: 'Why Hydrafacial stays one of our most requested treatments.',
+      caption: 'Explains visible glow, pore appearance, hydration, and confidence in a client-friendly way.',
+      cta: 'Reserve your Hydrafacial this week',
+      status: 'ready',
+      visual: 'Clinical results made elegant · polished slides · soft gold accents'
+    },
+    {
+      title: 'Not sure what to book? story set',
+      format: 'Story Set',
+      hook: 'If you are not sure what your skin needs, start here.',
+      caption: 'Uses the custom facial as the easiest bridge offer for uncertain first-time clients.',
+      cta: 'Start with a custom facial',
+      status: 'ready',
+      visual: 'Q&A stories · elevated neutral backgrounds · easy choice framing'
+    },
+    {
+      title: 'Circadia day + night skin education carousel',
+      format: 'Carousel',
+      hook: 'Your skin has different needs by day and by night.',
+      caption: 'Built from Circadia’s protect-by-day, repair-by-night framework.',
+      cta: 'Build a routine that works with your skin',
+      status: 'ready',
+      visual: 'Split day/night design · sun/moon motif · science + nature tone'
+    },
+    {
+      title: 'Bridal prep timeline reel',
+      format: 'Reel',
+      hook: 'Wedding skin prep works better when you do not wait until the last minute.',
+      caption: 'High-value bridal prep content with a guided timeline and consultation CTA.',
+      cta: 'DM bridal glow',
+      status: 'ready',
+      visual: 'Bridal whites · luxury prep timeline · polished clinic footage'
+    },
+    {
+      title: 'Chemical peel myth-busting reel',
+      format: 'Reel',
+      hook: 'A peel should feel strategic, not scary.',
+      caption: 'Corrective-care education that builds trust and lowers resistance.',
+      cta: 'Book your corrective consultation',
+      status: 'ready',
+      visual: 'Corrective skincare tone · calm educational lower thirds'
+    },
+    {
+      title: 'Monthly maintenance reminder story pack',
+      format: 'Story Set',
+      hook: 'Great skin usually comes from consistency, not one random appointment.',
+      caption: 'Soft maintenance reminder designed to drive rebooks without sounding desperate.',
+      cta: 'Rebook your next treatment',
+      status: 'ready',
+      visual: 'Soft mauve stories · maintenance messaging · simple booking prompt'
+    },
+    {
+      title: 'Circadia hydration feature post',
+      format: 'Carousel',
+      hook: 'Hydrated skin looks healthier, calmer, and more radiant.',
+      caption: 'Educational retail-supportive content using Circadia hydration positioning.',
+      cta: 'Ask about homecare support',
+      status: 'ready',
+      visual: 'Hydration focus · glossy closeups · product support angle'
+    },
+    {
+      title: 'Event-ready skin fast carousel',
+      format: 'Carousel',
+      hook: 'Need your skin to look fresh for an event this week?',
+      caption: 'Fast-turn event-ready angle that supports timely booking decisions.',
+      cta: 'Reserve your event-ready treatment',
+      status: 'ready',
+      visual: 'Event prep aesthetic · luxe neutrals · before-event confidence'
+    },
+    {
+      title: 'Personalized luxury care brand post',
+      format: 'Brand Post',
+      hook: 'Luxury skincare should still feel personal.',
+      caption: 'Brand trust piece reinforcing tailored care, warmth, and premium experience.',
+      cta: 'Book your appointment at NCS Aesthetics',
+      status: 'ready',
+      visual: 'Founder-led trust post · premium but warm visual language'
     }
   ]
 };
