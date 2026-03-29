@@ -382,6 +382,17 @@ textarea { min-height: 120px; resize: vertical; }
   font-size: 0.9rem;
   line-height: 1.45;
 }
+.movie-link {
+  display:inline-flex;
+  width:max-content;
+  text-decoration:none;
+  color:#fff;
+  background:var(--ink);
+  padding:10px 14px;
+  border-radius:999px;
+  font-weight:700;
+  margin-top:4px;
+}
 
 @media (max-width: 1100px) {
   .metrics-grid,

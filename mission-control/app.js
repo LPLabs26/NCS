@@ -571,11 +571,24 @@ function renderMiniMovies() {
     : '<div class="empty">No mini-movie concepts loaded yet.</div>';
 }
 
+function movieHref(title) {
+  const map = {
+    'Hydrafacial glow reset reel': 'movies/night-before-glow.html',
+    'Why Hydrafacial is a hero service carousel': 'movies/booked-by-monday.html',
+    'Not sure what to book? story set': 'movies/skin-in-three-acts.html',
+    'Circadia day + night skin education carousel': 'movies/reset-window.html',
+    'Bridal prep timeline reel': 'movies/after-yes.html'
+  };
+  return map[title] || null;
+}
+
 function renderPreviews() {
   const previews = (state.previews || []).filter((preview) => preview.status === 'ready');
   document.getElementById('previewCount').textContent = `${previews.length} ready to preview`;
   document.getElementById('previewGallery').innerHTML = previews.length
-    ? previews.map((preview) => `
+    ? previews.map((preview) => {
+      const movie = movieHref(preview.title);
+      return `
       <article class="preview-card ${preview.status}">
         <div class="preview-canvas">
           <div class="preview-badge">${preview.format}</div>
@@ -590,9 +603,10 @@ function renderPreviews() {
           <p>${preview.caption}</p>
           <div class="preview-cta">CTA: ${preview.cta}</div>
           <div class="preview-notes">Posting notes: ${preview.notes || 'Ready to schedule.'}</div>
+          ${movie ? `<a class="movie-link" href="${movie}" target="_blank" rel="noopener">Open animated movie</a>` : ''}
         </div>
-      </article>
-    `).join('')
+      </article>`;
+    }).join('')
     : '<div class="empty">No ready-to-post previews yet.</div>';
 }
 
