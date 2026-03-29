@@ -233,11 +233,22 @@ textarea { min-height: 120px; resize: vertical; }
   color: var(--muted);
   background: rgba(255,255,255,0.72);
 }
+.preview-cover {
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--muted);
+}
 .preview-hook {
   font-size: 1.35rem;
   line-height: 1.15;
   font-weight: 700;
   max-width: 14ch;
+}
+.preview-body-copy {
+  font-size: 0.98rem;
+  line-height: 1.4;
+  max-width: 24ch;
 }
 .preview-visual {
   color: var(--muted);
@@ -248,8 +259,20 @@ textarea { min-height: 120px; resize: vertical; }
   display: grid;
   gap: 10px;
 }
+.caption-label {
+  margin: 0;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+}
 .preview-cta {
   font-weight: 600;
+}
+.preview-notes {
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.45;
 }
 
 @media (max-width: 1100px) {

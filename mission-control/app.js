@@ -169,91 +169,121 @@ const defaultData = {
       title: 'Hydrafacial glow reset reel',
       format: 'Reel',
       hook: 'Glowing skin can start with one well-chosen treatment.',
-      caption: 'Positioned around Hydrafacial’s glow, hydration, and texture benefits with a luxury but warm tone.',
+      caption: 'Glowing, refreshed skin does not always need more products — it may just need the right treatment. Our Hydrafacial is one of our favorite ways to help skin look smoother, more hydrated, and event-ready with that fresh glow everyone asks for. If your skin has been feeling dull, congested, or just in need of a reset, this is a beautiful place to start. ✨\n\nBook your glow reset at NCS Aesthetics.',
       cta: 'Book your glow reset',
       status: 'ready',
-      visual: 'Hydrafacial glow · champagne cream backdrop · radiant skin closeup'
+      visual: 'Hydrafacial glow · champagne cream backdrop · radiant skin closeup',
+      cover: 'Glow reset',
+      postText: 'Hydrated. Refreshed. Radiant.',
+      notes: 'Use polished treatment footage + water/serum texture clips.'
     },
     {
       title: 'Why Hydrafacial is a hero service carousel',
       format: 'Carousel',
       hook: 'Why Hydrafacial stays one of our most requested treatments.',
-      caption: 'Explains visible glow, pore appearance, hydration, and confidence in a client-friendly way.',
+      caption: 'There is a reason Hydrafacial stays one of our most-loved treatments. It is a beautiful option when your goal is skin that feels cleaner, smoother, more hydrated, and visibly refreshed. We love it for glow maintenance, event prep, and those moments when your skin just feels off and needs support.\n\nReserve your Hydrafacial this week if your skin is ready for a reset.',
       cta: 'Reserve your Hydrafacial this week',
       status: 'ready',
-      visual: 'Clinical results made elegant · polished slides · soft gold accents'
+      visual: 'Clinical results made elegant · polished slides · soft gold accents',
+      cover: 'Why clients love Hydrafacial',
+      postText: 'Glow • hydration • smoother-looking skin',
+      notes: 'Carousel slides: glow, hydration, event prep, maintenance, CTA.'
     },
     {
       title: 'Not sure what to book? story set',
       format: 'Story Set',
       hook: 'If you are not sure what your skin needs, start here.',
-      caption: 'Uses the custom facial as the easiest bridge offer for uncertain first-time clients.',
+      caption: 'If you have ever looked at a treatment menu and thought “I have no idea what to book,” you are not alone. That is exactly why we love starting unsure clients with a custom facial. It gives us room to look at what your skin needs right now and tailor the experience from there.\n\nStart with a custom facial and let us guide you.',
       cta: 'Start with a custom facial',
       status: 'ready',
-      visual: 'Q&A stories · elevated neutral backgrounds · easy choice framing'
+      visual: 'Q&A stories · elevated neutral backgrounds · easy choice framing',
+      cover: 'Not sure what to book?',
+      postText: 'Start with the treatment that meets your skin where it is.',
+      notes: 'Story frames: unsure → custom facial → tailored plan → booking CTA.'
     },
     {
       title: 'Circadia day + night skin education carousel',
       format: 'Carousel',
       hook: 'Your skin has different needs by day and by night.',
-      caption: 'Built from Circadia’s protect-by-day, repair-by-night framework.',
+      caption: 'Your skin is not doing the same job all day long. During the day, it is working to protect itself. At night, it shifts into repair and recovery mode. That is one of the reasons we love Circadia’s approach — it is built around supporting the skin’s natural rhythm instead of fighting it.\n\nBuild a routine that works with your skin, not against it.',
       cta: 'Build a routine that works with your skin',
       status: 'ready',
-      visual: 'Split day/night design · sun/moon motif · science + nature tone'
+      visual: 'Split day/night design · sun/moon motif · science + nature tone',
+      cover: 'Day skin vs night skin',
+      postText: 'Protect by day. Repair by night.',
+      notes: 'Educational carousel with simple day/night language and retail CTA.'
     },
     {
       title: 'Bridal prep timeline reel',
       format: 'Reel',
       hook: 'Wedding skin prep works better when you do not wait until the last minute.',
-      caption: 'High-value bridal prep content with a guided timeline and consultation CTA.',
+      caption: 'If your wedding or a big event is coming up, your skin prep should feel intentional — not rushed. A thoughtful treatment timeline gives your skin time to respond, glow, and stay balanced leading into the day you want to feel your absolute best.\n\nDM us “bridal glow” if you want help mapping out your prep.',
       cta: 'DM bridal glow',
       status: 'ready',
-      visual: 'Bridal whites · luxury prep timeline · polished clinic footage'
+      visual: 'Bridal whites · luxury prep timeline · polished clinic footage',
+      cover: 'Bridal prep timeline',
+      postText: 'Do not wait until the week of.',
+      notes: 'Use bridal prep timeline text overlays + treatment footage.'
     },
     {
       title: 'Chemical peel myth-busting reel',
       format: 'Reel',
       hook: 'A peel should feel strategic, not scary.',
-      caption: 'Corrective-care education that builds trust and lowers resistance.',
+      caption: 'One of the biggest misconceptions about peels is that they have to feel aggressive to be effective. The truth is, a peel should be selected thoughtfully, guided professionally, and matched to what your skin can actually benefit from.\n\nIf you have been curious about peels but hesitant, book a corrective consultation and let’s talk about what makes sense for your skin.',
       cta: 'Book your corrective consultation',
       status: 'ready',
-      visual: 'Corrective skincare tone · calm educational lower thirds'
+      visual: 'Corrective skincare tone · calm educational lower thirds',
+      cover: 'Peel myth: it has to be scary',
+      postText: 'Strategic > aggressive.',
+      notes: 'Calm educational reel, no fear-based language.'
     },
     {
       title: 'Monthly maintenance reminder story pack',
       format: 'Story Set',
       hook: 'Great skin usually comes from consistency, not one random appointment.',
-      caption: 'Soft maintenance reminder designed to drive rebooks without sounding desperate.',
+      caption: 'Skin goals are usually built through consistency. One treatment can be a great reset, but maintenance is what helps you stay on track over time. If you love how your skin feels after a treatment, the next step is keeping that momentum going.\n\nRebook your next treatment and stay consistent with your skin goals.',
       cta: 'Rebook your next treatment',
       status: 'ready',
-      visual: 'Soft mauve stories · maintenance messaging · simple booking prompt'
+      visual: 'Soft mauve stories · maintenance messaging · simple booking prompt',
+      cover: 'Consistency changes skin',
+      postText: 'Maintenance is the magic.',
+      notes: 'Simple rebook story flow with soft luxury tone.'
     },
     {
       title: 'Circadia hydration feature post',
       format: 'Carousel',
       hook: 'Hydrated skin looks healthier, calmer, and more radiant.',
-      caption: 'Educational retail-supportive content using Circadia hydration positioning.',
+      caption: 'When skin is dehydrated, it can feel tight, dull, reactive, and harder to balance. Hydration support matters because calm, comfortable skin tends to look smoother, fresher, and more radiant. This is one of the reasons we love hydration-focused care and thoughtful homecare support.\n\nAsk about homecare support if your skin has been feeling dry or depleted.',
       cta: 'Ask about homecare support',
       status: 'ready',
-      visual: 'Hydration focus · glossy closeups · product support angle'
+      visual: 'Hydration focus · glossy closeups · product support angle',
+      cover: 'Why hydration matters',
+      postText: 'Calm skin. Fresh glow. Better balance.',
+      notes: 'Use hydration textures and elevated product visuals.'
     },
     {
       title: 'Event-ready skin fast carousel',
       format: 'Carousel',
       hook: 'Need your skin to look fresh for an event this week?',
-      caption: 'Fast-turn event-ready angle that supports timely booking decisions.',
+      caption: 'If you have something coming up and want your skin to look refreshed, smooth, and glowing, the right treatment can make a big difference. We love helping clients get event-ready in a way that feels polished, intentional, and realistic for their timeline.\n\nReserve your event-ready treatment while openings are available.',
       cta: 'Reserve your event-ready treatment',
       status: 'ready',
-      visual: 'Event prep aesthetic · luxe neutrals · before-event confidence'
+      visual: 'Event prep aesthetic · luxe neutrals · before-event confidence',
+      cover: 'Event this week?',
+      postText: 'Fresh, polished, event-ready skin.',
+      notes: 'Use event-prep urgency without sounding discount-heavy.'
     },
     {
       title: 'Personalized luxury care brand post',
       format: 'Brand Post',
       hook: 'Luxury skincare should still feel personal.',
-      caption: 'Brand trust piece reinforcing tailored care, warmth, and premium experience.',
+      caption: 'We believe great skincare should feel elevated, thoughtful, and tailored — never rushed and never one-size-fits-all. The goal is not just a beautiful treatment in the moment, but a level of care that helps you feel understood, supported, and confident in your skin over time.\n\nBook your appointment at NCS Aesthetics and let your skin experience personalized luxury care.',
       cta: 'Book your appointment at NCS Aesthetics',
       status: 'ready',
-      visual: 'Founder-led trust post · premium but warm visual language'
+      visual: 'Founder-led trust post · premium but warm visual language',
+      cover: 'Luxury, but personal',
+      postText: 'Tailored care. Elevated results.',
+      notes: 'Use brand photography / Natalie / studio atmosphere.'
     }
   ]
 };
@@ -411,13 +441,17 @@ function renderPreviews() {
       <article class="preview-card ${preview.status}">
         <div class="preview-canvas">
           <div class="preview-badge">${preview.format}</div>
+          <div class="preview-cover">${preview.cover || preview.title}</div>
           <div class="preview-hook">${preview.hook}</div>
+          <div class="preview-body-copy">${preview.postText || preview.caption}</div>
           <div class="preview-visual">${preview.visual}</div>
         </div>
         <div class="preview-meta">
           <div class="mini-topline"><strong>${preview.title}</strong><span>${statusLabel(preview.status)}</span></div>
+          <p class="caption-label">Caption</p>
           <p>${preview.caption}</p>
           <div class="preview-cta">CTA: ${preview.cta}</div>
+          <div class="preview-notes">Posting notes: ${preview.notes || 'Ready to schedule.'}</div>
         </div>
       </article>
     `).join('')
