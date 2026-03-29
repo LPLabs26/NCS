@@ -252,7 +252,34 @@ function setStatus(id, status) {
 }
 function renderApprovalChecklist() {
   const items = itemsByStatus('approval');
-  document.getElementById('approvalChecklist').innerHTML = items.length ? items.map((item) => `<article class="mini-card checklist-card"><div class="mini-topline"><strong>${escapeHtml(item.title)}</strong><span>${escapeHtml(item.slot || 'TBD')}</span></div><ul><li>Confirm <strong>${escapeHtml(item.daypart)}</strong> lane: ${escapeHtml(item.lane)}</li><li>Confirm CTA: ${escapeHtml(item.cta || 'TBD')}</li><li>Approve now, send back for tweaks, or reject</li></ul><div class="action-row compact-actions"><button class="approve-btn" data-action="ready" data-id="${item.id}">Approve</button><button class="ghost" data-action="production" data-id="${item.id}">Needs tweak</button><button class="ghost danger-text" data-action="idea" data-id="${item.id}">Reject</button></div></article>`).join('') : '<div class="empty">No approvals waiting.</div>';
+  document.getElementById('approvalChecklist').innerHTML = items.length ? items.map((item) => {
+    const preview = (state.previews || []).find((entry) => entry.title === item.title) || {};
+    const movie = movieHref(item.title);
+    return `<article class="mini-card checklist-card approval-preview-card">
+      <div class="mini-topline"><strong>${escapeHtml(item.title)}</strong><span>${escapeHtml(item.slot || 'TBD')}</span></div>
+      <div class="approval-preview-shell">
+        <div class="approval-preview-canvas">
+          <div class="preview-badge">${escapeHtml(preview.format || item.type || 'Post')}</div>
+          <div class="preview-cover">${escapeHtml(preview.daypart || item.daypart || '')}${(preview.daypart || item.daypart) ? ' · ' : ''}${escapeHtml(preview.cover || item.lane || item.title)}</div>
+          <div class="preview-hook">${escapeHtml(preview.hook || item.title)}</div>
+          <div class="preview-body-copy">${escapeHtml(preview.postText || preview.caption || item.notes || '')}</div>
+          <div class="preview-visual">${escapeHtml(preview.visual || item.notes || '')}</div>
+        </div>
+        <div class="approval-copy">
+          <p class="caption-label">Caption preview</p>
+          <p>${escapeHtml(preview.caption || item.notes || '')}</p>
+          <div class="preview-cta">CTA: ${escapeHtml(item.cta || preview.cta || 'TBD')}</div>
+          <div class="preview-notes">Lane: ${escapeHtml(item.daypart)} · ${escapeHtml(item.lane)}</div>
+          <div class="preview-actions">
+            <button class="approve-btn" data-action="ready" data-id="${item.id}">Approve</button>
+            <button class="ghost" data-action="production" data-id="${item.id}">Needs tweak</button>
+            <button class="ghost danger-text" data-action="idea" data-id="${item.id}">Reject</button>
+            ${movie ? `<a class="movie-link" href="${movie}" target="_blank" rel="noopener">Open animated movie</a>` : ''}
+          </div>
+        </div>
+      </div>
+    </article>`;
+  }).join('') : '<div class="empty">No approvals waiting.</div>';
 }
 function renderJobs() {
   document.getElementById('jobsList').innerHTML = state.jobs.map((job) => `<article class="mini-card"><div class="mini-topline"><strong>${escapeHtml(job.time)}</strong><span>Automated</span></div><h4>${escapeHtml(job.name)}</h4><p>${escapeHtml(job.output)}</p></article>`).join('');
