@@ -1,222 +1,33 @@
-const STORAGE_KEY = 'ncs-mission-control-v3';
+const STORAGE_KEY = 'ncs-mission-control-v4';
 
 const defaultData = {
   pipeline: [
-    {
-      id: crypto.randomUUID(),
-      title: 'Hydrafacial glow reset reel',
-      type: 'reel',
-      priority: 'high',
-      status: 'ready',
-      cta: 'Book your glow reset',
-      slot: 'Mon 11:00 AM',
-      notes: 'Built around Hydrafacial’s clinically proven glow, hydration, and tone/texture positioning.',
-      owner: 'Michael · Content Engine'
-    },
-    {
-      id: crypto.randomUUID(),
-      title: 'Why Hydrafacial is a hero service carousel',
-      type: 'carousel',
-      priority: 'high',
-      status: 'ready',
-      cta: 'Reserve your Hydrafacial this week',
-      slot: 'Tue 09:15 AM',
-      notes: 'Explains why Hydrafacial stays central to the offer ladder without sounding too clinical.',
-      owner: 'Michael · Content Engine'
-    },
-    {
-      id: crypto.randomUUID(),
-      title: 'Not sure what to book? story set',
-      type: 'story',
-      priority: 'high',
-      status: 'ready',
-      cta: 'Start with a custom facial',
-      slot: 'Tue 04:30 PM',
-      notes: 'Uses the custom facial as the confident bridge offer for unsure clients.',
-      owner: 'Michael · Content Engine'
-    },
-    {
-      id: crypto.randomUUID(),
-      title: 'Circadia day + night skin education carousel',
-      type: 'carousel',
-      priority: 'medium',
-      status: 'ready',
-      cta: 'Build a routine that works with your skin',
-      slot: 'Wed 12:30 PM',
-      notes: 'Science + nature angle: protect by day, repair by night.',
-      owner: 'Michael · Content Engine'
-    },
-    {
-      id: crypto.randomUUID(),
-      title: 'Bridal prep timeline reel',
-      type: 'reel',
-      priority: 'high',
-      status: 'ready',
-      cta: 'DM bridal glow',
-      slot: 'Thu 11:30 AM',
-      notes: 'High-value bridal prep positioning with a luxury, guided voice.',
-      owner: 'Michael · Content Engine'
-    },
-    {
-      id: crypto.randomUUID(),
-      title: 'Chemical peel myth-busting reel',
-      type: 'reel',
-      priority: 'medium',
-      status: 'ready',
-      cta: 'Book your corrective consultation',
-      slot: 'Thu 05:30 PM',
-      notes: 'Reframes peels as strategic and expert-guided, not scary.',
-      owner: 'Michael · Content Engine'
-    },
-    {
-      id: crypto.randomUUID(),
-      title: 'Monthly maintenance reminder story pack',
-      type: 'story',
-      priority: 'medium',
-      status: 'ready',
-      cta: 'Rebook your next treatment',
-      slot: 'Fri 10:00 AM',
-      notes: 'Maintenance and consistency angle to support retention.',
-      owner: 'Retention Workflow'
-    },
-    {
-      id: crypto.randomUUID(),
-      title: 'Circadia hydration feature post',
-      type: 'carousel',
-      priority: 'medium',
-      status: 'ready',
-      cta: 'Ask about homecare support',
-      slot: 'Fri 03:00 PM',
-      notes: 'Highlights hydrated, calm, radiant skin and supports retail conversation.',
-      owner: 'Michael · Content Engine'
-    },
-    {
-      id: crypto.randomUUID(),
-      title: 'Event-ready skin fast carousel',
-      type: 'carousel',
-      priority: 'high',
-      status: 'ready',
-      cta: 'Reserve your event-ready treatment',
-      slot: 'Sat 10:00 AM',
-      notes: 'Fast-turn event skin content built around visible glow and confidence.',
-      owner: 'Gap Fill Workflow'
-    },
-    {
-      id: crypto.randomUUID(),
-      title: 'Personalized luxury care brand post',
-      type: 'offer',
-      priority: 'medium',
-      status: 'ready',
-      cta: 'Book your appointment at NCS Aesthetics',
-      slot: 'Sun 06:00 PM',
-      notes: 'Warm, elevated brand post reinforcing tailored care and premium experience.',
-      owner: 'Brand Operator'
-    }
-  ],
-  miniMovies: [
-    {
-      id: crypto.randomUUID(),
-      title: 'The Night-Before Glow',
-      duration: '24 sec concept',
-      format: 'Mini-movie reel',
-      status: 'Ready to storyboard',
-      lead: 'Event prep / bridal',
-      hook: 'A night-before panic turns into camera-ready calm with one elegant reset.',
-      logline: 'A luxe pre-event treatment arc built around tension, relief, and a final DM-worthy CTA frame.',
-      visualHook: 'Instagram-story chrome, champagne lighting, mirror captions, treatment closeups, silk robe exit shot.',
-      cta: 'DM “glow plan” now',
-      beats: [
-        'Cold open: mirror text — “Tomorrow is close.”',
-        'Treatment beat: Hydrafacial serum sweep, LED glow, breath finally slows',
-        'Final frame: polished reflection + CTA to DM “glow plan”'
-      ]
-    },
-    {
-      id: crypto.randomUUID(),
-      title: 'Booked by Monday',
-      duration: '18 sec concept',
-      format: 'Mini-movie sequence',
-      status: 'Ready to package',
-      lead: 'Gap-fill offer',
-      hook: 'A polished opening alert becomes a booked appointment before the day even settles.',
-      logline: 'A cinematic appointment-fill concept built around urgency, confidence, and one clean CTA.',
-      visualHook: 'Mission-control UI overlays, notification pop, polished desk-to-treatment transition.',
-      cta: 'Reserve the opening',
-      beats: [
-        'Open slot flashes on-screen with luxe gold outline',
-        'Story card rolls into a DM inquiry and instant confirmation',
-        'End frame: treatment room ready, “one opening left today”'
-      ]
-    },
-    {
-      id: crypto.randomUUID(),
-      title: 'Skin, In Three Acts',
-      duration: '21 sec concept',
-      format: 'Mini-movie carousel/reel hybrid',
-      status: 'Awaiting Natalie',
-      lead: 'Corrective education',
-      hook: 'A prestige-style skin story that replaces confusion with one clear next step.',
-      logline: 'An elevated before-during-after narrative that makes corrective care feel intentional instead of intimidating.',
-      visualHook: 'Three-panel act cards, subtle grain, calm voiceover captions, ingredient textures.',
-      cta: 'Book a skin consult',
-      beats: [
-        'Act I: “When your skin starts asking for more”',
-        'Act II: peel strategy + calm education overlay',
-        'Act III: restored confidence with polished post-treatment closeup'
-      ]
-    },
-    {
-      id: crypto.randomUUID(),
-      title: 'The Reset Window',
-      duration: '15 sec concept',
-      format: 'Mini-movie reel',
-      status: 'Ready to storyboard',
-      lead: 'Hydrafacial hero',
-      hook: 'A fast sensory reset built from water, light, and one quieter nervous system.',
-      logline: 'Minimal dialogue, maximum atmosphere — a pure mood-piece that sells the feeling of a Hydrafacial reset.',
-      visualHook: 'Macro hydration textures, glass reflections, creamy neutral gradients, close crop skin detail.',
-      cta: 'Reserve your reset',
-      beats: [
-        'Open on city-noise text, then cut to silence inside the studio',
-        'Hydration pass, extractions, LED finish in rhythmic cuts',
-        'End title: “Come back to yourself in one appointment.”'
-      ]
-    },
-    {
-      id: crypto.randomUUID(),
-      title: 'After Yes',
-      duration: '20 sec concept',
-      format: 'Mini-movie story arc',
-      status: 'Ready to package',
-      lead: 'Bridal runway',
-      hook: 'The ring goes on, the timeline speeds up, and the glow plan suddenly matters.',
-      logline: 'A bridal prep teaser told like a romance trailer, built to sell long-tail treatment planning.',
-      visualHook: 'Ring closeup, timeline cards, consultation notes, luminous finish shot with veil-white palette.',
-      cta: 'DM “bridal glow”',
-      beats: [
-        'Inciting moment: hand reveal + “after yes comes the plan”',
-        'Timeline montage: consult, Hydrafacial, peel, maintenance touchpoint',
-        'Final beat: wedding-week glow framed like the final scene'
-      ]
-    }
+    { id: crypto.randomUUID(), title: 'Morning glow reset', daypart: 'Morning', type: 'reel', priority: 'high', status: 'ready', cta: 'Book your glow reset', slot: 'Mon 08:30 AM', notes: 'AM post: fresh start, visible glow, event-week confidence.', owner: 'Michael · Content Engine' },
+    { id: crypto.randomUUID(), title: 'Midday Hydrafacial why-it-works', daypart: 'Midday', type: 'carousel', priority: 'high', status: 'ready', cta: 'Reserve your Hydrafacial this week', slot: 'Mon 12:30 PM', notes: 'Midday education: why Hydrafacial stays a hero service.', owner: 'Michael · Content Engine' },
+    { id: crypto.randomUUID(), title: 'Evening skin reset ritual', daypart: 'Evening', type: 'story', priority: 'high', status: 'ready', cta: 'Rebook your next treatment', slot: 'Mon 07:30 PM', notes: 'PM reset: skin recovery, ritual, maintenance.', owner: 'Michael · Content Engine' },
+    { id: crypto.randomUUID(), title: 'Morning bridal prep prompt', daypart: 'Morning', type: 'reel', priority: 'high', status: 'ready', cta: 'DM bridal glow', slot: 'Tue 09:00 AM', notes: 'AM bridal confidence post tied to event prep.', owner: 'Michael · Content Engine' },
+    { id: crypto.randomUUID(), title: 'Midday not sure what to book?', daypart: 'Midday', type: 'carousel', priority: 'medium', status: 'ready', cta: 'Start with a custom facial', slot: 'Tue 01:00 PM', notes: 'Midday guidance content for hesitant clients.', owner: 'Michael · Content Engine' },
+    { id: crypto.randomUUID(), title: 'Evening Circadia night rhythm', daypart: 'Evening', type: 'carousel', priority: 'medium', status: 'ready', cta: 'Ask about homecare support', slot: 'Tue 08:00 PM', notes: 'PM education: skin repairs at night, support the rhythm.', owner: 'Michael · Content Engine' },
+    { id: crypto.randomUUID(), title: 'Morning event-ready skin', daypart: 'Morning', type: 'carousel', priority: 'high', status: 'ready', cta: 'Reserve your event-ready treatment', slot: 'Wed 08:45 AM', notes: 'AM urgency without discount tone.', owner: 'Gap Fill Workflow' },
+    { id: crypto.randomUUID(), title: 'Midday peel myth busting', daypart: 'Midday', type: 'reel', priority: 'medium', status: 'ready', cta: 'Book your corrective consultation', slot: 'Wed 12:45 PM', notes: 'Midday myth clarification and trust-building.', owner: 'Michael · Content Engine' },
+    { id: crypto.randomUUID(), title: 'Evening hydration support', daypart: 'Evening', type: 'carousel', priority: 'medium', status: 'ready', cta: 'Ask about homecare support', slot: 'Wed 07:45 PM', notes: 'PM recovery/hydration support with Circadia tie-in.', owner: 'Michael · Content Engine' }
   ],
   jobs: [
-    { time: '08:00', name: 'Trend + Reel Generator', output: '3 hooks, 1 recommended winner, matching CTA' },
-    { time: '10:00', name: 'Gap-Fill Opportunity Scan', output: 'Any open appointments + story/offer package' },
-    { time: '13:00', name: 'Approval Bundle Builder', output: 'Compiles draft captions, covers, and posting notes for Natalie' },
-    { time: '16:00', name: 'Daily Executive Brief', output: 'Wins, blockers, tomorrow move, revenue note' }
+    { time: '07:00', name: 'Morning Post Builder', output: 'Glow / prep / protect asset' },
+    { time: '11:30', name: 'Midday Education Builder', output: 'Guide / clarify / reduce hesitation asset' },
+    { time: '17:30', name: 'Evening Ritual Builder', output: 'Reset / recover / rebook asset' },
+    { time: '20:00', name: 'Daily Executive Brief', output: 'What shipped, what is ready, what to improve tomorrow' }
   ],
   calendar: [
-    { day: 'Monday', slot: '11:00 AM', title: 'Hydrafacial glow reset reel', goal: 'Glow reset bookings' },
-    { day: 'Tuesday', slot: '09:15 AM', title: 'Why Hydrafacial is a hero service carousel', goal: 'Hydrafacial authority' },
-    { day: 'Tuesday', slot: '04:30 PM', title: 'Not sure what to book? story set', goal: 'Reduce booking hesitation' },
-    { day: 'Wednesday', slot: '12:30 PM', title: 'Circadia day + night skin education carousel', goal: 'Education + saves' },
-    { day: 'Thursday', slot: '11:30 AM', title: 'Bridal prep timeline reel', goal: 'Bridal prep consults' },
-    { day: 'Thursday', slot: '05:30 PM', title: 'Chemical peel myth-busting reel', goal: 'Corrective consults' },
-    { day: 'Friday', slot: '10:00 AM', title: 'Monthly maintenance reminder story pack', goal: 'Retention + rebooks' },
-    { day: 'Friday', slot: '03:00 PM', title: 'Circadia hydration feature post', goal: 'Retail + trust' },
-    { day: 'Saturday', slot: '10:00 AM', title: 'Event-ready skin fast carousel', goal: 'Event bookings' },
-    { day: 'Sunday', slot: '06:00 PM', title: 'Personalized luxury care brand post', goal: 'Brand trust + bookings' }
+    { day: 'Monday', slot: '08:30 AM', title: 'Morning glow reset', goal: 'Glow bookings' },
+    { day: 'Monday', slot: '12:30 PM', title: 'Midday Hydrafacial why-it-works', goal: 'Education + saves' },
+    { day: 'Monday', slot: '07:30 PM', title: 'Evening skin reset ritual', goal: 'Retention + rebooks' },
+    { day: 'Tuesday', slot: '09:00 AM', title: 'Morning bridal prep prompt', goal: 'Bridal consults' },
+    { day: 'Tuesday', slot: '01:00 PM', title: 'Midday not sure what to book?', goal: 'Booking clarity' },
+    { day: 'Tuesday', slot: '08:00 PM', title: 'Evening Circadia night rhythm', goal: 'Retail trust' },
+    { day: 'Wednesday', slot: '08:45 AM', title: 'Morning event-ready skin', goal: 'Event bookings' },
+    { day: 'Wednesday', slot: '12:45 PM', title: 'Midday peel myth busting', goal: 'Corrective consults' },
+    { day: 'Wednesday', slot: '07:45 PM', title: 'Evening hydration support', goal: 'Homecare support' }
   ],
   kpis: [
     { label: 'Reach', value: '18.4k', trend: '+12% vs last week' },
@@ -225,210 +36,72 @@ const defaultData = {
     { label: 'Booked from IG', value: '$3,860', trend: 'Hydrafacial still top driver' }
   ],
   briefs: [
-    {
-      title: 'Hydrafacial glow reset reel',
-      stage: 'Ready to post',
-      detail: 'Hook, caption, on-screen text, and booking CTA packaged for a fast post.'
-    },
-    {
-      title: 'Circadia day + night skin education carousel',
-      stage: 'Ready to post',
-      detail: 'Educational slide flow translating Circadia’s day/night rhythm into client-friendly language.'
-    },
-    {
-      title: 'Bridal prep timeline reel',
-      stage: 'Ready to post',
-      detail: 'Luxury bridal prep content with consultation CTA and milestone structure.'
-    },
-    {
-      title: 'Chemical peel myth-busting reel',
-      stage: 'Ready to post',
-      detail: 'Corrective-care angle that reduces fear and increases confidence.'
-    },
-    {
-      title: 'Circadia hydration feature post',
-      stage: 'Ready to post',
-      detail: 'Retail-supportive educational post focused on hydration and calm, radiant skin.'
-    }
+    { title: 'Morning glow reset', stage: 'Ready to post', detail: 'AM hook, caption, on-screen copy, and booking CTA.' },
+    { title: 'Midday Hydrafacial why-it-works', stage: 'Ready to post', detail: 'Education-first carousel for midday attention.' },
+    { title: 'Evening skin reset ritual', stage: 'Ready to post', detail: 'Night ritual / maintenance piece to support rebooks.' }
   ],
   previews: [
     {
-      title: 'Hydrafacial glow reset reel',
-      format: 'Reel',
-      hook: 'Glowing skin can start with one well-chosen treatment.',
-      caption: 'Glowing, refreshed skin does not always need more products — it may just need the right treatment. Our Hydrafacial is one of our favorite ways to help skin look smoother, more hydrated, and event-ready with that fresh glow everyone asks for. If your skin has been feeling dull, congested, or just in need of a reset, this is a beautiful place to start. ✨\n\nBook your glow reset at NCS Aesthetics.',
-      cta: 'Book your glow reset',
-      status: 'ready',
-      visual: 'Hydrafacial glow · champagne cream backdrop · radiant skin closeup',
-      cover: 'Glow reset',
-      postText: 'Hydrated. Refreshed. Radiant.',
-      notes: 'Use polished treatment footage + water/serum texture clips.'
+      title: 'Morning glow reset', daypart: 'Morning', format: 'Reel', hook: 'Your skin does not have to stay tired-looking all week.',
+      caption: 'If your skin has been looking dull, flat, or a little worn out, a glow-focused reset can make all the difference. Morning content should feel fresh, motivating, and easy to act on — so this piece leads with visible glow, polished skin, and a clean booking CTA.
+
+Book your glow reset at NCS Aesthetics.',
+      cta: 'Book your glow reset', status: 'ready', visual: 'Morning light · soft cream tones · polished fresh-skin closeup', cover: 'Morning glow', postText: 'Fresh skin starts here.', notes: 'AM post — prep / protect / glow.'
     },
     {
-      title: 'Why Hydrafacial is a hero service carousel',
-      format: 'Carousel',
-      hook: 'Why Hydrafacial stays one of our most requested treatments.',
-      caption: 'There is a reason Hydrafacial stays one of our most-loved treatments. It is a beautiful option when your goal is skin that feels cleaner, smoother, more hydrated, and visibly refreshed. We love it for glow maintenance, event prep, and those moments when your skin just feels off and needs support.\n\nReserve your Hydrafacial this week if your skin is ready for a reset.',
-      cta: 'Reserve your Hydrafacial this week',
-      status: 'ready',
-      visual: 'Clinical results made elegant · polished slides · soft gold accents',
-      cover: 'Why clients love Hydrafacial',
-      postText: 'Glow • hydration • smoother-looking skin',
-      notes: 'Carousel slides: glow, hydration, event prep, maintenance, CTA.'
+      title: 'Midday Hydrafacial why-it-works', daypart: 'Midday', format: 'Carousel', hook: 'Why Hydrafacial stays one of our most requested treatments.',
+      caption: 'Midday is where education performs best. This piece explains the value of Hydrafacial in a way that feels elevated, clear, and easy to understand without becoming too clinical.
+
+Reserve your Hydrafacial this week if your skin is ready for a reset.',
+      cta: 'Reserve your Hydrafacial this week', status: 'ready', visual: 'Clean educational slides · soft gold details · clinic-luxury balance', cover: 'Midday education', postText: 'Glow, hydration, and a smoother look — explained simply.', notes: 'Midday post — guide / educate / clarify.'
     },
     {
-      title: 'Not sure what to book? story set',
-      format: 'Story Set',
-      hook: 'If you are not sure what your skin needs, start here.',
-      caption: 'If you have ever looked at a treatment menu and thought “I have no idea what to book,” you are not alone. That is exactly why we love starting unsure clients with a custom facial. It gives us room to look at what your skin needs right now and tailor the experience from there.\n\nStart with a custom facial and let us guide you.',
-      cta: 'Start with a custom facial',
-      status: 'ready',
-      visual: 'Q&A stories · elevated neutral backgrounds · easy choice framing',
-      cover: 'Not sure what to book?',
-      postText: 'Start with the treatment that meets your skin where it is.',
-      notes: 'Story frames: unsure → custom facial → tailored plan → booking CTA.'
+      title: 'Evening skin reset ritual', daypart: 'Evening', format: 'Story Set', hook: 'Great skin usually comes from consistency, not random appointments.',
+      caption: 'Evening content should feel like a ritual, not a lecture. This post frames skin maintenance as a calming, supportive rhythm — the kind of thing clients want to return to.
+
+Rebook your next treatment and stay consistent with your skin goals.',
+      cta: 'Rebook your next treatment', status: 'ready', visual: 'Soft mauve stories · calm evening mood · ritual energy', cover: 'Evening reset', postText: 'Reset. Recover. Rebook.', notes: 'PM post — reset / recover / ritual.'
     },
     {
-      title: 'Circadia day + night skin education carousel',
-      format: 'Carousel',
-      hook: 'Your skin has different needs by day and by night.',
-      caption: 'Your skin is not doing the same job all day long. During the day, it is working to protect itself. At night, it shifts into repair and recovery mode. That is one of the reasons we love Circadia’s approach — it is built around supporting the skin’s natural rhythm instead of fighting it.\n\nBuild a routine that works with your skin, not against it.',
-      cta: 'Build a routine that works with your skin',
-      status: 'ready',
-      visual: 'Split day/night design · sun/moon motif · science + nature tone',
-      cover: 'Day skin vs night skin',
-      postText: 'Protect by day. Repair by night.',
-      notes: 'Educational carousel with simple day/night language and retail CTA.'
+      title: 'Morning bridal prep prompt', daypart: 'Morning', format: 'Reel', hook: 'Wedding skin prep works better when you do not wait until the last minute.',
+      caption: 'A morning bridal post should feel like clarity and confidence. This one frames prep as intentional, elevated, and time-sensitive without sounding frantic.
+
+DM us “bridal glow” if you want help mapping out your prep.',
+      cta: 'DM bridal glow', status: 'ready', visual: 'Morning bridal whites · luxury prep timeline · polished confidence', cover: 'Morning bridal prep', postText: 'Do not leave glow to the last week.', notes: 'AM post — prep / confidence / event planning.'
     },
     {
-      title: 'Bridal prep timeline reel',
-      format: 'Reel',
-      hook: 'Wedding skin prep works better when you do not wait until the last minute.',
-      caption: 'If your wedding or a big event is coming up, your skin prep should feel intentional — not rushed. A thoughtful treatment timeline gives your skin time to respond, glow, and stay balanced leading into the day you want to feel your absolute best.\n\nDM us “bridal glow” if you want help mapping out your prep.',
-      cta: 'DM bridal glow',
-      status: 'ready',
-      visual: 'Bridal whites · luxury prep timeline · polished clinic footage',
-      cover: 'Bridal prep timeline',
-      postText: 'Do not wait until the week of.',
-      notes: 'Use bridal prep timeline text overlays + treatment footage.'
+      title: 'Midday not sure what to book?', daypart: 'Midday', format: 'Carousel', hook: 'Not sure what to book? That is exactly why custom facials exist.',
+      caption: 'This is a midday guidance post meant to lower hesitation. It gives uncertain clients a clear first step without overwhelming them with the whole menu.
+
+Start with a custom facial and let us guide the rest.',
+      cta: 'Start with a custom facial', status: 'ready', visual: 'Question-led slides · calm neutrals · confidence-building structure', cover: 'Midday guidance', postText: 'No guesswork. Just the right first step.', notes: 'Midday post — guidance / decision support.'
     },
     {
-      title: 'Chemical peel myth-busting reel',
-      format: 'Reel',
-      hook: 'A peel should feel strategic, not scary.',
-      caption: 'One of the biggest misconceptions about peels is that they have to feel aggressive to be effective. The truth is, a peel should be selected thoughtfully, guided professionally, and matched to what your skin can actually benefit from.\n\nIf you have been curious about peels but hesitant, book a corrective consultation and let’s talk about what makes sense for your skin.',
-      cta: 'Book your corrective consultation',
-      status: 'ready',
-      visual: 'Corrective skincare tone · calm educational lower thirds',
-      cover: 'Peel myth: it has to be scary',
-      postText: 'Strategic > aggressive.',
-      notes: 'Calm educational reel, no fear-based language.'
-    },
-    {
-      title: 'Monthly maintenance reminder story pack',
-      format: 'Story Set',
-      hook: 'Great skin usually comes from consistency, not one random appointment.',
-      caption: 'Skin goals are usually built through consistency. One treatment can be a great reset, but maintenance is what helps you stay on track over time. If you love how your skin feels after a treatment, the next step is keeping that momentum going.\n\nRebook your next treatment and stay consistent with your skin goals.',
-      cta: 'Rebook your next treatment',
-      status: 'ready',
-      visual: 'Soft mauve stories · maintenance messaging · simple booking prompt',
-      cover: 'Consistency changes skin',
-      postText: 'Maintenance is the magic.',
-      notes: 'Simple rebook story flow with soft luxury tone.'
-    },
-    {
-      title: 'Circadia hydration feature post',
-      format: 'Carousel',
-      hook: 'Hydrated skin looks healthier, calmer, and more radiant.',
-      caption: 'When skin is dehydrated, it can feel tight, dull, reactive, and harder to balance. Hydration support matters because calm, comfortable skin tends to look smoother, fresher, and more radiant. This is one of the reasons we love hydration-focused care and thoughtful homecare support.\n\nAsk about homecare support if your skin has been feeling dry or depleted.',
-      cta: 'Ask about homecare support',
-      status: 'ready',
-      visual: 'Hydration focus · glossy closeups · product support angle',
-      cover: 'Why hydration matters',
-      postText: 'Calm skin. Fresh glow. Better balance.',
-      notes: 'Use hydration textures and elevated product visuals.'
-    },
-    {
-      title: 'Event-ready skin fast carousel',
-      format: 'Carousel',
-      hook: 'Need your skin to look fresh for an event this week?',
-      caption: 'If you have something coming up and want your skin to look refreshed, smooth, and glowing, the right treatment can make a big difference. We love helping clients get event-ready in a way that feels polished, intentional, and realistic for their timeline.\n\nReserve your event-ready treatment while openings are available.',
-      cta: 'Reserve your event-ready treatment',
-      status: 'ready',
-      visual: 'Event prep aesthetic · luxe neutrals · before-event confidence',
-      cover: 'Event this week?',
-      postText: 'Fresh, polished, event-ready skin.',
-      notes: 'Use event-prep urgency without sounding discount-heavy.'
-    },
-    {
-      title: 'Personalized luxury care brand post',
-      format: 'Brand Post',
-      hook: 'Luxury skincare should still feel personal.',
-      caption: 'We believe great skincare should feel elevated, thoughtful, and tailored — never rushed and never one-size-fits-all. The goal is not just a beautiful treatment in the moment, but a level of care that helps you feel understood, supported, and confident in your skin over time.\n\nBook your appointment at NCS Aesthetics and let your skin experience personalized luxury care.',
-      cta: 'Book your appointment at NCS Aesthetics',
-      status: 'ready',
-      visual: 'Founder-led trust post · premium but warm visual language',
-      cover: 'Luxury, but personal',
-      postText: 'Tailored care. Elevated results.',
-      notes: 'Use brand photography / Natalie / studio atmosphere.'
+      title: 'Evening Circadia night rhythm', daypart: 'Evening', format: 'Carousel', hook: 'Your skin does some of its most important work at night.',
+      caption: 'This evening post uses Circadia’s day/night framework in a more self-care, ritual-forward way. It is meant to feel atmospheric, educational, and premium.
+
+Ask about homecare support if you want a routine that works with your skin.',
+      cta: 'Ask about homecare support', status: 'ready', visual: 'Moonlit skincare tone · science-meets-ritual vibe · premium homecare support', cover: 'Evening repair', postText: 'Protect by day. Repair by night.', notes: 'PM post — reset / repair / homecare.'
     }
   ]
 };
 
-function cloneDefault() {
-  return JSON.parse(JSON.stringify(defaultData));
-}
-
-function migrateData(data) {
-  if (!data || typeof data !== 'object') return cloneDefault();
-  const merged = { ...cloneDefault(), ...data };
-  if (!Array.isArray(merged.miniMovies) || merged.miniMovies.length === 0) {
-    merged.miniMovies = cloneDefault().miniMovies;
-  }
-  return merged;
-}
-
-function load() {
-  try {
-    return migrateData(JSON.parse(localStorage.getItem(STORAGE_KEY)));
-  } catch {
-    return cloneDefault();
-  }
-}
-
-function save() {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-}
-
+function cloneDefault() { return JSON.parse(JSON.stringify(defaultData)); }
+function load() { try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || cloneDefault(); } catch { return cloneDefault(); } }
+function save() { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
 let state = load();
-
-function seedDemo() {
-  state = cloneDefault();
-  save();
-  render();
-}
-
-function statusLabel(status) {
-  return {
-    idea: 'Queued idea',
-    production: 'In production',
-    approval: 'Need Natalie',
-    ready: 'Ready / scheduled'
-  }[status] || status;
-}
-
+function seedDemo() { state = cloneDefault(); save(); render(); }
+function statusLabel(status) { return { idea: 'Queued idea', production: 'In production', approval: 'Need Natalie', ready: 'Ready / scheduled' }[status] || status; }
 function renderMetricCards() {
   const approval = state.pipeline.filter((item) => item.status === 'approval').length;
   const ready = state.pipeline.filter((item) => item.status === 'ready').length;
   const active = state.pipeline.filter((item) => ['idea', 'production'].includes(item.status)).length;
   const revenue = state.kpis.find((kpi) => kpi.label === 'Booked from IG')?.value || '$0';
-
   document.getElementById('metric-approval').textContent = approval;
   document.getElementById('metric-ready').textContent = ready;
   document.getElementById('metric-active').textContent = active;
   document.getElementById('metric-focus').textContent = revenue;
 }
-
 function laneMarkup(item) {
   return `
     <article class="item-card ${item.status}">
@@ -437,7 +110,7 @@ function laneMarkup(item) {
         <span class="pill muted">${item.type}</span>
       </div>
       <h4>${item.title}</h4>
-      <p>${item.notes || ''}</p>
+      <p><strong>${item.daypart || ''}</strong>${item.daypart ? ' · ' : ''}${item.notes || ''}</p>
       <dl class="meta-grid">
         <div><dt>CTA</dt><dd>${item.cta || '—'}</dd></div>
         <div><dt>Slot</dt><dd>${item.slot || 'TBD'}</dd></div>
@@ -453,246 +126,54 @@ function laneMarkup(item) {
           <option value="ready" ${item.status === 'ready' ? 'selected' : ''}>Ready / Scheduled</option>
         </select>
       </label>
-    </article>
-  `;
+    </article>`;
 }
-
 function renderLane(id, status) {
   const items = state.pipeline.filter((item) => item.status === status);
-  document.getElementById(id).innerHTML = items.length
-    ? items.map(laneMarkup).join('')
-    : '<div class="empty">Nothing here right now.</div>';
+  document.getElementById(id).innerHTML = items.length ? items.map(laneMarkup).join('') : '<div class="empty">Nothing here right now.</div>';
   document.getElementById(`count-${status === 'idea' ? 'queued' : status === 'production' ? 'production' : status}`).textContent = items.length;
 }
-
 function renderCalendar() {
-  document.getElementById('calendarList').innerHTML = state.calendar
-    .map((entry) => `
-      <article class="mini-card">
-        <div class="mini-topline"><strong>${entry.day}</strong><span>${entry.slot}</span></div>
-        <h4>${entry.title}</h4>
-        <p>${entry.goal}</p>
-      </article>
-    `)
-    .join('');
+  document.getElementById('calendarList').innerHTML = state.calendar.map((entry) => `
+      <article class="mini-card"><div class="mini-topline"><strong>${entry.day}</strong><span>${entry.slot}</span></div><h4>${entry.title}</h4><p>${entry.goal}</p></article>`).join('');
 }
-
 function renderApprovalChecklist() {
   const items = state.pipeline.filter((item) => item.status === 'approval');
-  document.getElementById('approvalChecklist').innerHTML = items.length
-    ? items.map((item) => `
-      <article class="mini-card checklist-card">
-        <div class="mini-topline"><strong>${item.title}</strong><span>${item.slot || 'TBD'}</span></div>
-        <ul>
-          <li>Approve hook and cover</li>
-          <li>Confirm CTA: ${item.cta || 'TBD'}</li>
-          <li>Reply with approve / tweak / reject</li>
-        </ul>
-      </article>
-    `).join('')
-    : '<div class="empty">No approvals waiting.</div>';
+  document.getElementById('approvalChecklist').innerHTML = items.length ? items.map((item) => `
+      <article class="mini-card checklist-card"><div class="mini-topline"><strong>${item.title}</strong><span>${item.slot || 'TBD'}</span></div><ul><li>Approve hook and cover</li><li>Confirm CTA: ${item.cta || 'TBD'}</li><li>Reply with approve / tweak / reject</li></ul></article>`).join('') : '<div class="empty">No approvals waiting.</div>';
 }
-
-function renderJobs() {
-  document.getElementById('jobsList').innerHTML = state.jobs
-    .map((job) => `
-      <article class="mini-card">
-        <div class="mini-topline"><strong>${job.time}</strong><span>Automated</span></div>
-        <h4>${job.name}</h4>
-        <p>${job.output}</p>
-      </article>
-    `)
-    .join('');
-}
-
-function renderKpis() {
-  document.getElementById('kpiList').innerHTML = state.kpis
-    .map((kpi) => `
-      <article class="mini-card stat-card">
-        <span>${kpi.label}</span>
-        <strong>${kpi.value}</strong>
-        <p>${kpi.trend}</p>
-      </article>
-    `)
-    .join('');
-}
-
-function renderBriefs() {
-  document.getElementById('briefList').innerHTML = state.briefs
-    .map((brief) => `
-      <article class="mini-card">
-        <div class="mini-topline"><strong>${brief.stage}</strong><span>Package</span></div>
-        <h4>${brief.title}</h4>
-        <p>${brief.detail}</p>
-      </article>
-    `)
-    .join('');
-}
-
-function renderMiniMovies() {
-  const miniMovies = state.miniMovies || [];
-  document.getElementById('miniMovieCount').textContent = `${miniMovies.length} concepts loaded`;
-  document.getElementById('miniMovieGrid').innerHTML = miniMovies.length
-    ? miniMovies.map((movie, index) => `
-      <article class="mini-movie-card">
-        <div class="mini-movie-stage">
-          <div class="mini-movie-stage-topline">
-            <span class="mini-movie-index">0${index + 1}</span>
-            <span class="mini-movie-duration">${movie.duration}</span>
-          </div>
-          <div>
-            <p class="mini-movie-lead">${movie.lead}</p>
-            <h3>${movie.title}</h3>
-            <p class="mini-movie-hook">${movie.hook}</p>
-          </div>
-          <div class="mini-movie-visual">${movie.visualHook}</div>
-        </div>
-        <div class="mini-movie-meta">
-          <div class="mini-topline">
-            <strong>${movie.format}</strong>
-            <span>${movie.status}</span>
-          </div>
-          <p>${movie.logline}</p>
-          <div class="mini-movie-beats">
-            ${movie.beats.map((beat, beatIndex) => `
-              <div class="beat-chip">
-                <span>${beatIndex + 1}</span>
-                <p>${beat}</p>
-              </div>
-            `).join('')}
-          </div>
-          <div class="mini-movie-footer">
-            <span class="pill muted">CTA</span>
-            <strong>${movie.cta}</strong>
-          </div>
-        </div>
-      </article>
-    `).join('')
-    : '<div class="empty">No mini-movie concepts loaded yet.</div>';
-}
-
+function renderJobs() { document.getElementById('jobsList').innerHTML = state.jobs.map((job) => `<article class="mini-card"><div class="mini-topline"><strong>${job.time}</strong><span>Automated</span></div><h4>${job.name}</h4><p>${job.output}</p></article>`).join(''); }
+function renderKpis() { document.getElementById('kpiList').innerHTML = state.kpis.map((kpi) => `<article class="mini-card stat-card"><span>${kpi.label}</span><strong>${kpi.value}</strong><p>${kpi.trend}</p></article>`).join(''); }
+function renderBriefs() { document.getElementById('briefList').innerHTML = state.briefs.map((brief) => `<article class="mini-card"><div class="mini-topline"><strong>${brief.stage}</strong><span>Package</span></div><h4>${brief.title}</h4><p>${brief.detail}</p></article>`).join(''); }
 function movieHref(title) {
   const map = {
-    'Hydrafacial glow reset reel': 'movies/night-before-glow.html',
-    'Why Hydrafacial is a hero service carousel': 'movies/booked-by-monday.html',
-    'Not sure what to book? story set': 'movies/skin-in-three-acts.html',
-    'Circadia day + night skin education carousel': 'movies/reset-window.html',
-    'Bridal prep timeline reel': 'movies/after-yes.html'
+    'Morning glow reset': 'movies/night-before-glow.html',
+    'Midday Hydrafacial why-it-works': 'movies/booked-by-monday.html',
+    'Midday not sure what to book?': 'movies/skin-in-three-acts.html',
+    'Evening Circadia night rhythm': 'movies/reset-window.html',
+    'Morning bridal prep prompt': 'movies/after-yes.html'
   };
   return map[title] || null;
 }
-
 function renderPreviews() {
   const previews = (state.previews || []).filter((preview) => preview.status === 'ready');
   document.getElementById('previewCount').textContent = `${previews.length} ready to preview`;
-  document.getElementById('previewGallery').innerHTML = previews.length
-    ? previews.map((preview) => {
+  document.getElementById('previewGallery').innerHTML = previews.length ? previews.map((preview) => {
       const movie = movieHref(preview.title);
-      return `
-      <article class="preview-card ${preview.status}">
-        <div class="preview-canvas">
-          <div class="preview-badge">${preview.format}</div>
-          <div class="preview-cover">${preview.cover || preview.title}</div>
-          <div class="preview-hook">${preview.hook}</div>
-          <div class="preview-body-copy">${preview.postText || preview.caption}</div>
-          <div class="preview-visual">${preview.visual}</div>
-        </div>
-        <div class="preview-meta">
-          <div class="mini-topline"><strong>${preview.title}</strong><span>${statusLabel(preview.status)}</span></div>
-          <p class="caption-label">Caption</p>
-          <p>${preview.caption}</p>
-          <div class="preview-cta">CTA: ${preview.cta}</div>
-          <div class="preview-notes">Posting notes: ${preview.notes || 'Ready to schedule.'}</div>
-          ${movie ? `<a class="movie-link" href="${movie}" target="_blank" rel="noopener">Open animated movie</a>` : ''}
-        </div>
-      </article>`;
-    }).join('')
-    : '<div class="empty">No ready-to-post previews yet.</div>';
+      return `<article class="preview-card ${preview.status}"><div class="preview-canvas"><div class="preview-badge">${preview.format}</div><div class="preview-cover">${preview.daypart || ''}${preview.daypart ? ' · ' : ''}${preview.cover || preview.title}</div><div class="preview-hook">${preview.hook}</div><div class="preview-body-copy">${preview.postText || preview.caption}</div><div class="preview-visual">${preview.visual}</div></div><div class="preview-meta"><div class="mini-topline"><strong>${preview.title}</strong><span>${statusLabel(preview.status)}</span></div><p class="caption-label">Caption</p><p>${preview.caption}</p><div class="preview-cta">CTA: ${preview.cta}</div><div class="preview-notes">Posting notes: ${preview.notes || 'Ready to schedule.'}</div>${movie ? `<a class="movie-link" href="${movie}" target="_blank" rel="noopener">Open animated movie</a>` : ''}</div></article>`;
+    }).join('') : '<div class="empty">No ready-to-post previews yet.</div>';
 }
-
-function wireStatusChanges() {
-  document.querySelectorAll('select[data-id]').forEach((select) => {
-    select.addEventListener('change', (event) => {
-      const item = state.pipeline.find((entry) => entry.id === event.target.dataset.id);
-      if (!item) return;
-      item.status = event.target.value;
-      save();
-      render();
-    });
-  });
-}
-
+function wireStatusChanges() { document.querySelectorAll('select[data-id]').forEach((select) => { select.addEventListener('change', (event) => { const item = state.pipeline.find((entry) => entry.id === event.target.dataset.id); if (!item) return; item.status = event.target.value; save(); render(); }); }); }
 function render() {
-  renderMetricCards();
-  renderLane('queuedList', 'idea');
-  renderLane('productionList', 'production');
-  renderLane('approvalList', 'approval');
-  renderLane('readyList', 'ready');
-  document.getElementById('count-ready').textContent = state.pipeline.filter((item) => item.status === 'ready').length;
-  renderCalendar();
-  renderApprovalChecklist();
-  renderJobs();
-  renderKpis();
-  renderBriefs();
-  renderMiniMovies();
-  renderPreviews();
-  wireStatusChanges();
+  renderMetricCards(); renderLane('queuedList', 'idea'); renderLane('productionList', 'production'); renderLane('approvalList', 'approval'); renderLane('readyList', 'ready'); document.getElementById('count-ready').textContent = state.pipeline.filter((item) => item.status === 'ready').length; renderCalendar(); renderApprovalChecklist(); renderJobs(); renderKpis(); renderBriefs(); renderPreviews(); wireStatusChanges();
 }
-
 document.getElementById('taskForm').addEventListener('submit', (event) => {
-  event.preventDefault();
-  const form = new FormData(event.target);
-  const item = {
-    id: crypto.randomUUID(),
-    title: form.get('title'),
-    type: form.get('type'),
-    priority: form.get('priority'),
-    status: form.get('status'),
-    cta: form.get('cta'),
-    slot: form.get('slot'),
-    notes: form.get('notes'),
-    owner: 'Natalie Intake'
-  };
-  state.pipeline.unshift(item);
-
-  if (item.status === 'approval' || item.status === 'ready') {
-    state.briefs.unshift({
-      title: item.title,
-      stage: statusLabel(item.status),
-      detail: `${item.type} package added from intake form. CTA: ${item.cta || 'TBD'}.`
-    });
-    state.briefs = state.briefs.slice(0, 6);
-
-    state.previews.unshift({
-      title: item.title,
-      format: item.type,
-      hook: item.title,
-      caption: item.notes || 'Freshly added from the intake form.',
-      cta: item.cta || 'TBD',
-      status: item.status,
-      visual: `Preview concept · ${item.type} · ${item.slot || 'schedule TBD'}`
-    });
-    state.previews = state.previews.slice(0, 8);
-  }
-
-  save();
-  event.target.reset();
-  render();
+  event.preventDefault(); const form = new FormData(event.target); const item = { id: crypto.randomUUID(), title: form.get('title'), daypart: 'Custom', type: form.get('type'), priority: form.get('priority'), status: form.get('status'), cta: form.get('cta'), slot: form.get('slot'), notes: form.get('notes'), owner: 'Natalie Intake' }; state.pipeline.unshift(item);
+  if (item.status === 'approval' || item.status === 'ready') { state.briefs.unshift({ title: item.title, stage: statusLabel(item.status), detail: `${item.type} package added from intake form. CTA: ${item.cta || 'TBD'}.` }); state.briefs = state.briefs.slice(0, 6); state.previews.unshift({ title: item.title, daypart: 'Custom', format: item.type, hook: item.title, caption: item.notes || 'Freshly added from the intake form.', cta: item.cta || 'TBD', status: item.status, visual: `Preview concept · ${item.type} · ${item.slot || 'schedule TBD'}`, cover: 'Custom post', postText: item.title, notes: 'Added from intake form.' }); state.previews = state.previews.slice(0, 8); }
+  save(); event.target.reset(); render();
 });
-
 document.getElementById('seedBtn').addEventListener('click', seedDemo);
-document.getElementById('resetBtn').addEventListener('click', () => {
-  if (!confirm('Reset Mission Control local data on this device?')) return;
-  state = cloneDefault();
-  save();
-  render();
-});
-document.getElementById('openPreviewBtn').addEventListener('click', () => {
-  document.getElementById('previewSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
-});
-
-document.getElementById('jumpToReadyBtn').addEventListener('click', () => {
-  document.getElementById('readyLaneSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
-});
-
+document.getElementById('resetBtn').addEventListener('click', () => { if (!confirm('Reset Mission Control local data on this device?')) return; state = cloneDefault(); save(); render(); });
+document.getElementById('openPreviewBtn').addEventListener('click', () => { document.getElementById('previewSection').scrollIntoView({ behavior: 'smooth', block: 'start' }); });
+document.getElementById('jumpToReadyBtn').addEventListener('click', () => { document.getElementById('readyLaneSection').scrollIntoView({ behavior: 'smooth', block: 'start' }); });
 render();
