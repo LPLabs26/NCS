@@ -15,6 +15,11 @@
 - `docs/content/content-status-workflow.md`
 - `docs/content/lead-follow-up-sequences.md`
 - `docs/content/monthly-campaign-ideas.md`
+- `docs/content/production-batch-structure.md`
+- `docs/content/ready-content-bank-overview.md`
+- `docs/content/daily-tips-batch-pack.md`
+- `docs/content/hydrafacial-midday-batch-pack.md`
+- `docs/content/circadia-evening-hero-pack.md`
 - `docs/content/reel-script-bank.md`
 - `docs/content/service-sales-script-pack.md`
 - `docs/content/story-ideas.md`

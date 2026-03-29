@@ -28,7 +28,7 @@ That model should be reflected in docs, templates, and Mission Control seeded da
 ## Structure
 
 - `docs/brand/` — positioning, offer strategy, voice, audience
-- `docs/content/` — content pillars, hooks, calendar, caption systems
+- `docs/content/` — content pillars, hooks, calendar, caption systems, and ready-content banks
 - `docs/automation/` — pulse checks, workflows, recurring tasks
 - `docs/ops/` — SOPs and operating procedures
 - `research/competitors/` — competitor notes and tracking
