@@ -4,124 +4,122 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NCS Mission Control</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=3" />
 </head>
 <body>
   <main class="app-shell">
     <header class="hero card">
-      <div>
-        <p class="eyebrow">NCS Aesthetics · Instagram Mission Control</p>
-        <h1>Autonomous content ops, with Natalie as the final approver.</h1>
-        <p class="lede">A lightweight command center for idea generation, production, approvals, posting windows, and revenue-focused content decisions.</p>
+      <div class="hero-copy">
+        <p class="eyebrow">NCS Aesthetics · Mission Control</p>
+        <h1>Simple daily content control for Natalie.</h1>
+        <p class="lede">One calm dashboard for the 3 approved lanes: Morning Daily Tips, Midday Hydrafacial, and Evening Circadia. Approvals are first, ready posts are next, and the legacy clutter stays out of the way.</p>
       </div>
       <div class="hero-actions">
-        <button id="seedBtn">Load demo week</button>
+        <button id="openApprovalsBtn">Open approvals</button>
+        <button id="openPreviewBtn" class="ghost">See ready posts</button>
+        <button id="seedBtn" class="ghost">Load demo week</button>
         <button id="resetBtn" class="ghost danger">Reset local data</button>
       </div>
     </header>
 
+    <section class="today-grid">
+      <article class="card owner-card">
+        <div class="section-heading compact">
+          <div>
+            <p class="eyebrow">Do this next</p>
+            <h2 id="nextActionTitle">Everything is on track</h2>
+          </div>
+        </div>
+        <p id="nextActionCopy" class="section-copy">Ready posts are waiting for review and scheduling.</p>
+        <div id="priorityAction" class="priority-action"></div>
+      </article>
+
+      <article class="card quick-guide-card">
+        <div class="section-heading compact">
+          <div>
+            <p class="eyebrow">Daily rhythm</p>
+            <h2>Morning → Midday → Evening</h2>
+          </div>
+        </div>
+        <ol class="quick-steps">
+          <li><strong>Morning:</strong> Daily Tips for a light value touch.</li>
+          <li><strong>Midday:</strong> Hydrafacial for demand and booking support.</li>
+          <li><strong>Evening:</strong> Circadia as the hero educational post.</li>
+        </ol>
+      </article>
+    </section>
+
     <section class="metrics-grid">
-      <article class="metric card accent-gold"><span>Awaiting approval</span><strong id="metric-approval">0</strong><small>Items Natalie can approve in one sweep</small></article>
-      <article class="metric card accent-rose"><span>Ready to schedule</span><strong id="metric-ready">0</strong><small>Fully packaged posts</small></article>
-      <article class="metric card accent-sage"><span>Pipeline active</span><strong id="metric-active">0</strong><small>Ideas being developed now</small></article>
-      <article class="metric card accent-ink"><span>Booked revenue focus</span><strong id="metric-focus">$0</strong><small>Goal attached to this week’s plan</small></article>
+      <article class="metric card accent-gold"><span>Needs Natalie now</span><strong id="metric-approval">0</strong><small>Items waiting for approve, tweak, or no</small></article>
+      <article class="metric card accent-rose"><span>Ready to post</span><strong id="metric-ready">0</strong><small>Finished posts that can go live next</small></article>
+      <article class="metric card accent-sage"><span>Still being built</span><strong id="metric-active">0</strong><small>Ideas and drafts still moving</small></article>
+      <article class="metric card accent-ink"><span>Booked from Instagram</span><strong id="metric-focus">$0</strong><small>Current revenue signal</small></article>
     </section>
 
     <section class="layout-grid">
       <section class="main-column stack-lg">
-        <article class="card">
+        <article class="card" id="cadenceSection">
           <div class="section-heading">
             <div>
-              <p class="eyebrow">Approval-first workflow</p>
+              <p class="eyebrow">Today’s 3 lanes</p>
+              <h2>Morning, Midday, Evening</h2>
+            </div>
+            <p class="section-copy">Each lane keeps one job clear: useful tip, treatment demand, or premium homecare authority.</p>
+          </div>
+          <div id="laneSnapshotGrid" class="pipeline-grid"></div>
+        </article>
+
+        <article class="card" id="approvalSection">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Fast approval flow</p>
+              <h2>What Natalie needs to review</h2>
+            </div>
+            <p class="section-copy">If something is here, Natalie should be able to decide it in seconds.</p>
+          </div>
+          <div id="approvalChecklist" class="list approval-action-list"></div>
+        </article>
+
+        <article class="card" id="previewSection">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Ready-to-post view</p>
+              <h2>Posts that are ready right now</h2>
+            </div>
+            <p class="section-copy">The cleanest handoff view for scheduling and posting.</p>
+          </div>
+          <div class="preview-toolbar">
+            <span class="preview-count" id="previewCount">0 ready to preview</span>
+          </div>
+          <div id="previewGallery" class="preview-grid"></div>
+        </article>
+
+        <article class="card" id="pipelineSection">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Simple workspace</p>
               <h2>Content pipeline</h2>
             </div>
-            <p class="section-copy">Generated ideas move through production, approval, and scheduling. Natalie mostly approves, edits lightly, or rejects.</p>
+            <p class="section-copy">Still available when someone needs the full picture, but framed with the same simple language.</p>
           </div>
           <div class="pipeline-grid">
             <div>
-              <div class="lane-head"><h3>Queued Ideas</h3><span id="count-queued">0</span></div>
+              <div class="lane-head"><h3>New ideas</h3><span id="count-queued">0</span></div>
               <div id="queuedList" class="list"></div>
             </div>
             <div>
-              <div class="lane-head"><h3>In Production</h3><span id="count-production">0</span></div>
+              <div class="lane-head"><h3>Being made</h3><span id="count-production">0</span></div>
               <div id="productionList" class="list"></div>
             </div>
             <div>
-              <div class="lane-head"><h3>Need Natalie</h3><span id="count-approval">0</span></div>
+              <div class="lane-head"><h3>Waiting on Natalie</h3><span id="count-approval">0</span></div>
               <div id="approvalList" class="list"></div>
             </div>
             <div>
-              <div class="lane-head"><h3>Ready / Scheduled</h3><span id="count-ready">0</span></div>
+              <div class="lane-head"><h3>Ready to post</h3><span id="count-ready">0</span></div>
               <div id="readyList" class="list"></div>
             </div>
           </div>
-        </article>
-
-        <article class="card">
-          <div class="section-heading">
-            <div>
-              <p class="eyebrow">Operator intake</p>
-              <h2>Add a new request or post concept</h2>
-            </div>
-            <p class="section-copy">Use this to capture Natalie requests, revenue opportunities, or fresh content ideas as they come in.</p>
-          </div>
-          <form id="taskForm" class="form-grid">
-            <input name="title" placeholder="Post title, promo, or task" required />
-            <select name="type">
-              <option value="reel">Reel</option>
-              <option value="story">Story</option>
-              <option value="carousel">Carousel</option>
-              <option value="offer">Offer Push</option>
-              <option value="task">Task</option>
-            </select>
-            <select name="priority">
-              <option value="high">High priority</option>
-              <option value="medium" selected>Medium priority</option>
-              <option value="low">Low priority</option>
-            </select>
-            <select name="status">
-              <option value="idea">Queued Idea</option>
-              <option value="production">In Production</option>
-              <option value="approval">Need Natalie Approval</option>
-              <option value="ready">Ready / Scheduled</option>
-            </select>
-            <input name="cta" placeholder="Primary CTA (book Hydrafacial, DM, waitlist...)" />
-            <input name="slot" placeholder="Schedule slot (Tue 12:30 PM)" />
-            <textarea name="notes" placeholder="Notes, hook, shots, positioning, objections..."></textarea>
-            <button type="submit">Add to pipeline</button>
-          </form>
-        </article>
-
-        <article class="card two-col-card">
-          <section>
-            <div class="section-heading compact">
-              <div>
-                <p class="eyebrow">Upcoming calendar</p>
-                <h2>7-day posting map</h2>
-              </div>
-            </div>
-            <div id="calendarList" class="list"></div>
-          </section>
-          <section>
-            <div class="section-heading compact">
-              <div>
-                <p class="eyebrow">Approval queue</p>
-                <h2>What Natalie sees</h2>
-              </div>
-            </div>
-            <div id="approvalChecklist" class="list"></div>
-          </section>
-        </article>
-
-        <article class="card">
-          <div class="section-heading">
-            <div>
-              <p class="eyebrow">Ready-to-post preview</p>
-              <h2>Post preview gallery</h2>
-            </div>
-            <p class="section-copy">A lightweight preview area so Natalie can quickly review what is ready before approving or posting from her phone.</p>
-          </div>
-          <div id="previewGallery" class="preview-grid"></div>
         </article>
       </section>
 
@@ -129,7 +127,17 @@
         <article class="card">
           <div class="section-heading compact">
             <div>
-              <p class="eyebrow">Automation slots</p>
+              <p class="eyebrow">This week at a glance</p>
+              <h2>Posting map</h2>
+            </div>
+          </div>
+          <div id="calendarList" class="list"></div>
+        </article>
+
+        <article class="card">
+          <div class="section-heading compact">
+            <div>
+              <p class="eyebrow">Automation cadence</p>
               <h2>Daily operators</h2>
             </div>
           </div>
@@ -145,19 +153,9 @@
           </div>
           <div id="kpiList" class="list"></div>
         </article>
-
-        <article class="card">
-          <div class="section-heading compact">
-            <div>
-              <p class="eyebrow">Generated briefs</p>
-              <h2>Post packages</h2>
-            </div>
-          </div>
-          <div id="briefList" class="list"></div>
-        </article>
       </aside>
     </section>
   </main>
-  <script src="app.js"></script>
+  <script src="app.js?v=3"></script>
 </body>
 </html>
