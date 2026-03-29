@@ -2,48 +2,48 @@ const dashboardLinks = [
   {
     title: 'Mission Control',
     href: '../mission-control/index.html',
-    copy: 'Main operator dashboard for pipeline, approvals, posting map, and KPI pulse.'
+    copy: 'Main dashboard for the three-lane publishing system, approvals, posting map, and KPI pulse.'
   },
   {
-    title: 'Repo index',
-    href: '../INDEX.md',
-    copy: 'Fast scan of the brand, content, ops, and research docs already living in this system.'
+    title: 'Daily cadence doc',
+    href: '../docs/content/daily-content-cadence.md',
+    copy: 'The exact Morning / Midday / Evening structure: Daily Tips, Hydrafacial, Circadia.'
   },
   {
-    title: 'Docs home',
-    href: '../docs/index.html',
-    copy: 'Existing docs surface for deeper strategy and internal references.'
+    title: 'Dashboard blueprint',
+    href: '../docs/ops/google-sheets-dashboard-blueprint.md',
+    copy: 'How to mirror the same system inside Google Sheets and weekly reporting.'
   }
 ];
 
 const workflowSteps = [
-  '08:00 — generate 3 new hooks tied to offers, seasonality, or gaps in the books.',
-  '10:00 — scan open appointments and create a same-day story package if needed.',
-  '13:00 — bundle captions, covers, and CTA notes into one clean approval stack.',
+  'Morning — publish one light-touch Daily Tips asset that delivers real value fast.',
+  'Midday — publish one light-touch Hydrafacial asset that answers hesitation and supports bookings.',
+  'Evening — publish the strongest Circadia hero post of the day with the best hook, packaging, and caption.',
   'Before posting — Natalie approves, tweaks lightly, or rejects.',
-  '16:00 — send a brief with what shipped, what is blocked, and tomorrow’s biggest move.'
+  'End of day — log what shipped, what worked, and what should repeat tomorrow.'
 ];
 
 const resourceLinks = [
   {
-    title: '30-day content plan',
-    href: '../docs/content/30-day-content-plan.md',
-    copy: 'Strategic long-range content ideas already mapped in the repo.'
+    title: 'Daily content cadence',
+    href: '../docs/content/daily-content-cadence.md',
+    copy: 'Operating rules for Daily Tips, Hydrafacial, and Circadia across the day.'
   },
   {
-    title: 'Offer ladder strategy',
-    href: '../docs/brand/offer-ladder-strategy.md',
-    copy: 'Messaging hierarchy for Hydrafacial, custom facials, peels, and upsells.'
+    title: 'Natalie dashboard spec',
+    href: '../docs/ops/natalie-dashboard-spec.md',
+    copy: 'Defines the dashboard around the exact three-lane model.'
   },
   {
-    title: 'Weekly workflow SOP',
-    href: '../docs/ops/weekly-workflow-sop.md',
-    copy: 'Operational rhythm for running content and follow-up without chaos.'
+    title: 'Dashboard blueprint',
+    href: '../docs/ops/google-sheets-dashboard-blueprint.md',
+    copy: 'Google Sheets tab structure, fields, and sample tracking rules.'
   },
   {
-    title: 'Reel template',
-    href: '../templates/reel-template.md',
-    copy: 'Reusable format for scripting and packaging short-form video ideas.'
+    title: 'Seeded data plan',
+    href: '../templates/google-sheets-csv/sample-seeded-data.md',
+    copy: 'Explains how the demo week should teach the system instantly.'
   }
 ];
 

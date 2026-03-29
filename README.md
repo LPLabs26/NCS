@@ -12,6 +12,19 @@ This repo is structured to support:
 - competitive research
 - SOPs for a luxury, high-touch esthetics business
 
+## Core content system
+
+The repo now follows one exact daily publishing model:
+- **Morning:** Daily Tips
+- **Midday:** Hydrafacial
+- **Evening:** Circadia
+
+Operating rule:
+- morning and midday are lighter touches
+- evening is the hero post
+
+That model should be reflected in docs, templates, and Mission Control seeded data.
+
 ## Structure
 
 - `docs/brand/` — positioning, offer strategy, voice, audience
@@ -21,30 +34,30 @@ This repo is structured to support:
 - `research/competitors/` — competitor notes and tracking
 - `research/trends/` — skincare trend notes and briefs
 - `templates/` — reusable post, story, and brief templates
+- `mission-control/` — lightweight content dashboard demo
 
 ## Initial objective
 
 Build a lightweight but scalable executive assistant + social media operating system for Natalie Sanchez and NCS Aesthetics.
 
+## Mission Control
 
-## Mission Control v2
-
-A lightweight internal web app now lives in `mission-control/`.
+A lightweight internal web app lives in `mission-control/`.
 
 - Uses plain HTML/CSS/JS
 - Uses browser `localStorage` for temporary persistence
 - Supports an approval-first Instagram content pipeline
-- Includes demo data for ideas, production, approvals, posting schedule, KPI pulse, and post briefs
+- Seeds demo data that follows the Daily Tips / Hydrafacial / Circadia daypart system
 - Intended for phone/PC access once hosted
 - A real backend can be added later
 
 ## Internal site
 
-A clearer front door now lives in `site/`.
+A clearer front door lives in `site/`.
 
-- Explains the approval-first operating model
+- Explains the publishing model and approval workflow
 - Links directly into Mission Control and supporting docs
-- Summarizes the daily workflow and key repo references
+- Summarizes the daily operating rhythm and key repo references
 
 ## Run locally
 

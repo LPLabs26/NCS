@@ -1,35 +1,49 @@
 # Sample Seeded Data Plan
 
 ## Purpose
-When the live dashboard is created, seed each tab with a few realistic example rows so the sheet is easier to understand at first glance.
+Seed the dashboard with a realistic demo week that teaches Jorge's exact system at a glance:
+- **Morning:** Daily Tips
+- **Midday:** Hydrafacial
+- **Evening:** Circadia
+
+Morning and midday should read like lighter touches.
+Evening should read like the hero post.
 
 ## Suggested sample entries
 
-### Booking Tracker
-- one booked Hydrafacial
-- one booked Custom Facial
-- one open same-week slot
-- one peel consultation
+### Daily Cadence
+Seed at least 5-7 days where every row follows:
+- Morning Lane = Daily Tips
+- Midday Lane = Hydrafacial
+- Evening Lane = Circadia
+- Hero Post = Yes on the evening entry
 
-### Content Calendar
-- one scheduled Reel
-- one posted Story
-- one upcoming Carousel
+### Content Pipeline
+Seed examples such as:
+- one Morning Daily Tips story in ready / scheduled
+- one Midday Hydrafacial carousel in ready / scheduled
+- one Evening Circadia hero reel in ready / scheduled
+- one additional Hydrafacial item in production
+- one additional Circadia hero concept waiting for approval
+
+### Booking Tracker
+Seed examples such as:
+- one Hydrafacial booking tied to midday content
+- one open appointment window needing support
+- one returning client rebook influenced by evening Circadia education
 
 ### Leads + DMs
-- one first-time client asking what to book
-- one Hydrafacial lead
-- one follow-up reminder row
+Seed examples such as:
+- one Daily Tips reply asking a simple skincare question
+- one Hydrafacial lead asking what treatment to book
+- one Circadia homecare question from evening content
 
-### Competitors
-- Skin Remedy Aesthetics
-- Sanctuary Beauty Co
-- Polish & Peels
-
-### Trends
-- event-ready glow
-- skin barrier recovery
-- monthly maintenance facial
+### KPI Log
+Seed one week showing:
+- Hydrafacial as the booking driver
+- Daily Tips as a visibility / engagement touch
+- Circadia as the strongest save/share or trust-building content lane
 
 ## Why
-A blank sheet feels unfinished. Seeded example rows make adoption faster and help Natalie understand how to use each tab.
+A blank dashboard feels abstract.
+A seeded week that follows the exact cadence makes the operating model obvious immediately.

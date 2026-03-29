@@ -1,20 +1,25 @@
 # Google Sheets Dashboard Blueprint
 
 ## Objective
-Create a lightweight but useful operating dashboard for NCS Aesthetics covering bookings, content, leads, trends, competitors, and weekly priorities.
+Create a lightweight operating dashboard for NCS Aesthetics that reflects the exact daily publishing system:
+- **Morning:** Daily Tips
+- **Midday:** Hydrafacial
+- **Evening:** Circadia
+
+Morning and midday are light touches.
+Evening is the hero post.
 
 ## Recommended workbook name
 **NCS Aesthetics Dashboard**
 
 ## Tabs overview
 1. Dashboard
-2. Content Calendar
-3. Booking Tracker
-4. Leads + DMs
-5. Competitors
-6. Trends
-7. Weekly Brief
-8. KPI Log
+2. Daily Cadence
+3. Content Pipeline
+4. Booking Tracker
+5. Leads + DMs
+6. Weekly Brief
+7. KPI Log
 
 ---
 
@@ -26,76 +31,111 @@ High-level weekly snapshot Natalie can review quickly.
 #### Top metrics
 - Total bookings this week
 - Hydrafacial bookings
-- Custom Facial bookings
-- Peel bookings
 - Open appointment windows
-- Reels posted this week
-- Stories posted this week
+- Daily Tips shipped this week
+- Hydrafacial midday posts shipped this week
+- Circadia hero posts shipped this week
 - New leads / DMs this week
+- Hero-post completion rate
 
 #### Weekly notes block
 - Biggest win
 - Biggest issue
-- Best-performing content angle
-- Service to push next
-- Follow-ups needed
+- Best-performing Daily Tip
+- Best-performing Hydrafacial angle
+- Best-performing Circadia hero post
+- What to repeat next week
 
 #### Action block
 - Today’s priority
-- Tomorrow’s priority
+- Tonight’s hero post focus
 - Offer to promote
 
 ---
 
-## 2. Content Calendar tab
+## 2. Daily Cadence tab
+### Purpose
+Track whether each day followed the exact publishing structure.
+
 ### Columns
 - Date
 - Day
-- Platform
-- Format
-- Content Pillar
-- Topic / Hook
-- Offer Tied In
-- Caption Status
-- Asset Status
-- Posted? (Y/N)
-- CTA
+- Morning Lane
+- Morning Topic
+- Morning Format
+- Morning Posted? (Y/N)
+- Midday Lane
+- Midday Topic
+- Midday Format
+- Midday Posted? (Y/N)
+- Evening Lane
+- Evening Topic
+- Evening Format
+- Evening Posted? (Y/N)
+- Hero Post? (Y/N)
 - Notes
 
-### Dropdown suggestions
-**Platform**
-- Instagram
-- Stories
-- Reels
-- Carousel
+### Fixed values
+**Morning Lane**
+- Daily Tips
 
-**Format**
-- Reel
-- Story
-- Carousel
-- Static
-- Testimonial
-- FAQ
-
-**Content Pillar**
-- Luxury Glow / Results
-- Education / Authority
-- Personalized Care
-- Social Proof
-- Fresno Lifestyle
-
-**Offer Tied In**
+**Midday Lane**
 - Hydrafacial
-- Custom Facial
-- Chemical Peel
-- Consultation
-- Other
+
+**Evening Lane**
+- Circadia
+
+**Hero Post?**
+- Yes for evening post
+- No for morning and midday touches
 
 ---
 
-## 3. Booking Tracker tab
+## 3. Content Pipeline tab
 ### Purpose
-Track service demand and where openings need help.
+Track content creation and approvals.
+
+### Columns
+- Date Added
+- Content Lane
+- Daypart
+- Title / Hook
+- Format
+- CTA
+- Status
+- Owner
+- Scheduled Slot
+- Notes
+
+### Dropdown suggestions
+**Content Lane**
+- Daily Tips
+- Hydrafacial
+- Circadia
+
+**Daypart**
+- Morning
+- Midday
+- Evening
+
+**Format**
+- Story
+- Reel
+- Carousel
+- Static
+- FAQ
+
+**Status**
+- Queued Idea
+- In Production
+- Need Natalie Approval
+- Ready / Scheduled
+
+---
+
+## 4. Booking Tracker tab
+### Purpose
+Track booking demand and where content is helping.
 
 ### Columns
 - Appointment Date
@@ -104,8 +144,8 @@ Track service demand and where openings need help.
 - Service
 - Booked? (Y/N)
 - New or Returning Client
-- Deposit Collected? (Y/N)
-- Filled From Promotion? (Y/N)
+- Filled From Content? (Y/N)
+- Content Lane Influence
 - Promotion Type
 - Notes
 
@@ -116,16 +156,22 @@ Track service demand and where openings need help.
 - Afternoon
 - Evening
 
+**Content Lane Influence**
+- Daily Tips
+- Hydrafacial
+- Circadia
+- None / Unknown
+
 **Promotion Type**
 - None
 - Story urgency
-- Gap-fill post
+- Midday Hydrafacial education
+- Evening Circadia hero post
 - DM follow-up
-- Flash promo
 
 ---
 
-## 4. Leads + DMs tab
+## 5. Leads + DMs tab
 ### Purpose
 Track inquiries and follow-up opportunities.
 
@@ -138,6 +184,7 @@ Track inquiries and follow-up opportunities.
 - Response Sent? (Y/N)
 - Booked? (Y/N)
 - Follow-up Date
+- Content Lane Source
 - Outcome
 - Notes
 
@@ -151,70 +198,21 @@ Track inquiries and follow-up opportunities.
 
 **Service Interest**
 - Hydrafacial
+- Circadia homecare
 - Custom Facial
 - Chemical Peel
 - Not sure
 - Other
 
-**Main Concern**
-- Acne
-- Dullness
-- Texture
-- Aging
-- Pigment
-- Sensitive skin
-- General glow
-
----
-
-## 5. Competitors tab
-### Purpose
-Track local competitor activity and positioning.
-
-### Columns
-- Date Reviewed
-- Competitor
-- Offer Pushed
-- Content Theme
-- Promo Style
-- Price Note
-- Visual / Brand Note
-- Opportunity for NCS
-
-### Starter competitors
-- Skin Remedy Aesthetics, LLC
-- Sanctuary Beauty Co
-- Polish & Peels
-- Ageless By Jessica
-
----
-
-## 6. Trends tab
-### Purpose
-Capture content and market signals worth turning into posts.
-
-### Columns
-- Date
-- Trend / Hook
-- Category
-- Why It Matters
-- Best Service Tie-In
-- Format Idea
-- Status
-- Notes
-
-### Categories
+**Content Lane Source**
+- Daily Tips
 - Hydrafacial
-- Skin barrier
-- Acne
-- Glow / event prep
-- Corrective skin
-- Luxury self-care
-- Seasonal skincare
+- Circadia
+- Unknown
 
 ---
 
-## 7. Weekly Brief tab
+## 6. Weekly Brief tab
 ### Purpose
 Simple executive summary for the week.
 
@@ -222,14 +220,15 @@ Simple executive summary for the week.
 - Week of
 - Wins
 - Booking notes
-- Content notes
+- Daily Tips notes
+- Hydrafacial notes
+- Circadia notes
 - Lead / DM notes
-- Competitor notes
 - What to push next week
 
 ---
 
-## 8. KPI Log tab
+## 7. KPI Log tab
 ### Purpose
 Track performance week over week.
 
@@ -237,12 +236,12 @@ Track performance week over week.
 - Week Start
 - Total Bookings
 - Hydrafacial Bookings
-- Custom Facial Bookings
-- Peel Bookings
-- Reels Posted
-- Stories Posted
+- Daily Tips Posted
+- Hydrafacial Midday Posts Posted
+- Circadia Hero Posts Posted
 - Leads / DMs
 - Filled Openings
+- Best Performing Lane
 - Best Post Topic
 - Notes
 
@@ -252,8 +251,14 @@ Track performance week over week.
 - Freeze header rows on every tab
 - Use dropdowns wherever possible
 - Keep color coding minimal and clean
-- Use one accent color only for premium feel
+- Visually separate Morning / Midday / Evening
+- Make the evening Circadia lane feel like the hero line item
 - Prioritize clarity over pretty formatting
 
 ## Recommended next step
-Once Google access is connected, build this workbook and create a simple summary dashboard first before adding formulas or automation.
+Seed the workbook with one realistic demo week that follows:
+- morning Daily Tips
+- midday Hydrafacial
+- evening Circadia
+
+That way the dashboard teaches the system immediately.
