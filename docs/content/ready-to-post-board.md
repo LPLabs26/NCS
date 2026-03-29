@@ -1,81 +1,66 @@
 # Ready to Post Board
 
-Use this file to store content that is already drafted and can be posted with minimal additional work.
+Use this file to track what is publishable now, what should go next, and which assets belong to the approved daily cadence.
 
-## Ready to Film
+## Approved operating cadence
+1. **Morning = Daily Tips**
+2. **Midday = Hydrafacial**
+3. **Evening = Circadia**
 
-### 1. Hydrafacial Glow Reset Reel
-- Format: Reel
-- Status: Ready to Film
-- Hook: If your skin has been looking tired no matter what you use at home, this is your sign.
-- CTA: Book your Hydrafacial at NCS Aesthetics.
+## Priority queue — publish next
 
-### 2. Event-Ready Skin Reel
-- Format: Reel
-- Status: Ready to Film
-- Hook: If you have an event coming up, don’t wait until the last minute.
-- CTA: Reserve your facial before your next event.
+### Day 1
+- **Morning / Daily Tips**
+  - Asset: `exports/ready-post-queue-week-01/01-morning-spf-reapplication.html`
+  - Caption: `exports/ready-post-queue-week-01/captions.md#01 Morning SPF Reapplication`
+  - Status: Ready to Post
+- **Midday / Hydrafacial**
+  - Asset: `exports/ready-post-queue-week-01/02-midday-hydrafacial-congestion.html`
+  - Caption: `exports/ready-post-queue-week-01/captions.md#02 Midday Hydrafacial Congestion`
+  - Status: Ready to Post
+- **Evening / Circadia**
+  - Asset: `exports/ready-post-queue-week-01/03-evening-circadia-night-repair.html`
+  - Caption: `exports/ready-post-queue-week-01/captions.md#03 Evening Circadia Night Repair`
+  - Status: Ready to Post
+  - Priority: Highest
 
-## Ready to Post
+### Day 2
+- **Morning / Daily Tips**
+  - Asset: `exports/ready-post-queue-week-01/04-morning-post-treatment-water.html`
+  - Caption: `exports/ready-post-queue-week-01/captions.md#04 Morning Post-Treatment Water`
+  - Status: Ready to Post
+- **Midday / Hydrafacial**
+  - Asset: `exports/ready-post-queue-week-01/05-midday-hydrafacial-event-prep.html`
+  - Caption: `exports/ready-post-queue-week-01/captions.md#05 Midday Hydrafacial Event Prep`
+  - Status: Ready to Post
+- **Evening / Circadia**
+  - Asset: `exports/ready-post-queue-week-01/06-evening-circadia-barrier-ritual.html`
+  - Caption: `exports/ready-post-queue-week-01/captions.md#06 Evening Circadia Barrier Ritual`
+  - Status: Ready to Post
+  - Priority: Highest
 
-### 3. What Should I Book? Story Sequence
-- Format: Story
-- Status: Ready to Post
-- Slides:
-  - Want glow? Book a Hydrafacial.
-  - Not sure what to book? Start with a Custom Facial.
-  - Want correction? Ask about Peels.
-- CTA: Book through the link.
+### Day 3
+- **Morning / Daily Tips**
+  - Asset: `exports/ready-post-queue-week-01/07-morning-clean-hands-face.html`
+  - Caption: `exports/ready-post-queue-week-01/captions.md#07 Morning Clean Hands Face`
+  - Status: Ready to Post
+- **Midday / Hydrafacial**
+  - Asset: `exports/ready-post-queue-week-01/08-midday-hydrafacial-monthly-maintenance.html`
+  - Caption: `exports/ready-post-queue-week-01/captions.md#08 Midday Hydrafacial Monthly Maintenance`
+  - Status: Ready to Post
+- **Evening / Circadia**
+  - Asset: `exports/ready-post-queue-week-01/09-evening-circadia-consistency-over-chaos.html`
+  - Caption: `exports/ready-post-queue-week-01/captions.md#09 Evening Circadia Consistency Over Chaos`
+  - Status: Ready to Post
+  - Priority: Highest
 
-### 4. Monthly Maintenance Post
-- Format: Static / Carousel
-- Status: Ready to Post
-- Hook: Great skin usually comes from consistency, not guesswork.
-- CTA: Book your monthly glow reset.
-
-### 5. Hydrafacial vs Custom Facial Carousel
-- Format: Carousel
-- Status: Ready to Post
-- Hook: Hydrafacial or Custom Facial — what’s right for you?
-- CTA: Book the treatment that matches your skin goals.
-
-### 6. Peel Education Post
-- Format: Static / Carousel
-- Status: Ready to Post
-- Hook: What a chemical peel can actually help with.
-- CTA: Book a peel consultation.
-
-### 7. Luxury Self-Care Reminder Story
-- Format: Story
-- Status: Ready to Post
-- Hook: Your skin has been asking for this.
-- CTA: Reserve your appointment this week.
-
-### 8. Opening Available Story
-- Format: Story
-- Status: Ready to Post
-- Hook: A rare opening just became available this week.
-- CTA: Claim it through the booking link.
-
-## Draft Ready
-
-### 9. First-Time Client Intro Post
-- Format: Static
-- Status: Draft Ready
-- Hook: New here? Here’s where to start.
-- CTA: Start with a Custom Facial.
-
-### 10. Corrective Care Trust Post
-- Format: Static / Testimonial
-- Status: Draft Ready
-- Hook: Corrective skincare should feel guided, not intimidating.
-- CTA: Ask about peels or corrective planning.
-
-## Posted Archive
-- Use this section later to move posts that have already gone live.
-
-## Full assets
-- See `post-ready-assets-pack.md` for fuller caption-ready versions of these drafts.
+## Existing export set still available
+- `exports/instagram-first-batch/01-morning-glow-reset.html`
+- `exports/instagram-first-batch/02-midday-hydrafacial.html`
+- `exports/instagram-first-batch/03-evening-circadia.html`
+- `exports/instagram-first-batch/04-bridal-prep.html`
+- `exports/instagram-first-batch/05-custom-facial.html`
+- `exports/instagram-first-batch/captions.md`
 
 ## Workflow statuses
 - Idea
@@ -83,3 +68,8 @@ Use this file to store content that is already drafted and can be posted with mi
 - Ready to Film
 - Ready to Post
 - Posted
+
+## Packaging notes
+- Morning and midday assets should stay fast and light.
+- Evening Circadia assets are the hero posts and should get first review attention.
+- Use `exports/ready-post-queue-week-01/queue-board.md` for the quickest at-a-glance handoff.

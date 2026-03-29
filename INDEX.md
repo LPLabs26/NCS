@@ -64,8 +64,13 @@
 - `templates/natalie-idea-intake-template.md`
 - `templates/google-sheets-csv/`
 
+## Exports
+- `exports/instagram-first-batch/`
+- `exports/ready-post-queue-week-01/`
+
 ## Best place to start
 - `docs/ops/executive-summary.md`
 - `docs/automation/autonomous-instagram-team.md`
 - `docs/automation/approval-workflow.md`
 - `docs/automation/content-pipeline-ops.md`
+- `docs/content/ready-to-post-board.md`

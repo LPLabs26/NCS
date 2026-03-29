@@ -35,6 +35,7 @@ That model should be reflected in docs, templates, and Mission Control seeded da
 - `research/trends/` — skincare trend notes and briefs
 - `templates/` — reusable post, story, and brief templates
 - `mission-control/` — lightweight content dashboard demo
+- `exports/` — static/exportable post assets and ready-post packages
 
 ## Initial objective
 
