@@ -1,4 +1,4 @@
-const STORAGE_KEY = 'ncs-mission-control-v2';
+const STORAGE_KEY = 'ncs-mission-control-v3';
 
 const defaultData = {
   pipeline: [
@@ -111,6 +111,93 @@ const defaultData = {
       slot: 'Sun 06:00 PM',
       notes: 'Warm, elevated brand post reinforcing tailored care and premium experience.',
       owner: 'Brand Operator'
+    }
+  ],
+  miniMovies: [
+    {
+      id: crypto.randomUUID(),
+      title: 'The Night-Before Glow',
+      duration: '24 sec concept',
+      format: 'Mini-movie reel',
+      status: 'Ready to storyboard',
+      lead: 'Event prep / bridal',
+      hook: 'The camera tracks one client from stress to soft-focus confidence in under 24 seconds.',
+      logline: 'A night-before treatment story that turns pre-event nerves into luminous, camera-ready calm.',
+      visualHook: 'Champagne lighting, vanity reflections, treatment closeups, silk robe exit shot.',
+      cta: 'DM “glow plan”',
+      beats: [
+        'Cold open: text on mirror — “Big day tomorrow?”',
+        'Treatment beat: Hydrafacial serum sweep + LED glow pulse',
+        'Final frame: client catches her reflection, then smiles into soft flash'
+      ]
+    },
+    {
+      id: crypto.randomUUID(),
+      title: 'Booked by Monday',
+      duration: '18 sec concept',
+      format: 'Mini-movie sequence',
+      status: 'Ready to package',
+      lead: 'Gap-fill offer',
+      hook: 'Fast-cut micro story showing how one open slot becomes a booked treatment before lunch.',
+      logline: 'A cinematic appointment-fill concept built around urgency, confidence, and one clean CTA.',
+      visualHook: 'Mission-control UI overlays, notification pop, polished desk-to-treatment transition.',
+      cta: 'Tap to claim the opening',
+      beats: [
+        'Open slot flashes on-screen with luxe gold outline',
+        'Story card rolls into a DM inquiry and instant confirmation',
+        'End frame: treatment room ready, “one opening left today”'
+      ]
+    },
+    {
+      id: crypto.randomUUID(),
+      title: 'Skin, In Three Acts',
+      duration: '21 sec concept',
+      format: 'Mini-movie carousel/reel hybrid',
+      status: 'Awaiting Natalie',
+      lead: 'Corrective education',
+      hook: 'Beginning, middle, glow-up: a skin journey framed like a prestige teaser trailer.',
+      logline: 'An elevated before-during-after narrative that makes corrective care feel intentional instead of intimidating.',
+      visualHook: 'Three-panel act cards, subtle grain, calm voiceover captions, ingredient textures.',
+      cta: 'Book a corrective consult',
+      beats: [
+        'Act I: “When your skin starts asking for more”',
+        'Act II: peel strategy + calm education overlay',
+        'Act III: restored confidence with polished post-treatment closeup'
+      ]
+    },
+    {
+      id: crypto.randomUUID(),
+      title: 'The Reset Window',
+      duration: '15 sec concept',
+      format: 'Mini-movie reel',
+      status: 'Ready to storyboard',
+      lead: 'Hydrafacial hero',
+      hook: 'A single afternoon slot becomes a full sensory reset: water, light, and skin texture doing the talking.',
+      logline: 'Minimal dialogue, maximum atmosphere — a pure mood-piece that sells the feeling of a Hydrafacial reset.',
+      visualHook: 'Macro hydration textures, glass reflections, creamy neutral gradients, close crop skin detail.',
+      cta: 'Reserve your reset',
+      beats: [
+        'Open on city-noise text, then cut to silence inside the studio',
+        'Hydration pass, extractions, LED finish in rhythmic cuts',
+        'End title: “Come back to yourself in one appointment.”'
+      ]
+    },
+    {
+      id: crypto.randomUUID(),
+      title: 'After Yes',
+      duration: '20 sec concept',
+      format: 'Mini-movie story arc',
+      status: 'Ready to package',
+      lead: 'Bridal runway',
+      hook: 'This starts the second the ring goes on — and follows the skin plan that gets her to the aisle glowing.',
+      logline: 'A bridal prep teaser told like a romance trailer, built to sell long-tail treatment planning.',
+      visualHook: 'Ring closeup, timeline cards, consultation notes, luminous finish shot with veil-white palette.',
+      cta: 'Ask for the bridal timeline',
+      beats: [
+        'Inciting moment: hand reveal + “after yes comes the plan”',
+        'Timeline montage: consult, Hydrafacial, peel, maintenance touchpoint',
+        'Final beat: wedding-week glow framed like the final scene'
+      ]
     }
   ],
   jobs: [
@@ -292,9 +379,18 @@ function cloneDefault() {
   return JSON.parse(JSON.stringify(defaultData));
 }
 
+function migrateData(data) {
+  if (!data || typeof data !== 'object') return cloneDefault();
+  const merged = { ...cloneDefault(), ...data };
+  if (!Array.isArray(merged.miniMovies) || merged.miniMovies.length === 0) {
+    merged.miniMovies = cloneDefault().miniMovies;
+  }
+  return merged;
+}
+
 function load() {
   try {
-    return JSON.parse(localStorage.getItem(STORAGE_KEY)) || cloneDefault();
+    return migrateData(JSON.parse(localStorage.getItem(STORAGE_KEY)));
   } catch {
     return cloneDefault();
   }
@@ -433,6 +529,48 @@ function renderBriefs() {
     .join('');
 }
 
+function renderMiniMovies() {
+  const miniMovies = state.miniMovies || [];
+  document.getElementById('miniMovieCount').textContent = `${miniMovies.length} concepts loaded`;
+  document.getElementById('miniMovieGrid').innerHTML = miniMovies.length
+    ? miniMovies.map((movie, index) => `
+      <article class="mini-movie-card">
+        <div class="mini-movie-stage">
+          <div class="mini-movie-stage-topline">
+            <span class="mini-movie-index">0${index + 1}</span>
+            <span class="mini-movie-duration">${movie.duration}</span>
+          </div>
+          <div>
+            <p class="mini-movie-lead">${movie.lead}</p>
+            <h3>${movie.title}</h3>
+            <p class="mini-movie-hook">${movie.hook}</p>
+          </div>
+          <div class="mini-movie-visual">${movie.visualHook}</div>
+        </div>
+        <div class="mini-movie-meta">
+          <div class="mini-topline">
+            <strong>${movie.format}</strong>
+            <span>${movie.status}</span>
+          </div>
+          <p>${movie.logline}</p>
+          <div class="mini-movie-beats">
+            ${movie.beats.map((beat, beatIndex) => `
+              <div class="beat-chip">
+                <span>${beatIndex + 1}</span>
+                <p>${beat}</p>
+              </div>
+            `).join('')}
+          </div>
+          <div class="mini-movie-footer">
+            <span class="pill muted">CTA</span>
+            <strong>${movie.cta}</strong>
+          </div>
+        </div>
+      </article>
+    `).join('')
+    : '<div class="empty">No mini-movie concepts loaded yet.</div>';
+}
+
 function renderPreviews() {
   const previews = (state.previews || []).filter((preview) => preview.status === 'ready');
   document.getElementById('previewCount').textContent = `${previews.length} ready to preview`;
@@ -482,6 +620,7 @@ function render() {
   renderJobs();
   renderKpis();
   renderBriefs();
+  renderMiniMovies();
   renderPreviews();
   wireStatusChanges();
 }
