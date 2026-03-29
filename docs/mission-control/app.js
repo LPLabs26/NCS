@@ -13,7 +13,7 @@ const defaultData = {
       status: 'ready',
       cta: 'Save this reminder',
       slot: 'Mon 08:15 AM',
-      notes: 'Light-touch morning value post. One clear tip, one soft CTA, no hard sell.',
+      notes: 'A polished morning education touch: clear, calming, and never pushy.',
       owner: 'Michael · Content Engine'
     },
     {
@@ -26,7 +26,7 @@ const defaultData = {
       status: 'ready',
       cta: 'Reserve your Hydrafacial',
       slot: 'Mon 12:30 PM',
-      notes: 'Clear treatment education that supports bookings without repeating generic hype.',
+      notes: 'Treatment education that feels refined, specific, and ready to convert.',
       owner: 'Michael · Content Engine'
     },
     {
@@ -39,7 +39,7 @@ const defaultData = {
       status: 'ready',
       cta: 'Ask about your homecare plan',
       slot: 'Mon 07:30 PM',
-      notes: 'Hero post of the day with the strongest visual packaging and caption depth.',
+      notes: 'Evening hero asset with cinematic packaging and a smarter homecare story.',
       owner: 'Michael · Content Engine'
     },
     {
@@ -52,7 +52,7 @@ const defaultData = {
       status: 'production',
       cta: 'Share with a friend',
       slot: 'Tue 08:10 AM',
-      notes: 'Fast practical touch designed to feel useful, not filler.',
+      notes: 'Quick, credible guidance that reads like care, not content filler.',
       owner: 'Michael · Content Engine'
     },
     {
@@ -65,7 +65,7 @@ const defaultData = {
       status: 'approval',
       cta: 'DM event glow',
       slot: 'Tue 12:45 PM',
-      notes: 'Built to reduce hesitation and drive event-prep bookings.',
+      notes: 'Event-prep positioning designed to lower hesitation and pull bookings forward.',
       owner: 'Michael · Content Engine'
     },
     {
@@ -78,29 +78,29 @@ const defaultData = {
       status: 'approval',
       cta: 'Ask about Circadia support',
       slot: 'Tue 07:45 PM',
-      notes: 'Hero-post concept with stronger educational payoff and premium tone.',
+      notes: 'Refined evening concept that makes homecare feel thoughtful, not excessive.',
       owner: 'Michael · Content Engine'
     }
   ]),
   jobs: [
-    { time: '07:00', name: 'Morning Daily Tips Builder', output: 'One light-touch Daily Tips asset for fast value and consistency' },
-    { time: '11:30', name: 'Midday Hydrafacial Builder', output: 'One educational Hydrafacial asset for consideration and booking support' },
-    { time: '17:30', name: 'Evening Circadia Hero Builder', output: 'One premium Circadia post built around rhythm, repair, and trust' },
-    { time: '20:00', name: 'Daily Executive Brief', output: 'What shipped, what needs approval, and what to improve tomorrow' }
+    { time: '07:00', name: 'Morning Daily Tips Builder', output: 'One polished Daily Tips asset that delivers quick value and keeps the morning touch intentional' },
+    { time: '11:30', name: 'Midday Hydrafacial Builder', output: 'One booking-minded Hydrafacial asset that answers hesitation with clarity' },
+    { time: '17:30', name: 'Evening Circadia Hero Builder', output: 'One elevated Circadia post built around rhythm, repair, and trust' },
+    { time: '20:00', name: 'Daily Executive Brief', output: 'What went live, what still needs approval, and where tomorrow can feel sharper' }
   ],
   calendar: [
-    { day: 'Monday', slot: '08:15 AM', title: 'Daily Tips — SPF still matters on cloudy days', goal: 'Light morning value touch' },
-    { day: 'Monday', slot: '12:30 PM', title: 'Hydrafacial — what it helps with when skin looks dull', goal: 'Education + booking support' },
-    { day: 'Monday', slot: '07:30 PM', title: 'Circadia — protection by day, repair by night', goal: 'Hero post + homecare trust' },
-    { day: 'Tuesday', slot: '08:10 AM', title: 'Daily Tips — stop over-cleansing in the morning', goal: 'Quick practical engagement' },
-    { day: 'Tuesday', slot: '12:45 PM', title: 'Hydrafacial — why it works before events', goal: 'Event-prep consideration' },
-    { day: 'Tuesday', slot: '07:45 PM', title: 'Circadia — the ritual your skin actually wants', goal: 'Hero post + retail interest' }
+    { day: 'Monday', slot: '08:15 AM', title: 'Daily Tips — SPF still matters on cloudy days', goal: 'Elegant morning education' },
+    { day: 'Monday', slot: '12:30 PM', title: 'Hydrafacial — what it helps with when skin looks dull', goal: 'Clarity that supports bookings' },
+    { day: 'Monday', slot: '07:30 PM', title: 'Circadia — protection by day, repair by night', goal: 'Hero education with homecare trust' },
+    { day: 'Tuesday', slot: '08:10 AM', title: 'Daily Tips — stop over-cleansing in the morning', goal: 'Quick credibility touch' },
+    { day: 'Tuesday', slot: '12:45 PM', title: 'Hydrafacial — why it works before events', goal: 'Event-prep demand driver' },
+    { day: 'Tuesday', slot: '07:45 PM', title: 'Circadia — the ritual your skin actually wants', goal: 'Hero post with retail pull' }
   ],
   kpis: [
-    { label: 'Daily Tips shipped', value: '5', trend: 'Consistent morning presence without filler' },
-    { label: 'Hydrafacial bookings', value: '7', trend: 'Midday education is still the booking engine' },
-    { label: 'Circadia hero posts', value: '5', trend: 'Evening content is leading saves and product questions' },
-    { label: 'Booked from IG', value: '$4,240', trend: 'Hydrafacial drives demand while Circadia supports retention' }
+    { label: 'Daily Tips shipped', value: '5', trend: 'Morning presence feels consistent, useful, and polished' },
+    { label: 'Hydrafacial bookings', value: '7', trend: 'Midday treatment education is still the booking driver' },
+    { label: 'Circadia hero posts', value: '5', trend: 'Evening content is leading saves and thoughtful product questions' },
+    { label: 'Booked from IG', value: '$4,240', trend: 'Hydrafacial creates demand while Circadia strengthens retention' }
   ],
   previews: [
     {
@@ -108,69 +108,69 @@ const defaultData = {
       lane: 'Daily Tips',
       daypart: 'Morning',
       format: 'Story Set',
-      hook: 'Cloudy does not mean your skin gets the day off.',
-      caption: 'Morning content should be quick, useful, and easy to consume. This tip keeps NCS visible early without sounding pushy or over-produced.',
+      hook: 'Cloudy still counts when it comes to SPF.',
+      caption: 'A soft morning reminder that protects the skin and protects the brand. Useful, elegant, and easy to save for later.',
       cta: 'Save this reminder',
       status: 'ready',
-      visual: 'Soft morning light · one clear skincare tip · elegant minimal story frames',
+      visual: 'Soft morning light · one precise skincare point · elegant minimal story frames',
       cover: 'Morning tip',
-      postText: 'A quick habit that protects your glow.',
-      notes: 'Light touch only — useful, clean, not salesy.'
+      postText: 'A small habit that keeps your skin protected.',
+      notes: 'Keep it light, elevated, and instantly useful.'
     },
     {
       title: 'Hydrafacial — what it helps with when skin looks dull',
       lane: 'Hydrafacial',
       daypart: 'Midday',
       format: 'Carousel',
-      hook: 'When skin looks tired, a Hydrafacial is often the cleanest reset.',
-      caption: 'Midday content should answer the question before it becomes a DM. This post explains Hydrafacial clearly and supports bookings without repeating the same hype lines.',
+      hook: 'When skin looks flat, Hydrafacial brings back clarity, hydration, and light.',
+      caption: 'This midday piece answers the question before it ever turns into a DM. Clear treatment education, polished delivery, and a natural path to booking.',
       cta: 'Reserve your Hydrafacial',
       status: 'ready',
-      visual: 'Clean educational slides · polished treatment visuals · high-trust clinic luxury',
+      visual: 'Clean educational slides · polished treatment visuals · clinical luxury with warmth',
       cover: 'Midday Hydrafacial',
-      postText: 'Glow, hydration, and a deeper clean — explained simply.',
-      notes: 'Midday touch = clear, persuasive, still restrained.'
+      postText: 'Brightness, hydration, and a cleaner finish — explained beautifully.',
+      notes: 'Clear, persuasive, and still restrained.'
     },
     {
       title: 'Circadia — protection by day, repair by night',
       lane: 'Circadia',
       daypart: 'Evening',
       format: 'Reel',
-      hook: 'Your skin is not asking for more products. It is asking for the right support at the right time.',
-      caption: 'This is the hero post. It gives the strongest visual and emotional payoff of the day while teaching the Circadia day-and-night logic in a premium, calm, intelligent way.',
+      hook: 'Your skin does not need more product. It needs the right support at the right time.',
+      caption: 'The evening hero post should feel calm, intelligent, and visually rich. This one teaches the Circadia rhythm in a way that feels premium instead of preachy.',
       cta: 'Ask about your homecare plan',
       status: 'ready',
-      visual: 'Moody evening skincare tone · elevated product detail · cinematic repair-and-ritual energy',
+      visual: 'Moody evening light · elevated product detail · cinematic ritual-and-repair energy',
       cover: 'Evening Circadia',
-      postText: 'Protect by day. Repair by night.',
-      notes: 'Hero asset — strongest packaging of the day.'
+      postText: 'Protect through the day. Repair through the night.',
+      notes: 'Hero asset with the strongest packaging of the day.'
     },
     {
       title: 'Hydrafacial — why it works before events',
       lane: 'Hydrafacial',
       daypart: 'Midday',
       format: 'Story Set',
-      hook: 'Big event coming up? Your skin prep should not start the night before.',
-      caption: 'Midday treatment education with event-prep positioning. Short, clear, and easy to act on.',
+      hook: 'If a big event is coming, your skin prep should start before the night before.',
+      caption: 'Event-prep treatment education with a polished sense of urgency. Short, clear, and easy to act on.',
       cta: 'DM event glow',
       status: 'approval',
-      visual: 'Fresh event-prep tone · polished timing guidance · luxury glow language',
+      visual: 'Fresh event-prep tone · polished timing guidance · refined glow language',
       cover: 'Event glow',
-      postText: 'Prep earlier. Glow easier.',
-      notes: 'Needs Natalie signoff on hook and CTA.'
+      postText: 'Start sooner. Glow calmer.',
+      notes: 'Needs Natalie signoff on the hook and CTA.'
     },
     {
       title: 'Circadia — the ritual your skin actually wants',
       lane: 'Circadia',
       daypart: 'Evening',
       format: 'Carousel',
-      hook: 'Evening skincare should feel supportive, not chaotic.',
-      caption: 'Hero-post concept that reframes homecare as a smarter ritual instead of a product pile.',
+      hook: 'Evening skincare should feel grounding, not overwhelming.',
+      caption: 'A hero-post concept that reframes homecare as a well-matched ritual instead of a crowded shelf.',
       cta: 'Ask about Circadia support',
       status: 'approval',
-      visual: 'Deep neutral palette · premium night routine feel · calm authority',
+      visual: 'Deep neutral palette · premium night-routine feel · calm authority',
       cover: 'Night ritual',
-      postText: 'Better rhythm. Better skin.',
+      postText: 'Better rhythm. Calmer skin.',
       notes: 'Waiting on Natalie signoff.'
     }
   ]
@@ -230,9 +230,9 @@ function nextUpcomingFor(daypart) {
 }
 function renderLaneSnapshots() {
   const lanes = [
-    { daypart: 'Morning', lane: 'Daily Tips', promise: 'Light value touch' },
-    { daypart: 'Midday', lane: 'Hydrafacial', promise: 'Demand + booking support' },
-    { daypart: 'Evening', lane: 'Circadia', promise: 'Hero education + trust' }
+    { daypart: 'Morning', lane: 'Daily Tips', promise: 'Elegant value touch' },
+    { daypart: 'Midday', lane: 'Hydrafacial', promise: 'Demand with booking support' },
+    { daypart: 'Evening', lane: 'Circadia', promise: 'Hero education with trust' }
   ];
   document.getElementById('laneSnapshotGrid').innerHTML = lanes.map(({ daypart, lane, promise }) => {
     const item = nextUpcomingFor(daypart);
@@ -252,7 +252,34 @@ function setStatus(id, status) {
 }
 function renderApprovalChecklist() {
   const items = itemsByStatus('approval');
-  document.getElementById('approvalChecklist').innerHTML = items.length ? items.map((item) => `<article class="mini-card checklist-card"><div class="mini-topline"><strong>${escapeHtml(item.title)}</strong><span>${escapeHtml(item.slot || 'TBD')}</span></div><ul><li>Confirm <strong>${escapeHtml(item.daypart)}</strong> lane: ${escapeHtml(item.lane)}</li><li>Confirm CTA: ${escapeHtml(item.cta || 'TBD')}</li><li>Approve now, send back for tweaks, or reject</li></ul><div class="action-row compact-actions"><button class="approve-btn" data-action="ready" data-id="${item.id}">Approve</button><button class="ghost" data-action="production" data-id="${item.id}">Needs tweak</button><button class="ghost danger-text" data-action="idea" data-id="${item.id}">Reject</button></div></article>`).join('') : '<div class="empty">No approvals waiting.</div>';
+  document.getElementById('approvalChecklist').innerHTML = items.length ? items.map((item) => {
+    const preview = (state.previews || []).find((entry) => entry.title === item.title) || {};
+    const movie = movieHref(item.title);
+    return `<article class="mini-card checklist-card approval-preview-card">
+      <div class="mini-topline"><strong>${escapeHtml(item.title)}</strong><span>${escapeHtml(item.slot || 'TBD')}</span></div>
+      <div class="approval-preview-shell">
+        <div class="approval-preview-canvas">
+          <div class="preview-badge">${escapeHtml(preview.format || item.type || 'Post')}</div>
+          <div class="preview-cover">${escapeHtml(preview.daypart || item.daypart || '')}${(preview.daypart || item.daypart) ? ' · ' : ''}${escapeHtml(preview.cover || item.lane || item.title)}</div>
+          <div class="preview-hook">${escapeHtml(preview.hook || item.title)}</div>
+          <div class="preview-body-copy">${escapeHtml(preview.postText || preview.caption || item.notes || '')}</div>
+          <div class="preview-visual">${escapeHtml(preview.visual || item.notes || '')}</div>
+        </div>
+        <div class="approval-copy">
+          <p class="caption-label">Caption preview</p>
+          <p>${escapeHtml(preview.caption || item.notes || '')}</p>
+          <div class="preview-cta">CTA: ${escapeHtml(item.cta || preview.cta || 'TBD')}</div>
+          <div class="preview-notes">Lane: ${escapeHtml(item.daypart)} · ${escapeHtml(item.lane)}</div>
+          <div class="preview-actions">
+            <button class="approve-btn" data-action="ready" data-id="${item.id}">Approve</button>
+            <button class="ghost" data-action="production" data-id="${item.id}">Needs tweak</button>
+            <button class="ghost danger-text" data-action="idea" data-id="${item.id}">Reject</button>
+            ${movie ? `<a class="movie-link" href="${movie}" target="_blank" rel="noopener">Open animated movie</a>` : ''}
+          </div>
+        </div>
+      </div>
+    </article>`;
+  }).join('') : '<div class="empty">No approvals waiting.</div>';
 }
 function renderJobs() {
   document.getElementById('jobsList').innerHTML = state.jobs.map((job) => `<article class="mini-card"><div class="mini-topline"><strong>${escapeHtml(job.time)}</strong><span>Automated</span></div><h4>${escapeHtml(job.name)}</h4><p>${escapeHtml(job.output)}</p></article>`).join('');
