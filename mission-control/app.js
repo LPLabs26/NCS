@@ -404,7 +404,8 @@ function renderBriefs() {
 }
 
 function renderPreviews() {
-  const previews = state.previews || [];
+  const previews = (state.previews || []).filter((preview) => preview.status === 'ready');
+  document.getElementById('previewCount').textContent = `${previews.length} ready to preview`;
   document.getElementById('previewGallery').innerHTML = previews.length
     ? previews.map((preview) => `
       <article class="preview-card ${preview.status}">
@@ -420,7 +421,7 @@ function renderPreviews() {
         </div>
       </article>
     `).join('')
-    : '<div class="empty">No previews ready yet.</div>';
+    : '<div class="empty">No ready-to-post previews yet.</div>';
 }
 
 function wireStatusChanges() {
@@ -498,6 +499,12 @@ document.getElementById('resetBtn').addEventListener('click', () => {
   state = cloneDefault();
   save();
   render();
+});
+document.getElementById('openPreviewBtn').addEventListener('click', () => {
+  document.getElementById('previewSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
+});
+document.getElementById('jumpToReadyBtn').addEventListener('click', () => {
+  document.getElementById('readyLaneSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
 });
 
 render();

@@ -191,6 +191,17 @@ textarea { min-height: 120px; resize: vertical; }
   text-align: center;
 }
 
+.preview-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.preview-count {
+  color: var(--muted);
+  font-weight: 600;
+}
 .preview-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -255,7 +266,8 @@ textarea { min-height: 120px; resize: vertical; }
   .hero { padding: 20px; }
   .hero h1 { max-width: none; }
   .hero-actions,
-  .section-heading { align-items: stretch; }
+  .section-heading,
+  .preview-toolbar { align-items: stretch; flex-direction: column; }
   .preview-canvas { min-height: 220px; }
   button, input, select, textarea { font-size: 16px; }
 }

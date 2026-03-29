@@ -15,6 +15,7 @@
         <p class="lede">A lightweight command center for idea generation, production, approvals, posting windows, and revenue-focused content decisions.</p>
       </div>
       <div class="hero-actions">
+        <button id="openPreviewBtn" class="ghost">Preview ready posts</button>
         <button id="seedBtn">Load demo week</button>
         <button id="resetBtn" class="ghost danger">Reset local data</button>
       </div>
@@ -50,7 +51,7 @@
               <div class="lane-head"><h3>Need Natalie</h3><span id="count-approval">0</span></div>
               <div id="approvalList" class="list"></div>
             </div>
-            <div>
+            <div id="readyLaneSection">
               <div class="lane-head"><h3>Ready / Scheduled</h3><span id="count-ready">0</span></div>
               <div id="readyList" class="list"></div>
             </div>
@@ -113,13 +114,17 @@
           </section>
         </article>
 
-        <article class="card">
+        <article class="card" id="previewSection">
           <div class="section-heading">
             <div>
               <p class="eyebrow">Ready-to-post preview</p>
               <h2>Post preview gallery</h2>
             </div>
             <p class="section-copy">A lightweight preview area so Natalie can quickly review what is ready before approving or posting from her phone.</p>
+          </div>
+          <div class="preview-toolbar">
+            <span class="preview-count" id="previewCount">0 ready to preview</span>
+            <button id="jumpToReadyBtn" class="ghost">Jump to ready lane</button>
           </div>
           <div id="previewGallery" class="preview-grid"></div>
         </article>
