@@ -403,11 +403,22 @@ textarea { min-height: 120px; resize: vertical; }
   .preview-grid,
   .mini-movie-grid,
   .mini-movie-card { grid-template-columns: 1fr; }
+  .mini-movie-stage h3 { max-width: none; }
 }
 
 @media (max-width: 720px) {
   .app-shell { padding: 16px; }
   .hero { padding: 20px; }
+  .hero h1 { max-width: none; }
+  .hero-actions,
+  .section-heading,
+  .preview-toolbar { align-items: stretch; flex-direction: column; }
+  .preview-canvas { min-height: 220px; }
+  button, input, select, textarea { font-size: 16px; }
+}
+ { font-size: 16px; }
+}
+20px; }
   .hero h1 { max-width: none; }
   .hero-actions,
   .section-heading,

@@ -121,14 +121,14 @@ const defaultData = {
       format: 'Mini-movie reel',
       status: 'Ready to storyboard',
       lead: 'Event prep / bridal',
-      hook: 'The camera tracks one client from stress to soft-focus confidence in under 24 seconds.',
-      logline: 'A night-before treatment story that turns pre-event nerves into luminous, camera-ready calm.',
-      visualHook: 'Champagne lighting, vanity reflections, treatment closeups, silk robe exit shot.',
-      cta: 'DM “glow plan”',
+      hook: 'A night-before panic turns into camera-ready calm with one elegant reset.',
+      logline: 'A luxe pre-event treatment arc built around tension, relief, and a final DM-worthy CTA frame.',
+      visualHook: 'Instagram-story chrome, champagne lighting, mirror captions, treatment closeups, silk robe exit shot.',
+      cta: 'DM “glow plan” now',
       beats: [
-        'Cold open: text on mirror — “Big day tomorrow?”',
-        'Treatment beat: Hydrafacial serum sweep + LED glow pulse',
-        'Final frame: client catches her reflection, then smiles into soft flash'
+        'Cold open: mirror text — “Tomorrow is close.”',
+        'Treatment beat: Hydrafacial serum sweep, LED glow, breath finally slows',
+        'Final frame: polished reflection + CTA to DM “glow plan”'
       ]
     },
     {
@@ -138,10 +138,10 @@ const defaultData = {
       format: 'Mini-movie sequence',
       status: 'Ready to package',
       lead: 'Gap-fill offer',
-      hook: 'Fast-cut micro story showing how one open slot becomes a booked treatment before lunch.',
+      hook: 'A polished opening alert becomes a booked appointment before the day even settles.',
       logline: 'A cinematic appointment-fill concept built around urgency, confidence, and one clean CTA.',
       visualHook: 'Mission-control UI overlays, notification pop, polished desk-to-treatment transition.',
-      cta: 'Tap to claim the opening',
+      cta: 'Reserve the opening',
       beats: [
         'Open slot flashes on-screen with luxe gold outline',
         'Story card rolls into a DM inquiry and instant confirmation',
@@ -155,10 +155,10 @@ const defaultData = {
       format: 'Mini-movie carousel/reel hybrid',
       status: 'Awaiting Natalie',
       lead: 'Corrective education',
-      hook: 'Beginning, middle, glow-up: a skin journey framed like a prestige teaser trailer.',
+      hook: 'A prestige-style skin story that replaces confusion with one clear next step.',
       logline: 'An elevated before-during-after narrative that makes corrective care feel intentional instead of intimidating.',
       visualHook: 'Three-panel act cards, subtle grain, calm voiceover captions, ingredient textures.',
-      cta: 'Book a corrective consult',
+      cta: 'Book a skin consult',
       beats: [
         'Act I: “When your skin starts asking for more”',
         'Act II: peel strategy + calm education overlay',
@@ -172,7 +172,7 @@ const defaultData = {
       format: 'Mini-movie reel',
       status: 'Ready to storyboard',
       lead: 'Hydrafacial hero',
-      hook: 'A single afternoon slot becomes a full sensory reset: water, light, and skin texture doing the talking.',
+      hook: 'A fast sensory reset built from water, light, and one quieter nervous system.',
       logline: 'Minimal dialogue, maximum atmosphere — a pure mood-piece that sells the feeling of a Hydrafacial reset.',
       visualHook: 'Macro hydration textures, glass reflections, creamy neutral gradients, close crop skin detail.',
       cta: 'Reserve your reset',
@@ -189,10 +189,10 @@ const defaultData = {
       format: 'Mini-movie story arc',
       status: 'Ready to package',
       lead: 'Bridal runway',
-      hook: 'This starts the second the ring goes on — and follows the skin plan that gets her to the aisle glowing.',
+      hook: 'The ring goes on, the timeline speeds up, and the glow plan suddenly matters.',
       logline: 'A bridal prep teaser told like a romance trailer, built to sell long-tail treatment planning.',
       visualHook: 'Ring closeup, timeline cards, consultation notes, luminous finish shot with veil-white palette.',
-      cta: 'Ask for the bridal timeline',
+      cta: 'DM “bridal glow”',
       beats: [
         'Inciting moment: hand reveal + “after yes comes the plan”',
         'Timeline montage: consult, Hydrafacial, peel, maintenance touchpoint',
@@ -690,6 +690,7 @@ document.getElementById('resetBtn').addEventListener('click', () => {
 document.getElementById('openPreviewBtn').addEventListener('click', () => {
   document.getElementById('previewSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
 });
+
 document.getElementById('jumpToReadyBtn').addEventListener('click', () => {
   document.getElementById('readyLaneSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
 });
