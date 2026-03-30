@@ -17,16 +17,16 @@ Each package includes:
 **Title:** Your barrier does its best work when your nights stop feeling chaotic  
 **Category:** Circadia  
 **Daypart:** Evening  
-**Hook:** If your skin feels reactive by bedtime, your evening routine may need less noise and more support.  
-**Caption:** The skin barrier usually responds better to calm, consistent support than to a rushed mix of random products at the end of the day. Evening care should help the skin settle, not fight one more battle before bed. A more edited ritual often means better comfort, better consistency, and a healthier-looking morning.  
+**Hook:** If your skin starts stinging the second you wash your face at night, that is usually a sign to simplify.  
+**Caption:** We see this a lot: by nighttime, the skin is tired, a little red, and not in the mood for five active steps. A stronger evening routine for barrier support usually looks much quieter than people expect: a gentle cleanse, hydration, and products that help the skin feel comfortable again. When the routine is edited well, skin often looks less angry by morning and a lot easier to manage over time.  
 **On-screen text:**
-1. Evening check-in
-2. Reactive by bedtime?
-3. Reduce the noise
-4. Support the barrier
-5. Let the skin settle
+1. Skin stings at night?
+2. stop making bedtime the hardest part
+3. gentle cleanse
+4. hydration + barrier support
+5. let skin calm down
 **CTA:** Ask us how to build a calmer nighttime routine for barrier support.  
-**Visual direction:** Start with a cluttered vanity and quick, slightly frantic hand movement, then transition into a refined three-step Circadia tray in warm low light.  
+**Visual direction:** Start with a client touching flushed skin at the sink, then move into a simple Circadia cleanse-serum-moisturizer sequence in warm low light.  
 **Approval notes:** Strong barrier-support hero post. Keep delivery calm and elevated, not alarmist.
 
 ---
@@ -35,13 +35,13 @@ Each package includes:
 **Title:** Night repair works better when the routine feels sustainable  
 **Category:** Circadia  
 **Daypart:** Evening  
-**Hook:** The best nighttime routine is not the longest one. It is the one you will actually keep.  
-**Caption:** Consistency has a quiet power in skincare. A routine that is realistic enough to repeat night after night will usually outperform one that feels impressive for three days and impossible by the weekend. Evening homecare should feel supportive, polished, and easy to stay loyal to.  
+**Hook:** If your night routine only happens when you have energy, it is probably too complicated.  
+**Caption:** The routines that actually change skin are usually the ones you can do when you are tired, wearing a robe, and ready to be done with the day. That might be three solid products used consistently instead of seven half-used ones staring at you from the counter. Sustainable evening care should feel easy to repeat, easy to trust, and good enough that you do not keep starting over every Monday.  
 **On-screen text:**
-1. Night repair
-2. Keep it realistic
-3. Keep it polished
-4. Consistency is the luxury
+1. Too tired for your routine?
+2. it needs to get simpler
+3. 3 good products beat 7 random ones
+4. repeatable routines get results
 **CTA:** DM us if your current nighttime routine feels harder than it needs to be.  
 **Visual direction:** Slow robe-and-vanity ritual with three products only, soft lamp light, and a final peaceful mirror shot.  
 **Approval notes:** Strong consistency message with premium tone. Good save-worthy post.
@@ -52,15 +52,16 @@ Each package includes:
 **Title:** The glow your skin wears tomorrow is shaped by what you do tonight  
 **Category:** Circadia  
 **Daypart:** Evening  
-**Hook:** Morning glow usually begins long before morning.  
-**Caption:** Overnight support often shows up in simple but meaningful ways the next day: skin that looks calmer, feels more comfortable, and reflects light a little better. That is why evening hydration and barrier care deserve more attention than they usually get. Better mornings are often built quietly the night before.  
+**Hook:** If you wake up looking dry around the mouth, tight through the cheeks, or dull before coffee, start with what happens the night before.  
+**Caption:** Good evening homecare shows up in the mirror the next morning in very real ways: less tightness when you wake up, makeup sitting better, and skin that looks more rested instead of thirsty. That is why nighttime hydration and barrier support matter so much. You are not chasing some vague glow. You are trying to wake up with skin that already looks taken care of.  
 **On-screen text:**
-1. Tonight's support
-2. better hydration
-3. calmer-looking skin
-4. softer morning glow
+1. Waking up dry or dull?
+2. look at your nighttime routine
+3. less overnight tightness
+4. better hydration by morning
+5. skin looks more rested
 **CTA:** Save this if your skin has been waking up dry, dull, or under-supported.  
-**Visual direction:** Night-to-morning sequence with soft product application, bedside lamp, then an airy early-morning reveal near a window.  
+**Visual direction:** Night-to-morning sequence with cleanser, serum, moisturizer, bedside lamp, then a close morning window shot showing fresh skin texture.  
 **Approval notes:** Strong next-day payoff angle. Keep visuals soft and cinematic.
 
 ---
@@ -103,15 +104,15 @@ Each package includes:
 **Title:** A good night routine should lower the temperature for your skin and your day  
 **Category:** Circadia  
 **Daypart:** Evening  
-**Hook:** Evening skincare should feel like a reset, not one more thing to survive.  
-**Caption:** There is a reason nighttime rituals feel different when they are done well. They create a small pause. They help the day come down. And when the products are chosen thoughtfully, they support skin that may be dry, stressed, or overworked from everything the day brought with it.  
+**Hook:** By the end of the day, your skin usually does not need intensity. It needs help settling down.  
+**Caption:** Think about how skin looks at 9 p.m.: makeup residue, indoor heat, sunscreen, stress, maybe a little redness around the nose or cheeks. A good night routine should take that edge off. The goal is not to do the most. The goal is to cleanse the day away, put hydration back in, and let the skin feel comfortable before you go to bed.  
 **On-screen text:**
-1. Evening reset
-2. Slow the pace
-3. Support stressed skin
-4. End the day softer
+1. End-of-day skin check
+2. remove the day properly
+3. put hydration back in
+4. help skin settle before bed
 **CTA:** Save this for tonight if your routine has started feeling rushed or reactive.  
-**Visual direction:** Very slow cinematic reel with warm water, towel, serum texture, moisturizer, and a quiet bedroom transition.  
+**Visual direction:** Very slow cinematic reel with cleansing balm or wash, warm water, serum texture, moisturizer, and a quiet bedroom transition.  
 **Approval notes:** Strong ritual-led post with emotional luxury. Keep pace slow and elegant.
 
 ---
@@ -137,15 +138,16 @@ Each package includes:
 **Title:** Circadia belongs in the evening because this is when support feels most intentional  
 **Category:** Circadia  
 **Daypart:** Evening  
-**Hook:** Some skincare works hardest when the world finally gets quiet.  
-**Caption:** Evening is when clients are most open to a ritual that feels thoughtful instead of rushed. That makes it the ideal moment for homecare that supports repair, hydration, and barrier comfort in a more deliberate way. Circadia fits beautifully here because it feels intelligent, calm, and aligned with the skin's natural rhythm.  
+**Hook:** Circadia makes the most sense at night because that is when clients actually slow down enough to use it well.  
+**Caption:** Evening is when skincare finally has room to feel intentional. You are not rushing out the door, putting on makeup, or trying to make sunscreen play nicely over everything. You can cleanse properly, apply your products in the right order, and let them sit on clean skin. That is part of why Circadia fits so beautifully into a nighttime routine at NCS.  
 **On-screen text:**
-1. The day winds down
-2. support gets more intentional
-3. night is for repair
-4. ritual matters here
+1. Why Circadia at night?
+2. you finally have time to do it properly
+3. clean skin
+4. thoughtful layering
+5. let products sit and work
 **CTA:** Ask us which Circadia products make the most sense for your evening routine.  
-**Visual direction:** Premium tray styling, product texture close-ups, lamp glow, and deliberate hand application with minimal text.  
+**Visual direction:** Premium tray styling, product texture close-ups, proper application order, lamp glow, and deliberate hand application with minimal text.  
 **Approval notes:** Direct Circadia hero post. Strong premium positioning without sounding too product-pushy.
 
 ---

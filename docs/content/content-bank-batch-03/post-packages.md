@@ -17,17 +17,17 @@ Each package includes:
 **Title:** The Hydrafacial menu decision that feels easiest at NCS  
 **Category:** Hydrafacial  
 **Daypart:** Midday  
-**Hook:** If you are stuck between “I need a facial” and “I do not know what to book,” start here.  
-**Caption:** One reason Hydrafacial works so well at NCS is that it is easy to understand and easy to step into. It gives clients a polished starting point: cleanse, exfoliation, hydration, and a refreshed finish that feels immediately worthwhile. If someone is unsure where to enter the service menu, this is often the clearest yes.  
+**Hook:** If you keep landing on the booking page and freezing, Hydrafacial is usually the easiest first appointment to say yes to.  
+**Caption:** This is the treatment we recommend all the time for the client who wants a real skin appointment but does not want to guess wrong. Hydrafacial gives you the basics done well in one visit: a deep cleanse, gentle exfoliation, extractions through the device, then hydration back into the skin. You leave feeling clean, smooth, and camera-ready without needing a whole consultation just to understand what you booked.  
 **On-screen text:**
 1. Not sure what to book?
-2. Start with a treatment that makes sense fast
-3. Cleanse
-4. exfoliate
-5. hydrate
-6. leave looking refreshed
+2. Start with the facial that covers the basics well
+3. cleanse + exfoliation + painless extractions
+4. then hydration back in
+5. simple booking choice
+6. polished skin when you leave
 **CTA:** DM us if you want help choosing the best first appointment at NCS.  
-**Visual direction:** Natalie or provider speaking to camera, followed by clean device passes, serum flow, and one polished after shot in the treatment room.  
+**Visual direction:** Natalie speaking directly to camera about who this is for, then close shots of vortex extraction, serum infusion, and the immediate post-treatment finish.  
 **Approval notes:** Strong service-ladder entry post. Keep tone welcoming and luxe, especially for first-time NCS clients.
 
 ---
@@ -36,16 +36,16 @@ Each package includes:
 **Title:** Why Hydrafacial is the treatment clients book before they upgrade  
 **Category:** Hydrafacial  
 **Daypart:** Midday  
-**Hook:** A strong skin plan usually starts with clarity, not with the most complicated service on the menu.  
-**Caption:** Hydrafacial often works beautifully as the first “yes” before clients step into a more customized treatment rhythm at NCS. It helps create a cleaner, more hydrated starting point and gives both the client and provider a clearer sense of what the skin needs next. That makes it a smart bridge service, not just a one-off appointment.  
+**Hook:** When we have not seen your skin in person yet, starting with a clean reset usually tells us more than jumping straight into something complicated.  
+**Caption:** Hydrafacial is often the appointment that helps us see the skin clearly. Once congestion is softened, dehydration is addressed, and the surface is looking calmer, it is much easier to decide what should come next and what is unnecessary. That is why so many clients start here before moving into a more customized treatment rhythm at NCS.  
 **On-screen text:**
-1. Start simple
-2. Reset the skin first
-3. Learn what your skin responds to
-4. build from there
-5. Hydrafacial can be the bridge
+1. Start with a clean reset
+2. see the skin more clearly
+3. address congestion + dehydration first
+4. then decide what actually makes sense
+5. not every plan starts with the most advanced option
 **CTA:** Ask us what makes sense after your Hydrafacial if you want a longer-term skin plan.  
-**Visual direction:** Text-led reel with treatment footage and a subtle “step 1 / next step” graphic treatment.  
+**Visual direction:** Text-led reel with treatment footage, a quick skin-analysis moment, and subtle “first appointment / next step” graphics.  
 **Approval notes:** Important service-ladder clarity post. Avoid making rigid claims about treatment sequencing; keep it consultative.
 
 ---
@@ -54,16 +54,16 @@ Each package includes:
 **Title:** The add-on question: when LED makes a Hydrafacial feel even smarter  
 **Category:** Hydrafacial  
 **Daypart:** Midday  
-**Hook:** Add-ons should make the appointment feel more intentional, not more random.  
-**Caption:** At NCS, the best add-ons are the ones that support the reason the client booked in the first place. Pairing LED with a Hydrafacial can make the appointment feel more complete for clients who want a polished reset with a little more support built in. It is not about stacking extras for the sake of it. It is about choosing thoughtfully.  
+**Hook:** If your skin is looking stressed, breakout-prone, or a little inflamed, LED can be the add-on that actually earns its spot.  
+**Caption:** We are not big on add-ons just because they sound nice. When LED is paired with Hydrafacial, it should be because the skin would benefit from that extra support after the treatment step itself. For the right client, it can be a smart way to round out the appointment instead of walking out with skin that was cleaned up but not fully settled.  
 **On-screen text:**
-1. Smart add-on energy only
-2. Hydrafacial + LED
-3. better support
-4. more intentional appointment
-5. not every extra is necessary
+1. Not every add-on is worth it
+2. Hydrafacial + LED can make sense when skin looks stressed
+3. cleanse and clear first
+4. then give skin time under LED
+5. more intentional appointment
 **CTA:** Ask us if LED makes sense with your next Hydrafacial.  
-**Visual direction:** Show Hydrafacial clips first, then transition into calming LED footage with soft ambient light and clean overlay text.  
+**Visual direction:** Show extraction and infusion passes first, then transition to the client resting under LED with a calm, quiet treatment-room feel.  
 **Approval notes:** Good add-on education post. Keep the wording broad unless Natalie wants a stricter menu-specific version.
 
 ---
@@ -89,15 +89,16 @@ Each package includes:
 **Title:** If you love your Hydrafacial, the right add-on depends on the goal  
 **Category:** Hydrafacial  
 **Daypart:** Midday  
-**Hook:** The best upgrade is not the fanciest one. It is the one that matches the plan.  
-**Caption:** Clients sometimes assume an add-on is supposed to be automatic. At NCS, it should feel more curated than that. The better question is simple: what are we trying to support today? Once that is clear, it becomes easier to decide whether to keep it beautifully simple or add one thoughtful layer to the appointment.  
+**Hook:** If you always ask, “Should I add something on?” the better question is, “What is my skin doing today?”  
+**Caption:** Some appointments just need a really good Hydrafacial and nothing else. Other days, there is a reason to layer in one more step because we are trying to calm sensitivity, support breakouts, or give you a little more event-day polish. The difference at NCS is that we choose based on the skin in front of us, not because every appointment needs to be made bigger.  
 **On-screen text:**
-1. Add-on clarity
-2. Start with the goal
-3. not every appointment needs more
-4. customized always looks better
+1. Should you add on?
+2. first ask what your skin needs today
+3. some visits stay simple
+4. some need one more supportive step
+5. curated always looks better than automatic
 **CTA:** Ask what upgrade, if any, makes sense for your next visit.  
-**Visual direction:** Talking-to-camera or text carousel with “goal first / add-on second” structure and elevated studio b-roll.  
+**Visual direction:** Talking-to-camera or text carousel with examples like calming, breakout support, or event polish layered over elevated studio b-roll.  
 **Approval notes:** Great brand-fit post because it reinforces curation over upselling. Strong for trust and conversion quality.
 
 ---
@@ -158,16 +159,16 @@ Each package includes:
 **Title:** What to book when your skin needs support but your schedule is full  
 **Category:** Hydrafacial  
 **Daypart:** Midday  
-**Hook:** Busy clients usually do best with treatments that feel both effective and realistic.  
-**Caption:** Hydrafacial fits full schedules well because the value is easy to understand and the treatment still feels elevated. For the client who wants to look more refreshed but does not want an overly complicated decision tree, this is one of the cleanest booking choices on the menu. It is luxury that still respects real life.  
+**Hook:** If you have exactly one window to take care of yourself this week, book the facial that does not require a lot of explaining.  
+**Caption:** Busy clients tend to love Hydrafacial because it feels efficient without feeling basic. You can come in on a lunch break, before pickup, or in between meetings and still leave looking noticeably fresher. When your skin needs attention but your brain does not have room for a complicated treatment decision, this is usually the cleanest yes on the menu.  
 **On-screen text:**
-1. Full schedule?
-2. Keep the booking choice simple
-3. polished result
-4. realistic treatment rhythm
-5. Hydrafacial fits busy lives well
+1. No time to overthink it?
+2. book the facial that makes sense fast
+3. fits real schedules
+4. skin looks fresher when you leave
+5. easy yes for a busy week
 **CTA:** Book your appointment through the link in bio if your calendar is filling up fast.  
-**Visual direction:** Lifestyle-led reel with laptop, coffee, car, calendar, then a clean transition into treatment room calm.  
+**Visual direction:** Lifestyle-led reel with calendar alerts, car console, coffee, then a transition into one calm treatment-room sequence and the final polished finish.  
 **Approval notes:** Excellent for professionals and moms. Strong NCS fit because it blends luxury with practicality.
 
 ---
