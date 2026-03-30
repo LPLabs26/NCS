@@ -3,94 +3,35 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NCS Approval Wall</title>
-  <link rel="stylesheet" href="styles.css?v=4" />
+  <title>NCS Post Approval</title>
+  <link rel="stylesheet" href="styles.css?v=5" />
 </head>
 <body>
   <main class="shell">
-    <header class="hero">
+    <header class="topbar">
       <div>
         <p class="eyebrow">NCS Aesthetics</p>
-        <h1>Ready posts first.</h1>
-        <p class="subcopy">This page is for one thing: see the post, leave a note, and approve it. No hunting around.</p>
+        <h1>Post Approval</h1>
+        <p class="subcopy">See the posts. Leave a note. Approve or send back. Nothing else.</p>
       </div>
-      <div class="hero-actions">
-        <button id="showReadyBtn" class="primary">Show ready posts</button>
-        <button id="showReviewBtn" class="ghost">Show needs review</button>
-        <button id="resetBtn" class="ghost">Reset demo data</button>
+      <div class="top-actions">
+        <button id="filterAll" class="chip active">All</button>
+        <button id="filterReview" class="chip">Needs review</button>
+        <button id="filterReady" class="chip">Approved</button>
+        <button id="resetData" class="ghost">Reset</button>
       </div>
     </header>
 
-    <section class="stats">
-      <article class="stat-card">
-        <span>Ready now</span>
-        <strong id="readyCount">0</strong>
-      </article>
-      <article class="stat-card">
-        <span>Needs review</span>
-        <strong id="reviewCount">0</strong>
-      </article>
-      <article class="stat-card">
-        <span>Approved</span>
-        <strong id="approvedCount">0</strong>
-      </article>
-      <article class="stat-card">
-        <span>Needs work</span>
-        <strong id="needsWorkCount">0</strong>
-      </article>
+    <section class="summary">
+      <div class="metric"><span>Needs review</span><strong id="countReview">0</strong></div>
+      <div class="metric"><span>Approved</span><strong id="countApproved">0</strong></div>
+      <div class="metric"><span>Needs work</span><strong id="countNeedsWork">0</strong></div>
+      <div class="metric"><span>Disapproved</span><strong id="countDisapproved">0</strong></div>
     </section>
 
-    <section class="section-block" id="readySection">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow">What can go out next</p>
-          <h2>Ready posts</h2>
-        </div>
-      </div>
-      <div id="readyWall" class="approval-wall"></div>
-    </section>
-
-    <section class="section-block" id="reviewSection">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow">Needs your eyes</p>
-          <h2>Needs review</h2>
-        </div>
-      </div>
-      <div id="reviewWall" class="approval-wall"></div>
-    </section>
-
-    <section class="section-block compact-grid">
-      <article>
-        <div class="section-head small">
-          <div>
-            <p class="eyebrow">Already approved</p>
-            <h3>Approved queue</h3>
-          </div>
-        </div>
-        <div id="approvedList" class="mini-list"></div>
-      </article>
-      <article>
-        <div class="section-head small">
-          <div>
-            <p class="eyebrow">Send back</p>
-            <h3>Needs more work</h3>
-          </div>
-        </div>
-        <div id="needsWorkList" class="mini-list"></div>
-      </article>
-      <article>
-        <div class="section-head small">
-          <div>
-            <p class="eyebrow">Rejected</p>
-            <h3>Disapproved</h3>
-          </div>
-        </div>
-        <div id="disapprovedList" class="mini-list"></div>
-      </article>
-    </section>
+    <section id="postGrid" class="post-grid"></section>
   </main>
 
-  <script src="app.js?v=4"></script>
+  <script src="app.js?v=5"></script>
 </body>
 </html>

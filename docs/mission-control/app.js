@@ -1,91 +1,19 @@
-const STORAGE_KEY = 'ncs-approval-wall-v4';
+const DATA_URL = './data/approval-posts.json';
+const STORAGE_KEY = 'ncs-approval-wall-v5';
 const BOOKING_URL = 'https://ncsaesthetics.glossgenius.com/';
 
-const seedPosts = [
-  {
-    id: 'p1',
-    title: 'Morning glow reset',
-    daypart: 'Morning',
-    category: 'Daily Tips',
-    status: 'ready',
-    hook: 'Fresh skin starts here.',
-    body: 'If your skin has been looking dull, flat, or tired, a glow-focused reset can make all the difference.',
-    caption: 'If your skin has been looking dull, flat, or tired, a glow-focused reset can make all the difference. A beautiful treatment should leave your skin looking refreshed, polished, and more like yourself again. Book your glow reset at NCS Aesthetics.',
-    cta: 'Book your glow reset',
-    visual: 'Soft cream background · polished fresh-skin closeup · clean luxury tone',
-    comments: ''
-  },
-  {
-    id: 'p2',
-    title: 'Midday Hydrafacial authority',
-    daypart: 'Midday',
-    category: 'Hydrafacial',
-    status: 'ready',
-    hook: 'Why Hydrafacial stays a favorite.',
-    body: 'Brightness, hydration, and a cleaner finish — explained beautifully.',
-    caption: 'There is a reason Hydrafacial stays one of our most requested treatments. It is one of our favorite ways to support brightness, hydration, and a cleaner finish in a way clients can actually feel. Reserve your Hydrafacial this week.',
-    cta: 'Reserve this week',
-    visual: 'Soft gold details · treatment-led visual · elevated educational feel',
-    comments: ''
-  },
-  {
-    id: 'p3',
-    title: 'Evening Circadia hero',
-    daypart: 'Evening',
-    category: 'Circadia',
-    status: 'review',
-    hook: 'Protect by day. Repair by night.',
-    body: 'Your skin does some of its most important recovery work at night.',
-    caption: 'Your skin does some of its most important recovery work at night. That is why evening care should feel supportive, calming, and consistent — not chaotic. Ask us about homecare that works with your skin.',
-    cta: 'Ask about homecare',
-    visual: 'Evening ritual visual · calm premium skincare tone · moonlit softness',
-    comments: ''
-  },
-  {
-    id: 'p4',
-    title: 'Bridal prep prompt',
-    daypart: 'Morning',
-    category: 'Daily Tips',
-    status: 'review',
-    hook: 'Do not leave glow to the last week.',
-    body: 'The best bridal glow usually comes from a thoughtful timeline, not a rushed treatment.',
-    caption: 'The best bridal glow usually comes from a thoughtful timeline, not a rushed treatment the week of. If your wedding or event is coming up, let’s map out your prep beautifully. DM us “bridal glow.”',
-    cta: 'DM bridal glow',
-    visual: 'Bridal whites · elegant prep timeline · soft luxury confidence',
-    comments: ''
-  },
-  {
-    id: 'p5',
-    title: 'Custom facial first step',
-    daypart: 'Midday',
-    category: 'Hydrafacial',
-    status: 'ready',
-    hook: 'Not sure what to book?',
-    body: 'That is exactly why custom facials exist.',
-    caption: 'Not sure what to book? That is exactly why custom facials exist. Start with the treatment that meets your skin where it is right now. Book a skin consult at NCS Aesthetics.',
-    cta: 'Book a skin consult',
-    visual: 'Question-led layout · calm neutral palette · warm esthetician guidance',
-    comments: ''
-  }
-];
+let allPosts = [];
+let filter = 'all';
 
-function loadState() {
-  try {
-    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
-    return Array.isArray(saved) ? saved : structuredClone(seedPosts);
-  } catch {
-    return structuredClone(seedPosts);
-  }
-}
-
-let posts = loadState();
-
-function saveState() {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(posts));
-}
+const stateLabels = {
+  review: 'Needs review',
+  approved: 'Approved',
+  needs_work: 'Needs more work',
+  disapproved: 'Disapproved'
+};
 
 function escapeHtml(value = '') {
-  return value
+  return String(value)
     .replaceAll('&', '&amp;')
     .replaceAll('<', '&lt;')
     .replaceAll('>', '&gt;')
@@ -93,105 +21,135 @@ function escapeHtml(value = '') {
     .replaceAll("'", '&#39;');
 }
 
-function renderStats() {
-  const count = (status) => posts.filter((post) => post.status === status).length;
-  document.getElementById('readyCount').textContent = count('ready');
-  document.getElementById('reviewCount').textContent = count('review');
-  document.getElementById('approvedCount').textContent = count('approved');
-  document.getElementById('needsWorkCount').textContent = count('needs_work');
+async function loadPosts() {
+  const res = await fetch(DATA_URL, { cache: 'no-store' });
+  const base = await res.json();
+  const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+  allPosts = base.map((post, index) => ({
+    ...post,
+    id: post.id || `post-${index + 1}`,
+    status: saved[post.id]?.status || post.status || 'review',
+    comments: saved[post.id]?.comments || post.comments || ''
+  }));
+  render();
 }
 
-function renderWall(targetId, status) {
-  const list = posts.filter((post) => post.status === status);
-  document.getElementById(targetId).innerHTML = list.length
-    ? list.map(postCard).join('')
-    : '<div class="empty">Nothing here right now.</div>';
+function persist() {
+  const payload = Object.fromEntries(allPosts.map(post => [post.id, { status: post.status, comments: post.comments }]));
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
 }
 
-function renderMiniList(targetId, status, emptyText) {
-  const list = posts.filter((post) => post.status === status);
-  document.getElementById(targetId).innerHTML = list.length
-    ? list.map((post) => `<article class="mini-card"><strong>${escapeHtml(post.title)}</strong><span>${escapeHtml(post.daypart)} · ${escapeHtml(post.category)}</span></article>`).join('')
-    : `<div class="empty">${emptyText}</div>`;
+function counts(status) {
+  return allPosts.filter(post => post.status === status).length;
 }
 
-function postCard(post) {
+function currentPosts() {
+  if (filter === 'all') return allPosts;
+  if (filter === 'approved') return allPosts.filter(post => post.status === 'approved');
+  return allPosts.filter(post => post.status === 'review');
+}
+
+function renderSummary() {
+  document.getElementById('countReview').textContent = counts('review');
+  document.getElementById('countApproved').textContent = counts('approved');
+  document.getElementById('countNeedsWork').textContent = counts('needs_work');
+  document.getElementById('countDisapproved').textContent = counts('disapproved');
+}
+
+function inferGradient(post) {
+  const combo = `${post.daypart} ${post.category}`.toLowerCase();
+  if (combo.includes('evening') || combo.includes('circadia')) return 'linear-gradient(180deg,#efe7f3 0%,#d8c4da 100%)';
+  if (combo.includes('midday') || combo.includes('hydrafacial')) return 'linear-gradient(180deg,#fff7f1 0%,#ecd7cc 100%)';
+  return 'linear-gradient(180deg,#f8efe7 0%,#e4cec3 100%)';
+}
+
+function card(post) {
   return `
     <article class="post-card">
-      <div class="post-preview">
-        <div class="post-topline">
+      <div class="preview">
+        <div class="pill-row">
           <span class="pill">${escapeHtml(post.daypart)}</span>
-          <span class="pill muted">${escapeHtml(post.category)}</span>
+          <span class="pill">${escapeHtml(post.category)}</span>
+          <span class="pill">${escapeHtml(stateLabels[post.status])}</span>
         </div>
-        <div class="post-frame">
-          <div class="post-cover">${escapeHtml(post.title)}</div>
-          <div class="post-hook">${escapeHtml(post.hook)}</div>
-          <div class="post-body">${escapeHtml(post.body)}</div>
-          <div class="post-visual">${escapeHtml(post.visual)}</div>
-          <a class="book-link" href="${BOOKING_URL}" target="_blank" rel="noopener">Book now</a>
+        <div class="frame" style="background:${inferGradient(post)}">
+          <div class="cover">${escapeHtml(post.title)}</div>
+          <div class="hook">${escapeHtml(post.hook)}</div>
+          <div class="body-copy">${escapeHtml(post.onScreen || post.body || '')}</div>
+          <div class="visual">${escapeHtml(post.visual || 'Premium skincare visual direction')}</div>
+          <a class="book-btn" href="${BOOKING_URL}" target="_blank" rel="noopener">Book now</a>
         </div>
       </div>
-      <div class="post-review">
-        <h3>${escapeHtml(post.title)}</h3>
-        <p class="caption-label">Caption preview</p>
-        <p class="caption-text">${escapeHtml(post.caption)}</p>
-        <label class="comment-box">
+      <div class="review">
+        <div class="title">${escapeHtml(post.title)}</div>
+        <div class="meta">${escapeHtml(post.daypart)} · ${escapeHtml(post.category)}</div>
+        <div>
+          <div class="label">Caption</div>
+          <div class="caption">${escapeHtml(post.caption)}</div>
+        </div>
+        <label class="comment-wrap">
           <span>Comments</span>
-          <textarea data-id="${post.id}" placeholder="Add notes here...">${escapeHtml(post.comments || '')}</textarea>
+          <textarea data-id="${post.id}" placeholder="Add notes here...">${escapeHtml(post.comments)}</textarea>
         </label>
-        <div class="action-row">
-          <button class="approve-btn" data-id="${post.id}" data-action="approved">Approve</button>
-          <button class="ghost" data-id="${post.id}" data-action="needs_work">Needs more work</button>
-          <button class="ghost danger" data-id="${post.id}" data-action="disapproved">Disapprove</button>
+        <div class="actions">
+          <button class="action-btn primary" data-action="approved" data-id="${post.id}">Approve</button>
+          <button class="action-btn warn" data-action="needs_work" data-id="${post.id}">Needs more work</button>
+          <button class="action-btn danger" data-action="disapproved" data-id="${post.id}">Disapprove</button>
         </div>
       </div>
     </article>
   `;
 }
 
-function bindEvents() {
+function renderGrid() {
+  const posts = currentPosts();
+  document.getElementById('postGrid').innerHTML = posts.length ? posts.map(card).join('') : '<div class="empty">No posts in this view right now.</div>';
+
   document.querySelectorAll('textarea[data-id]').forEach((textarea) => {
     textarea.addEventListener('input', (event) => {
-      const post = posts.find((item) => item.id === event.target.dataset.id);
+      const post = allPosts.find(item => item.id === event.target.dataset.id);
       if (!post) return;
       post.comments = event.target.value;
-      saveState();
+      persist();
     });
   });
 
   document.querySelectorAll('button[data-action]').forEach((button) => {
     button.addEventListener('click', (event) => {
-      const post = posts.find((item) => item.id === event.target.dataset.id);
+      const post = allPosts.find(item => item.id === event.target.dataset.id);
       if (!post) return;
       post.status = event.target.dataset.action;
-      saveState();
+      persist();
       render();
     });
   });
+}
 
-  document.getElementById('showReadyBtn').addEventListener('click', () => {
-    document.getElementById('readySection').scrollIntoView({ behavior: 'smooth', block: 'start' });
-  });
-
-  document.getElementById('showReviewBtn').addEventListener('click', () => {
-    document.getElementById('reviewSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
-  });
-
-  document.getElementById('resetBtn').addEventListener('click', () => {
-    posts = structuredClone(seedPosts);
-    saveState();
-    render();
+function renderFilters() {
+  const mapping = {
+    filterAll: 'all',
+    filterReview: 'review',
+    filterReady: 'approved'
+  };
+  Object.entries(mapping).forEach(([id, value]) => {
+    const el = document.getElementById(id);
+    el.classList.toggle('active', filter === value);
+    el.onclick = () => {
+      filter = value;
+      render();
+    };
   });
 }
 
 function render() {
-  renderStats();
-  renderWall('readyWall', 'ready');
-  renderWall('reviewWall', 'review');
-  renderMiniList('approvedList', 'approved', 'Nothing approved yet.');
-  renderMiniList('needsWorkList', 'needs_work', 'Nothing sent back yet.');
-  renderMiniList('disapprovedList', 'disapproved', 'Nothing disapproved yet.');
-  bindEvents();
+  renderSummary();
+  renderFilters();
+  renderGrid();
 }
 
-render();
+document.getElementById('resetData').addEventListener('click', () => {
+  localStorage.removeItem(STORAGE_KEY);
+  loadPosts();
+});
+
+loadPosts();
