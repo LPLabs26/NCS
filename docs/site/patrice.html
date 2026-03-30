@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Patrice Posting Desk · NCS Aesthetics</title>
+  <style>
+    :root {
+      --bg: #f7f1ec;
+      --card: #fffaf6;
+      --ink: #2f231d;
+      --muted: #73645d;
+      --line: #e9d9cf;
+      --accent: #8f5f4a;
+      --accent-dark: #6f4736;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, Arial, sans-serif;
+      background: linear-gradient(180deg, #fcf8f5 0%, var(--bg) 100%);
+      color: var(--ink);
+      line-height: 1.5;
+    }
+    .wrap { max-width: 980px; margin: 0 auto; padding: 32px 20px 64px; }
+    .hero, .card { background: var(--card); border: 1px solid var(--line); border-radius: 24px; box-shadow: 0 12px 40px rgba(103,70,53,.08); }
+    .hero { padding: 28px; margin-bottom: 20px; }
+    h1,h2,h3,p { margin-top: 0; }
+    .sub { color: var(--muted); max-width: 720px; }
+    .grid { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+    .card { padding: 22px; }
+    .eyebrow { font-size: 12px; text-transform: uppercase; letter-spacing: .12em; color: var(--accent); font-weight: 700; }
+    .time { font-size: 28px; font-weight: 800; margin: 4px 0 10px; }
+    .post-id { display: inline-block; padding: 6px 10px; border-radius: 999px; background: #f3e3d9; color: var(--accent-dark); font-weight: 700; font-size: 13px; margin-bottom: 10px; }
+    ul { margin: 0; padding-left: 18px; }
+    li { margin: 6px 0; }
+    .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+    a.btn {
+      text-decoration: none; color: white; background: var(--accent); padding: 12px 16px; border-radius: 999px; font-weight: 700;
+    }
+    a.btn.secondary { background: #ead9ce; color: var(--ink); }
+    .note { color: var(--muted); font-size: 14px; }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="hero">
+      <p class="eyebrow">NCS Aesthetics</p>
+      <h1>Patrice Posting Desk</h1>
+      <p class="sub">One simple place for Patrice to post NCS Instagram content. The account is <strong>ncs.aesthetics</strong>. Use the approval wall, open the post viewer, copy the final caption, then post manually to Instagram.</p>
+      <div class="actions">
+        <a class="btn" href="../mission-control/">Open Approval Wall</a>
+        <a class="btn secondary" href="../ops/patrice-instagram-posting-handoff.md">Open Handoff Notes</a>
+      </div>
+    </section>
+
+    <div class="grid">
+      <section class="card">
+        <p class="eyebrow">Morning</p>
+        <div class="time">8:30 AM</div>
+        <div class="post-id">DT22</div>
+        <h3>Daily Tip</h3>
+        <ul>
+          <li>Open the approved morning post</li>
+          <li>Check title + short description + caption</li>
+          <li>Post to Instagram account <strong>ncs.aesthetics</strong></li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <p class="eyebrow">Midday</p>
+        <div class="time">12:30 PM</div>
+        <div class="post-id">HF21</div>
+        <h3>Hydrafacial</h3>
+        <ul>
+          <li>Use this as the first midday test post</li>
+          <li>Open the viewer and confirm the caption reads clean</li>
+          <li>Upload the matching asset and publish manually</li>
+        </ul>
+        <div class="actions">
+          <a class="btn" href="../mission-control/post.html?id=post-3">Open Midday Test Post</a>
+        </div>
+      </section>
+
+      <section class="card">
+        <p class="eyebrow">Evening</p>
+        <div class="time">7:30 PM</div>
+        <div class="post-id">CD21</div>
+        <h3>Circadia</h3>
+        <ul>
+          <li>Use the approved evening hero post</li>
+          <li>Keep tone premium, calm, and clear</li>
+          <li>Only post if the viewer looks clean</li>
+        </ul>
+      </section>
+    </div>
+
+    <section class="card" style="margin-top:20px;">
+      <p class="eyebrow">Midday test checklist</p>
+      <h2>Can Patrice post one midday post?</h2>
+      <ul>
+        <li>Instagram login: <strong>ncs.aesthetics</strong></li>
+        <li>Chosen first test: <strong>HF21 / post-3</strong></li>
+        <li>Posting method: <strong>manual posting is the primary path</strong></li>
+        <li>Browser automation: possible, but not reliable enough to trust for production yet</li>
+      </ul>
+      <p class="note">If you want a true live test, the remaining requirement is access to the Instagram account and any 2FA needed at posting time.</p>
+    </section>
+  </main>
+</body>
+</html>
