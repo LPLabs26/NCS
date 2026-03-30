@@ -54,6 +54,12 @@ Use this file to track what is publishable now, what should go next, and which a
   - Status: Ready to Post
   - Priority: Highest
 
+## New draft-ready content bank
+- `docs/content/content-bank-batch-02/README.md`
+- `docs/content/content-bank-batch-02/post-packages.md`
+- `docs/content/content-bank-batch-02/approval-board.md`
+- Status: Draft Ready / Approval Batch
+
 ## Existing export set still available
 - `exports/instagram-first-batch/01-morning-glow-reset.html`
 - `exports/instagram-first-batch/02-midday-hydrafacial.html`

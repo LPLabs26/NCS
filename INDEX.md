@@ -20,6 +20,9 @@
 - `docs/content/daily-tips-batch-pack.md`
 - `docs/content/hydrafacial-midday-batch-pack.md`
 - `docs/content/circadia-evening-hero-pack.md`
+- `docs/content/content-bank-batch-02/README.md`
+- `docs/content/content-bank-batch-02/post-packages.md`
+- `docs/content/content-bank-batch-02/approval-board.md`
 - `docs/content/reel-script-bank.md`
 - `docs/content/service-sales-script-pack.md`
 - `docs/content/story-ideas.md`
