@@ -83,9 +83,9 @@ function renderPost(post) {
   setText('storyDaypart', post.daypart);
   setText('storyCategory', post.category);
   setText('storyEyebrow', post.category);
-  setText('storyHeadline', post.hook || post.title);
-  setText('storyBody', post.body || post.caption);
-  setText('storyOnScreen', post.onScreen || post.hook || post.title);
+  setText('storyHeadline', post.title || post.hook || 'NCS Aesthetics');
+  setText('storyBody', post.body || post.caption || '');
+  setText('storyOnScreen', post.onScreen || post.body || post.caption || '');
   setText('storyVisual', post.visual || 'Premium NCS visual direction');
   setText('storyCtaText', post.cta || 'Book now');
   setText('panelTitle', post.title);

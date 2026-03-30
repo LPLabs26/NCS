@@ -80,8 +80,8 @@ function card(post) {
         <div class="frame" style="background:${inferGradient(post)}">
           <div class="open-indicator">Open viewer ↗</div>
           <div class="cover">${escapeHtml(post.title)}</div>
-          <div class="hook">${escapeHtml(post.hook)}</div>
-          <div class="body-copy">${escapeHtml(post.onScreen || post.body || '')}</div>
+          <div class="hook">${escapeHtml(post.hook || '')}</div>
+          <div class="body-copy">${escapeHtml(post.body || post.caption || '')}</div>
           <div class="visual">${escapeHtml(post.visual || 'Premium skincare visual direction')}</div>
           <span class="book-btn faux-btn">${escapeHtml(post.cta || 'Book now')}</span>
         </div>
