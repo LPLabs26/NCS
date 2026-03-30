@@ -8,9 +8,14 @@ let filter = 'all';
 const stateLabels = {
   review: 'Needs review',
   approved: 'Approved',
+  ready: 'Approved',
   needs_work: 'Needs more work',
   disapproved: 'Disapproved'
 };
+
+function postHref(post) {
+  return `./post.html?id=${encodeURIComponent(post.id)}`;
+}
 
 function escapeHtml(value = '') {
   return String(value)
@@ -45,7 +50,7 @@ function counts(status) {
 
 function currentPosts() {
   if (filter === 'all') return allPosts;
-  if (filter === 'approved') return allPosts.filter(post => post.status === 'approved');
+  if (filter === 'approved') return allPosts.filter(post => post.status === 'approved' || post.status === 'ready');
   return allPosts.filter(post => post.status === 'review');
 }
 
@@ -66,23 +71,29 @@ function inferGradient(post) {
 function card(post) {
   return `
     <article class="post-card">
-      <div class="preview">
+      <a class="preview preview-link" href="${postHref(post)}" aria-label="Open ${escapeHtml(post.title)} post viewer">
         <div class="pill-row">
           <span class="pill">${escapeHtml(post.daypart)}</span>
           <span class="pill">${escapeHtml(post.category)}</span>
-          <span class="pill">${escapeHtml(stateLabels[post.status])}</span>
+          <span class="pill">${escapeHtml(stateLabels[post.status] || stateLabels.review)}</span>
         </div>
         <div class="frame" style="background:${inferGradient(post)}">
+          <div class="open-indicator">Open viewer ↗</div>
           <div class="cover">${escapeHtml(post.title)}</div>
           <div class="hook">${escapeHtml(post.hook)}</div>
           <div class="body-copy">${escapeHtml(post.onScreen || post.body || '')}</div>
           <div class="visual">${escapeHtml(post.visual || 'Premium skincare visual direction')}</div>
-          <a class="book-btn" href="${BOOKING_URL}" target="_blank" rel="noopener">Book now</a>
+          <span class="book-btn faux-btn">${escapeHtml(post.cta || 'Book now')}</span>
         </div>
-      </div>
+      </a>
       <div class="review">
-        <div class="title">${escapeHtml(post.title)}</div>
-        <div class="meta">${escapeHtml(post.daypart)} · ${escapeHtml(post.category)}</div>
+        <div class="title-row">
+          <div>
+            <div class="title">${escapeHtml(post.title)}</div>
+            <div class="meta">${escapeHtml(post.daypart)} · ${escapeHtml(post.category)}</div>
+          </div>
+          <a class="view-link" href="${postHref(post)}">Open post ↗</a>
+        </div>
         <div>
           <div class="label">Caption</div>
           <div class="caption">${escapeHtml(post.caption)}</div>

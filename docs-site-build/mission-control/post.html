@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NCS Post Viewer</title>
+  <link rel="stylesheet" href="post.css?v=1" />
+</head>
+<body>
+  <main id="viewerRoot" class="viewer-shell loading">
+    <div class="viewer-backdrop"></div>
+    <section class="viewer-layout">
+      <div class="viewer-phone-wrap">
+        <div class="phone-glow"></div>
+        <article class="viewer-phone" aria-live="polite">
+          <div class="viewer-progress" aria-hidden="true">
+            <span class="segment active"></span>
+            <span class="segment active"></span>
+            <span class="segment active"></span>
+          </div>
+
+          <header class="viewer-topbar">
+            <a class="icon-btn soft" href="index.html" aria-label="Back to approval wall">←</a>
+            <div class="profile-lockup">
+              <div class="avatar-ring"><span>NCS</span></div>
+              <div>
+                <p class="profile-name">NCS Aesthetics</p>
+                <p id="profileMeta" class="profile-meta">Loading post…</p>
+              </div>
+            </div>
+            <button class="icon-btn ghost" type="button" aria-label="Viewer options">⋯</button>
+          </header>
+
+          <section id="storyCard" class="story-card">
+            <div class="story-overlay"></div>
+            <div class="story-shine"></div>
+
+            <div class="story-meta-row">
+              <span id="storyDaypart" class="story-pill"></span>
+              <span id="storyCategory" class="story-pill story-pill-alt"></span>
+            </div>
+
+            <div class="story-content">
+              <div class="story-copy-stack">
+                <p id="storyEyebrow" class="story-eyebrow"></p>
+                <h1 id="storyHeadline" class="story-headline"></h1>
+                <p id="storyBody" class="story-body"></p>
+              </div>
+
+              <div class="story-lower">
+                <div class="story-stat-grid">
+                  <div class="story-stat">
+                    <span class="story-stat-label">On-screen</span>
+                    <strong id="storyOnScreen"></strong>
+                  </div>
+                  <div class="story-stat">
+                    <span class="story-stat-label">Visual direction</span>
+                    <strong id="storyVisual"></strong>
+                  </div>
+                </div>
+
+                <div class="story-cta-row">
+                  <div>
+                    <p class="story-cta-label">Primary CTA</p>
+                    <p id="storyCtaText" class="story-cta-text"></p>
+                  </div>
+                  <a id="storyBookLink" class="book-btn" href="https://ncsaesthetics.glossgenius.com/" target="_blank" rel="noopener">Book now</a>
+                </div>
+              </div>
+            </div>
+          </section>
+        </article>
+      </div>
+
+      <aside class="viewer-panel">
+        <div class="panel-stack">
+          <p class="panel-eyebrow">Approval viewer</p>
+          <h2 id="panelTitle" class="panel-title">Loading…</h2>
+          <p id="panelSubtitle" class="panel-subtitle">Please wait while the post loads.</p>
+        </div>
+
+        <div class="panel-card">
+          <div class="panel-section-head">
+            <span class="panel-label">Caption</span>
+            <span id="panelStatus" class="status-pill"></span>
+          </div>
+          <p id="panelCaption" class="panel-copy"></p>
+        </div>
+
+        <div class="panel-grid">
+          <div class="panel-card compact">
+            <span class="panel-label">Hook</span>
+            <p id="panelHook" class="panel-copy"></p>
+          </div>
+          <div class="panel-card compact">
+            <span class="panel-label">Body</span>
+            <p id="panelBody" class="panel-copy"></p>
+          </div>
+        </div>
+
+        <div class="panel-card">
+          <span class="panel-label">Quick actions</span>
+          <div class="panel-actions">
+            <a class="panel-btn primary" href="index.html">Back to approval wall</a>
+            <a id="panelBookBtn" class="panel-btn secondary" href="https://ncsaesthetics.glossgenius.com/" target="_blank" rel="noopener">Open booking</a>
+          </div>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <script src="post.js?v=1"></script>
+</body>
+</html>
