@@ -23,6 +23,9 @@
 - `docs/content/content-bank-batch-02/README.md`
 - `docs/content/content-bank-batch-02/post-packages.md`
 - `docs/content/content-bank-batch-02/approval-board.md`
+- `docs/content/content-bank-batch-03-morning/README.md`
+- `docs/content/content-bank-batch-03-morning/post-packages.md`
+- `docs/content/content-bank-batch-03-morning/approval-board.md`
 - `docs/content/reel-script-bank.md`
 - `docs/content/service-sales-script-pack.md`
 - `docs/content/story-ideas.md`
