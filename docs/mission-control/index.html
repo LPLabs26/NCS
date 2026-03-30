@@ -1,161 +1,96 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NCS Mission Control</title>
-  <link rel="stylesheet" href="styles.css?v=3" />
+  <title>NCS Approval Wall</title>
+  <link rel="stylesheet" href="styles.css?v=4" />
 </head>
 <body>
-  <main class="app-shell">
-    <header class="hero card">
-      <div class="hero-copy">
-        <p class="eyebrow">NCS Aesthetics · Mission Control</p>
-        <h1>Simple daily content control for Natalie.</h1>
-        <p class="lede">One calm dashboard for the 3 approved lanes: Morning Daily Tips, Midday Hydrafacial, and Evening Circadia. Approvals are first, ready posts are next, and the legacy clutter stays out of the way.</p>
+  <main class="shell">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">NCS Aesthetics</p>
+        <h1>Ready posts first.</h1>
+        <p class="subcopy">This page is for one thing: see the post, leave a note, and approve it. No hunting around.</p>
       </div>
       <div class="hero-actions">
-        <button id="openApprovalsBtn">Open approvals</button>
-        <button id="openPreviewBtn" class="ghost">See ready posts</button>
-        <button id="seedBtn" class="ghost">Load demo week</button>
-        <button id="resetBtn" class="ghost danger">Reset local data</button>
+        <button id="showReadyBtn" class="primary">Show ready posts</button>
+        <button id="showReviewBtn" class="ghost">Show needs review</button>
+        <button id="resetBtn" class="ghost">Reset demo data</button>
       </div>
     </header>
 
-    <section class="today-grid">
-      <article class="card owner-card">
-        <div class="section-heading compact">
-          <div>
-            <p class="eyebrow">Do this next</p>
-            <h2 id="nextActionTitle">Everything is on track</h2>
-          </div>
-        </div>
-        <p id="nextActionCopy" class="section-copy">Ready posts are waiting for review and scheduling.</p>
-        <div id="priorityAction" class="priority-action"></div>
+    <section class="stats">
+      <article class="stat-card">
+        <span>Ready now</span>
+        <strong id="readyCount">0</strong>
       </article>
-
-      <article class="card quick-guide-card">
-        <div class="section-heading compact">
-          <div>
-            <p class="eyebrow">Daily rhythm</p>
-            <h2>Morning → Midday → Evening</h2>
-          </div>
-        </div>
-        <ol class="quick-steps">
-          <li><strong>Morning:</strong> Daily Tips for a light value touch.</li>
-          <li><strong>Midday:</strong> Hydrafacial for demand and booking support.</li>
-          <li><strong>Evening:</strong> Circadia as the hero educational post.</li>
-        </ol>
+      <article class="stat-card">
+        <span>Needs review</span>
+        <strong id="reviewCount">0</strong>
+      </article>
+      <article class="stat-card">
+        <span>Approved</span>
+        <strong id="approvedCount">0</strong>
+      </article>
+      <article class="stat-card">
+        <span>Needs work</span>
+        <strong id="needsWorkCount">0</strong>
       </article>
     </section>
 
-    <section class="metrics-grid">
-      <article class="metric card accent-gold"><span>Needs Natalie now</span><strong id="metric-approval">0</strong><small>Items waiting for approve, tweak, or no</small></article>
-      <article class="metric card accent-rose"><span>Ready to post</span><strong id="metric-ready">0</strong><small>Finished posts that can go live next</small></article>
-      <article class="metric card accent-sage"><span>Still being built</span><strong id="metric-active">0</strong><small>Ideas and drafts still moving</small></article>
-      <article class="metric card accent-ink"><span>Booked from Instagram</span><strong id="metric-focus">$0</strong><small>Current revenue signal</small></article>
+    <section class="section-block" id="readySection">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">What can go out next</p>
+          <h2>Ready posts</h2>
+        </div>
+      </div>
+      <div id="readyWall" class="approval-wall"></div>
     </section>
 
-    <section class="layout-grid">
-      <section class="main-column stack-lg">
-        <article class="card" id="cadenceSection">
-          <div class="section-heading">
-            <div>
-              <p class="eyebrow">Today’s 3 lanes</p>
-              <h2>Morning, Midday, Evening</h2>
-            </div>
-            <p class="section-copy">Each lane keeps one job clear: useful tip, treatment demand, or premium homecare authority.</p>
-          </div>
-          <div id="laneSnapshotGrid" class="pipeline-grid"></div>
-        </article>
+    <section class="section-block" id="reviewSection">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Needs your eyes</p>
+          <h2>Needs review</h2>
+        </div>
+      </div>
+      <div id="reviewWall" class="approval-wall"></div>
+    </section>
 
-        <article class="card" id="approvalSection">
-          <div class="section-heading">
-            <div>
-              <p class="eyebrow">Fast approval flow</p>
-              <h2>What Natalie needs to review</h2>
-            </div>
-            <p class="section-copy">If something is here, Natalie should be able to decide it in seconds.</p>
+    <section class="section-block compact-grid">
+      <article>
+        <div class="section-head small">
+          <div>
+            <p class="eyebrow">Already approved</p>
+            <h3>Approved queue</h3>
           </div>
-          <div id="approvalChecklist" class="list approval-action-list"></div>
-        </article>
-
-        <article class="card" id="previewSection">
-          <div class="section-heading">
-            <div>
-              <p class="eyebrow">Ready-to-post view</p>
-              <h2>Posts that are ready right now</h2>
-            </div>
-            <p class="section-copy">The cleanest handoff view for scheduling and posting.</p>
+        </div>
+        <div id="approvedList" class="mini-list"></div>
+      </article>
+      <article>
+        <div class="section-head small">
+          <div>
+            <p class="eyebrow">Send back</p>
+            <h3>Needs more work</h3>
           </div>
-          <div class="preview-toolbar">
-            <span class="preview-count" id="previewCount">0 ready to preview</span>
+        </div>
+        <div id="needsWorkList" class="mini-list"></div>
+      </article>
+      <article>
+        <div class="section-head small">
+          <div>
+            <p class="eyebrow">Rejected</p>
+            <h3>Disapproved</h3>
           </div>
-          <div id="previewGallery" class="preview-grid"></div>
-        </article>
-
-        <article class="card" id="pipelineSection">
-          <div class="section-heading">
-            <div>
-              <p class="eyebrow">Simple workspace</p>
-              <h2>Content pipeline</h2>
-            </div>
-            <p class="section-copy">Still available when someone needs the full picture, but framed with the same simple language.</p>
-          </div>
-          <div class="pipeline-grid">
-            <div>
-              <div class="lane-head"><h3>New ideas</h3><span id="count-queued">0</span></div>
-              <div id="queuedList" class="list"></div>
-            </div>
-            <div>
-              <div class="lane-head"><h3>Being made</h3><span id="count-production">0</span></div>
-              <div id="productionList" class="list"></div>
-            </div>
-            <div>
-              <div class="lane-head"><h3>Waiting on Natalie</h3><span id="count-approval">0</span></div>
-              <div id="approvalList" class="list"></div>
-            </div>
-            <div>
-              <div class="lane-head"><h3>Ready to post</h3><span id="count-ready">0</span></div>
-              <div id="readyList" class="list"></div>
-            </div>
-          </div>
-        </article>
-      </section>
-
-      <aside class="sidebar stack-lg">
-        <article class="card">
-          <div class="section-heading compact">
-            <div>
-              <p class="eyebrow">This week at a glance</p>
-              <h2>Posting map</h2>
-            </div>
-          </div>
-          <div id="calendarList" class="list"></div>
-        </article>
-
-        <article class="card">
-          <div class="section-heading compact">
-            <div>
-              <p class="eyebrow">Automation cadence</p>
-              <h2>Daily operators</h2>
-            </div>
-          </div>
-          <div id="jobsList" class="list"></div>
-        </article>
-
-        <article class="card">
-          <div class="section-heading compact">
-            <div>
-              <p class="eyebrow">Performance pulse</p>
-              <h2>Instagram snapshot</h2>
-            </div>
-          </div>
-          <div id="kpiList" class="list"></div>
-        </article>
-      </aside>
+        </div>
+        <div id="disapprovedList" class="mini-list"></div>
+      </article>
     </section>
   </main>
-  <script src="app.js?v=3"></script>
+
+  <script src="app.js?v=4"></script>
 </body>
 </html>

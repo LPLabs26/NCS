@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -7,89 +7,90 @@
   <link rel="stylesheet" href="styles.css?v=4" />
 </head>
 <body>
-  <main class="app-shell">
-    <header class="hero card">
-      <div class="hero-copy">
-        <p class="eyebrow">NCS Aesthetics · Approval Wall</p>
-        <h1>Review every post like it is already live.</h1>
-        <p class="lede">Big post previews first. One comment box per post. Three simple choices: Approve, Disapprove, or Needs more work. No ops clutter required.</p>
+  <main class="shell">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">NCS Aesthetics</p>
+        <h1>Ready posts first.</h1>
+        <p class="subcopy">This page is for one thing: see the post, leave a note, and approve it. No hunting around.</p>
       </div>
       <div class="hero-actions">
-        <button id="jumpToApprovalsBtn">Review posts</button>
-        <button id="seedBtn" class="ghost">Load demo week</button>
-        <button id="resetBtn" class="ghost danger">Reset local data</button>
+        <button id="showReadyBtn" class="primary">Show ready posts</button>
+        <button id="showReviewBtn" class="ghost">Show needs review</button>
+        <button id="resetBtn" class="ghost">Reset demo data</button>
       </div>
     </header>
 
-    <section class="top-summary">
-      <article class="card summary-card focus-card">
-        <p class="eyebrow">Next best move</p>
-        <h2 id="focusTitle">Nothing waiting right now</h2>
-        <p id="focusCopy" class="section-copy">If new posts arrive, they will appear here as large previews ready for a decision.</p>
+    <section class="stats">
+      <article class="stat-card">
+        <span>Ready now</span>
+        <strong id="readyCount">0</strong>
       </article>
-      <article class="card stat-strip">
-        <div class="stat-chip">
-          <span>Waiting for review</span>
-          <strong id="metricWaiting">0</strong>
-        </div>
-        <div class="stat-chip">
-          <span>Approved</span>
-          <strong id="metricApproved">0</strong>
-        </div>
-        <div class="stat-chip">
-          <span>Needs work</span>
-          <strong id="metricNeedsWork">0</strong>
-        </div>
-        <div class="stat-chip">
-          <span>Disapproved</span>
-          <strong id="metricDisapproved">0</strong>
-        </div>
+      <article class="stat-card">
+        <span>Needs review</span>
+        <strong id="reviewCount">0</strong>
+      </article>
+      <article class="stat-card">
+        <span>Approved</span>
+        <strong id="approvedCount">0</strong>
+      </article>
+      <article class="stat-card">
+        <span>Needs work</span>
+        <strong id="needsWorkCount">0</strong>
       </article>
     </section>
 
-    <section class="card approval-wall-card" id="approvalWallSection">
-      <div class="section-heading wall-heading">
+    <section class="section-block" id="readySection">
+      <div class="section-head">
         <div>
-          <p class="eyebrow">Main view</p>
-          <h2>Approval wall</h2>
+          <p class="eyebrow">What can go out next</p>
+          <h2>Ready posts</h2>
         </div>
-        <p class="section-copy">Tap any action under the post. Comments save on this device automatically.</p>
       </div>
-      <div id="approvalWall" class="approval-wall"></div>
+      <div id="readyWall" class="approval-wall"></div>
     </section>
 
-    <section class="secondary-grid">
-      <article class="card compact-card">
-        <div class="section-heading compact">
-          <div>
-            <p class="eyebrow">Approved queue</p>
-            <h2>Ready to post</h2>
-          </div>
+    <section class="section-block" id="reviewSection">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Needs your eyes</p>
+          <h2>Needs review</h2>
         </div>
-        <div id="approvedQueue" class="simple-list"></div>
-      </article>
+      </div>
+      <div id="reviewWall" class="approval-wall"></div>
+    </section>
 
-      <article class="card compact-card">
-        <div class="section-heading compact">
+    <section class="section-block compact-grid">
+      <article>
+        <div class="section-head small">
           <div>
-            <p class="eyebrow">Still in motion</p>
-            <h2>Needs more work</h2>
+            <p class="eyebrow">Already approved</p>
+            <h3>Approved queue</h3>
           </div>
         </div>
-        <div id="needsWorkQueue" class="simple-list"></div>
+        <div id="approvedList" class="mini-list"></div>
       </article>
-
-      <article class="card compact-card">
-        <div class="section-heading compact">
+      <article>
+        <div class="section-head small">
           <div>
-            <p class="eyebrow">Not moving forward</p>
-            <h2>Disapproved</h2>
+            <p class="eyebrow">Send back</p>
+            <h3>Needs more work</h3>
           </div>
         </div>
-        <div id="disapprovedQueue" class="simple-list"></div>
+        <div id="needsWorkList" class="mini-list"></div>
+      </article>
+      <article>
+        <div class="section-head small">
+          <div>
+            <p class="eyebrow">Rejected</p>
+            <h3>Disapproved</h3>
+          </div>
+        </div>
+        <div id="disapprovedList" class="mini-list"></div>
       </article>
     </section>
   </main>
+
   <script src="app.js?v=4"></script>
 </body>
 </html>
