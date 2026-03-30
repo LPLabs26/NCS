@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NCS Post Approval</title>
+  <link rel="stylesheet" href="styles.css?v=5" />
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">NCS Aesthetics</p>
+        <h1>Post Approval</h1>
+        <p class="subcopy">See the posts. Leave a note. Approve or send back. Nothing else.</p>
+      </div>
+      <div class="top-actions">
+        <button id="filterAll" class="chip active">All</button>
+        <button id="filterReview" class="chip">Needs review</button>
+        <button id="filterReady" class="chip">Approved</button>
+        <button id="resetData" class="ghost">Reset</button>
+      </div>
+    </header>
+
+    <section class="summary">
+      <div class="metric"><span>Needs review</span><strong id="countReview">0</strong></div>
+      <div class="metric"><span>Approved</span><strong id="countApproved">0</strong></div>
+      <div class="metric"><span>Needs work</span><strong id="countNeedsWork">0</strong></div>
+      <div class="metric"><span>Disapproved</span><strong id="countDisapproved">0</strong></div>
+    </section>
+
+    <section id="postGrid" class="post-grid"></section>
+  </main>
+
+  <script src="app.js?v=5"></script>
+</body>
+</html>
