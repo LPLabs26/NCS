@@ -56,7 +56,7 @@ function currentPosts() {
 
 function renderSummary() {
   document.getElementById('countReview').textContent = counts('review');
-  document.getElementById('countApproved').textContent = counts('approved');
+  document.getElementById('countApproved').textContent = allPosts.filter(post => post.status === 'approved' || post.status === 'ready').length;
   document.getElementById('countNeedsWork').textContent = counts('needs_work');
   document.getElementById('countDisapproved').textContent = counts('disapproved');
 }

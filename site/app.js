@@ -2,48 +2,48 @@ const dashboardLinks = [
   {
     title: 'Mission Control',
     href: '../mission-control/index.html',
-    copy: 'Main dashboard for the three-lane publishing system, approvals, posting map, and KPI pulse.'
+    copy: 'Approval wall for the three-lane posting system with the Phase 1 schedule visible at the top.'
   },
   {
-    title: 'Daily cadence doc',
-    href: '../docs/content/daily-content-cadence.md',
-    copy: 'The exact Morning / Midday / Evening structure: Daily Tips, Hydrafacial, Circadia.'
+    title: 'Phase 1 operator kit',
+    href: '../docs/ops/instagram-phase-1/README.md',
+    copy: 'Canonical folder for the strategy, weekly schedule, queue, maintenance loop, and reporting.'
   },
   {
-    title: 'Dashboard blueprint',
-    href: '../docs/ops/google-sheets-dashboard-blueprint.md',
-    copy: 'How to mirror the same system inside Google Sheets and weekly reporting.'
+    title: 'Weekly schedule',
+    href: '../docs/ops/instagram-phase-1/weekly-operating-schedule.md',
+    copy: 'Seven-day rhythm for the Morning / Midday / Evening system.'
   }
 ];
 
 const workflowSteps = [
-  'Morning — publish one light-touch Daily Tips asset that delivers real value fast.',
-  'Midday — publish one light-touch Hydrafacial asset that answers hesitation and supports bookings.',
-  'Evening — publish the strongest Circadia hero post of the day with the best hook, packaging, and caption.',
-  'Before posting — Natalie approves, tweaks lightly, or rejects.',
-  'End of day — log what shipped, what worked, and what should repeat tomorrow.'
+  'Start with the queue: fill every slot for the coming week in the Phase 1 CSV.',
+  'Batch approvals instead of sending random one-off requests.',
+  'Post in the three daily windows: 8:30 AM, 12:30 PM, and 7:30 PM PT.',
+  'Treat the evening Circadia slot as the hero post and protect its quality first.',
+  'End the week with a short review and one concrete schedule adjustment.'
 ];
 
 const resourceLinks = [
   {
-    title: 'Daily content cadence',
-    href: '../docs/content/daily-content-cadence.md',
-    copy: 'Operating rules for Daily Tips, Hydrafacial, and Circadia across the day.'
+    title: 'Strategy',
+    href: '../docs/ops/instagram-phase-1/strategy.md',
+    copy: 'Cadence, timing, approvals, engagement rules, and what Phase 1 does not automate.'
   },
   {
-    title: 'Natalie dashboard spec',
-    href: '../docs/ops/natalie-dashboard-spec.md',
-    copy: 'Defines the dashboard around the exact three-lane model.'
+    title: 'Content queue',
+    href: '../docs/ops/instagram-phase-1/content-queue.csv',
+    copy: 'Live queue and status tracker for every Instagram slot.'
   },
   {
-    title: 'Dashboard blueprint',
-    href: '../docs/ops/google-sheets-dashboard-blueprint.md',
-    copy: 'Google Sheets tab structure, fields, and sample tracking rules.'
+    title: 'Performance log',
+    href: '../docs/ops/instagram-phase-1/performance-log.csv',
+    copy: 'Weekly scorecard for completion, engagement, and booking signals.'
   },
   {
-    title: 'Seeded data plan',
-    href: '../templates/google-sheets-csv/sample-seeded-data.md',
-    copy: 'Explains how the demo week should teach the system instantly.'
+    title: 'Maintenance workflow',
+    href: '../docs/ops/instagram-phase-1/maintenance-workflow.md',
+    copy: 'Simple review loop for keeping the schedule sharp instead of noisy.'
   }
 ];
 

@@ -1,45 +1,24 @@
 # Weekly Publishing Board
 
-## Goal
-Track what gets posted each day, what is ready, and what still needs filming or approval.
+The canonical weekly schedule now lives in:
 
-## Monday
-- Post: Hydrafacial Glow Reset Reel
-- Status: Ready to Film
-- Needs: filming
+- `docs/ops/instagram-phase-1/weekly-operating-schedule.md`
+- `docs/ops/instagram-phase-1/content-queue.csv`
 
-## Tuesday
-- Post: What Should I Book? Story Sequence
-- Status: Ready to Post
-- Needs: nothing
+Use this file only as a lightweight summary note if the team wants a plain-language weekly snapshot. Do not manage the live schedule in two places.
 
-## Wednesday
-- Post: Hydrafacial vs Custom Facial Carousel
-- Status: Ready to Post
-- Needs: final review
+## Queue fields
 
-## Thursday
-- Post: Peel Education Post
-- Status: Ready to Post
-- Needs: final review
+`approval_status`
 
-## Friday
-- Post: Opening Available Story
-- Status: Ready to Post
-- Needs: timing confirmation based on bookings
+- `draft_ready`
+- `needs_review`
+- `approved`
 
-## Saturday
-- Post: Luxury Self-Care Reminder Story
-- Status: Ready to Post
-- Needs: nothing
+`queue_status`
 
-## Sunday
-- Post: Monthly Maintenance Post
-- Status: Ready to Post
-- Needs: final review
-
-## Workflow labels
-- Needs Filming
-- Needs Review
-- Ready to Post
-- Posted
+- `backlog`
+- `needs_approval`
+- `mission_control_ready`
+- `ready_to_post`
+- `posted`

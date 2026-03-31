@@ -43,6 +43,12 @@
 - `docs/automation/natalie-idea-to-approval.md`
 
 ## Operations
+- `docs/ops/instagram-phase-1/README.md`
+- `docs/ops/instagram-phase-1/strategy.md`
+- `docs/ops/instagram-phase-1/weekly-operating-schedule.md`
+- `docs/ops/instagram-phase-1/content-queue.csv`
+- `docs/ops/instagram-phase-1/performance-log.csv`
+- `docs/ops/instagram-phase-1/maintenance-workflow.md`
 - `docs/ops/booking-gap-fill-sop.md`
 - `docs/ops/client-dm-and-rebooking-sop.md`
 - `docs/ops/client-journey-map.md`
@@ -83,6 +89,7 @@
 - `exports/ready-post-queue-week-01/`
 
 ## Best place to start
+- `docs/ops/instagram-phase-1/README.md`
 - `docs/ops/executive-summary.md`
 - `docs/automation/autonomous-instagram-team.md`
 - `docs/automation/approval-workflow.md`

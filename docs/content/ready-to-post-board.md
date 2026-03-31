@@ -1,5 +1,11 @@
 # Ready to Post Board
 
+Primary operator file:
+
+- `docs/ops/instagram-phase-1/content-queue.csv`
+
+Use this board as a quick companion for packaged assets, not as the canonical weekly scheduler.
+
 Use this file to track what is publishable now, what should go next, and which assets belong to the approved daily cadence.
 
 ## Approved operating cadence

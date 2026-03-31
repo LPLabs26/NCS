@@ -38,6 +38,26 @@ That model should be reflected in docs, templates, and Mission Control seeded da
 - `mission-control/` — lightweight content dashboard demo
 - `exports/` — static/exportable post assets and ready-post packages
 
+## Instagram Phase 1
+
+The operational Instagram system now lives in `docs/ops/instagram-phase-1/`.
+
+Start there for:
+
+- the approval-first posting strategy
+- the weekly operating schedule
+- the live content queue
+- the weekly performance log
+- the maintenance and review loop
+
+Useful command:
+
+```bash
+python3 scripts/instagram_phase1_report.py
+```
+
+This does not auto-post to Instagram. It checks repo queue health so the team can stay ahead of approvals and posting windows.
+
 ## Initial objective
 
 Build a lightweight but scalable executive assistant + social media operating system for Natalie Sanchez and NCS Aesthetics.
@@ -50,6 +70,7 @@ A lightweight internal web app lives in `mission-control/`.
 - Uses browser `localStorage` for temporary persistence
 - Supports an approval-first Instagram content pipeline
 - Seeds demo data that follows the Daily Tips / Hydrafacial / Circadia daypart system
+- Reflects the Phase 1 posting windows and approval-first schedule
 - Intended for phone/PC access once hosted
 - A real backend can be added later
 
@@ -58,6 +79,7 @@ A lightweight internal web app lives in `mission-control/`.
 A clearer front door lives in `site/`.
 
 - Explains the publishing model and approval workflow
+- Surfaces the Phase 1 operator kit and weekly queue system
 - Links directly into Mission Control and supporting docs
 - Summarizes the daily operating rhythm and key repo references
 
