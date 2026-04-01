@@ -1,2 +1,6 @@
 logs/
 .DS_Store
+scripts/__pycache__/
+scripts/inspect_instagram_*.py
+scripts/instagram_test_post.py
+exports/ready-post-queue-week-01/*.png
