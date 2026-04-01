@@ -3,35 +3,82 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NCS Post Approval</title>
-  <link rel="stylesheet" href="styles.css?v=6" />
+  <title>NCS Mission Control</title>
+  <link rel="stylesheet" href="styles.css?v=7" />
 </head>
 <body>
   <main class="shell">
     <header class="topbar">
       <div>
         <p class="eyebrow">NCS Aesthetics</p>
-        <h1>Post Approval</h1>
-        <p class="subcopy">See the posts. Leave a note. Approve or send back. Nothing else.</p>
+        <h1>Mission Control</h1>
+        <p class="subcopy">Approval wall for the live posting pipeline. Review what is queued, tighten what needs work, and protect the evening hero slot.</p>
       </div>
-      <div class="top-actions">
+      <div class="top-actions" aria-label="Filters">
         <button id="filterAll" class="chip active">All</button>
         <button id="filterReview" class="chip">Needs review</button>
         <button id="filterReady" class="chip">Approved</button>
+        <button id="filterNeedsWork" class="chip">Needs work</button>
+        <button id="filterDisapproved" class="chip">Disapproved</button>
         <button id="resetData" class="ghost">Reset</button>
       </div>
     </header>
 
-    <section class="summary">
-      <div class="metric"><span>Needs review</span><strong id="countReview">0</strong></div>
-      <div class="metric"><span>Approved</span><strong id="countApproved">0</strong></div>
-      <div class="metric"><span>Needs work</span><strong id="countNeedsWork">0</strong></div>
-      <div class="metric"><span>Disapproved</span><strong id="countDisapproved">0</strong></div>
+    <section class="schedule-strip" aria-label="Phase 1 posting schedule">
+      <div class="schedule-card">
+        <span>Morning lane</span>
+        <strong>8:30 AM PT</strong>
+        <small>Daily Tips</small>
+      </div>
+      <div class="schedule-card">
+        <span>Midday lane</span>
+        <strong>12:30 PM PT</strong>
+        <small>Hydrafacial</small>
+      </div>
+      <div class="schedule-card">
+        <span>Evening hero</span>
+        <strong>7:30 PM PT</strong>
+        <small>Circadia</small>
+      </div>
+      <div class="schedule-card">
+        <span>Operator rule</span>
+        <strong>Approve → Schedule → Confirm</strong>
+        <small>Manual posting in Phase 1</small>
+      </div>
     </section>
 
-    <section id="postGrid" class="post-grid"></section>
+    <section class="summary" aria-label="Dashboard summary">
+      <div class="metric metric-priority"><span>Needs review</span><strong id="countReview">0</strong><small id="reviewDetail">Waiting for operator load</small></div>
+      <div class="metric"><span>Approved</span><strong id="countApproved">0</strong><small id="approvedDetail">Ready to schedule</small></div>
+      <div class="metric"><span>Needs work</span><strong id="countNeedsWork">0</strong><small id="needsWorkDetail">Requires comments</small></div>
+      <div class="metric"><span>Disapproved</span><strong id="countDisapproved">0</strong><small id="disapprovedDetail">Pulled from queue</small></div>
+      <div class="metric"><span>Next 72h covered</span><strong id="countNext72">0</strong><small id="next72Detail">Approved scheduled assets</small></div>
+      <div class="metric"><span>Hero posts approved</span><strong id="countHeroApproved">0</strong><small id="heroDetail">Evening lane protection</small></div>
+    </section>
+
+    <section class="ops-bar" aria-label="Operator controls and pulse">
+      <div class="ops-copy card-like">
+        <p class="eyebrow">Operator pulse</p>
+        <h2>Queue health and review signal</h2>
+        <p id="queueHeadline" class="queue-headline">Loading queue status…</p>
+      </div>
+      <div class="ops-controls card-like">
+        <label class="search-wrap" for="searchInput">
+          <span>Search titles, dayparts, categories, or notes</span>
+          <input id="searchInput" type="search" placeholder="Search the approval wall" autocomplete="off" />
+        </label>
+        <div class="save-stack">
+          <div id="saveState" class="save-state">Loading saved state…</div>
+          <div id="lastAction" class="save-meta">No changes in this browser yet.</div>
+        </div>
+      </div>
+    </section>
+
+    <div id="statusNotice" class="status-notice hidden" role="status" aria-live="polite"></div>
+
+    <section id="postGrid" class="post-grid" aria-label="Approval queue"></section>
   </main>
 
-  <script src="app.js?v=6"></script>
+  <script src="app.js?v=7"></script>
 </body>
 </html>
