@@ -1,6 +1,6 @@
 # Fresno Competitor Deep Dive
 
-_Date: 2026-03-27_
+_Date: 2026-04-01_
 
 ## Goal
 Identify nearby Fresno-area skincare and esthetics competitors worth tracking for:
@@ -11,24 +11,26 @@ Identify nearby Fresno-area skincare and esthetics competitors worth tracking fo
 - corrective skin authority
 - booking strategy
 
-## Important note
-This is a first verified public-web pass using discoverable public websites, GlossGenius pages, and search snippets. Instagram visibility is still uneven, so social analysis here is directional, not final.
+## Verification note
+This pass re-checked public websites and booking surfaces for Fresno-area competitors. All four brands below were verified directly from public websites or booking pages on 2026-04-01.
 
 ---
 
 ## Competitor 1: Skin Remedy Aesthetics, LLC
 **Website:** https://skinremedybybrenda.glossgenius.com/
-**Location:** Fresno, CA
-**Why it matters:** Strongest direct Hydrafacial comparison found in public Fresno booking results.
+**Location:** 7750 N Fresno St Suite 104, Fresno, CA 93720
+**Instagram:** https://www.instagram.com/skinremedy_
+**Why it matters:** Strongest direct Hydrafacial comparison found in the public Fresno booking set.
 
 ### Positioning
-Results + relaxation hybrid with a broad service menu and clear Hydrafacial ladder.
+Results + relaxation hybrid with a broad service menu and a clear Hydrafacial ladder.
 
-### Public offer snapshot
+### Verified public offer snapshot
 - Custom Facial — **$170 / 60 min**
-- Platinum Hydrafacial — **$325 / 75 min**
-- Deluxe Hydrafacial — **$285 / 60 min**
-- Signature Hydrafacial — **$225 / 45 min**
+- Platinum HydraFacial — **$325 / 75 min**
+- Deluxe HydraFacial — **$285 / 60 min**
+- Signature HydraFacial — **$225 / 45 min**
+- Deposits shown publicly on featured services
 - Also offers acne consults, LED treatments, DMK enzyme therapy, chemical peels, dermaplane, waxing, and packages
 
 ### Strategic read
@@ -37,6 +39,7 @@ This is one of the most direct competitors to NCS because the Hydrafacial struct
 ### What they do well
 - strong Hydrafacial tiering
 - clear premium pricing on top service
+- deposits add booking seriousness
 - broad menu supports multiple client entry points
 - corrective language and acne-specific offers widen appeal
 
@@ -53,17 +56,19 @@ This is one of the most direct competitors to NCS because the Hydrafacial struct
 
 ## Competitor 2: Sanctuary Beauty Co
 **Website:** https://sanctuarybeautyco.glossgenius.com/
-**Location:** Fresno, CA
-**Why it matters:** Strong soft-luxury aesthetic competitor with a calmer, boutique-style facial positioning.
+**Location:** 3032 West Bullard Ave, Fresno, CA 93711
+**Instagram:** https://www.instagram.com/theskinandbodylounge_
+**Why it matters:** Strong soft-luxury aesthetic competitor with a calmer, boutique-style facial positioning and visible Hydrafacial menu depth.
 
 ### Positioning
 Radiance + relaxation + skin barrier / sensitive-skin care. Less corrective-medical, more boutique-glow and experience-forward.
 
-### Public offer snapshot
-- Dermaplane Facial — **$80 / 45 min**
+### Verified public offer snapshot
+- Epicutis Fresh Face Facial — **$80 / 45 min**
 - Express Epicutis Facial — **$100 / 30 min**
-- Signature Epicutis Facial — **$190 / 60 min**
-- Language emphasizes glow, hydration, calm, barrier support, and pharmaceutical-grade ingredients
+- Epicutis Signature Facial — **$190 / 60 min**
+- Public copy emphasizes pharmaceutical-grade ingredients, hydration, calm, inflammation support, and skin-barrier repair
+- Service menu includes Signature, Deluxe, and Platinum Hydrafacial variants
 
 ### Strategic read
 This competitor is a useful benchmark for soft luxury. The pricing is lower than NCS on premium services, but the vibe is polished and niche.
@@ -73,6 +78,7 @@ This competitor is a useful benchmark for soft luxury. The pricing is lower than
 - strong skin-barrier and sensitive-skin story
 - premium ingredient language
 - calm, elegant treatment framing
+- visible luxury without sounding overly clinical
 
 ### What NCS can do better
 - use a stronger transformation and results narrative
@@ -80,24 +86,25 @@ This competitor is a useful benchmark for soft luxury. The pricing is lower than
 - create clearer hero-offer hierarchy
 
 ### Threat level
-**Medium** — stronger on softness and boutique ambiance than on direct Hydrafacial competition.
+**Medium** — stronger on softness and boutique ambiance than on direct results-led competition.
 
 ---
 
 ## Competitor 3: Polish & Peels by Skin Specialists
 **Website:** https://www.polishandpeels.com/
-**Location:** North East Fresno
+**Location:** 8883 N Chestnut & Shepherd, Fresno, CA 93720
+**Instagram:** https://instagram.com/polishandpeels_skinspecialists
 **Why it matters:** Strong luxury / advanced-clinical competitor with explicit premium positioning.
 
 ### Positioning
-High-end luxury spa meets advanced skin revision clinic. Strongest prestige language found in this research pass.
+High-end luxury spa meets advanced skin revision clinic. Strongest prestige language found in this verification pass.
 
-### Public offer snapshot
-- explicit VALMONT luxury spa branding
-- clinical-grade premium skincare mentions: Valmont, Skinbetter Science, Vivant
-- advanced procedures for acne, pigmentation, and aging revision
+### Verified public offer snapshot
+- homepage leads with **VALMONT Luxury Spa & Advanced Paramedical Skin Revision Clinic**
+- explicit premium skincare mentions: **Valmont, Skinbetter Science, Vivant**
+- advanced revision tracks for acne, pigmentation, and aging
 - Hydrafacial Syndeo highlighted at **$250**
-- significant emphasis on technology, consultation, revision plans, and advanced procedures
+- significant emphasis on consultations, technology, and revision planning
 
 ### Strategic read
 This is a brand-positioning threat more than a direct same-style esthetician competitor. They play in prestige and advanced skin revision.
@@ -120,24 +127,27 @@ This is a brand-positioning threat more than a direct same-style esthetician com
 
 ## Competitor 4: Ageless By Jessica
 **Website:** https://agelessbyjessica.com/
+**Booking:** https://www.vagaro.com/aglessbyjessicaatfresno/services
 **Location:** Fresno area
-**Why it matters:** Strong corrective-skin trust and testimonial-led authority, especially around peels and age-management language.
+**Why it matters:** Strong corrective-skin trust and proof-driven authority, especially around peels and long-term treatment categories.
 
 ### Positioning
-Long-term trust, corrective support, chemical peels, and anti-aging / problem-solving esthetics.
+Long-term trust, chemical peels, electrolysis, before-and-after proof, and established skincare expertise.
 
-### Public signal
-- headline positioning around **Chemical Peels & Electrolysis**
-- testimonials reference acne, age spots, fine lines, dullness, rosacea, and long-term trust
-- reads as experienced, established, treatment-trust driven
+### Verified public signal
+- homepage headline leads with **Chemical Peels & Electrolysis**
+- public navigation includes services, before-and-after, contact, and shop
+- site embeds recent Instagram educational posts directly on the homepage
+- about page emphasizes Fresno roots and practitioner identity
 
 ### Strategic read
-This is less of a soft-luxury competitor and more of a trust/experience competitor. Good benchmark for corrective-proof messaging.
+This is less of a soft-luxury competitor and more of a trust / experience competitor. Good benchmark for corrective-proof messaging.
 
 ### What they do well
-- strong testimonial credibility
-- clear expertise around difficult skin concerns
-- long-term relationship signals
+- clear specialization language
+- visible proof and education signals
+- strong testimonial / before-after pathway
+- experience-driven trust cues
 
 ### What NCS can do better
 - combine trust and results with a more modern luxury presentation
@@ -146,15 +156,6 @@ This is less of a soft-luxury competitor and more of a trust/experience competit
 
 ### Threat level
 **Medium to high** for corrective facial / peel clients.
-
----
-
-## Additional public Instagram / search signals to verify later
-These surfaced in public search and should be visually reviewed in a future pass:
-- @thefresnofacialist
-- @skintology_studio
-- Veronika Aesthetics / Fresno Hydrafacial-related reels
-- other Fresno/Clovis esthetician accounts with strong Hydrafacial tagging
 
 ---
 
