@@ -4,18 +4,30 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NCS Social Operating System</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=2" />
 </head>
 <body>
   <main class="site-shell">
+    <section class="utility-bar card">
+      <div>
+        <p class="eyebrow">Fast file access</p>
+        <h2>Open the live files without digging through the repo.</h2>
+      </div>
+      <div class="utility-links">
+        <a class="utility-link utility-link-primary" href="./ops/team-status.md">Team status</a>
+        <a class="utility-link" href="./ops/instagram-phase-1/content-queue.csv">Content queue</a>
+        <a class="utility-link" href="./ops/instagram-phase-1/performance-log.csv">Performance log</a>
+      </div>
+    </section>
+
     <section class="hero-panel">
       <div>
         <p class="eyebrow">NCS Aesthetics · Social Operating System</p>
         <h1>From idea generation to Instagram approvals, in one calm dashboard.</h1>
-        <p class="lede">This internal site is the front door for Natalie’s approval-first marketing system. The machine does the prep work. Natalie mostly approves what is already strategically packaged.</p>
+        <p class="lede">This is the front door for Natalie’s approval-first marketing system. Use it to jump straight into approvals, see queue health fast, and keep the three-lane posting rhythm easy to run.</p>
         <div class="hero-actions">
           <a class="button primary" href="./mission-control/index.html">Open Mission Control</a>
-          <a class="button secondary" href="./ops/executive-summary.md">Read executive summary</a>
+          <a class="button secondary" href="./site/index.html">Open executive dashboard</a>
         </div>
       </div>
       <article class="hero-summary card">
@@ -26,6 +38,22 @@
           <li>Ask Natalie for simple approve / tweak / reject decisions.</li>
           <li>Move approved content into the weekly posting map.</li>
         </ol>
+      </article>
+    </section>
+
+    <section id="livePulse" class="pulse-grid" aria-label="Live operating pulse"></section>
+
+    <section class="grid two sections-row">
+      <article class="card">
+        <p class="eyebrow">Open these first</p>
+        <h2>Primary operating surfaces</h2>
+        <div id="dashboardLinks" class="link-grid"></div>
+      </article>
+
+      <article class="card">
+        <p class="eyebrow">What needs attention</p>
+        <h2>Current operator focus</h2>
+        <div id="todayFocus" class="stack-list"></div>
       </article>
     </section>
 
@@ -49,33 +77,14 @@
 
     <section class="grid two sections-row">
       <article class="card">
-        <p class="eyebrow">Core dashboards</p>
-        <h2>What to open first</h2>
-        <div id="dashboardLinks" class="link-grid"></div>
-      </article>
-
-      <article class="card">
         <p class="eyebrow">Operating rhythm</p>
         <h2>Daily workflow</h2>
         <div id="workflowList" class="stack-list"></div>
       </article>
-    </section>
-
-    <section class="grid two sections-row">
-      <article class="card">
-        <p class="eyebrow">Built for this repo</p>
-        <h2>What changed in v2</h2>
-        <ul class="feature-list">
-          <li>Mission Control now behaves like a real content pipeline instead of a simple task board.</li>
-          <li>Approval queue is explicit, so Natalie can batch decisions quickly.</li>
-          <li>Posting map, KPI snapshot, briefs, and automation slots now live together.</li>
-          <li>Mock data demonstrates an autonomous Instagram operator for NCS Aesthetics.</li>
-        </ul>
-      </article>
 
       <article class="card">
-        <p class="eyebrow">Useful repo references</p>
-        <h2>Docs and templates</h2>
+        <p class="eyebrow">Useful references</p>
+        <h2>Docs and live files</h2>
         <div id="resourceLinks" class="link-grid"></div>
       </article>
     </section>
@@ -84,6 +93,6 @@
       <p>NCS internal operating system · <span data-current-year></span></p>
     </footer>
   </main>
-  <script src="app.js"></script>
+  <script src="app.js?v=2"></script>
 </body>
 </html>

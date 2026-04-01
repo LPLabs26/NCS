@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=2" />
 </head>
 <body>
   <header class="topbar">
@@ -29,12 +29,13 @@
         <div class="eyebrow">Luxury skincare operating system</div>
         <h2>Daily Tips in the morning. Hydrafacial at midday. Circadia at night.</h2>
         <p>
-          This dashboard now reflects Jorge's exact content model: two light-touch posts early,
-          then one stronger evening hero post. The goal is consistent visibility without spam.
+          This dashboard reflects the active NCS model: two light-touch posts early,
+          then one stronger evening hero post. Use this surface to decide what to open,
+          what to review, and what to protect next.
         </p>
         <div class="hero-actions">
-          <a class="button primary" href="../ops/google-sheets-dashboard-blueprint.md">Open dashboard blueprint</a>
-          <a class="button secondary" href="../content/daily-content-cadence.md">Read cadence doc</a>
+          <a class="button primary" href="../mission-control/index.html">Open Mission Control</a>
+          <a class="button secondary" href="../ops/team-status.md">Open team status</a>
         </div>
       </div>
       <div class="hero-panel">
@@ -48,24 +49,25 @@
       </div>
     </section>
 
-    <section class="metrics-grid">
-      <article class="metric card"><span class="metric-label">Morning lane</span><strong>Daily Tips</strong><small>Quick value touch</small></article>
-      <article class="metric card"><span class="metric-label">Midday lane</span><strong>Hydrafacial</strong><small>Treatment driver</small></article>
-      <article class="metric card"><span class="metric-label">Evening hero</span><strong>Circadia</strong><small>Best packaging of the day</small></article>
-      <article class="metric card"><span class="metric-label">Content rule</span><strong>Not spammy</strong><small>Useful, clear, elevated</small></article>
+    <section class="snapshot-grid">
+      <div class="card snapshot-summary">
+        <div class="section-eyebrow">At a glance</div>
+        <h3>Queue and approval signal</h3>
+        <p id="statusSummary" class="status-summary">Loading queue summary…</p>
+        <div id="statusGrid" class="status-grid"></div>
+      </div>
+      <div class="card snapshot-actions">
+        <div class="section-eyebrow">Open first</div>
+        <h3>Operator shortcuts</h3>
+        <div id="actionLinks" class="quick-link-grid"></div>
+      </div>
     </section>
 
     <section class="split">
       <article class="card">
         <div class="section-eyebrow">Immediate priorities</div>
-        <h3>What the system should protect</h3>
-        <ol class="clean-list ordered">
-          <li>Morning content must feel useful, not filler</li>
-          <li>Midday Hydrafacial content must stay visible without repeating itself</li>
-          <li>Evening Circadia content gets the strongest production effort</li>
-          <li>Dashboard tracking should mirror the same three-lane structure</li>
-          <li>Seeded examples should teach the model instantly</li>
-        </ol>
+        <h3>What needs attention next</h3>
+        <div id="attentionList" class="attention-list"></div>
       </article>
       <article class="card">
         <div class="section-eyebrow">Decision logic</div>
@@ -76,6 +78,13 @@
           <li><strong>Need the strongest content of the day?</strong> → Circadia</li>
         </ul>
       </article>
+    </section>
+
+    <section class="metrics-grid">
+      <article class="metric card"><span class="metric-label">Morning lane</span><strong>Daily Tips</strong><small>Quick value touch</small></article>
+      <article class="metric card"><span class="metric-label">Midday lane</span><strong>Hydrafacial</strong><small>Treatment driver</small></article>
+      <article class="metric card"><span class="metric-label">Evening hero</span><strong>Circadia</strong><small>Best packaging of the day</small></article>
+      <article class="metric card"><span class="metric-label">Content rule</span><strong>Not spammy</strong><small>Useful, clear, elevated</small></article>
     </section>
 
     <section id="content" class="section-block">
@@ -165,6 +174,6 @@
   <footer class="site-footer">
     <p>NCS Aesthetics dashboard • <span data-current-year></span></p>
   </footer>
-  <script src="app.js"></script>
+  <script src="app.js?v=2"></script>
 </body>
 </html>
