@@ -41,9 +41,9 @@ const resourceLinks = [
     copy: 'Google Sheets tab structure, fields, and sample tracking rules.'
   },
   {
-    title: 'Seeded data plan',
-    href: '../../templates/google-sheets-csv/sample-seeded-data.md',
-    copy: 'Explains how the demo week should teach the system instantly.'
+    title: 'Ready content bank overview',
+    href: '../content/ready-content-bank-overview.md',
+    copy: 'Explains how the approved content bank expands into a weekly production-ready library.'
   }
 ];
 

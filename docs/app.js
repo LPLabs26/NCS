@@ -1,18 +1,18 @@
 const dashboardLinks = [
   {
     title: 'Mission Control',
-    href: '../mission-control/index.html',
+    href: './mission-control/index.html',
     copy: 'Main operator dashboard for pipeline, approvals, posting map, and KPI pulse.'
   },
   {
-    title: 'Repo index',
-    href: '../INDEX.md',
-    copy: 'Fast scan of the brand, content, ops, and research docs already living in this system.'
+    title: 'Executive summary',
+    href: './ops/executive-summary.md',
+    copy: 'Fast scan of the strategy, operator model, and system goals already built for NCS.'
   },
   {
-    title: 'Docs home',
-    href: '../docs/index.html',
-    copy: 'Existing docs surface for deeper strategy and internal references.'
+    title: 'Instagram Phase 1',
+    href: './ops/instagram-phase-1/README.md',
+    copy: 'Approval-first posting strategy, schedule, queue, and maintenance loop.'
   }
 ];
 
@@ -27,23 +27,23 @@ const workflowSteps = [
 const resourceLinks = [
   {
     title: '30-day content plan',
-    href: '../docs/content/30-day-content-plan.md',
+    href: './content/30-day-content-plan.md',
     copy: 'Strategic long-range content ideas already mapped in the repo.'
   },
   {
     title: 'Offer ladder strategy',
-    href: '../docs/brand/offer-ladder-strategy.md',
+    href: './brand/offer-ladder-strategy.md',
     copy: 'Messaging hierarchy for Hydrafacial, custom facials, peels, and upsells.'
   },
   {
     title: 'Weekly workflow SOP',
-    href: '../docs/ops/weekly-workflow-sop.md',
+    href: './ops/weekly-workflow-sop.md',
     copy: 'Operational rhythm for running content and follow-up without chaos.'
   },
   {
-    title: 'Reel template',
-    href: '../templates/reel-template.md',
-    copy: 'Reusable format for scripting and packaging short-form video ideas.'
+    title: 'Production batch structure',
+    href: './content/production-batch-structure.md',
+    copy: 'Reusable structure for turning approved ideas into weekly production packets.'
   }
 ];
 
