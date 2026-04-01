@@ -35,7 +35,9 @@ That model should be reflected in docs, templates, and Mission Control seeded da
 - `research/competitors/` — competitor notes and tracking
 - `research/trends/` — skincare trend notes and briefs
 - `templates/` — reusable post, story, and brief templates
-- `mission-control/` — lightweight content dashboard demo
+- `mission-control/` — source version of the lightweight content dashboard demo
+- `docs/` — GitHub Pages-friendly deployment surface and mirrored static assets
+- `docs-site-build/` — exported static build snapshot for deployment handoff
 - `exports/` — static/exportable post assets and ready-post packages
 
 ## Instagram Phase 1
@@ -93,7 +95,7 @@ Because this repo is static, the quickest way to view it is to open the HTML fil
 Or serve the repo root with any tiny local web server, for example:
 
 ```bash
-cd /Users/jorgesanchez/Desktop/NCS
+cd /path/to/NCS
 python3 -m http.server 8080
 ```
 

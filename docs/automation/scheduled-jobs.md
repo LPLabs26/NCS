@@ -1,6 +1,9 @@
 # Scheduled Jobs
 
-## Current recurring jobs
+## Target recurring jobs
+
+These windows describe the intended operating cadence.
+If the machine does not currently have live scheduled jobs enabled, use this file as the reference for recreating them.
 
 ### 08:00 AM - Trend + Reel Idea
 - Purpose: Research one relevant skincare / facial / Hydrafacial angle and draft one Reel concept.
@@ -15,4 +18,4 @@
 - Output: 3 bullets max + tomorrow move.
 
 ## Notes
-These are currently defined through the workspace heartbeat logic and should be visible in the operator dashboard as recurring execution tasks.
+These should remain aligned with the operator dashboard, heartbeat logic, and any future Hermes cron configuration.

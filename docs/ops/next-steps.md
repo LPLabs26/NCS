@@ -1,14 +1,14 @@
 # Next Steps
 
 ## Immediate
-1. Verify live Instagram brand presentation visually
-2. Build Fresno competitor tracker with 3-5 local esthetician brands
-3. Create 14-day content calendar
-4. Build booking gap-fill promo templates
-5. Draft luxury brand voice guide
+1. Publish from the active Phase 1 queue and keep the morning / midday / evening cadence moving weekly.
+2. Verify the GitHub Pages deployment surface and confirm the front door plus Mission Control routes behave correctly.
+3. Build the live Google Sheets dashboard from the CSV templates.
+4. Start weekly KPI tracking for leads, bookings, and content output.
+5. Finish Fresno competitor verification with 3-5 real local esthetician brands.
 
 ## Medium-term
-1. Build repeatable weekly content production workflow
-2. Add KPI tracking for content and bookings
-3. Create campaign themes around monthly maintenance, first-time clients, and corrective care
-4. Add SOPs for DMs, inquiry handling, and rebooking prompts
+1. Turn the documented recurring routines into live scheduled automations.
+2. Tighten the approval-to-publishing workflow inside Mission Control.
+3. Create campaign themes around monthly maintenance, first-time clients, and corrective care.
+4. Add a recurring performance review loop that feeds winning hooks and offers back into planning.
