@@ -1,0 +1,19 @@
+<svg width="900" height="700" viewBox="0 0 900 700" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="120" y1="60" x2="740" y2="620" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF6F0"/>
+      <stop offset="1" stop-color="#ECD9CF"/>
+    </linearGradient>
+    <linearGradient id="shape" x1="450" y1="160" x2="450" y2="520" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#DDAE9E"/>
+      <stop offset="1" stop-color="#C27F70"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="700" rx="42" fill="url(#bg)"/>
+  <rect x="126" y="88" width="648" height="524" rx="36" fill="#FFF9F6" fill-opacity="0.76" stroke="#EFD9CF" stroke-width="3"/>
+  <path d="M454 168C348 168 270 248 270 355V414C270 523 358 611 467 611H507C581 611 640 552 640 478C640 426 607 383 561 368C601 345 628 305 628 259C628 209 587 168 537 168H454Z" fill="url(#shape)"/>
+  <path d="M394 284C442 256 501 256 548 284" stroke="#F7DED4" stroke-width="14" stroke-linecap="round"/>
+  <path d="M386 397C446 439 507 439 568 397" stroke="#F7E8E1" stroke-width="18" stroke-linecap="round"/>
+  <text x="172" y="598" fill="#7B564D" font-family="Inter, Arial, sans-serif" font-size="28" letter-spacing="5">HYDRAFACIAL</text>
+  <text x="172" y="640" fill="#9D756B" font-family="Cormorant Garamond, serif" font-size="48">Glow, clarity, and hydration</text>
+</svg>

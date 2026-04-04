@@ -1,0 +1,18 @@
+<svg width="900" height="700" viewBox="0 0 900 700" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="120" y1="80" x2="780" y2="620" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF8F3"/>
+      <stop offset="1" stop-color="#E9D8D0"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="700" rx="42" fill="url(#bg)"/>
+  <rect x="130" y="96" width="640" height="490" rx="38" fill="#FFFDFB" fill-opacity="0.78" stroke="#EFDCD5" stroke-width="3"/>
+  <circle cx="450" cy="310" r="148" fill="#F4DBD0"/>
+  <path d="M345 330C345 273 392 226 450 226C508 226 555 273 555 330V397C555 455 508 502 450 502C392 502 345 455 345 397V330Z" fill="#FFF8F4" fill-opacity="0.82"/>
+  <path d="M393 300C429 283 470 283 507 300" stroke="#C58A7C" stroke-width="10" stroke-linecap="round"/>
+  <path d="M392 406C429 434 470 434 508 406" stroke="#B97769" stroke-width="14" stroke-linecap="round"/>
+  <circle cx="260" cy="210" r="18" fill="#C48F83" fill-opacity="0.7"/>
+  <circle cx="629" cy="212" r="18" fill="#C48F83" fill-opacity="0.45"/>
+  <text x="176" y="596" fill="#7B564D" font-family="Inter, Arial, sans-serif" font-size="28" letter-spacing="5">CUSTOM FACIAL</text>
+  <text x="176" y="638" fill="#9D756B" font-family="Cormorant Garamond, serif" font-size="48">Personalized for your skin</text>
+</svg>

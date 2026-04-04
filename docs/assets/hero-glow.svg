@@ -1,0 +1,31 @@
+<svg width="1600" height="1400" viewBox="0 0 1600 1400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="220" y1="120" x2="1260" y2="1260" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF7F1"/>
+      <stop offset="1" stop-color="#E9D7CE"/>
+    </linearGradient>
+    <radialGradient id="glowA" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1080 370) rotate(90) scale(300)">
+      <stop stop-color="#FFDCCF"/>
+      <stop offset="1" stop-color="#FFDCCF" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="glass" x1="430" y1="250" x2="1130" y2="1090" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFDFC" stop-opacity="0.96"/>
+      <stop offset="1" stop-color="#F7EBE4" stop-opacity="0.82"/>
+    </linearGradient>
+    <linearGradient id="shape" x1="790" y1="290" x2="790" y2="1010" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E2B9AA"/>
+      <stop offset="1" stop-color="#BF8173"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1400" rx="56" fill="url(#bg)"/>
+  <circle cx="1090" cy="360" r="300" fill="url(#glowA)"/>
+  <circle cx="380" cy="1140" r="250" fill="#F4DFD5" fill-opacity="0.9"/>
+  <rect x="300" y="190" width="980" height="1020" rx="54" fill="url(#glass)" stroke="#F0DBD1" stroke-width="4"/>
+  <path d="M820 316C654 316 520 450 520 614V684C520 885 680 1044 881 1044H911C1001 1044 1074 971 1074 881C1074 816 1032 761 972 741C1024 704 1059 649 1059 587V614C1059 450 942 316 820 316Z" fill="url(#shape)"/>
+  <path d="M776 474C858 431 958 434 1030 491" stroke="#F7E2D9" stroke-width="18" stroke-linecap="round"/>
+  <path d="M728 684C818 744 911 744 1000 684" stroke="#F8E6DE" stroke-width="22" stroke-linecap="round"/>
+  <path d="M440 468C620 352 776 311 972 346" stroke="#E7C3B6" stroke-width="12" stroke-linecap="round" opacity="0.9"/>
+  <path d="M394 980C604 854 826 832 1108 926" stroke="#D9A798" stroke-width="14" stroke-linecap="round" opacity="0.78"/>
+  <text x="420" y="1172" fill="#76544D" font-family="Inter, Arial, sans-serif" font-size="48" letter-spacing="8">NCS AESTHETICS</text>
+  <text x="420" y="1240" fill="#A1766C" font-family="Cormorant Garamond, serif" font-size="88">Elevated skincare in Fresno</text>
+</svg>
