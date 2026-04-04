@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://lplabs26.github.io/NCS/sitemap.xml

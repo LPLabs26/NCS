@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="g" x1="10" y1="10" x2="54" y2="54" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#c68f83"/>
+      <stop offset="1" stop-color="#a76e62"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="18" fill="#fff7f2"/>
+  <circle cx="32" cy="32" r="24" fill="url(#g)"/>
+  <text x="32" y="38" text-anchor="middle" font-family="Georgia, serif" font-size="22" fill="white">NCS</text>
+</svg>

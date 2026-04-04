@@ -1,0 +1,9 @@
+{
+  "name": "NCS Aesthetics",
+  "short_name": "NCS",
+  "start_url": "/NCS/",
+  "display": "standalone",
+  "background_color": "#f6efe9",
+  "theme_color": "#c68f83",
+  "description": "Luxury skincare in Fresno, California."
+}
