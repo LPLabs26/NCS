@@ -3,177 +3,187 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NCS Aesthetics Dashboard</title>
+  <title>NCS Aesthetics</title>
+  <meta name="description" content="Luxury Hydrafacial treatments, custom facials, and corrective peel support with a calm, elevated experience." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=2" />
+  <link rel="stylesheet" href="styles.css?v=3" />
 </head>
 <body>
   <header class="topbar">
     <div>
       <div class="eyebrow">NCS Aesthetics</div>
-      <h1>Executive Dashboard</h1>
+      <h1>Luxury facial care, made personal.</h1>
     </div>
     <nav>
-      <a href="#overview">Overview</a>
-      <a href="#content">Content</a>
-      <a href="#brand">Brand</a>
-      <a href="#operations">Operations</a>
+      <a href="#services">Services</a>
+      <a href="#experience">Experience</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Book</a>
     </nav>
   </header>
 
   <main class="shell">
     <section class="hero card" id="overview">
       <div class="hero-copy">
-        <div class="eyebrow">Luxury skincare operating system</div>
-        <h2>Daily Tips in the morning. Hydrafacial at midday. Circadia at night.</h2>
+        <div class="eyebrow">Elevated skincare in a calm setting</div>
+        <h2>Hydrafacial first. Custom facials and peels when your skin needs more support.</h2>
         <p>
-          This dashboard reflects the active NCS model: two light-touch posts early,
-          then one stronger evening hero post. Use this surface to decide what to open,
-          what to review, and what to protect next.
+          NCS Aesthetics is built around thoughtful, high-touch skincare. Start with the service
+          that gives you the cleanest glow, then build a treatment plan around hydration,
+          correction, barrier support, and long-term skin confidence.
         </p>
         <div class="hero-actions">
-          <a class="button primary" href="../mission-control/index.html">Open Mission Control</a>
-          <a class="button secondary" href="../ops/team-status.md">Open team status</a>
+          <a class="button primary" href="#contact">Book your visit</a>
+          <a class="button secondary" href="#services">Explore services</a>
         </div>
       </div>
       <div class="hero-panel">
-        <div class="panel-label">Publishing structure</div>
-        <div class="panel-value">Morning light • Midday light • Evening hero</div>
+        <div class="panel-label">Signature focus</div>
+        <div class="panel-value">Results-led skincare without a harsh, rushed feel</div>
         <ul class="panel-list">
-          <li>Morning: Daily Tips</li>
-          <li>Midday: Hydrafacial</li>
-          <li>Evening: Circadia</li>
+          <li>Hydrafacial for glow, clarity, and a polished reset</li>
+          <li>Custom facials tailored to your skin goals</li>
+          <li>Corrective peels for texture, tone, and refinement</li>
         </ul>
       </div>
     </section>
 
-    <section class="snapshot-grid">
-      <div class="card snapshot-summary">
-        <div class="section-eyebrow">At a glance</div>
-        <h3>Queue and approval signal</h3>
-        <p id="statusSummary" class="status-summary">Loading queue summary…</p>
-        <div id="statusGrid" class="status-grid"></div>
-      </div>
-      <div class="card snapshot-actions">
-        <div class="section-eyebrow">Open first</div>
-        <h3>Operator shortcuts</h3>
-        <div id="actionLinks" class="quick-link-grid"></div>
-      </div>
+    <section class="metrics-grid intro-metrics">
+      <article class="metric card"><span class="metric-label">Hero service</span><strong>Hydrafacial</strong><small>The clearest entry point for instant glow and ongoing maintenance.</small></article>
+      <article class="metric card"><span class="metric-label">Tailored care</span><strong>Custom facials</strong><small>Built around breakouts, dryness, dullness, sensitivity, or upkeep.</small></article>
+      <article class="metric card"><span class="metric-label">Corrective option</span><strong>Peels</strong><small>Support smoother texture, clearer tone, and a more refined finish.</small></article>
+      <article class="metric card"><span class="metric-label">Approach</span><strong>High touch</strong><small>Calm, personal, and luxury-leaning from consultation to follow-up.</small></article>
     </section>
 
-    <section class="split">
-      <article class="card">
-        <div class="section-eyebrow">Immediate priorities</div>
-        <h3>What needs attention next</h3>
-        <div id="attentionList" class="attention-list"></div>
-      </article>
-      <article class="card">
-        <div class="section-eyebrow">Decision logic</div>
-        <h3>Simple daypart logic</h3>
-        <ul class="clean-list">
-          <li><strong>Need a useful early touch?</strong> → Daily Tips</li>
-          <li><strong>Need treatment consideration?</strong> → Hydrafacial</li>
-          <li><strong>Need the strongest content of the day?</strong> → Circadia</li>
-        </ul>
-      </article>
-    </section>
-
-    <section class="metrics-grid">
-      <article class="metric card"><span class="metric-label">Morning lane</span><strong>Daily Tips</strong><small>Quick value touch</small></article>
-      <article class="metric card"><span class="metric-label">Midday lane</span><strong>Hydrafacial</strong><small>Treatment driver</small></article>
-      <article class="metric card"><span class="metric-label">Evening hero</span><strong>Circadia</strong><small>Best packaging of the day</small></article>
-      <article class="metric card"><span class="metric-label">Content rule</span><strong>Not spammy</strong><small>Useful, clear, elevated</small></article>
-    </section>
-
-    <section id="content" class="section-block">
+    <section id="services" class="section-block">
       <div class="section-heading">
-        <div class="section-eyebrow">Content engine</div>
-        <h3>How the cadence should behave</h3>
+        <div class="section-eyebrow">Services</div>
+        <h3>Start with what your skin needs most right now</h3>
       </div>
-      <div class="split">
-        <article class="card soft-accent">
-          <h4>Morning + midday</h4>
-          <ul class="clean-list">
-            <li>Light-touch assets</li>
-            <li>Fast to consume</li>
-            <li>Low-friction approval</li>
-            <li>Value first, pressure low</li>
-          </ul>
-        </article>
-        <article class="card soft-accent">
-          <h4>Evening</h4>
-          <ul class="clean-list">
-            <li>Hero post</li>
-            <li>Stronger story and visuals</li>
-            <li>Better caption depth</li>
-            <li>Higher trust and retention value</li>
-          </ul>
-        </article>
-      </div>
-      <div class="link-row">
-        <a href="../content/daily-content-cadence.md">Daily content cadence</a>
-        <a href="../ops/natalie-dashboard-spec.md">Dashboard spec</a>
-        <a href="../ops/google-sheets-dashboard-blueprint.md">Google Sheets blueprint</a>
-        <a href="../content/ready-content-bank-overview.md">Ready content bank overview</a>
-      </div>
-    </section>
-
-    <section id="brand" class="section-block">
-      <div class="section-heading">
-        <div class="section-eyebrow">Brand fit</div>
-        <h3>Why these three lanes work</h3>
-      </div>
-      <div class="cards-3">
+      <div class="cards-3 services-grid">
         <article class="service-card card">
-          <div class="service-tag">Morning</div>
-          <h4>Daily Tips</h4>
-          <p>Builds soft authority and gives people a reason to pay attention early in the day.</p>
-        </article>
-        <article class="service-card card">
-          <div class="service-tag">Midday</div>
+          <div class="service-tag">Most requested</div>
           <h4>Hydrafacial</h4>
-          <p>Keeps the most bookable service highly visible while answering common objections clearly.</p>
+          <p>Ideal when you want a fresh, luminous look with less guesswork. A strong choice for maintenance, events, or getting skin back on track.</p>
+          <ul class="clean-list service-points">
+            <li>Deep cleanse, hydration, and visible glow</li>
+            <li>Easy entry point for new clients</li>
+            <li>Supports both maintenance and momentum</li>
+          </ul>
         </article>
         <article class="service-card card">
-          <div class="service-tag">Evening</div>
-          <h4>Circadia</h4>
-          <p>Turns homecare and skin rhythm education into the highest-trust post of the day.</p>
+          <div class="service-tag">Tailored</div>
+          <h4>Custom facials</h4>
+          <p>Designed around your current skin condition, comfort level, and goals so each appointment feels intentional instead of generic.</p>
+          <ul class="clean-list service-points">
+            <li>Adjustable for sensitivity, acne, dryness, or dullness</li>
+            <li>Supports barrier health and skin balance</li>
+            <li>Great for clients who want a personalized plan</li>
+          </ul>
+        </article>
+        <article class="service-card card">
+          <div class="service-tag">Corrective care</div>
+          <h4>Peels</h4>
+          <p>Best for clients ready for more targeted correction and smoother, clearer-looking skin over time.</p>
+          <ul class="clean-list service-points">
+            <li>Helps improve texture and uneven tone</li>
+            <li>Can support acne-prone or congested skin</li>
+            <li>Best paired with the right cadence and homecare</li>
+          </ul>
         </article>
       </div>
     </section>
 
-    <section id="operations" class="section-block">
+    <section id="experience" class="section-block">
       <div class="section-heading">
-        <div class="section-eyebrow">Operations</div>
-        <h3>Execution rules</h3>
+        <div class="section-eyebrow">Why clients choose NCS</div>
+        <h3>Personal attention with a polished, luxury feel</h3>
       </div>
       <div class="split">
-        <article class="card">
-          <h4>Tracking</h4>
+        <article class="card soft-accent">
+          <h4>What the experience feels like</h4>
           <ul class="clean-list">
-            <li>Track each lane separately</li>
-            <li>Mark whether the evening hero post shipped</li>
-            <li>Connect Hydrafacial content to booking support</li>
-            <li>Connect Circadia content to trust, saves, and retail questions</li>
+            <li>Calm and welcoming, never rushed</li>
+            <li>Focused on skin goals, not one-size-fits-all treatment menus</li>
+            <li>Clear recommendations without pressure</li>
+            <li>Built to make skincare feel elevated and sustainable</li>
           </ul>
         </article>
-        <article class="card">
-          <h4>Quality control</h4>
+        <article class="card soft-accent">
+          <h4>What treatment planning focuses on</h4>
           <ul class="clean-list">
-            <li>Do not let Daily Tips become filler</li>
-            <li>Do not let Hydrafacial copy become repetitive</li>
-            <li>Do not let Circadia become product pushing</li>
-            <li>Keep the whole system elegant and restrained</li>
+            <li>Glow and hydration</li>
+            <li>Texture and tone refinement</li>
+            <li>Barrier support and skin calmness</li>
+            <li>Retention through the right next step, not overbooking</li>
           </ul>
         </article>
+      </div>
+    </section>
+
+    <section class="section-block">
+      <div class="section-heading">
+        <div class="section-eyebrow">Good fit</div>
+        <h3>Common reasons clients come in</h3>
+      </div>
+      <div class="cards-3 concern-grid">
+        <article class="card concern-card">
+          <h4>Dull or tired-looking skin</h4>
+          <p>Hydrafacial is often the cleanest first move when you want visible glow and a smoother finish.</p>
+        </article>
+        <article class="card concern-card">
+          <h4>Breakouts or congestion</h4>
+          <p>Custom facials and the right peel plan can help support clearer, more balanced skin over time.</p>
+        </article>
+        <article class="card concern-card">
+          <h4>Texture, tone, or reset goals</h4>
+          <p>Corrective care is shaped around how aggressive or gentle your skin should go right now.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="faq" class="section-block">
+      <div class="section-heading">
+        <div class="section-eyebrow">FAQ</div>
+        <h3>Simple answers before you book</h3>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item card" open>
+          <summary>Which service should I start with if I am new?</summary>
+          <p>Hydrafacial is the safest starting point for most new clients because it is easy to understand, visibly refreshing, and helps establish the right next step.</p>
+        </details>
+        <details class="faq-item card">
+          <summary>Are custom facials only for specific skin types?</summary>
+          <p>No. They are useful when your skin needs a more tailored approach based on sensitivity, acne, dryness, dullness, maintenance, or a mix of concerns.</p>
+        </details>
+        <details class="faq-item card">
+          <summary>When do peels make the most sense?</summary>
+          <p>Peels make more sense when the goal is corrective care, especially for texture, congestion, and tone refinement. The best option depends on your skin and timing.</p>
+        </details>
+      </div>
+    </section>
+
+    <section id="contact" class="section-block contact-block card">
+      <div>
+        <div class="section-eyebrow">Book</div>
+        <h3>Ready for your next skin appointment?</h3>
+        <p>
+          Start with Hydrafacial if you want the easiest first step. If you already know your skin
+          needs something more tailored, reach out for guidance on the best facial or peel path.
+        </p>
+      </div>
+      <div class="contact-actions">
+        <a class="button primary" href="https://www.instagram.com/ncs.aesthetics/" target="_blank" rel="noreferrer">Message @ncs.aesthetics</a>
+        <a class="button secondary" href="#services">Compare services</a>
       </div>
     </section>
   </main>
+
   <footer class="site-footer">
-    <p>NCS Aesthetics dashboard • <span data-current-year></span></p>
+    <p>NCS Aesthetics • <span data-current-year></span></p>
   </footer>
-  <script src="app.js?v=2"></script>
+  <script src="app.js?v=3"></script>
 </body>
 </html>
