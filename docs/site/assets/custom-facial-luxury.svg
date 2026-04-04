@@ -1,0 +1,25 @@
+<svg width="900" height="900" viewBox="0 0 900 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="120" y1="80" x2="720" y2="780" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF7F1"/>
+      <stop offset="1" stop-color="#E8D8CF"/>
+    </linearGradient>
+    <linearGradient id="card" x1="180" y1="150" x2="660" y2="720" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFDFC"/>
+      <stop offset="1" stop-color="#F5E8E1"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="900" rx="48" fill="url(#bg)"/>
+  <rect x="120" y="130" width="660" height="640" rx="40" fill="url(#card)" stroke="#EFDAD1" stroke-width="3"/>
+  <circle cx="450" cy="360" r="160" fill="#F7DDD2"/>
+  <path d="M345 382C345 324 392 277 450 277C508 277 555 324 555 382V454C555 512 508 559 450 559C392 559 345 512 345 454V382Z" fill="#FFF8F4" fill-opacity="0.8"/>
+  <path d="M392 355C428 337 473 337 510 355" stroke="#C4897B" stroke-width="10" stroke-linecap="round"/>
+  <path d="M386 453C430 483 474 483 518 453" stroke="#B87769" stroke-width="14" stroke-linecap="round"/>
+  <path d="M266 302C314 250 376 218 450 208C524 218 586 250 634 302" stroke="#E6C1B4" stroke-width="10" stroke-linecap="round"/>
+  <path d="M280 611C333 654 389 680 450 688C511 680 567 654 620 611" stroke="#D5A092" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="266" cy="228" r="22" fill="#C48F83" fill-opacity="0.8"/>
+  <circle cx="634" cy="228" r="22" fill="#C48F83" fill-opacity="0.55"/>
+  <circle cx="660" cy="632" r="18" fill="#C48F83" fill-opacity="0.35"/>
+  <text x="172" y="812" fill="#7A554D" font-family="Inter, Arial, sans-serif" font-size="30" letter-spacing="5">CUSTOM FACIAL</text>
+  <text x="172" y="854" fill="#9C746B" font-family="Cormorant Garamond, serif" font-size="52">Personalized for your skin goals</text>
+</svg>

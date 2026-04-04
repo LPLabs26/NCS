@@ -1,0 +1,29 @@
+<svg width="900" height="1100" viewBox="0 0 900 1100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="120" y1="80" x2="760" y2="980" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF6F0"/>
+      <stop offset="1" stop-color="#E9D6CB"/>
+    </linearGradient>
+    <linearGradient id="glass" x1="250" y1="180" x2="640" y2="850" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFDFC" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#F7EAE3" stop-opacity="0.75"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="450" y1="260" x2="450" y2="820" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F7CFC2" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#C98F82" stop-opacity="0.55"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="1100" rx="48" fill="url(#bg)"/>
+  <circle cx="675" cy="210" r="145" fill="#FFF4EE" fill-opacity="0.9"/>
+  <circle cx="210" cy="870" r="190" fill="#F4DDD2" fill-opacity="0.85"/>
+  <rect x="120" y="130" width="660" height="840" rx="40" fill="url(#glass)" stroke="#F2DDD3" stroke-width="3"/>
+  <path d="M450 225C346 225 270 309 270 420V520C270 673 392 797 542 797H556C619 797 670 745 670 682C670 636 639 596 596 584C631 558 654 519 654 474V420C654 309 554 225 450 225Z" fill="url(#glow)"/>
+  <path d="M520 345C574 345 620 387 620 438V523C620 572 580 612 531 612H483C434 612 394 572 394 523V438C394 387 439 345 494 345H520Z" fill="#FFF7F4" fill-opacity="0.72"/>
+  <path d="M493 422C528 399 571 401 603 425" stroke="#C58B7E" stroke-width="12" stroke-linecap="round"/>
+  <path d="M474 504C517 482 566 485 601 517" stroke="#B97B6E" stroke-width="14" stroke-linecap="round" opacity="0.9"/>
+  <path d="M224 270C300 242 380 245 459 288" stroke="#E6C0B2" stroke-width="8" stroke-linecap="round" opacity="0.8"/>
+  <path d="M188 334C300 305 414 319 517 377" stroke="#D6A191" stroke-width="9" stroke-linecap="round" opacity="0.75"/>
+  <path d="M188 776C309 709 435 691 586 723" stroke="#D7A497" stroke-width="10" stroke-linecap="round" opacity="0.65"/>
+  <text x="176" y="874" fill="#7A554D" font-family="Inter, Arial, sans-serif" font-size="34" letter-spacing="5">HYDRAFACIAL</text>
+  <text x="176" y="922" fill="#A0786E" font-family="Cormorant Garamond, serif" font-size="58">Glow. Clarity. Hydration.</text>
+</svg>

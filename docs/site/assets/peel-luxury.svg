@@ -1,0 +1,20 @@
+<svg width="900" height="900" viewBox="0 0 900 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="160" y1="80" x2="740" y2="760" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF7F2"/>
+      <stop offset="1" stop-color="#E8D5CB"/>
+    </linearGradient>
+    <linearGradient id="drop" x1="450" y1="220" x2="450" y2="630" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D7A293"/>
+      <stop offset="1" stop-color="#BE7E70"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="900" rx="48" fill="url(#bg)"/>
+  <circle cx="450" cy="360" r="220" fill="#F5E2D9"/>
+  <path d="M450 210C382 303 330 379 330 467C330 564 399 636 496 636C593 636 662 564 662 467C662 379 610 303 542 210C527 190 501 190 486 210L470 233C464 242 456 250 450 210Z" fill="url(#drop)"/>
+  <path d="M454 302C409 371 390 421 390 473C390 551 446 607 524 607" stroke="#F6DDD4" stroke-width="18" stroke-linecap="round" opacity="0.85"/>
+  <path d="M220 650C308 612 403 596 494 600C567 603 635 620 700 648" stroke="#D39A8C" stroke-width="10" stroke-linecap="round" opacity="0.7"/>
+  <path d="M246 702C350 670 474 667 630 718" stroke="#E8C3B6" stroke-width="8" stroke-linecap="round" opacity="0.75"/>
+  <text x="170" y="806" fill="#7A554D" font-family="Inter, Arial, sans-serif" font-size="30" letter-spacing="5">CORRECTIVE PEELS</text>
+  <text x="170" y="850" fill="#9C746B" font-family="Cormorant Garamond, serif" font-size="52">Texture. Tone. Refinement.</text>
+</svg>
