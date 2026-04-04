@@ -8,6 +8,7 @@
   --line: rgba(94, 63, 54, 0.12);
   --accent: #c68f83;
   --accent-deep: #a76e62;
+  --accent-soft: #ead6cf;
   --shadow: 0 24px 60px rgba(71, 46, 40, 0.08);
   --radius: 28px;
 }
@@ -26,6 +27,7 @@ body {
 a { color: inherit; text-decoration: none; }
 a:hover { text-decoration: underline; }
 img { display: block; width: 100%; max-width: 100%; }
+button { font: inherit; }
 
 .site-header {
   position: sticky;
@@ -83,7 +85,12 @@ img { display: block; width: 100%; max-width: 100%; }
 .feature-panel h2,
 .page-hero h1,
 .hero-image-card h3,
-blockquote {
+blockquote,
+.goal-card h3,
+.section-title,
+.review-card h3,
+.timeline-card h3,
+.story-panel h3 {
   font-family: "Cormorant Garamond", serif;
   line-height: 0.98;
 }
@@ -93,7 +100,9 @@ blockquote {
 .stat-label,
 .service-tag,
 .footer-label,
-.badge {
+.badge,
+.review-kicker,
+.goal-tag {
   color: var(--muted);
   text-transform: uppercase;
   letter-spacing: 0.12em;
@@ -116,7 +125,9 @@ blockquote {
 }
 
 .nav-cta,
-.button {
+.button,
+.goal-pill,
+.review-control {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -133,14 +144,24 @@ blockquote {
   color: white;
 }
 
-.button.secondary {
+.button.secondary,
+.goal-pill,
+.review-control {
   background: rgba(255,255,255,0.78);
   border-color: var(--line);
   color: var(--text);
 }
 
+.goal-pill.is-active {
+  background: linear-gradient(135deg, var(--accent), #d7aba0);
+  color: white;
+  border-color: transparent;
+}
+
 .button:hover,
-.nav-cta:hover { text-decoration: none; }
+.nav-cta:hover,
+.goal-pill:hover,
+.review-control:hover { text-decoration: none; }
 
 main,
 .page-main {
@@ -155,13 +176,16 @@ main,
 .cta-band,
 .hero-media-grid,
 .stats-grid,
-.service-grid {
+.service-grid,
+.goal-grid,
+.natalie-grid,
+.timeline-grid {
   display: grid;
   gap: 1rem;
 }
 
 .hero-grid {
-  grid-template-columns: minmax(0, 1.05fr) minmax(360px, 0.95fr);
+  grid-template-columns: minmax(0, 1.02fr) minmax(360px, 0.98fr);
   align-items: center;
   padding: 2rem 0 0.75rem;
 }
@@ -189,7 +213,12 @@ main,
 .mini-note,
 .hero-pills span,
 .link-stack a,
-.section-copy {
+.section-copy,
+.goal-card p,
+.natalie-copy p,
+.review-card p,
+.timeline-card p,
+.story-panel p {
   color: var(--muted);
   line-height: 1.7;
   font-size: 1rem;
@@ -199,7 +228,9 @@ main,
 .hero-pills,
 .about-preview-actions,
 .cta-actions,
-.contact-actions {
+.contact-actions,
+.goal-pill-row,
+.review-controls {
   display: flex;
   gap: 0.85rem;
   flex-wrap: wrap;
@@ -208,7 +239,9 @@ main,
 .hero-actions { margin-top: 1.35rem; }
 .hero-pills { margin-top: 1rem; }
 .hero-pills span,
-.badge {
+.badge,
+.review-kicker,
+.goal-tag {
   padding: 0.55rem 0.9rem;
   border-radius: 999px;
   background: rgba(255,255,255,0.75);
@@ -232,7 +265,12 @@ main,
 .about-preview,
 .cta-band,
 .contact-card,
-.page-hero-panel {
+.page-hero-panel,
+.goal-card,
+.natalie-card,
+.review-card,
+.timeline-card,
+.story-panel {
   padding: 1.25rem;
 }
 
@@ -243,7 +281,10 @@ main,
 .hero-image-card img,
 .hero-brand-card img,
 .service-card img,
-.about-image img {
+.about-image img,
+.natalie-main-photo,
+.natalie-side-photo,
+.story-panel img {
   border-radius: 22px;
   object-fit: cover;
 }
@@ -262,7 +303,10 @@ main,
   max-height: 240px;
 }
 
-.hero-brand-card h3 {
+.hero-brand-card h3,
+.goal-card h3,
+.review-card h3,
+.natalie-copy h2 {
   font-size: 2rem;
   margin: 0;
 }
@@ -330,14 +374,72 @@ main,
 .service-card li { margin: 0.55rem 0; }
 .service-card-detail h2 { font-size: 2rem; }
 
-.two-column {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+.goal-grid {
+  grid-template-columns: 0.86fr 1.14fr;
+  align-items: start;
+}
+
+.goal-pill-row {
+  margin-top: 1rem;
+}
+
+.goal-card {
+  min-height: 100%;
+}
+
+.goal-card ul {
+  margin: 1rem 0 0;
+  padding-left: 1.1rem;
+}
+
+.goal-card li {
+  margin: 0.55rem 0;
+  color: var(--muted);
+}
+
+.natalie-grid {
+  grid-template-columns: 0.95fr 1.05fr;
+  align-items: center;
+}
+
+.natalie-card {
+  display: grid;
+  gap: 1rem;
+}
+
+.natalie-main-photo {
+  aspect-ratio: 4 / 5;
+}
+
+.natalie-side-row {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 1rem;
+  align-items: center;
+}
+
+.natalie-side-photo {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  border: 4px solid rgba(255,255,255,0.95);
+  box-shadow: 0 14px 30px rgba(71, 46, 40, 0.1);
+}
+
+.natalie-copy {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.natalie-copy h2 {
+  margin: 0;
 }
 
 .check-list,
 .decision-stack,
 .hours-list,
-.link-stack {
+.link-stack,
+.credential-list {
   display: grid;
   gap: 0.75rem;
   margin-top: 1rem;
@@ -346,7 +448,9 @@ main,
 .check-list div,
 .decision-stack div,
 .hours-list div,
-.link-stack a {
+.link-stack a,
+.credential-list div,
+.timeline-card {
   padding: 0.95rem 1rem;
   border-radius: 18px;
   border: 1px solid var(--line);
@@ -357,7 +461,8 @@ main,
 
 .decision-stack strong,
 .hours-list strong,
-.hours-list span {
+.hours-list span,
+.credential-list strong {
   display: block;
   color: var(--text);
 }
@@ -366,6 +471,19 @@ main,
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.review-carousel {
+  display: grid;
+  gap: 1rem;
+}
+
+.review-card {
+  display: none;
+}
+
+.review-card.is-active {
+  display: block;
 }
 
 blockquote {
@@ -387,6 +505,19 @@ blockquote {
 
 .about-image img {
   aspect-ratio: 4 / 3;
+}
+
+.timeline-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.story-panel {
+  display: grid;
+  gap: 1rem;
+}
+
+.story-panel img {
+  aspect-ratio: 16 / 9;
 }
 
 .cta-band {
@@ -432,7 +563,10 @@ blockquote {
   .about-preview,
   .cta-band,
   .contact-grid,
-  .footer-grid {
+  .footer-grid,
+  .goal-grid,
+  .natalie-grid,
+  .timeline-grid {
     grid-template-columns: 1fr;
   }
 
@@ -494,6 +628,11 @@ blockquote {
   .cta-band,
   .contact-card,
   .page-hero-panel,
+  .goal-card,
+  .natalie-card,
+  .review-card,
+  .timeline-card,
+  .story-panel,
   .site-footer {
     padding-left: 1rem;
     padding-right: 1rem;
@@ -503,8 +642,14 @@ blockquote {
   .check-list div,
   .decision-stack div,
   .hours-list div,
-  .link-stack a {
+  .link-stack a,
+  .credential-list div {
     font-size: 0.98rem;
+  }
+
+  .natalie-side-row {
+    grid-template-columns: 1fr;
+    justify-items: start;
   }
 
   blockquote {
