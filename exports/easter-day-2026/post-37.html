@@ -6,29 +6,33 @@
 <style>
   * { box-sizing: border-box; }
   body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif; background: #ddd; }
-  .frame {
-    width: 1080px; height: 1350px; position: relative; overflow: hidden; color: #fff;
-    background: linear-gradient(180deg, #fff6ef 0%, #f3dfd0 48%, #c7957b 100%);
+  .frame { width: 1080px; height: 1350px; position: relative; overflow: hidden; color: #fff;
+    background: linear-gradient(180deg, #fff4c4 0%, #ffd8e8 48%, #d8ebff 100%); }
+  .photo { position:absolute; inset:0; background-image:url('../../docs/assets/hydrafacial.jpg'); background-size:cover; background-position:center; opacity:.34; filter:saturate(.95) brightness(.98); transform:scale(1.04); }
+  .wash { position:absolute; inset:0; background:
+    linear-gradient(180deg, rgba(32,21,28,0.08) 0%, rgba(36,24,31,0.20) 36%, rgba(42,28,38,0.68) 100%),
+    radial-gradient(circle at 14% 14%, rgba(255,255,255,0.45), transparent 19%),
+    radial-gradient(circle at 84% 14%, rgba(255,255,255,0.28), transparent 18%),
+    radial-gradient(circle at 45% 100%, rgba(255,255,255,0.12), transparent 34%);
   }
-  .photo { position: absolute; inset: 0; background-image: url('../../docs/assets/hydrafacial.jpg'); background-size: cover; background-position: center; filter: saturate(0.92) contrast(1.02) brightness(0.95); opacity: 0.5; transform: scale(1.04); }
-  .wash { position: absolute; inset: 0; background:
-      linear-gradient(180deg, rgba(24,16,14,0.14) 0%, rgba(24,16,14,0.26) 38%, rgba(24,16,14,0.66) 100%),
-      radial-gradient(circle at 16% 16%, rgba(255,255,255,0.30), transparent 20%),
-      radial-gradient(circle at 82% 12%, rgba(255,255,255,0.18), transparent 18%);
-  }
-  .egg, .petal { position:absolute; border-radius: 50%; filter: blur(0.4px); }
-  .egg { width: 150px; height: 210px; background: rgba(255,255,255,0.14); left: 220px; top: 220px; transform: rotate(-18deg); border: 2px solid rgba(255,255,255,0.18); }
-  .egg.two { width: 110px; height: 150px; left: 830px; top: 118px; transform: rotate(18deg); }
-  .petal { width: 180px; height: 180px; background: rgba(255,255,255,0.08); right: -30px; bottom: 240px; }
-  .petal.two { width: 340px; height: 340px; left: -120px; bottom: -100px; }
-  .brand-pill { position:absolute; top:72px; left:72px; display:inline-flex; gap:14px; align-items:center; padding:14px 22px; border-radius:999px; background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.24); backdrop-filter: blur(16px); font-size: 26px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
-  .brand-pill span.dot { width: 14px; height: 14px; border-radius: 50%; background: rgba(255,255,255,0.92); display:inline-block; }
-  .eyebrow { position:absolute; left:84px; top:180px; font-size:26px; letter-spacing: .24em; text-transform: uppercase; color: rgba(255,255,255,0.86); }
-  .headline { position:absolute; left:78px; right:110px; top:250px; font-family: Georgia, 'Iowan Old Style', serif; font-size: 108px; line-height: .92; font-weight: 700; text-wrap: balance; max-width: 8ch; }
-  .support { position:absolute; left:84px; right:130px; top:735px; font-size: 42px; line-height: 1.28; color: rgba(255,255,255,0.90); max-width: 21ch; }
-  .footer { position:absolute; left:78px; right:78px; bottom:92px; display:flex; justify-content:space-between; align-items:flex-end; gap:24px; }
-  .cta { display:inline-flex; align-items:center; padding:26px 36px; border-radius:999px; background: rgba(255,255,255,0.92); color:#2e211d; font-size:32px; font-weight:800; box-shadow: 0 18px 44px rgba(0,0,0,0.14); max-width: 560px; }
-  .signature { text-align:right; font-size:26px; line-height:1.35; color: rgba(255,255,255,0.82); }
+  .egg, .egg2, .egg3, .petal, .petal2 { position:absolute; border-radius:50%; }
+  .egg { width:150px; height:210px; left:160px; top:178px; transform:rotate(-16deg); background:rgba(255,255,255,.16); border:2px solid rgba(255,255,255,.28); box-shadow: inset 0 0 0 8px rgba(255,255,255,.06); }
+  .egg2 { width:126px; height:172px; right:92px; top:112px; transform:rotate(17deg); background:rgba(255,255,255,.16); border:2px solid rgba(255,255,255,.28); }
+  .egg3 { width:104px; height:144px; right:176px; top:186px; transform:rotate(-8deg); background:rgba(255,255,255,.11); border:2px solid rgba(255,255,255,.18); }
+  .stripe, .stripe2, .stripe3 { position:absolute; height:10px; border-radius:999px; background:#d8d4ff; opacity:.8; }
+  .stripe { width:92px; left:188px; top:230px; transform:rotate(-16deg); }
+  .stripe2 { width:70px; right:116px; top:166px; transform:rotate(17deg); background:rgba(255,255,255,.78); }
+  .stripe3 { width:58px; right:196px; top:230px; transform:rotate(-8deg); }
+  .petal { width:240px; height:240px; right:-80px; bottom:230px; background:rgba(255,255,255,.10); }
+  .petal2 { width:320px; height:320px; left:-120px; bottom:-96px; background:rgba(255,255,255,.12); }
+  .brand-pill { position:absolute; top:68px; left:68px; display:inline-flex; gap:12px; align-items:center; padding:14px 22px; border-radius:999px; background:rgba(255,255,255,.22); border:1px solid rgba(255,255,255,.30); backdrop-filter:blur(16px); font-size:24px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; }
+  .brand-pill .dot { width:14px; height:14px; border-radius:50%; background:#d8d4ff; box-shadow:0 0 0 4px rgba(255,255,255,.18); }
+  .eyebrow { position:absolute; left:82px; top:186px; font-size:26px; letter-spacing:.24em; text-transform:uppercase; color:rgba(255,255,255,.92); }
+  .headline { position:absolute; left:76px; right:112px; top:250px; font-family: Georgia, 'Iowan Old Style', serif; font-size:104px; line-height:.92; font-weight:700; max-width:8.2ch; text-wrap:balance; }
+  .support { position:absolute; left:82px; right:124px; top:718px; font-size:40px; line-height:1.26; color:rgba(255,255,255,.94); max-width:22ch; white-space:pre-line; }
+  .footer { position:absolute; left:76px; right:76px; bottom:88px; display:flex; justify-content:space-between; align-items:flex-end; gap:24px; }
+  .cta { display:inline-flex; align-items:center; padding:26px 36px; border-radius:999px; background:rgba(255,255,255,.94); color:#39273b; font-size:31px; font-weight:800; box-shadow:0 18px 44px rgba(0,0,0,.14); max-width:590px; }
+  .signature { text-align:right; font-size:26px; line-height:1.34; color:rgba(255,255,255,.86); }
   .signature strong { display:block; font-size:30px; color:#fff; }
 </style>
 </head>
@@ -36,14 +40,14 @@
   <div class="frame">
     <div class="photo"></div>
     <div class="wash"></div>
-    <div class="egg"></div>
-    <div class="egg two"></div>
-    <div class="petal"></div>
-    <div class="petal two"></div>
+    <div class="egg"></div><div class="egg2"></div><div class="egg3"></div>
+    <div class="stripe"></div><div class="stripe2"></div><div class="stripe3"></div>
+    <div class="petal"></div><div class="petal2"></div>
     <div class="brand-pill"><span class="dot"></span>Hydrafacial</div>
     <div class="eyebrow">Hydrafacial</div>
     <div class="headline">Spring plans<br>need a glow</div>
-    <div class="support">Polished, hydrated skin is the energy for the season ahead.</div>
+    <div class="support">Polished, hydrated skin is the energy for the season ahead.
+Have a happy Easter.</div>
     <div class="footer">
       <div class="cta">Reserve your spring Hydrafacial</div>
       <div class="signature"><strong>NCS Aesthetics</strong>Fresno, California</div>
