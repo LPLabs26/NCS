@@ -419,6 +419,23 @@ a { color: inherit; }
   margin-bottom: 12px;
 }
 
+.panel-label.subtle {
+  color: var(--muted);
+}
+
+.asset-panel[hidden] {
+  display: none;
+}
+
+.panel-preview-image {
+  display: block;
+  width: 100%;
+  border-radius: 20px;
+  border: 1px solid rgba(45, 33, 29, 0.08);
+  box-shadow: 0 22px 48px rgba(45, 33, 29, 0.12);
+  background: #f7efe9;
+}
+
 .status-pill {
   background: #efe4dc;
   color: var(--ink);

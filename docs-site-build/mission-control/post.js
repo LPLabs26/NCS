@@ -95,6 +95,18 @@ function renderPost(post) {
   setText('panelBody', post.body || '');
   setText('panelStatus', status);
 
+  const previewWrap = document.getElementById('panelPreviewWrap');
+  const previewImage = document.getElementById('panelPreviewImage');
+  if (post.previewImage) {
+    previewWrap.hidden = false;
+    previewImage.src = post.previewImage;
+    previewImage.alt = `${post.title} rendered preview`;
+  } else {
+    previewWrap.hidden = true;
+    previewImage.removeAttribute('src');
+    previewImage.alt = '';
+  }
+
   const bookLabel = post.cta || 'Book now';
   const storyBookLink = document.getElementById('storyBookLink');
   const panelBookBtn = document.getElementById('panelBookBtn');

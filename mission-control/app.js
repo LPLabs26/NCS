@@ -326,14 +326,20 @@ function card(post) {
   const reviewerNote = post.comments && post.comments.trim() ? `${post.comments.trim().slice(0, 120)}${post.comments.trim().length > 120 ? '…' : ''}` : 'No operator note yet.';
   const lastTouched = post.lastTouchedAt ? `Updated ${escapeHtml(formatDateTime(post.lastTouchedAt))}` : 'No local changes yet';
 
-  return `
-    <article class="post-card status-${escapeHtml(post.status)}">
-      <a class="preview preview-link" href="${postHref(post)}" aria-label="Open ${escapeHtml(post.title)} post viewer">
-        <div class="pill-row">
-          <span class="pill">${escapeHtml(post.daypart)}</span>
-          <span class="pill">${escapeHtml(post.category)}</span>
-          <span class="pill pill-status">${statusLabel}</span>
+  const previewFrame = post.previewImage
+    ? `
+        <div class="frame asset-frame">
+          <img class="frame-image" src="${escapeHtml(post.previewImage)}" alt="${escapeHtml(post.title)} preview" loading="lazy" />
+          <div class="asset-frame-overlay"></div>
+          <div class="open-indicator">Open viewer ↗</div>
+          <div class="asset-frame-footer">
+            <span class="asset-chip">Rendered preview</span>
+            <div class="asset-title">${escapeHtml(post.title)}</div>
+            <div class="asset-hook">${escapeHtml(post.hook || '')}</div>
+          </div>
         </div>
+      `
+    : `
         <div class="frame" style="background:${inferGradient(post)}">
           <div class="open-indicator">Open viewer ↗</div>
           <div class="cover">${escapeHtml(post.title)}</div>
@@ -342,6 +348,17 @@ function card(post) {
           <div class="visual">${escapeHtml(post.visual || 'Premium skincare visual direction')}</div>
           <span class="book-btn faux-btn">${escapeHtml(post.cta || 'Book now')}</span>
         </div>
+      `;
+
+  return `
+    <article class="post-card status-${escapeHtml(post.status)}">
+      <a class="preview preview-link" href="${postHref(post)}" aria-label="Open ${escapeHtml(post.title)} post viewer">
+        <div class="pill-row">
+          <span class="pill">${escapeHtml(post.daypart)}</span>
+          <span class="pill">${escapeHtml(post.category)}</span>
+          <span class="pill pill-status">${statusLabel}</span>
+        </div>
+        ${previewFrame}
       </a>
       <div class="review">
         <div class="title-row">
