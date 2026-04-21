@@ -12,6 +12,10 @@ export function appTimezone(): string {
   return process.env.APP_TIMEZONE ?? APP_TIMEZONE_FALLBACK;
 }
 
+export function isProductionEnvironment(nodeEnv = process.env.NODE_ENV): boolean {
+  return nodeEnv === "production";
+}
+
 export function metaApiVersion(): string {
   return process.env.META_API_VERSION ?? "v25.0";
 }
@@ -20,11 +24,22 @@ export function isDryRun(): boolean {
   return process.env.DRY_RUN !== "false";
 }
 
+export function isLiveCronEnabled(): boolean {
+  return process.env.LIVE_CRON_ENABLED === "true";
+}
+
 export function hasSupabaseBrowserEnv(): boolean {
   return Boolean(
-    (process.env.NEXT_PUBLIC_SUPABASE_URL ?? process.env.SUPABASE_URL) &&
+    process.env.NEXT_PUBLIC_SUPABASE_URL &&
       process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
   );
+}
+
+export function shouldFailClosedForAdminAuth(
+  nodeEnv = process.env.NODE_ENV,
+  authConfigured = hasSupabaseBrowserEnv(),
+): boolean {
+  return isProductionEnvironment(nodeEnv) && !authConfigured;
 }
 
 export function hasSupabaseServiceEnv(): boolean {
@@ -34,8 +49,10 @@ export function hasSupabaseServiceEnv(): boolean {
 export function hasMetaEnv(): boolean {
   return Boolean(
     process.env.IG_USER_ID &&
+      process.env.PAGE_ID &&
       process.env.PAGE_ACCESS_TOKEN &&
-      (process.env.META_APP_ID || process.env.META_APP_SECRET),
+      process.env.META_APP_ID &&
+      process.env.META_APP_SECRET,
   );
 }
 
@@ -54,7 +71,7 @@ export function hasStorageEnv(): boolean {
 
 export function getSupabaseBrowserEnv() {
   return {
-    url: process.env.NEXT_PUBLIC_SUPABASE_URL ?? process.env.SUPABASE_URL ?? "",
+    url: process.env.NEXT_PUBLIC_SUPABASE_URL ?? "",
     anonKey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? "",
   };
 }
@@ -121,12 +138,19 @@ export function getCronSecret(): string {
 }
 
 export const setupChecklist = [
+  "META_API_VERSION",
+  "NEXT_PUBLIC_SUPABASE_URL",
+  "NEXT_PUBLIC_SUPABASE_ANON_KEY",
   "SUPABASE_URL",
   "SUPABASE_SERVICE_ROLE_KEY",
-  "NEXT_PUBLIC_SUPABASE_ANON_KEY",
+  "META_APP_ID",
+  "META_APP_SECRET",
   "PAGE_ID",
   "IG_USER_ID",
   "PAGE_ACCESS_TOKEN",
   "ASSET_PUBLIC_BASE_URL",
   "CRON_SECRET",
+  "APP_TIMEZONE",
+  "DRY_RUN",
+  "LIVE_CRON_ENABLED",
 ] as const;

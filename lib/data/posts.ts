@@ -52,7 +52,9 @@ export async function listPosts(filters: PostListFilters = {}): Promise<PostRow[
 
   if (filters.status && filters.status !== "all") {
     if (filters.status === "scheduled") {
-      query = query.eq("status", "approved").gt("scheduled_at", new Date().toISOString());
+      query = query
+        .in("status", ["approved", "scheduled"])
+        .gt("scheduled_at", new Date().toISOString());
     } else {
       query = query.eq("status", filters.status as PostStatus);
     }
@@ -153,6 +155,8 @@ export async function duplicatePost(id: string): Promise<PostRow> {
     title: `${post.title} (Copy)`,
     status: "draft",
     scheduled_at: null,
+    owner_approved: false,
+    price_verified: post.requires_price_verification ? false : post.price_verified,
     error: null,
   });
 }
@@ -206,6 +210,9 @@ export async function importContentCalendar(payload: {
       asset_ids: post.asset_ids ?? [],
       hashtags: post.hashtags ?? [],
       status: post.status ?? "draft",
+      owner_approved: post.owner_approved ?? false,
+      requires_price_verification: post.requires_price_verification ?? false,
+      price_verified: post.price_verified ?? false,
     }));
 
     const { error } = await client.from("posts").insert(normalizedPosts);
@@ -217,7 +224,9 @@ export async function getDueApprovedPosts(referenceDate = new Date()): Promise<P
   const { data, error } = await service()
     .from("posts")
     .select("*")
-    .eq("status", "approved")
+    .in("status", ["approved", "scheduled"])
+    .eq("owner_approved", true)
+    .neq("status", "published")
     .not("scheduled_at", "is", null)
     .lte("scheduled_at", referenceDate.toISOString())
     .order("scheduled_at", { ascending: true });

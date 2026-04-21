@@ -1,9 +1,21 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { createServerClient } from "@supabase/ssr";
 
-import { getSupabaseBrowserEnv, hasSupabaseBrowserEnv } from "@/lib/env";
+import {
+  getSupabaseBrowserEnv,
+  hasSupabaseBrowserEnv,
+  shouldFailClosedForAdminAuth,
+} from "@/lib/env";
 
 export async function proxy(request: NextRequest) {
+  if (shouldFailClosedForAdminAuth(process.env.NODE_ENV, hasSupabaseBrowserEnv())) {
+    const redirectUrl = request.nextUrl.clone();
+    redirectUrl.pathname = "/login";
+    redirectUrl.searchParams.set("error", "auth-not-configured");
+    redirectUrl.searchParams.set("next", request.nextUrl.pathname);
+    return NextResponse.redirect(redirectUrl);
+  }
+
   if (!hasSupabaseBrowserEnv()) {
     return NextResponse.next();
   }

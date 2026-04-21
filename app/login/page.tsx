@@ -4,8 +4,14 @@ import { LoginForm } from "@/components/admin/LoginForm";
 import { SetupBanner } from "@/components/admin/SetupBanner";
 import { hasSupabaseBrowserEnv } from "@/lib/env";
 
-export default function LoginPage() {
+interface Props {
+  searchParams?: Promise<Record<string, string | string[] | undefined>>;
+}
+
+export default async function LoginPage({ searchParams }: Props) {
   const authConfigured = hasSupabaseBrowserEnv();
+  const params = (await searchParams) ?? {};
+  const authMisconfigured = params.error === "auth-not-configured";
 
   return (
     <main className="mx-auto flex min-h-screen max-w-4xl items-center px-6 py-16">
@@ -27,6 +33,13 @@ export default function LoginPage() {
           </Link>
         </section>
         <section className="glass-panel rounded-[2rem] p-8">
+          {authMisconfigured ? (
+            <div className="mb-4 rounded-3xl border border-rose-200 bg-rose-50 p-4 text-sm text-rose-900">
+              Production admin access is blocked because Supabase browser auth env is incomplete.
+              Add `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` before opening
+              `/admin`.
+            </div>
+          ) : null}
           {authConfigured ? <LoginForm /> : <SetupBanner title="Auth envs still missing" />}
         </section>
       </div>

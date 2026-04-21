@@ -121,6 +121,28 @@ export default async function PostsPage({ searchParams }: Props) {
             <div className="text-sm leading-6 text-stone-700">
               <p className="font-semibold text-stone-900">Scheduled</p>
               <p>{formatInAppTimezone(post.scheduled_at, appTimezone())}</p>
+              <div className="mt-3 flex flex-wrap gap-2">
+                <span
+                  className={`rounded-full px-3 py-1 text-xs font-medium ${
+                    post.owner_approved
+                      ? "bg-emerald-50 text-emerald-800"
+                      : "bg-amber-50 text-amber-900"
+                  }`}
+                >
+                  {post.owner_approved ? "Owner approved" : "Owner approval needed"}
+                </span>
+                {post.requires_price_verification ? (
+                  <span
+                    className={`rounded-full px-3 py-1 text-xs font-medium ${
+                      post.price_verified
+                        ? "bg-emerald-50 text-emerald-800"
+                        : "bg-rose-50 text-rose-900"
+                    }`}
+                  >
+                    {post.price_verified ? "Price verified" : "Price verification required"}
+                  </span>
+                ) : null}
+              </div>
             </div>
             <div className="flex items-start lg:justify-end">
               <StatusBadge status={post.displayStatus} />

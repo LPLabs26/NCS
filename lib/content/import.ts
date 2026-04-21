@@ -11,6 +11,27 @@ export interface ParsedContentCalendar {
 
 type LooseRecord = Record<string, unknown>;
 
+function normalizeBoolean(value: unknown, fallback = false): boolean {
+  if (typeof value === "boolean") {
+    return value;
+  }
+
+  const normalized = String(value ?? "").trim().toLowerCase();
+  if (!normalized) {
+    return fallback;
+  }
+
+  if (["true", "1", "yes", "y"].includes(normalized)) {
+    return true;
+  }
+
+  if (["false", "0", "no", "n"].includes(normalized)) {
+    return false;
+  }
+
+  return fallback;
+}
+
 function normalizeHashtags(value: unknown): string[] {
   if (Array.isArray(value)) {
     return value.map((item) => String(item).trim()).filter(Boolean);
@@ -46,6 +67,12 @@ function toPostInsert(record: LooseRecord): PostInsert {
     scheduled_at: record.scheduled_at ? String(record.scheduled_at) : null,
     timezone: String(record.timezone ?? appTimezone()),
     asset_ids: normalizeAssetIds(record.asset_ids),
+    owner_approved: normalizeBoolean(record.owner_approved, false),
+    requires_price_verification: normalizeBoolean(
+      record.requires_price_verification,
+      false,
+    ),
+    price_verified: normalizeBoolean(record.price_verified, false),
     error: null,
   };
 }

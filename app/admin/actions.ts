@@ -3,7 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
-import { requireAuthenticatedUser } from "@/lib/auth";
+import { requireSchedulerPermission } from "@/lib/auth";
 import { importContentCalendar } from "@/lib/data/posts";
 import { buildSeedCalendarPayload, parseContentCalendar } from "@/lib/content/import";
 import { isDryRun, hasSupabaseBrowserEnv } from "@/lib/env";
@@ -13,37 +13,61 @@ import { publishDuePosts } from "@/lib/scheduler/publishDuePosts";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import type { PostStatus } from "@/types/database";
 
-function normalizeEditableStatus(value: string): PostStatus {
-  if (value === "approved") {
-    return "approved";
-  }
+function normalizeEditableStatus(
+  value: string,
+  scheduledAt: string | null,
+  ownerApproved: boolean,
+): PostStatus {
   if (value === "needs_asset") {
     return "needs_asset";
   }
+
+  if (value === "approved") {
+    if (scheduledAt && ownerApproved) {
+      return "scheduled";
+    }
+    return "approved";
+  }
+
+  if (value === "scheduled") {
+    return scheduledAt && ownerApproved ? "scheduled" : "approved";
+  }
+
   return "draft";
 }
 
 export async function savePostAction(formData: FormData) {
-  await requireAuthenticatedUser();
+  await requireSchedulerPermission("edit");
 
   const id = String(formData.get("id") ?? "");
   const timezone = String(formData.get("timezone") ?? "America/Los_Angeles");
+  const scheduledAt = fromLocalDateTimeInput(
+    String(formData.get("scheduled_at") ?? ""),
+    timezone,
+  );
+  const ownerApproved = formData.get("owner_approved") === "true";
+  const requiresPriceVerification = formData.get("requires_price_verification") === "true";
+  const priceVerified = formData.get("price_verified") === "true";
   const post = await savePost({
     id: id && id !== "new" ? id : undefined,
     title: String(formData.get("title") ?? "Untitled Post"),
     platform: "instagram",
     format: String(formData.get("format") ?? "image") as "image" | "reel" | "carousel" | "story",
     pillar: String(formData.get("pillar") ?? "") || null,
-    status: normalizeEditableStatus(String(formData.get("status") ?? "draft")),
+    status: normalizeEditableStatus(
+      String(formData.get("status") ?? "draft"),
+      scheduledAt,
+      ownerApproved,
+    ),
     caption: String(formData.get("caption") ?? "") || null,
     hashtags: parseList(String(formData.get("hashtags") ?? "")),
     cta: String(formData.get("cta") ?? "") || null,
-    scheduled_at: fromLocalDateTimeInput(
-      String(formData.get("scheduled_at") ?? ""),
-      timezone,
-    ),
+    scheduled_at: scheduledAt,
     timezone,
     asset_ids: formData.getAll("asset_ids").map(String),
+    owner_approved: ownerApproved,
+    requires_price_verification: requiresPriceVerification,
+    price_verified: requiresPriceVerification ? priceVerified : false,
   });
 
   revalidatePath("/admin");
@@ -53,7 +77,7 @@ export async function savePostAction(formData: FormData) {
 }
 
 export async function duplicatePostAction(formData: FormData) {
-  await requireAuthenticatedUser();
+  await requireSchedulerPermission("edit");
   const id = String(formData.get("id") ?? "");
   const duplicated = await duplicatePost(id);
   revalidatePath("/admin/posts");
@@ -62,7 +86,7 @@ export async function duplicatePostAction(formData: FormData) {
 }
 
 export async function publishNowAction(formData: FormData) {
-  await requireAuthenticatedUser();
+  await requireSchedulerPermission("publish");
   const id = String(formData.get("id") ?? "");
   const post = await getPostById(id);
 
@@ -74,16 +98,23 @@ export async function publishNowAction(formData: FormData) {
     postId: id,
     mode: "manual",
     dryRun: isDryRun(),
+    firstLivePublishConfirmed: formData.get("confirm_first_live_publish") === "true",
   });
 
   revalidatePath("/admin");
   revalidatePath("/admin/posts");
   revalidatePath("/admin/calendar");
-  redirect(`/admin/posts/${id}?publish=${result?.status ?? "skipped"}`);
+  const params = new URLSearchParams({
+    publish: result?.status ?? "skipped",
+  });
+  if (result?.message) {
+    params.set("publish_message", result.message);
+  }
+  redirect(`/admin/posts/${id}?${params.toString()}`);
 }
 
 export async function seedCalendarAction() {
-  await requireAuthenticatedUser();
+  await requireSchedulerPermission("edit");
   await importContentCalendar(buildSeedCalendarPayload());
   revalidatePath("/admin");
   revalidatePath("/admin/posts");
@@ -92,7 +123,7 @@ export async function seedCalendarAction() {
 }
 
 export async function importRawCalendarAction(formData: FormData) {
-  await requireAuthenticatedUser();
+  await requireSchedulerPermission("edit");
   const raw = String(formData.get("raw") ?? "");
   const filename = String(formData.get("filename") ?? "calendar.json");
   await importContentCalendar(parseContentCalendar(raw, filename));

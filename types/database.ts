@@ -16,10 +16,29 @@ export type PostStatus =
   | "published"
   | "failed";
 export type AssetType = "image" | "video";
+export type AdminRole = "owner" | "admin" | "editor" | "viewer";
 
 export interface Database {
   public: {
     Tables: {
+      admin_users: {
+        Row: {
+          id: string;
+          user_id: string | null;
+          email: string;
+          role: AdminRole;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          user_id?: string | null;
+          email: string;
+          role?: AdminRole;
+          created_at?: string;
+        };
+        Update: Partial<Database["public"]["Tables"]["admin_users"]["Insert"]>;
+        Relationships: [];
+      };
       assets: {
         Row: {
           id: string;
@@ -31,6 +50,7 @@ export interface Database {
           duration_sec: number | null;
           width: number | null;
           height: number | null;
+          file_size_bytes: number | null;
           alt_text: string | null;
           checksum: string | null;
           usage_rights_confirmed: boolean;
@@ -46,6 +66,7 @@ export interface Database {
           duration_sec?: number | null;
           width?: number | null;
           height?: number | null;
+          file_size_bytes?: number | null;
           alt_text?: string | null;
           checksum?: string | null;
           usage_rights_confirmed?: boolean;
@@ -134,6 +155,9 @@ export interface Database {
           meta_media_id: string | null;
           permalink: string | null;
           error: string | null;
+          owner_approved: boolean;
+          price_verified: boolean;
+          requires_price_verification: boolean;
           created_at: string;
           updated_at: string;
         };
@@ -154,6 +178,9 @@ export interface Database {
           meta_media_id?: string | null;
           permalink?: string | null;
           error?: string | null;
+          owner_approved?: boolean;
+          price_verified?: boolean;
+          requires_price_verification?: boolean;
           created_at?: string;
           updated_at?: string;
         };
@@ -170,6 +197,8 @@ export interface Database {
 
 export type AssetRow = Database["public"]["Tables"]["assets"]["Row"];
 export type AssetInsert = Database["public"]["Tables"]["assets"]["Insert"];
+export type AdminUserInsert = Database["public"]["Tables"]["admin_users"]["Insert"];
+export type AdminUserRow = Database["public"]["Tables"]["admin_users"]["Row"];
 export type ContentTemplateInsert =
   Database["public"]["Tables"]["content_templates"]["Insert"];
 export type ContentTemplateRow =

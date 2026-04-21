@@ -132,10 +132,6 @@ export async function inspectUploadedAsset(file: File): Promise<InspectedAsset> 
 export function validateAssetsForPost(post: PostRow, assets: AssetRow[]): string[] {
   const errors: string[] = [];
 
-  if (post.status !== "approved") {
-    errors.push("Only approved posts can be published.");
-  }
-
   if (assets.length === 0) {
     errors.push("Post is missing required media.");
     return errors;
@@ -154,11 +150,23 @@ export function validateAssetsForPost(post: PostRow, assets: AssetRow[]): string
     } catch {
       errors.push(`${asset.filename} does not have a valid public URL.`);
     }
+
+    if (asset.type === "image" && asset.file_size_bytes && asset.file_size_bytes > 8 * 1024 * 1024) {
+      errors.push(`${asset.filename} exceeds the 8 MB image size limit.`);
+    }
   }
 
   if (post.format === "image") {
     if (assets.length !== 1 || assets[0]?.type !== "image") {
       errors.push("Image posts require exactly one image asset.");
+    } else if (
+      assets[0].width &&
+      assets[0].height
+    ) {
+      const ratio = numericAspectRatio(assets[0].aspect_ratio);
+      if (ratio === null || ratio < 0.8 || ratio > 1.91) {
+        errors.push("Image posts should stay within Instagram's supported aspect ratio range.");
+      }
     }
   }
 
@@ -180,6 +188,9 @@ export function validateAssetsForPost(post: PostRow, assets: AssetRow[]): string
       if ((reelAsset.duration_sec ?? 0) < 3 || (reelAsset.duration_sec ?? 0) > 900) {
         errors.push("Reels must be between 3 seconds and 15 minutes long.");
       }
+      if (reelAsset.file_size_bytes && reelAsset.file_size_bytes > 300 * 1024 * 1024) {
+        errors.push("Reels must be under 300 MB.");
+      }
 
       const ratio = numericAspectRatio(reelAsset.aspect_ratio);
       if (ratio === null || ratio < 0.01 || ratio > 10) {
@@ -195,6 +206,9 @@ export function validateAssetsForPost(post: PostRow, assets: AssetRow[]): string
     } else if (storyAsset.type === "video") {
       if ((storyAsset.duration_sec ?? 0) < 3 || (storyAsset.duration_sec ?? 0) > 60) {
         errors.push("Story videos must be between 3 and 60 seconds long.");
+      }
+      if (storyAsset.file_size_bytes && storyAsset.file_size_bytes > 100 * 1024 * 1024) {
+        errors.push("Story videos must be under 100 MB.");
       }
     }
   }

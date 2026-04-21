@@ -8,6 +8,7 @@ import {
   getContainerStatus,
   getMediaFields,
   publishContainer,
+  smokeTestMetaConnection,
 } from "@/lib/meta/instagram";
 import {
   getAssetsByIds,
@@ -20,7 +21,7 @@ import {
   updatePostContainerId,
 } from "@/lib/data/posts";
 import { isDryRun } from "@/lib/env";
-import { validateAssetsForPost } from "@/lib/storage/media";
+import { getPostPublishBlockers } from "@/lib/scheduler/validation";
 import type { AssetRow, PostRow } from "@/types/database";
 
 const STATUS_BACKOFF_MS = [5_000, 10_000, 20_000, 40_000, 60_000];
@@ -34,13 +35,55 @@ export interface PublishRunResult {
   permalink?: string | null;
 }
 
+export interface PublishDependencies {
+  getAssetsByIds: typeof getAssetsByIds;
+  getDueApprovedPosts: typeof getDueApprovedPosts;
+  getPostById: typeof getPostById;
+  hasLivePublishedPosts: typeof hasLivePublishedPosts;
+  markPostFailed: typeof markPostFailed;
+  markPostPublished: typeof markPostPublished;
+  markPostPublishing: typeof markPostPublishing;
+  updatePostContainerId: typeof updatePostContainerId;
+  smokeTestMetaConnection: typeof smokeTestMetaConnection;
+  createImageContainer: typeof createImageContainer;
+  createCarouselContainer: typeof createCarouselContainer;
+  createReelContainer: typeof createReelContainer;
+  createStoryContainer: typeof createStoryContainer;
+  createVideoCarouselItemContainer: typeof createVideoCarouselItemContainer;
+  getContainerStatus: typeof getContainerStatus;
+  publishContainer: typeof publishContainer;
+  getMediaFields: typeof getMediaFields;
+}
+
 export interface PublishDuePostsOptions {
   now?: Date;
   dryRun?: boolean;
   mode?: "cron" | "manual";
   postId?: string;
   logger?: Pick<Console, "info" | "warn" | "error">;
+  firstLivePublishConfirmed?: boolean;
+  dependencies?: PublishDependencies;
 }
+
+const defaultDependencies: PublishDependencies = {
+  getAssetsByIds,
+  getDueApprovedPosts,
+  getPostById,
+  hasLivePublishedPosts,
+  markPostFailed,
+  markPostPublished,
+  markPostPublishing,
+  updatePostContainerId,
+  smokeTestMetaConnection,
+  createImageContainer,
+  createCarouselContainer,
+  createReelContainer,
+  createStoryContainer,
+  createVideoCarouselItemContainer,
+  getContainerStatus,
+  publishContainer,
+  getMediaFields,
+};
 
 function sleep(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -69,11 +112,22 @@ async function retry<T>(
   throw lastError;
 }
 
-async function pollUntilFinished(containerId: string) {
+function friendlyError(error: unknown): string {
+  if (error instanceof Error) {
+    return error.message;
+  }
+
+  return "Unknown publishing error.";
+}
+
+async function pollUntilFinished(
+  containerId: string,
+  dependencies: PublishDependencies,
+) {
   let lastStatus = "IN_PROGRESS";
 
   for (const delayMs of STATUS_BACKOFF_MS) {
-    const status = await getContainerStatus(containerId);
+    const status = await dependencies.getContainerStatus(containerId);
     lastStatus = status.status_code;
 
     if (status.status_code === "FINISHED" || status.status_code === "PUBLISHED") {
@@ -94,7 +148,11 @@ async function pollUntilFinished(containerId: string) {
   );
 }
 
-async function createPublishingContainer(post: PostRow, assets: AssetRow[]) {
+async function createPublishingContainer(
+  post: PostRow,
+  assets: AssetRow[],
+  dependencies: PublishDependencies,
+) {
   const caption = buildMetaCaption({
     caption: post.caption,
     cta: post.cta,
@@ -103,7 +161,7 @@ async function createPublishingContainer(post: PostRow, assets: AssetRow[]) {
 
   if (post.format === "image") {
     const asset = assets[0];
-    return createImageContainer({
+    return dependencies.createImageContainer({
       imageUrl: asset.public_url,
       caption,
       altText: asset.alt_text,
@@ -112,7 +170,7 @@ async function createPublishingContainer(post: PostRow, assets: AssetRow[]) {
 
   if (post.format === "reel") {
     const asset = assets[0];
-    return createReelContainer({
+    return dependencies.createReelContainer({
       videoUrl: asset.public_url,
       caption,
       coverUrl: null,
@@ -122,7 +180,7 @@ async function createPublishingContainer(post: PostRow, assets: AssetRow[]) {
 
   if (post.format === "story") {
     const asset = assets[0];
-    return createStoryContainer({
+    return dependencies.createStoryContainer({
       imageUrl: asset.type === "image" ? asset.public_url : undefined,
       videoUrl: asset.type === "video" ? asset.public_url : undefined,
     });
@@ -131,7 +189,7 @@ async function createPublishingContainer(post: PostRow, assets: AssetRow[]) {
   const childIds: string[] = [];
   for (const asset of assets) {
     if (asset.type === "image") {
-      const child = await createImageContainer({
+      const child = await dependencies.createImageContainer({
         imageUrl: asset.public_url,
         altText: asset.alt_text,
         isCarouselItem: true,
@@ -140,25 +198,29 @@ async function createPublishingContainer(post: PostRow, assets: AssetRow[]) {
       continue;
     }
 
-    const child = await createVideoCarouselItemContainer({
+    const child = await dependencies.createVideoCarouselItemContainer({
       videoUrl: asset.public_url,
     });
-    await pollUntilFinished(child.id);
+    await pollUntilFinished(child.id, dependencies);
     childIds.push(child.id);
   }
 
-  return createCarouselContainer({
+  return dependencies.createCarouselContainer({
     children: childIds,
     caption,
   });
 }
 
-async function publishApprovedPost(post: PostRow, assets: AssetRow[]) {
-  const container = await createPublishingContainer(post, assets);
-  await updatePostContainerId(post.id, container.id);
-  await pollUntilFinished(container.id);
-  const published = await publishContainer(container.id);
-  const media = await getMediaFields(published.id);
+async function publishApprovedPost(
+  post: PostRow,
+  assets: AssetRow[],
+  dependencies: PublishDependencies,
+) {
+  const container = await createPublishingContainer(post, assets, dependencies);
+  await dependencies.updatePostContainerId(post.id, container.id);
+  await pollUntilFinished(container.id, dependencies);
+  const published = await dependencies.publishContainer(container.id);
+  const media = await dependencies.getMediaFields(published.id);
 
   return {
     containerId: container.id,
@@ -167,100 +229,126 @@ async function publishApprovedPost(post: PostRow, assets: AssetRow[]) {
   };
 }
 
-function friendlyError(error: unknown): string {
-  if (error instanceof Error) {
-    return error.message;
-  }
+export function createPublishDuePosts(dependencies = defaultDependencies) {
+  return async function runPublishDuePosts(
+    options: PublishDuePostsOptions = {},
+  ): Promise<PublishRunResult[]> {
+    const logger = options.logger ?? console;
+    const dryRun = options.dryRun ?? isDryRun();
+    const now = options.now ?? new Date();
+    const mode = options.mode ?? "cron";
+    const runtimeDependencies = options.dependencies ?? dependencies;
+    const posts = options.postId
+      ? ([await runtimeDependencies.getPostById(options.postId)].filter(Boolean) as PostRow[])
+      : await runtimeDependencies.getDueApprovedPosts(now);
 
-  return "Unknown publishing error.";
+    if (posts.length === 0) {
+      return [];
+    }
+
+    const livePublishingRequested = !dryRun;
+    const hasLivePosts = await runtimeDependencies.hasLivePublishedPosts();
+
+    if (livePublishingRequested && mode === "cron" && !hasLivePosts) {
+      return posts.map((post) => ({
+        postId: post.id,
+        title: post.title,
+        status: "skipped",
+        message:
+          "First live publish is gated. Use the manual publish button after the owner approves the first real post.",
+      }));
+    }
+
+    if (
+      livePublishingRequested &&
+      mode === "manual" &&
+      !hasLivePosts &&
+      !options.firstLivePublishConfirmed
+    ) {
+      return posts.map((post) => ({
+        postId: post.id,
+        title: post.title,
+        status: "skipped",
+        message:
+          "First live publish requires an explicit manual confirmation before anything can go out.",
+      }));
+    }
+
+    if (livePublishingRequested) {
+      const metaStatus = await runtimeDependencies.smokeTestMetaConnection();
+      if (!metaStatus.ok) {
+        const message = metaStatus.errors.join(" ");
+        return posts.map((post) => ({
+          postId: post.id,
+          title: post.title,
+          status: "skipped",
+          message,
+        }));
+      }
+    }
+
+    const results: PublishRunResult[] = [];
+
+    for (const post of posts) {
+      const assets = await runtimeDependencies.getAssetsByIds(post.asset_ids);
+      const validationErrors = getPostPublishBlockers(post, assets);
+
+      if (validationErrors.length > 0) {
+        results.push({
+          postId: post.id,
+          title: post.title,
+          status: "skipped",
+          message: validationErrors.join(" "),
+        });
+        continue;
+      }
+
+      if (dryRun) {
+        logger.info(
+          `[DRY_RUN] Would publish "${post.title}" as ${post.format} using assets: ${assets
+            .map((asset) => asset.filename)
+            .join(", ")}`,
+        );
+        results.push({
+          postId: post.id,
+          title: post.title,
+          status: "dry_run",
+          message: "Dry run enabled. No Instagram publish call was made.",
+        });
+        continue;
+      }
+
+      try {
+        await runtimeDependencies.markPostPublishing(post.id);
+        const published = await retry(
+          `Publishing post ${post.id}`,
+          () => publishApprovedPost(post, assets, runtimeDependencies),
+          logger,
+        );
+        await runtimeDependencies.markPostPublished(post.id, published);
+        results.push({
+          postId: post.id,
+          title: post.title,
+          status: "published",
+          message: "Published successfully.",
+          mediaId: published.mediaId,
+          permalink: published.permalink,
+        });
+      } catch (error) {
+        const message = friendlyError(error);
+        logger.error(`Failed to publish ${post.id}: ${message}`);
+        await runtimeDependencies.markPostFailed(post.id, message);
+        results.push({
+          postId: post.id,
+          title: post.title,
+          status: "failed",
+          message,
+        });
+      }
+    }
+
+    return results;
+  };
 }
 
-export async function publishDuePosts(
-  options: PublishDuePostsOptions = {},
-): Promise<PublishRunResult[]> {
-  const logger = options.logger ?? console;
-  const dryRun = options.dryRun ?? isDryRun();
-  const now = options.now ?? new Date();
-  const mode = options.mode ?? "cron";
-  const posts = options.postId
-    ? [await getPostById(options.postId)].filter(Boolean) as PostRow[]
-    : await getDueApprovedPosts(now);
-
-  if (posts.length === 0) {
-    return [];
-  }
-
-  if (!dryRun && mode === "cron" && !(await hasLivePublishedPosts())) {
-    return posts.map((post) => ({
-      postId: post.id,
-      title: post.title,
-      status: "skipped",
-      message:
-        "First live publish is gated. Use the manual publish button after the owner approves the first real post.",
-    }));
-  }
-
-  const results: PublishRunResult[] = [];
-
-  for (const post of posts) {
-    const assets = await getAssetsByIds(post.asset_ids);
-    const validationErrors = validateAssetsForPost(post, assets);
-
-    if (validationErrors.length > 0) {
-      const message = validationErrors.join(" ");
-      await markPostFailed(post.id, message);
-      results.push({
-        postId: post.id,
-        title: post.title,
-        status: "failed",
-        message,
-      });
-      continue;
-    }
-
-    if (dryRun) {
-      logger.info(
-        `[DRY_RUN] Would publish "${post.title}" as ${post.format} using assets: ${assets
-          .map((asset) => asset.filename)
-          .join(", ")}`,
-      );
-      results.push({
-        postId: post.id,
-        title: post.title,
-        status: "dry_run",
-        message: "Dry run enabled. No Instagram publish call was made.",
-      });
-      continue;
-    }
-
-    try {
-      await markPostPublishing(post.id);
-      const published = await retry(
-        `Publishing post ${post.id}`,
-        () => publishApprovedPost(post, assets),
-        logger,
-      );
-      await markPostPublished(post.id, published);
-      results.push({
-        postId: post.id,
-        title: post.title,
-        status: "published",
-        message: "Published successfully.",
-        mediaId: published.mediaId,
-        permalink: published.permalink,
-      });
-    } catch (error) {
-      const message = friendlyError(error);
-      logger.error(`Failed to publish ${post.id}: ${message}`);
-      await markPostFailed(post.id, message);
-      results.push({
-        postId: post.id,
-        title: post.title,
-        status: "failed",
-        message,
-      });
-    }
-  }
-
-  return results;
-}
+export const publishDuePosts = createPublishDuePosts();

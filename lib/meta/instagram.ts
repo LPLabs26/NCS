@@ -1,5 +1,5 @@
 import { buildInstagramCaption } from "@/lib/utils";
-import { getMetaEnv } from "@/lib/env";
+import { getMetaEnv, hasMetaEnv } from "@/lib/env";
 
 export class MetaApiError extends Error {
   status: number;
@@ -69,6 +69,17 @@ export interface InstagramMediaInsights {
 
 const GRAPH_HOST = "https://graph.facebook.com";
 
+function sanitizeMetaErrorMessage(message: string): string {
+  const token = process.env.PAGE_ACCESS_TOKEN;
+  let sanitized = message;
+
+  if (token) {
+    sanitized = sanitized.split(token).join("[redacted]");
+  }
+
+  return sanitized.replace(/Bearer\s+[A-Za-z0-9_-]+/gi, "Bearer [redacted]");
+}
+
 function apiUrl(path: string, query?: GraphRequestOptions["query"]): string {
   const { apiVersion } = getMetaEnv();
   const url = new URL(`${GRAPH_HOST}/${apiVersion}/${path.replace(/^\//, "")}`);
@@ -105,7 +116,7 @@ async function graphRequest<T>(path: string, options: GraphRequestOptions = {}):
 
   if (!response.ok || errorPayload) {
     const error = errorPayload;
-    throw new MetaApiError(error?.message ?? "Meta API request failed.", {
+    throw new MetaApiError(sanitizeMetaErrorMessage(error?.message ?? "Meta API request failed."), {
       status: response.status,
       code: error?.code,
       subcode: error?.error_subcode,
@@ -320,6 +331,98 @@ export async function getMediaInsights(mediaId: string): Promise<InstagramMediaI
     permalink: media.permalink ?? null,
     mediaProductType: media.media_product_type ?? null,
   };
+}
+
+export interface MetaSmokeTestResult {
+  configured: boolean;
+  ok: boolean;
+  accountId: string | null;
+  username: string | null;
+  details: string[];
+  errors: string[];
+}
+
+export async function smokeTestMetaConnection(): Promise<MetaSmokeTestResult> {
+  if (!hasMetaEnv()) {
+    return {
+      configured: false,
+      ok: false,
+      accountId: null,
+      username: null,
+      details: [],
+      errors: [
+        "Meta publishing env is incomplete. Add META_APP_ID, META_APP_SECRET, PAGE_ID, IG_USER_ID, and PAGE_ACCESS_TOKEN.",
+      ],
+    };
+  }
+
+  try {
+    const { igUserId, pageId } = getMetaEnv();
+    const page = await graphRequest<{
+      id: string;
+      name?: string;
+      instagram_business_account?: { id: string };
+    }>(pageId, {
+      method: "GET",
+      query: {
+        fields: "id,name,instagram_business_account",
+      },
+    });
+    const account = await graphRequest<{
+      id: string;
+      username?: string;
+      account_type?: string;
+      media_count?: number;
+    }>(igUserId, {
+      method: "GET",
+      query: {
+        fields: "id,username,account_type,media_count",
+      },
+    });
+
+    if (
+      page.instagram_business_account?.id &&
+      page.instagram_business_account.id !== igUserId
+    ) {
+      return {
+        configured: true,
+        ok: false,
+        accountId: account.id,
+        username: account.username ?? null,
+        details: [],
+        errors: [
+          `PAGE_ID ${page.id} is linked to Instagram account ${page.instagram_business_account.id}, but IG_USER_ID is set to ${igUserId}.`,
+        ],
+      };
+    }
+
+    return {
+      configured: true,
+      ok: true,
+      accountId: account.id,
+      username: account.username ?? null,
+      details: [
+        page.name ? `Connected Facebook Page: ${page.name} (${page.id})` : `Connected Facebook Page id: ${page.id}`,
+        `Connected Instagram account id: ${account.id}`,
+        account.username ? `Username: ${account.username}` : "Username not returned by Meta.",
+        account.account_type ? `Account type: ${account.account_type}` : "Account type not returned by Meta.",
+      ],
+      errors: [],
+    };
+  } catch (error) {
+    return {
+      configured: true,
+      ok: false,
+      accountId: null,
+      username: null,
+      details: [],
+      errors: [
+        error instanceof Error
+          ? sanitizeMetaErrorMessage(error.message)
+          : "Unknown Meta setup error.",
+      ],
+    };
+  }
 }
 
 export function buildMetaCaption(params: {

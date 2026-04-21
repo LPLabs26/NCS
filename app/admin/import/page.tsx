@@ -34,8 +34,9 @@ export default async function ImportPage({ searchParams }: Props) {
           </p>
           <h3 className="mt-2 font-display text-3xl text-stone-900">Load the NCS starter plan</h3>
           <p className="mt-3 text-sm leading-7 text-stone-700">
-            Seeds the initial Fresno-focused 16-post Instagram calendar plus reusable content
-            templates. Everything comes in compliant, price-safe, and dry-run ready.
+            Seeds the initial Fresno-focused 4-week Instagram calendar plus reusable content
+            templates. Everything comes in as draft, owner approval off, price-safe, and
+            dry-run ready.
           </p>
           <button
             type="submit"

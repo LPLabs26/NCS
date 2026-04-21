@@ -1,6 +1,10 @@
 import { NextResponse } from "next/server";
 
-import { requireAuthenticatedUser } from "@/lib/auth";
+import {
+  AccessDeniedError,
+  AuthConfigurationError,
+  requireSchedulerPermission,
+} from "@/lib/auth";
 import { createAssetRecord } from "@/lib/data/posts";
 import { uploadAssetBuffer } from "@/lib/storage/object-store";
 import { inspectUploadedAsset } from "@/lib/storage/media";
@@ -9,7 +13,7 @@ export const runtime = "nodejs";
 
 export async function POST(request: Request) {
   try {
-    await requireAuthenticatedUser();
+    await requireSchedulerPermission("edit");
 
     const formData = await request.formData();
     const file = formData.get("file");
@@ -34,6 +38,7 @@ export async function POST(request: Request) {
       duration_sec: inspected.durationSec,
       width: inspected.width,
       height: inspected.height,
+      file_size_bytes: inspected.buffer.length,
       alt_text: String(formData.get("alt_text") ?? "") || null,
       checksum: inspected.checksum,
       usage_rights_confirmed: formData.get("usage_rights_confirmed") === "true",
@@ -45,7 +50,14 @@ export async function POST(request: Request) {
       {
         error: error instanceof Error ? error.message : "Upload failed.",
       },
-      { status: error instanceof Error && error.message === "Unauthorized" ? 401 : 500 },
+      {
+        status:
+          error instanceof AccessDeniedError
+            ? 403
+            : error instanceof AuthConfigurationError
+              ? 503
+              : 500,
+      },
     );
   }
 }

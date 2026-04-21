@@ -1,6 +1,7 @@
 import Link from "next/link";
 
-import { hasSupabaseBrowserEnv, isDryRun } from "@/lib/env";
+import type { AdminRole } from "@/types/database";
+import { isDryRun } from "@/lib/env";
 import { signOutAction } from "@/app/admin/actions";
 
 const links = [
@@ -10,7 +11,13 @@ const links = [
   { href: "/admin/import", label: "Import" },
 ];
 
-export function AdminNav() {
+interface AdminNavProps {
+  authConfigured: boolean;
+  liveCronEnabled: boolean;
+  role?: AdminRole;
+}
+
+export function AdminNav({ authConfigured, liveCronEnabled, role }: AdminNavProps) {
   return (
     <header className="sticky top-0 z-20 border-b border-white/70 bg-[rgba(248,243,238,0.88)] backdrop-blur">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-4">
@@ -37,7 +44,19 @@ export function AdminNav() {
           >
             {isDryRun() ? "Dry Run" : "Live Publish"}
           </span>
-          {hasSupabaseBrowserEnv() ? (
+          <span
+            className={`rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] ${
+              liveCronEnabled ? "bg-emerald-100 text-emerald-800" : "bg-stone-200 text-stone-700"
+            }`}
+          >
+            {liveCronEnabled ? "Live Cron Enabled" : "Live Cron Disabled"}
+          </span>
+          {role ? (
+            <span className="rounded-full bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-stone-700">
+              {role}
+            </span>
+          ) : null}
+          {authConfigured ? (
             <form action={signOutAction}>
               <button
                 type="submit"

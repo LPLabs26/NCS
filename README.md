@@ -1,148 +1,198 @@
-# NCS
+# NCS Instagram Social Scheduler
 
-Operating system for NCS Aesthetics.
+Internal social media operating system for NCS Aesthetics.
 
-This repo now contains two active layers:
+This app is built to help NCS plan, approve, schedule, validate, and publish Instagram content through the official Meta and Instagram Graph API only.
 
-- the existing NCS content and operations system
-- the new Next.js social scheduler app for official Instagram Graph publishing
+## What this scheduler does
 
-## NCS operations system
+- create and edit Instagram posts
+- store captions, hashtags, CTAs, content pillars, schedule dates, and approval state
+- upload assets and require usage-rights confirmation
+- validate media before publish
+- publish approved content through the official Instagram Graph API
+- collect daily metrics for published posts
+- show a 30-day admin calendar and scheduling dashboard
 
-This repo supports:
+## Safety defaults
 
-- brand strategy
-- content planning
-- daily pulse checks
-- booking gap-fill marketing
-- autonomous Instagram team operations
-- approval and scheduling workflows
-- competitive research
-- SOPs for a luxury, high-touch esthetics business
+- `DRY_RUN=true` by default
+- `LIVE_CRON_ENABLED=false` by default
+- posts only publish when `status` is `approved` or `scheduled`
+- posts must also be `owner_approved=true`
+- posts with `requires_price_verification=true` are blocked until `price_verified=true`
+- assets must have `usage_rights_confirmed=true`
+- assets must use public HTTPS URLs
+- production admin access fails closed if Supabase browser auth is not configured
+- production admin access is allowlist-based through `admin_users`
+- the first real live publish must be manual and owner-approved before cron can go live
 
-Key existing areas:
+## Why the official Meta API matters
 
-- `docs/brand/`
-- `docs/content/`
-- `docs/automation/`
-- `docs/ops/`
-- `research/competitors/`
-- `research/trends/`
-- `templates/`
-- `mission-control/`
-- `site/`
-- `docs/`
-- `docs-site-build/`
-- `exports/`
+This project does not use:
 
-The operational Instagram system lives in `docs/ops/instagram-phase-1/`.
+- Instagram scraping
+- browser automation
+- stored Instagram passwords
+- unofficial posting tools
 
-Useful command:
+Publishing is implemented with the official Meta container -> publish flow so the account can be run safely and maintainably.
 
-```bash
-python3 scripts/instagram_phase1_report.py
-```
-
-## Social scheduler app
-
-The new internal scheduler app lives at the repo root as a Next.js app.
-
-It is built for:
-
-- creating and editing Instagram posts
-- storing captions, hashtags, CTA copy, scheduled dates, assets, and approval state
-- validating media before publish
-- publishing approved posts through the official Instagram Graph API
-- collecting daily post metrics
-- running safely in `DRY_RUN=true` by default
-
-Core app files:
+## Core app files
 
 - `lib/meta/instagram.ts`
 - `lib/scheduler/publishDuePosts.ts`
+- `lib/scheduler/collectDailyMetrics.ts`
 - `app/admin/calendar/page.tsx`
 - `app/admin/posts/page.tsx`
 - `app/admin/posts/[id]/page.tsx`
 - `app/api/cron/publish/route.ts`
+- `app/api/cron/metrics/route.ts`
 - `app/api/assets/upload/route.ts`
+- `app/api/meta/smoke-test/route.ts`
 - `scripts/importContentCalendar.ts`
+- `scripts/smokeTestMetaConnection.ts`
 
-## Scheduler stack
+## Local setup
 
-- Next.js 16 + TypeScript
-- Supabase Postgres + Supabase Auth
-- Cloudflare R2 or AWS S3-compatible object storage
-- cron-friendly publish and metrics endpoints
-- official Meta/Instagram Graph API flows only
-
-## Scheduler setup
-
-Copy `.env.example` to `.env.local` and fill in:
-
-- `SUPABASE_URL`
-- `SUPABASE_SERVICE_ROLE_KEY`
-- `NEXT_PUBLIC_SUPABASE_URL`
-- `NEXT_PUBLIC_SUPABASE_ANON_KEY`
-- `PAGE_ID`
-- `IG_USER_ID`
-- `PAGE_ACCESS_TOKEN`
-- `ASSET_PUBLIC_BASE_URL`
-- `CRON_SECRET`
-
-Notes:
-
-- `META_API_VERSION` defaults to `v25.0`
-- `APP_TIMEZONE` defaults to `America/Los_Angeles`
-- `DRY_RUN` should stay `true` until the owner approves the first real live publish
-- `ASSET_PUBLIC_BASE_URL` must be a public HTTPS base URL because Meta fetches media by URL
-
-Run the Supabase migration:
-
-- `supabase/migrations/20260420_initial_schema.sql`
-
-## Local development
+1. Copy `.env.example` to `.env.local`
+2. Fill in placeholder values with real local credentials
+3. Install dependencies
+4. Apply the Supabase migrations
 
 ```bash
 npm install
 npm run dev
 ```
 
-## Seed starter content
+Apply these migrations:
+
+- `supabase/migrations/20260420_initial_schema.sql`
+- `supabase/migrations/20260420_01_scheduler_hardening.sql`
+
+## Required env vars
+
+- `META_API_VERSION`
+- `META_APP_ID`
+- `META_APP_SECRET`
+- `PAGE_ID`
+- `IG_USER_ID`
+- `PAGE_ACCESS_TOKEN`
+- `SUPABASE_URL`
+- `SUPABASE_SERVICE_ROLE_KEY`
+- `NEXT_PUBLIC_SUPABASE_URL`
+- `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+- `ASSET_PUBLIC_BASE_URL`
+- storage credentials for R2 or S3
+- `CRON_SECRET`
+- `APP_TIMEZONE=America/Los_Angeles`
+- `DRY_RUN=true`
+- `LIVE_CRON_ENABLED=false`
+
+## Import the content calendar
+
+Seed the NCS starter calendar:
 
 ```bash
 npm run import:calendar
 ```
 
-To import a custom CSV or JSON file:
+Import a custom CSV or JSON file:
 
 ```bash
 npm run import:calendar -- ./path/to/calendar.csv
 ```
 
-## Cron endpoints
+Supported import fields:
 
-- `GET/POST /api/cron/publish`
-- `GET/POST /api/cron/metrics`
+- `title`
+- `format`
+- `pillar`
+- `caption`
+- `hashtags`
+- `cta`
+- `scheduled_at`
+- `timezone`
+- `status`
+- `owner_approved`
+- `requires_price_verification`
+- `price_verified`
 
-Pass either:
+## Run a dry run safely
 
-- `Authorization: Bearer <CRON_SECRET>`
-- `x-cron-secret: <CRON_SECRET>`
-
-## Existing static surfaces
-
-You can still open the older static tools directly:
-
-- `site/index.html`
-- `mission-control/index.html`
-
-Or serve the repo root locally:
+Keep this configuration:
 
 ```bash
-python3 -m http.server 8080
+DRY_RUN=true
+LIVE_CRON_ENABLED=false
 ```
 
-Then visit:
+Then:
 
-- `http://localhost:8080/site/`
-- `http://localhost:8080/mission-control/`
+- use the manual publish button in the admin UI
+- or call `GET /api/cron/publish` with `Authorization: Bearer <CRON_SECRET>`
+
+No live Instagram publish call will be made while `DRY_RUN=true`.
+
+## Run the Meta smoke test
+
+CLI:
+
+```bash
+npm run smoke:meta
+```
+
+API:
+
+- `GET /api/meta/smoke-test`
+
+This verifies the required env vars and checks that the configured Instagram business account is reachable without publishing anything.
+
+## Tests and CI
+
+Run locally:
+
+```bash
+npm run lint
+npm run typecheck
+npm test
+npm run build
+```
+
+GitHub Actions runs the same checks in `.github/workflows/ci.yml`.
+
+## Safe deployment guide
+
+Use the deployment checklist in:
+
+- `docs/social-scheduler-deployment.md`
+
+It covers:
+
+- env setup
+- migrations
+- admin allowlist setup
+- storage setup
+- Meta setup
+- keeping dry run on
+- seeding content
+- approving the first post
+- running the first manual live publish
+- enabling live cron only after that succeeds
+- rollback and troubleshooting
+
+## Owner/admin allowlist
+
+Production scheduler access is limited to users in `public.admin_users`.
+
+Example seed:
+
+```sql
+insert into public.admin_users (email, role)
+values ('owner@example.com', 'owner')
+on conflict (email) do update set role = excluded.role;
+```
+
+## Pricing reminder
+
+Do not publish Platinum Hydrafacial B3G1 package pricing until the owner confirms the correct price. Seeded package posts are intentionally blocked until the price is verified.

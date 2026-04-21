@@ -93,6 +93,10 @@ export function checksumHex(buffer: Buffer): string {
 }
 
 export function getDisplayStatus(post: Pick<PostRow, "status" | "scheduled_at">): PostStatus {
+  if (post.status === "scheduled") {
+    return "scheduled";
+  }
+
   if (
     post.status === "approved" &&
     post.scheduled_at &&
