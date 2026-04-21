@@ -18,6 +18,8 @@ This app is built to help NCS plan, approve, schedule, validate, and publish Ins
 
 - `DRY_RUN=true` by default
 - `LIVE_CRON_ENABLED=false` by default
+- editors can create and edit drafts only
+- only owner/admin can approve, schedule, price-verify, or trigger publishing
 - posts only publish when `status` is `approved` or `scheduled`
 - posts must also be `owner_approved=true`
 - posts with `requires_price_verification=true` are blocked until `price_verified=true`
@@ -69,6 +71,7 @@ Apply these migrations:
 
 - `supabase/migrations/20260420_initial_schema.sql`
 - `supabase/migrations/20260420_01_scheduler_hardening.sql`
+- `supabase/migrations/20260420_02_post_role_safety.sql`
 
 ## Required env vars
 
@@ -102,6 +105,8 @@ Import a custom CSV or JSON file:
 ```bash
 npm run import:calendar -- ./path/to/calendar.csv
 ```
+
+The CLI importer uses Supabase service-role credentials and is intended only for a trusted owner/admin operator.
 
 Supported import fields:
 
@@ -184,6 +189,12 @@ It covers:
 ## Owner/admin allowlist
 
 Production scheduler access is limited to users in `public.admin_users`.
+
+- `owner` and `admin` can approve, schedule, publish, price-verify, and manage the allowlist
+- `editor` can create and edit draft content only
+- `viewer` is read-only
+
+Do not give editor accounts owner/admin access unless you trust them to publish live content.
 
 Example seed:
 

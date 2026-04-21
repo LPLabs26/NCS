@@ -25,14 +25,22 @@ export function ImportCalendarForm() {
             method: "POST",
             body: formData,
           });
-          const payload = (await response.json()) as { error?: string; imported?: number };
+          const payload = (await response.json()) as {
+            error?: string;
+            imported?: number;
+            sanitized?: number;
+          };
 
           if (!response.ok) {
             setError(payload.error ?? "Import failed.");
             return;
           }
 
-          setMessage(`Imported ${payload.imported ?? 0} posts.`);
+          setMessage(
+            payload.sanitized && payload.sanitized > 0
+              ? `Imported ${payload.imported ?? 0} posts. ${payload.sanitized} publish-sensitive rows were reset to draft for editor safety.`
+              : `Imported ${payload.imported ?? 0} posts.`,
+          );
           form.reset();
           router.refresh();
         });

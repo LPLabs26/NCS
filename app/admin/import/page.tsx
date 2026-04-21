@@ -23,7 +23,11 @@ export default async function ImportPage({ searchParams }: Props) {
 
       {params.seeded || params.imported ? (
         <div className="rounded-3xl border border-emerald-200 bg-emerald-50 p-4 text-sm text-emerald-800">
-          {params.seeded ? "Starter calendar seeded." : "Content calendar imported."}
+          {params.seeded
+            ? "Starter calendar seeded."
+            : typeof params.sanitized === "string"
+              ? `Content calendar imported. ${params.sanitized} publish-sensitive rows were reset to draft for editor safety.`
+              : "Content calendar imported."}
         </div>
       ) : null}
 

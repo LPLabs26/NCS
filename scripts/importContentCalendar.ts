@@ -11,6 +11,10 @@ async function main() {
     );
   }
 
+  console.warn(
+    "Warning: scripts/importContentCalendar.ts uses service-role credentials and should only be run by a trusted owner/admin operator.",
+  );
+
   const inputPath = process.argv[2];
 
   const payload = inputPath

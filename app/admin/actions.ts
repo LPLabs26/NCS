@@ -8,6 +8,10 @@ import { importContentCalendar } from "@/lib/data/posts";
 import { buildSeedCalendarPayload, parseContentCalendar } from "@/lib/content/import";
 import { isDryRun, hasSupabaseBrowserEnv } from "@/lib/env";
 import { duplicatePost, getPostById, savePost } from "@/lib/data/posts";
+import {
+  isPublishSensitivePostInput,
+  sanitizeImportedPayloadForRole,
+} from "@/lib/postRoleSafety";
 import { fromLocalDateTimeInput, parseList } from "@/lib/utils";
 import { publishDuePosts } from "@/lib/scheduler/publishDuePosts";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
@@ -48,17 +52,29 @@ export async function savePostAction(formData: FormData) {
   const ownerApproved = formData.get("owner_approved") === "true";
   const requiresPriceVerification = formData.get("requires_price_verification") === "true";
   const priceVerified = formData.get("price_verified") === "true";
+  const requestedStatus = normalizeEditableStatus(
+    String(formData.get("status") ?? "draft"),
+    scheduledAt,
+    ownerApproved,
+  );
+
+  if (
+    isPublishSensitivePostInput({
+      status: requestedStatus,
+      owner_approved: ownerApproved,
+      price_verified: priceVerified,
+    })
+  ) {
+    await requireSchedulerPermission("publish");
+  }
+
   const post = await savePost({
     id: id && id !== "new" ? id : undefined,
     title: String(formData.get("title") ?? "Untitled Post"),
     platform: "instagram",
     format: String(formData.get("format") ?? "image") as "image" | "reel" | "carousel" | "story",
     pillar: String(formData.get("pillar") ?? "") || null,
-    status: normalizeEditableStatus(
-      String(formData.get("status") ?? "draft"),
-      scheduledAt,
-      ownerApproved,
-    ),
+    status: requestedStatus,
     caption: String(formData.get("caption") ?? "") || null,
     hashtags: parseList(String(formData.get("hashtags") ?? "")),
     cta: String(formData.get("cta") ?? "") || null,
@@ -123,14 +139,27 @@ export async function seedCalendarAction() {
 }
 
 export async function importRawCalendarAction(formData: FormData) {
-  await requireSchedulerPermission("edit");
+  const access = await requireSchedulerPermission("edit");
   const raw = String(formData.get("raw") ?? "");
   const filename = String(formData.get("filename") ?? "calendar.json");
-  await importContentCalendar(parseContentCalendar(raw, filename));
+  const payload = sanitizeImportedPayloadForRole(
+    access.role,
+    parseContentCalendar(raw, filename),
+  );
+  await importContentCalendar({
+    posts: payload.posts,
+    templates: payload.templates,
+  });
   revalidatePath("/admin");
   revalidatePath("/admin/posts");
   revalidatePath("/admin/calendar");
-  redirect("/admin/import?imported=1");
+  const params = new URLSearchParams({
+    imported: "1",
+  });
+  if (payload.sanitizedCount > 0) {
+    params.set("sanitized", String(payload.sanitizedCount));
+  }
+  redirect(`/admin/import?${params.toString()}`);
 }
 
 export async function signOutAction() {

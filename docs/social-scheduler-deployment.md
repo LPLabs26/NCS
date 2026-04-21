@@ -30,10 +30,19 @@ Apply both migrations:
 
 1. `supabase/migrations/20260420_initial_schema.sql`
 2. `supabase/migrations/20260420_01_scheduler_hardening.sql`
+3. `supabase/migrations/20260420_02_post_role_safety.sql`
 
 ## Admin allowlist
 
 Production access fails closed unless auth is configured and the user is in `admin_users`.
+
+Role model:
+
+- `owner` and `admin`: can approve, schedule, publish, price-verify, and manage admin access
+- `editor`: can create and edit drafts only
+- `viewer`: read-only
+
+Do not upgrade editor accounts to owner/admin unless they are trusted to control live publishing.
 
 Example owner seed:
 
@@ -100,6 +109,8 @@ Import a custom CSV or JSON calendar:
 npm run import:calendar -- ./path/to/calendar.csv
 ```
 
+This CLI import path uses Supabase service-role credentials and should only be run by a trusted owner/admin operator.
+
 Supported import columns:
 
 - `title`
@@ -133,6 +144,8 @@ Do not upload before-and-after content, identifiable reviews, or intimate waxing
 4. If the post references a package price, also check `Requires price verification`
 5. Only check `Price verified` after the owner confirms the price
 6. Save the post as `approved` or `scheduled`
+
+Editors can still prepare captions, hashtags, CTAs, assets, and draft schedule times, but only owner/admin can move a post into an approved or scheduled publishable state.
 
 ## Manual dry run
 

@@ -137,6 +137,20 @@ test("publishDuePosts skips posts missing assets", async () => {
   assert.match(result.message, /Post is missing required media/);
 });
 
+test("publishDuePosts skips posts without owner approval", async () => {
+  const post = buildPost({ owner_approved: false });
+  const { run } = createDeps(post, [buildAsset()]);
+
+  const [result] = await run({
+    postId: post.id,
+    mode: "manual",
+    dryRun: true,
+  });
+
+  assert.equal(result.status, "skipped");
+  assert.match(result.message, /Owner approval is required/);
+});
+
 test("publishDuePosts skips assets without usage rights confirmation", async () => {
   const post = buildPost();
   const { run } = createDeps(post, [buildAsset({ usage_rights_confirmed: false })]);
