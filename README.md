@@ -25,6 +25,9 @@ This app is built to help NCS plan, approve, schedule, validate, and publish Ins
 - posts with `requires_price_verification=true` are blocked until `price_verified=true`
 - assets must have `usage_rights_confirmed=true`
 - assets must use public HTTPS URLs
+- Circadia product posts must not show public retail pricing
+- specific Circadia services require owner confirmation before promotion
+- official Circadia assets require approved access and usage rights
 - production admin access fails closed if Supabase browser auth is not configured
 - production admin access is allowlist-based through `admin_users`
 - the first real live publish must be manual and owner-approved before cron can go live
@@ -72,6 +75,7 @@ Apply these migrations:
 - `supabase/migrations/20260420_initial_schema.sql`
 - `supabase/migrations/20260420_01_scheduler_hardening.sql`
 - `supabase/migrations/20260420_02_post_role_safety.sql`
+- `supabase/migrations/20260420_03_circadia_pillar.sql`
 
 ## Required env vars
 
@@ -122,6 +126,10 @@ Supported import fields:
 - `owner_approved`
 - `requires_price_verification`
 - `price_verified`
+- `requires_owner_service_confirmation`
+- `owner_service_confirmed`
+- `requires_brand_asset_rights`
+- `hide_public_product_pricing`
 
 ## Run a dry run safely
 
@@ -185,6 +193,7 @@ It covers:
 - running the first manual live publish
 - enabling live cron only after that succeeds
 - rollback and troubleshooting
+- Circadia pricing and service-promotion guardrails
 
 ## Owner/admin allowlist
 
@@ -207,3 +216,12 @@ on conflict (email) do update set role = excluded.role;
 ## Pricing reminder
 
 Do not publish Platinum Hydrafacial B3G1 package pricing until the owner confirms the correct price. Seeded package posts are intentionally blocked until the price is verified.
+
+## Circadia compliance reminder
+
+- Circadia is positioned as professional-grade skincare for licensed providers and trusted partners
+- do not show public Circadia retail product pricing
+- use claim-safe language such as `designed to`, `can help`, `supports`, `great for`, `may improve the look of`, `results vary`, and `book a consult`
+- do not use medical or guaranteed-result claims
+- only use official Circadia marketing assets if Natalie has approved access and usage rights
+- confirm specific Circadia services before posting about SWiCH, Oxygen Rx, MandeliClear, DermaFrost, Calming Facial, or similar branded protocols

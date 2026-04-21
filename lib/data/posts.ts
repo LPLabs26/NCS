@@ -157,6 +157,9 @@ export async function duplicatePost(id: string): Promise<PostRow> {
     scheduled_at: null,
     owner_approved: false,
     price_verified: post.requires_price_verification ? false : post.price_verified,
+    owner_service_confirmed: post.requires_owner_service_confirmation
+      ? false
+      : post.owner_service_confirmed,
     error: null,
   });
 }
@@ -213,6 +216,11 @@ export async function importContentCalendar(payload: {
       owner_approved: post.owner_approved ?? false,
       requires_price_verification: post.requires_price_verification ?? false,
       price_verified: post.price_verified ?? false,
+      requires_owner_service_confirmation:
+        post.requires_owner_service_confirmation ?? false,
+      owner_service_confirmed: post.owner_service_confirmed ?? false,
+      requires_brand_asset_rights: post.requires_brand_asset_rights ?? false,
+      hide_public_product_pricing: post.hide_public_product_pricing ?? false,
     }));
 
     const { error } = await client.from("posts").insert(normalizedPosts);

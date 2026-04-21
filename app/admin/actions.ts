@@ -52,6 +52,12 @@ export async function savePostAction(formData: FormData) {
   const ownerApproved = formData.get("owner_approved") === "true";
   const requiresPriceVerification = formData.get("requires_price_verification") === "true";
   const priceVerified = formData.get("price_verified") === "true";
+  const requiresOwnerServiceConfirmation =
+    formData.get("requires_owner_service_confirmation") === "true";
+  const ownerServiceConfirmed = formData.get("owner_service_confirmed") === "true";
+  const requiresBrandAssetRights = formData.get("requires_brand_asset_rights") === "true";
+  const hidePublicProductPricing =
+    formData.get("hide_public_product_pricing") === "true";
   const requestedStatus = normalizeEditableStatus(
     String(formData.get("status") ?? "draft"),
     scheduledAt,
@@ -63,6 +69,7 @@ export async function savePostAction(formData: FormData) {
       status: requestedStatus,
       owner_approved: ownerApproved,
       price_verified: priceVerified,
+      owner_service_confirmed: ownerServiceConfirmed,
     })
   ) {
     await requireSchedulerPermission("publish");
@@ -84,6 +91,10 @@ export async function savePostAction(formData: FormData) {
     owner_approved: ownerApproved,
     requires_price_verification: requiresPriceVerification,
     price_verified: requiresPriceVerification ? priceVerified : false,
+    requires_owner_service_confirmation: requiresOwnerServiceConfirmation,
+    owner_service_confirmed: ownerServiceConfirmed,
+    requires_brand_asset_rights: requiresBrandAssetRights,
+    hide_public_product_pricing: hidePublicProductPricing,
   });
 
   revalidatePath("/admin");

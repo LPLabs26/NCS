@@ -23,6 +23,10 @@ function buildPostInsert(overrides: Partial<PostInsert> = {}): PostInsert {
     owner_approved: false,
     requires_price_verification: false,
     price_verified: false,
+    requires_owner_service_confirmation: false,
+    owner_service_confirmed: false,
+    requires_brand_asset_rights: false,
+    hide_public_product_pricing: false,
     error: null,
     ...overrides,
   };
@@ -46,6 +50,18 @@ test("editor cannot price-verify through save helper", () => {
       "editor",
       buildPostInsert({
         price_verified: true,
+      }),
+    ),
+    false,
+  );
+});
+
+test("editor cannot service-confirm Circadia promotions through save helper", () => {
+  assert.equal(
+    canRoleSavePostInput(
+      "editor",
+      buildPostInsert({
+        owner_service_confirmed: true,
       }),
     ),
     false,
@@ -80,6 +96,7 @@ test("editor imports are sanitized back to safe draft state", () => {
         status: "scheduled",
         owner_approved: true,
         price_verified: true,
+        owner_service_confirmed: true,
       }),
     ],
     templates: [],
@@ -89,6 +106,7 @@ test("editor imports are sanitized back to safe draft state", () => {
   assert.equal(payload.posts[0].status, "draft");
   assert.equal(payload.posts[0].owner_approved, false);
   assert.equal(payload.posts[0].price_verified, false);
+  assert.equal(payload.posts[0].owner_service_confirmed, false);
 });
 
 test("owner/admin can still approve and schedule posts", () => {
@@ -96,6 +114,7 @@ test("owner/admin can still approve and schedule posts", () => {
     status: "scheduled",
     owner_approved: true,
     price_verified: true,
+    owner_service_confirmed: true,
   });
 
   assert.equal(canRoleSavePostInput("owner", sensitivePost), true);

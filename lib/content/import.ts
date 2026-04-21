@@ -73,6 +73,13 @@ function toPostInsert(record: LooseRecord): PostInsert {
       false,
     ),
     price_verified: normalizeBoolean(record.price_verified, false),
+    requires_owner_service_confirmation: normalizeBoolean(
+      record.requires_owner_service_confirmation,
+      false,
+    ),
+    owner_service_confirmed: normalizeBoolean(record.owner_service_confirmed, false),
+    requires_brand_asset_rights: normalizeBoolean(record.requires_brand_asset_rights, false),
+    hide_public_product_pricing: normalizeBoolean(record.hide_public_product_pricing, false),
     error: null,
   };
 }

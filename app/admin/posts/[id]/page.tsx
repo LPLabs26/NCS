@@ -80,6 +80,10 @@ export default async function PostDetailPage({ params, searchParams }: Props) {
         owner_approved: false,
         price_verified: false,
         requires_price_verification: false,
+        requires_owner_service_confirmation: false,
+        owner_service_confirmed: false,
+        requires_brand_asset_rights: false,
+        hide_public_product_pricing: false,
       };
   const canEdit = access ? roleCan(access.role, "edit") : false;
   const canPublish = access ? roleCan(access.role, "publish") : false;
@@ -350,6 +354,74 @@ export default async function PostDetailPage({ params, searchParams }: Props) {
                 </span>
               </label>
             </div>
+            <div className="rounded-3xl border border-stone-200 bg-white p-4">
+              <label className="flex items-start gap-3 text-sm text-stone-700">
+                <input
+                  type="checkbox"
+                  name="requires_owner_service_confirmation"
+                  value="true"
+                  defaultChecked={editablePost.requires_owner_service_confirmation}
+                  className="mt-1"
+                />
+                <span>
+                  <span className="block font-semibold text-stone-900">
+                    Requires owner service confirmation
+                  </span>
+                  Use this when the post references a specific Circadia service that Natalie must confirm NCS offers or is allowed to promote.
+                </span>
+              </label>
+            </div>
+            <div className="rounded-3xl border border-stone-200 bg-white p-4">
+              <label className="flex items-start gap-3 text-sm text-stone-700">
+                <input
+                  type="checkbox"
+                  name="owner_service_confirmed"
+                  value="true"
+                  defaultChecked={editablePost.owner_service_confirmed}
+                  className="mt-1"
+                />
+                <span>
+                  <span className="block font-semibold text-stone-900">
+                    Owner service confirmed
+                  </span>
+                  Only confirm this after Natalie verifies the specific Circadia service is active and allowed to be promoted.
+                </span>
+              </label>
+            </div>
+            <div className="rounded-3xl border border-stone-200 bg-white p-4">
+              <label className="flex items-start gap-3 text-sm text-stone-700">
+                <input
+                  type="checkbox"
+                  name="requires_brand_asset_rights"
+                  value="true"
+                  defaultChecked={editablePost.requires_brand_asset_rights}
+                  className="mt-1"
+                />
+                <span>
+                  <span className="block font-semibold text-stone-900">
+                    Requires brand asset rights
+                  </span>
+                  Use this for Circadia marketing or product visuals that should only run with approved official asset permission and confirmed usage rights.
+                </span>
+              </label>
+            </div>
+            <div className="md:col-span-2 rounded-3xl border border-stone-200 bg-white p-4">
+              <label className="flex items-start gap-3 text-sm text-stone-700">
+                <input
+                  type="checkbox"
+                  name="hide_public_product_pricing"
+                  value="true"
+                  defaultChecked={editablePost.hide_public_product_pricing}
+                  className="mt-1"
+                />
+                <span>
+                  <span className="block font-semibold text-stone-900">
+                    Hide public product pricing
+                  </span>
+                  Keep this on for Circadia product education posts. Public Circadia retail pricing should not appear in captions.
+                </span>
+              </label>
+            </div>
 
             <div className="space-y-3 md:col-span-2">
               <div>
@@ -490,6 +562,9 @@ export default async function PostDetailPage({ params, searchParams }: Props) {
               <li>Dry run stays on by default until you intentionally switch it off in env.</li>
               <li>The first live publish is blocked from cron and must be triggered manually.</li>
               <li>Do not post package pricing until the owner confirms the offer.</li>
+              <li>Do not show public Circadia retail pricing in captions or product education posts.</li>
+              <li>Specific Circadia services need owner confirmation before they can be promoted.</li>
+              <li>Only use official Circadia assets if Natalie has approved access and usage rights.</li>
               <li>
                 Before-and-after images, client reviews, and intimate waxing references need explicit
                 consent before they go live.

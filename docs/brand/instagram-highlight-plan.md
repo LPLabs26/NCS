@@ -19,7 +19,15 @@ Use highlights as a mini sales system for new profile visitors.
 4. process clips
 5. results / glow reveal
 
-## Highlight 3 - Facials
+## Highlight 3 - Circadia Pro
+### Slides to include
+1. what Circadia Pro means at NCS
+2. protect by day, repair by night
+3. custom facial + peel-plan education
+4. homecare guidance without pricing
+5. consult CTA
+
+## Highlight 4 - Facials
 ### Slides to include
 1. custom facial intro
 2. who custom facials are for
@@ -27,7 +35,7 @@ Use highlights as a mini sales system for new profile visitors.
 4. relaxing treatment visuals
 5. CTA to book
 
-## Highlight 4 - Peels
+## Highlight 5 - Peels
 ### Slides to include
 1. what chemical peels help with
 2. who should consider them
@@ -35,28 +43,28 @@ Use highlights as a mini sales system for new profile visitors.
 4. corrective skin messaging
 5. consultation CTA
 
-## Highlight 5 - Results
+## Highlight 6 - Results
 ### Slides to include
 1. before/after proof
 2. glow results
 3. texture improvements
 4. repeat-client skin progress
 
-## Highlight 6 - Reviews
+## Highlight 7 - Reviews
 ### Slides to include
 1. client quote
 2. client quote
 3. client quote
 4. trust / consistency message
 
-## Highlight 7 - FAQs
+## Highlight 8 - FAQs
 ### Slides to include
 1. what should I book first?
 2. does Hydrafacial help with congestion?
 3. do I need a consult?
 4. what if I have sensitive skin?
 
-## Highlight 8 - Book Now
+## Highlight 9 - Book Now
 ### Slides to include
 1. ready to book?
 2. want glow? Hydrafacial

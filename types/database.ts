@@ -158,6 +158,10 @@ export interface Database {
           owner_approved: boolean;
           price_verified: boolean;
           requires_price_verification: boolean;
+          requires_owner_service_confirmation: boolean;
+          owner_service_confirmed: boolean;
+          requires_brand_asset_rights: boolean;
+          hide_public_product_pricing: boolean;
           created_at: string;
           updated_at: string;
         };
@@ -181,6 +185,10 @@ export interface Database {
           owner_approved?: boolean;
           price_verified?: boolean;
           requires_price_verification?: boolean;
+          requires_owner_service_confirmation?: boolean;
+          owner_service_confirmed?: boolean;
+          requires_brand_asset_rights?: boolean;
+          hide_public_product_pricing?: boolean;
           created_at?: string;
           updated_at?: string;
         };

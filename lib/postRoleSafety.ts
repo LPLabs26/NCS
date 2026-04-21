@@ -20,18 +20,25 @@ export interface ImportSanitizeResult {
 }
 
 export function isPublishSensitivePostInput(
-  input: Pick<PostInsert, "owner_approved" | "price_verified" | "status">,
+  input: Pick<
+    PostInsert,
+    "owner_approved" | "price_verified" | "owner_service_confirmed" | "status"
+  >,
 ): boolean {
   return Boolean(
     input.owner_approved ||
       input.price_verified ||
+      input.owner_service_confirmed ||
       (input.status && publishSensitiveStatuses.has(input.status)),
   );
 }
 
 export function canRoleSavePostInput(
   role: AdminRole,
-  input: Pick<PostInsert, "owner_approved" | "price_verified" | "status">,
+  input: Pick<
+    PostInsert,
+    "owner_approved" | "price_verified" | "owner_service_confirmed" | "status"
+  >,
 ): boolean {
   return roleCan(role, "edit") && (!isPublishSensitivePostInput(input) || roleCan(role, "publish"));
 }
@@ -56,12 +63,14 @@ export function sanitizeImportedPostsForRole(
       status: "draft",
       owner_approved: false,
       price_verified: false,
+      owner_service_confirmed: false,
     };
 
     if (
       post.status !== sanitized.status ||
       post.owner_approved !== sanitized.owner_approved ||
-      post.price_verified !== sanitized.price_verified
+      post.price_verified !== sanitized.price_verified ||
+      post.owner_service_confirmed !== sanitized.owner_service_confirmed
     ) {
       sanitizedCount += 1;
     }
@@ -89,4 +98,3 @@ export function sanitizeImportedPayloadForRole(
     templates: payload.templates ?? [],
   };
 }
-

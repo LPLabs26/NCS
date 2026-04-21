@@ -21,19 +21,20 @@ This improves local discoverability while keeping the brand name clear.
 ### Bio goals
 The bio should communicate:
 - luxury skincare / facial specialty
+- Circadia Pro authority
 - location
 - hero services
 - booking direction
 
 ### Suggested bio direction
-Luxury skincare in Fresno
-Hydrafacials • Custom Facials • Corrective Care
-Personalized treatments for glowing, healthy skin
-Book your appointment below
+Fresno Esthetician | Hydrafacial • Circadia Pro • Waxing
+Custom facials, peels, lashes + brows
+Located inside La Dama Salon | North Fresno
+Book your glow ↓
 
 Alternative version:
-Fresno esthetician specializing in Hydrafacials, custom facials, and corrective skincare.
-Luxury, high-touch treatments designed for radiant skin.
+Fresno esthetician specializing in Hydrafacials, Circadia Pro guidance, custom facials, and corrective skincare.
+Luxury, high-touch treatments designed to support radiant skin.
 Book below.
 
 ### Link strategy
@@ -69,6 +70,7 @@ Highlights should reduce booking hesitation and increase trust.
 ### Recommended highlights
 - New Here
 - Hydrafacial
+- Circadia Pro
 - Facials
 - Peels
 - Results
@@ -87,6 +89,12 @@ Highlights should reduce booking hesitation and increase trust.
 - process
 - who it’s for
 - results
+
+**Circadia Pro**
+- what Circadia Pro means
+- protect by day / repair by night education
+- custom facial and peel-plan authority
+- homecare guidance without public pricing
 
 **Facials**
 - custom facial education
@@ -121,6 +129,9 @@ Highlights should reduce booking hesitation and increase trust.
 - use fewer but stronger messages
 - repeat hero offers often
 - avoid making the page feel like a random beauty menu
+- use Circadia to reinforce custom-treatment planning, peel education, barrier support, and homecare authority
+- do not show Circadia retail product pricing publicly
+- only use official Circadia assets with approved access and usage rights
 
 ## Most important profile principle
 A new visitor should quickly understand:

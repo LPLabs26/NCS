@@ -26,11 +26,12 @@ Set these in Vercel, your local `.env.local`, and any CI environment that needs 
 
 ## Supabase migration
 
-Apply both migrations:
+Apply all migrations:
 
 1. `supabase/migrations/20260420_initial_schema.sql`
 2. `supabase/migrations/20260420_01_scheduler_hardening.sql`
 3. `supabase/migrations/20260420_02_post_role_safety.sql`
+4. `supabase/migrations/20260420_03_circadia_pillar.sql`
 
 ## Admin allowlist
 
@@ -125,6 +126,10 @@ Supported import columns:
 - `owner_approved`
 - `requires_price_verification`
 - `price_verified`
+- `requires_owner_service_confirmation`
+- `owner_service_confirmed`
+- `requires_brand_asset_rights`
+- `hide_public_product_pricing`
 
 ## Upload asset safely
 
@@ -135,6 +140,7 @@ Supported import columns:
 5. Attach the asset to the post
 
 Do not upload before-and-after content, identifiable reviews, or intimate waxing content without explicit written consent.
+Use official Circadia marketing assets only if Natalie has approved access and usage rights.
 
 ## Approve one post
 
@@ -146,6 +152,14 @@ Do not upload before-and-after content, identifiable reviews, or intimate waxing
 6. Save the post as `approved` or `scheduled`
 
 Editors can still prepare captions, hashtags, CTAs, assets, and draft schedule times, but only owner/admin can move a post into an approved or scheduled publishable state.
+
+## Circadia compliance note
+
+- Circadia is professional-grade skincare developed for licensed providers and trusted partners
+- do not show public retail product pricing
+- use claim-safe language such as `designed to`, `can help`, `supports`, `great for`, `may improve the look of`, `results vary`, and `book a consult`
+- prohibited examples include `cures acne`, `guaranteed`, `permanent`, `medical treatment`, `fixes`, and `pain-free guaranteed`
+- before posting any specific Circadia service such as SWiCH, Oxygen Rx, MandeliClear, DermaFrost, or Calming Facial, require owner confirmation that NCS offers or is allowed to promote that service
 
 ## Manual dry run
 

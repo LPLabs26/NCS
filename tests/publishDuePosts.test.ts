@@ -28,6 +28,10 @@ function buildPost(overrides: Partial<PostRow> = {}): PostRow {
     owner_approved: true,
     price_verified: false,
     requires_price_verification: false,
+    requires_owner_service_confirmation: false,
+    owner_service_confirmed: false,
+    requires_brand_asset_rights: false,
+    hide_public_product_pricing: false,
     created_at: "2026-04-20T00:00:00.000Z",
     updated_at: "2026-04-20T00:00:00.000Z",
     ...overrides,
@@ -180,6 +184,45 @@ test("publishDuePosts skips price-sensitive posts until price is verified", asyn
 
   assert.equal(result.status, "skipped");
   assert.match(result.message, /Price verification is still required/);
+});
+
+test("publishDuePosts skips Circadia service posts until owner service confirmation is set", async () => {
+  const post = buildPost({
+    title: "Why chemical peels require a consult",
+    pillar: "Circadia Pro Skin Systems",
+    caption: "Circadia Oxygen Rx and peel planning should never be random.",
+    requires_owner_service_confirmation: true,
+    owner_service_confirmed: false,
+  });
+  const { run } = createDeps(post, [buildAsset()]);
+
+  const [result] = await run({
+    postId: post.id,
+    mode: "manual",
+    dryRun: true,
+  });
+
+  assert.equal(result.status, "skipped");
+  assert.match(result.message, /Owner service confirmation is required|Specific Circadia services require owner confirmation/);
+});
+
+test("publishDuePosts skips Circadia posts with public pricing in the caption", async () => {
+  const post = buildPost({
+    title: "Product education without pricing",
+    pillar: "Circadia Pro Skin Systems",
+    caption: "Circadia homecare is great for support. Retail is $78 in studio.",
+    hide_public_product_pricing: true,
+  });
+  const { run } = createDeps(post, [buildAsset()]);
+
+  const [result] = await run({
+    postId: post.id,
+    mode: "manual",
+    dryRun: true,
+  });
+
+  assert.equal(result.status, "skipped");
+  assert.match(result.message, /Do not publish public Circadia retail pricing/);
 });
 
 test("DRY_RUN validates but does not call Meta publish endpoints", async () => {

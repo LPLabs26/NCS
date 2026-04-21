@@ -28,6 +28,9 @@ Preferred phrasing:
 - can help
 - may improve
 - designed to support
+- may improve the look of
+- results vary
+- book a consult
 - personalized for your skin goals
 - expert-guided
 - results-driven
@@ -115,6 +118,22 @@ How NCS should use Circadia in marketing:
 - as the smart partner to in-studio treatment results
 - as a premium, intentional routine support system
 - as a way to make clients feel guided and cared for between appointments
+- as the authority pillar for custom facials, peel education, calming/barrier support, acne support, pigmentation education, and homecare planning
+
+Circadia compliance notes:
+- Circadia is professional-grade skincare developed for licensed providers and trusted partners
+- do not show Circadia retail product pricing publicly
+- only use official Circadia marketing assets if Natalie has approved access and usage rights
+- do not use medical claims or guaranteed-result claims
+- before posting specific Circadia services such as SWiCH, Oxygen Rx, MandeliClear, DermaFrost, or Calming Facial, require owner confirmation that NCS offers or is allowed to promote that service
+
+Prohibited claim examples:
+- cures acne
+- guaranteed
+- permanent
+- medical treatment
+- fixes
+- pain-free guaranteed
 
 ## Hydrafacial knowledge
 Hydrafacial is a premium treatment brand positioned around clinically supported results and visible skin improvement.

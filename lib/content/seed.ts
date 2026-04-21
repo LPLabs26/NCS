@@ -15,6 +15,9 @@ type SeedPostBlueprint = {
   cta: string;
   hashtags: string[];
   requiresPriceVerification?: boolean;
+  requiresOwnerServiceConfirmation?: boolean;
+  requiresBrandAssetRights?: boolean;
+  hidePublicProductPricing?: boolean;
 };
 
 const hashtagBank = [
@@ -24,6 +27,18 @@ const hashtagBank = [
   "#NorthFresno",
   "#NCSAesthetics",
   "#LaDamaSalon",
+];
+
+const circadiaTags = [
+  "#Circadia",
+  "#CircadiaPro",
+  "#CustomFacial",
+  "#PeelEducation",
+  "#BarrierSupport",
+  "#ProtectByDay",
+  "#RepairByNight",
+  "#ProfessionalSkincare",
+  "#HomecareEducation",
 ];
 
 const seedBlueprints: SeedPostBlueprint[] = [
@@ -94,6 +109,30 @@ const seedBlueprints: SeedPostBlueprint[] = [
     hashtags: ["#FresnoBeauty", "#BookNow", "#GlossGenius", "#NCSAesthetics"],
   },
   {
+    dayOffset: 6,
+    hour: 12,
+    minute: 0,
+    title: "What is Circadia?",
+    format: "carousel",
+    pillar: "Circadia Pro Skin Systems",
+    caption:
+      "You’ve seen “Circadia Pro” in my bio — here’s what that means.\n\nCircadia is a professional skincare line built around the skin’s natural rhythms: protect during the day, repair at night.\n\nAt NCS Aesthetics, Circadia helps me customize facials, support your skin barrier, prep for peels, and build routines that actually make sense for your skin.\n\nYour skin does not need random products. It needs a plan.",
+    cta: "Book a free consult.",
+    hashtags: ["#CircadiaPro", "#ProfessionalSkincare", "#HomecareEducation", "#NCSAesthetics"],
+  },
+  {
+    dayOffset: 7,
+    hour: 15,
+    minute: 0,
+    title: "Custom facial explainer",
+    format: "reel",
+    pillar: "Circadia Pro Skin Systems",
+    caption:
+      "A custom facial means I choose products based on your skin that day.\n\nYour skin can change with weather, stress, hormones, products, travel, and lifestyle.\n\nThat’s why a custom facial is not one-size-fits-all. During your appointment, I look at your skin goals, current routine, sensitivity, congestion, dryness, texture, and barrier health before choosing the products and steps that make the most sense.",
+    cta: "Book the NCS Custom Facial.",
+    hashtags: ["#CustomFacial", "#CircadiaPro", "#BarrierSupport", "#NCSAesthetics"],
+  },
+  {
     dayOffset: 8,
     hour: 9,
     minute: 0,
@@ -152,6 +191,30 @@ const seedBlueprints: SeedPostBlueprint[] = [
       "One thing clients mention often: feeling comfortable, heard, and educated during their appointment.\n\nThat is the goal every time — a treatment plan that makes sense for your skin, your routine, and your comfort level.\n\nClient reviews should only be posted with permission.",
     cta: "Book with confidence.",
     hashtags: ["#ClientExperience", "#FresnoEsthetician", "#NCSAesthetics", "#LaDamaSalon"],
+  },
+  {
+    dayOffset: 13,
+    hour: 9,
+    minute: 30,
+    title: "Protect by day, repair by night",
+    format: "carousel",
+    pillar: "Circadia Pro Skin Systems",
+    caption:
+      "Your morning and night routines should not do the same job.\n\nMorning skincare is about protection: SPF, antioxidants, barrier support, and defending your skin from Fresno sun, heat, and daily exposure.\n\nNight skincare is about repair: cleansing, hydration, corrective ingredients, and giving your skin what it needs while you sleep.\n\nThis is one of the reasons I love Circadia — the line is built around working with your skin’s natural rhythm.",
+    cta: "Save this and book a custom facial.",
+    hashtags: ["#ProtectByDay", "#RepairByNight", "#CircadiaPro", "#NCSAesthetics"],
+  },
+  {
+    dayOffset: 14,
+    hour: 11,
+    minute: 0,
+    title: "Sensitive skin / barrier support",
+    format: "reel",
+    pillar: "Circadia Pro Skin Systems",
+    caption:
+      "If your skin is red, reactive, or irritated, more exfoliation may not be the answer.\n\nSometimes the best facial is not the strongest facial.\n\nReactive skin often needs calming, hydration, barrier support, and a slower plan before jumping into stronger treatments.\n\nIf your skin burns, flushes, feels tight, or reacts to everything, start with a consult so we can choose the right approach.",
+    cta: "Book a free consult.",
+    hashtags: ["#BarrierSupport", "#SensitiveSkin", "#CircadiaPro", "#NCSAesthetics"],
   },
   {
     dayOffset: 15,
@@ -214,6 +277,30 @@ const seedBlueprints: SeedPostBlueprint[] = [
     hashtags: ["#SkinConsult", "#FresnoFacials", "#NCSAesthetics", "#NorthFresno"],
   },
   {
+    dayOffset: 20,
+    hour: 11,
+    minute: 0,
+    title: "Why chemical peels require a consult",
+    format: "carousel",
+    pillar: "Circadia Pro Skin Systems",
+    caption:
+      "Why I require a consult before chemical peels.\n\nChemical peels can be amazing, but they need to be planned correctly.\n\nBefore booking a peel, we need to look at:\n- Your current routine\n- Recent sun exposure\n- Sensitivity\n- Acne medications or actives\n- Pigmentation concerns\n- Downtime expectations\n- Your ability to follow aftercare\n\nA peel should never be random. It should be part of a plan.",
+    cta: "Book a consult first.",
+    hashtags: ["#PeelEducation", "#ConsultFirst", "#CircadiaPro", "#NCSAesthetics"],
+  },
+  {
+    dayOffset: 21,
+    hour: 12,
+    minute: 0,
+    title: "Acne-prone skin",
+    format: "reel",
+    pillar: "Circadia Pro Skin Systems",
+    caption:
+      "Acne-prone skin still needs hydration and calming.\n\nA lot of acne-prone clients overdo it with harsh products, skipping moisturizer, or exfoliating too often.\n\nAt NCS, the goal is to support clearer-looking skin without wrecking your barrier.\n\nWe can build a plan with the right facial, homecare, extractions, LED, and consistency.",
+    cta: "Book the Clarifying Acne Facial or a consult.",
+    hashtags: ["#AcneSupport", "#BarrierSupport", "#CircadiaPro", "#NCSAesthetics"],
+  },
+  {
     dayOffset: 22,
     hour: 9,
     minute: 0,
@@ -274,6 +361,32 @@ const seedBlueprints: SeedPostBlueprint[] = [
     hashtags: ["#HydrafacialPackage", "#MonthlyMaintenance", "#NCSAesthetics", "#FresnoHydrafacial"],
     requiresPriceVerification: true,
   },
+  {
+    dayOffset: 27,
+    hour: 10,
+    minute: 30,
+    title: "Fresno summer skin routine",
+    format: "carousel",
+    pillar: "Circadia Pro Skin Systems",
+    caption:
+      "Fresno skin needs a different plan in summer.\n\nHeat, SPF, sweat, outdoor events, and pollution can leave your skin feeling congested, dull, or irritated.\n\nYour summer plan should focus on:\n- Proper cleansing\n- SPF reapplication\n- Hydration\n- Barrier support\n- Gentle exfoliation\n- Consistent monthly treatments\n\nThis is where Circadia homecare plus professional facials can help support your skin between appointments.",
+    cta: "Book a custom facial.",
+    hashtags: ["#CircadiaPro", "#HomecareEducation", "#BarrierSupport", "#NCSAesthetics"],
+  },
+  {
+    dayOffset: 28,
+    hour: 15,
+    minute: 0,
+    title: "Product education without pricing",
+    format: "carousel",
+    pillar: "Circadia Pro Skin Systems",
+    caption:
+      "Product education > random product buying.\n\nProfessional skincare works best when it is matched to your skin.\n\nInstead of guessing online, ask what actually fits your goals:\n- Congestion\n- Texture\n- Pigmentation\n- Dryness\n- Sensitivity\n- Acne-prone skin\n- Aging concerns\n\nI’ll help you understand what belongs in your routine and what does not.",
+    cta: "Ask at your next appointment.",
+    hashtags: ["#ProfessionalSkincare", "#CircadiaPro", "#HomecareEducation", "#NCSAesthetics"],
+    requiresBrandAssetRights: true,
+    hidePublicProductPricing: true,
+  },
 ];
 
 function getSeedStartDate(baseDate: Date): Date {
@@ -310,6 +423,11 @@ export function buildSeedPosts(baseDate = new Date()): PostInsert[] {
       owner_approved: false,
       requires_price_verification: item.requiresPriceVerification ?? false,
       price_verified: false,
+      requires_owner_service_confirmation:
+        item.requiresOwnerServiceConfirmation ?? false,
+      owner_service_confirmed: false,
+      requires_brand_asset_rights: item.requiresBrandAssetRights ?? false,
+      hide_public_product_pricing: item.hidePublicProductPricing ?? false,
     };
   });
 }
@@ -350,5 +468,41 @@ export const seedTemplates: ContentTemplateInsert[] = [
       "A lash lift with tint gives your natural lashes a lifted, darker, more polished look without extensions. Great for busy mornings, vacations, low-maintenance beauty, and natural lash enhancement.",
     cta: "Book lash lift.",
     hashtags: ["#FresnoLashLift", "#LashLift", "#NCSAesthetics"],
+  },
+  {
+    service: "Circadia Pro Skin Systems",
+    pillar: "Circadia Pro Skin Systems",
+    hook: "You’ve seen Circadia Pro in my bio. Here’s what that means.",
+    caption_template:
+      "Circadia is a professional skincare line built around the skin’s natural rhythms: protect during the day, repair at night. At NCS Aesthetics, Circadia helps me customize facials, support your barrier, prep for peels, and build routines that actually make sense for your skin. Results vary.",
+    cta: "Book a free consult.",
+    hashtags: ["#Circadia", "#CircadiaPro", "#ProfessionalSkincare", "#NCSAesthetics"],
+  },
+  {
+    service: "Custom Facial",
+    pillar: "Circadia Pro Skin Systems",
+    hook: "A custom facial means I choose products based on your skin that day.",
+    caption_template:
+      "Your skin can change with weather, stress, hormones, products, travel, and lifestyle. That is why a custom facial is not one-size-fits-all. I look at your goals, routine, sensitivity, congestion, dryness, texture, and barrier health before choosing what makes the most sense. Results vary.",
+    cta: "Book the NCS Custom Facial.",
+    hashtags: ["#CustomFacial", "#CircadiaPro", "#BarrierSupport", "#NCSAesthetics"],
+  },
+  {
+    service: "Chemical peel consult",
+    pillar: "Circadia Pro Skin Systems",
+    hook: "Why I require a consult before chemical peels.",
+    caption_template:
+      "Chemical peels can be amazing, but they need to be planned correctly. Before booking a peel, we need to look at your routine, sun exposure, sensitivity, active ingredients, pigmentation concerns, downtime expectations, and aftercare. A peel should never be random. It should be part of a plan.",
+    cta: "Book a consult first.",
+    hashtags: ["#PeelEducation", "#ConsultFirst", "#CircadiaPro", "#NCSAesthetics"],
+  },
+  {
+    service: "Circadia homecare education",
+    pillar: "Circadia Pro Skin Systems",
+    hook: "Product education > random product buying.",
+    caption_template:
+      "Professional skincare works best when it is matched to your skin. Instead of guessing online, ask what actually fits your goals and what belongs in your routine. Do not show public retail pricing. Use official Circadia assets only with permission and confirmed usage rights.",
+    cta: "Ask at your next appointment.",
+    hashtags: circadiaTags,
   },
 ];
