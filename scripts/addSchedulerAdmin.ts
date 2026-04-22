@@ -2,7 +2,10 @@ import { parseArgs } from "node:util";
 
 import { hasSupabaseServiceEnv } from "@/lib/env";
 import { getServiceSupabase } from "@/lib/supabase/service";
+import { loadLocalEnvIfPresent } from "@/scripts/_socialCli";
 import type { AdminRole } from "@/types/database";
+
+loadLocalEnvIfPresent();
 
 const allowedRoles = new Set<AdminRole>(["owner", "admin", "editor", "viewer"]);
 

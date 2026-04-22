@@ -77,6 +77,15 @@ export function getSupabaseBrowserEnv() {
   };
 }
 
+export function getPublicAppUrl(): string | null {
+  const value = process.env.NEXT_PUBLIC_APP_URL?.trim();
+  if (!value) {
+    return null;
+  }
+
+  return value.replace(/\/+$/, "");
+}
+
 export function getSupabaseServiceEnv() {
   return {
     url: requireValue("SUPABASE_URL"),

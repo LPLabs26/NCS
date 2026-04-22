@@ -1,5 +1,12 @@
 import { smokeTestMetaConnection } from "@/lib/meta/instagram";
-import { printCheck, printHeading, type CheckLine } from "@/scripts/_socialCli";
+import {
+  loadLocalEnvIfPresent,
+  printCheck,
+  printHeading,
+  type CheckLine,
+} from "@/scripts/_socialCli";
+
+loadLocalEnvIfPresent();
 
 function buildMetaGuidance(errors: string[]): string[] {
   const guidance = [

@@ -22,6 +22,8 @@ npm run social:check-assets
 npm run social:dry-run
 ```
 
+Run these commands from the repo root. The `social:*` commands automatically load `.env.local` when it is present.
+
 ## 3. What the owner still needs to provide
 
 - Supabase project URL
@@ -37,6 +39,16 @@ npm run social:dry-run
 - Page access token
 - Confirmation that `ncs.aesthetics` is an Instagram Professional account
 - Confirmation that Instagram is connected to a Facebook Page
+
+If the owner is logging in from a different computer during local testing, also set:
+
+- `NEXT_PUBLIC_APP_URL=http://YOUR_MACBOOK_IP:PORT`
+
+Example:
+
+- `NEXT_PUBLIC_APP_URL=http://10.0.0.224:3001`
+
+This makes the magic-link email point back to the MacBook instead of the sender's `localhost`.
 
 ## 4. First safe test post recommendation
 

@@ -99,6 +99,8 @@ npm test
 npm run build
 ```
 
+Run the `social:*` commands from the repo root. They automatically load `.env.local` when it is present, so you do not need to export each variable by hand first.
+
 What each rollout command does:
 
 - `npm run social:check`
@@ -121,6 +123,7 @@ Rollout rules:
 - Owner/admin approval is required before any post can go live.
 - First live publish should be manual, never cron.
 - Cron should only be enabled after a successful manual live publish.
+- If the magic-link email will be opened on another computer during local testing, set `NEXT_PUBLIC_APP_URL` to the MacBook's reachable network URL, for example `http://10.0.0.224:3001`.
 
 ## Required env vars
 

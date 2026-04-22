@@ -1,7 +1,9 @@
 import { listAssets, listPosts } from "@/lib/data/posts";
 import { isConfigured } from "@/lib/data/posts";
 import { analyzePublicAssetUrl } from "@/lib/storage/urlSafety";
-import { pluralize } from "@/scripts/_socialCli";
+import { loadLocalEnvIfPresent, pluralize } from "@/scripts/_socialCli";
+
+loadLocalEnvIfPresent();
 
 const publishSensitiveStatuses = new Set([
   "approved",

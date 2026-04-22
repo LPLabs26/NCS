@@ -8,6 +8,9 @@ import {
   summarizePostsByPillar,
 } from "@/lib/content/safety";
 import { importContentCalendar, isConfigured } from "@/lib/data/posts";
+import { loadLocalEnvIfPresent } from "@/scripts/_socialCli";
+
+loadLocalEnvIfPresent();
 
 async function main() {
   if (!isConfigured()) {

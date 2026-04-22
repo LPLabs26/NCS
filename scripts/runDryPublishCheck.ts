@@ -2,7 +2,9 @@ import { getAssetsByIds, getDuePostsForReview, hasLivePublishedPosts, isConfigur
 import { isDryRun, isLiveCronEnabled } from "@/lib/env";
 import { smokeTestMetaConnection } from "@/lib/meta/instagram";
 import { getPostPublishBlockers } from "@/lib/scheduler/validation";
-import { pluralize } from "@/scripts/_socialCli";
+import { loadLocalEnvIfPresent, pluralize } from "@/scripts/_socialCli";
+
+loadLocalEnvIfPresent();
 
 function categorizeBlocker(message: string) {
   if (/asset|media|https|url|rights/i.test(message)) {

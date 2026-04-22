@@ -7,7 +7,15 @@ import {
 } from "@/lib/env";
 import { getServiceSupabase } from "@/lib/supabase/service";
 import { analyzePublicAssetUrl } from "@/lib/storage/urlSafety";
-import { hasFailures, printCheck, printHeading, type CheckLine } from "@/scripts/_socialCli";
+import {
+  hasFailures,
+  loadLocalEnvIfPresent,
+  printCheck,
+  printHeading,
+  type CheckLine,
+} from "@/scripts/_socialCli";
+
+loadLocalEnvIfPresent();
 
 const requiredTables = ["posts", "assets", "metrics", "content_templates", "admin_users"] as const;
 const requiredPostSafetyColumns =
