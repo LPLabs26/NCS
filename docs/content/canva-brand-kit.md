@@ -110,6 +110,20 @@ Rules:
 - slightly darker, richer mood than Hydrafacial posts
 - use deep neutrals, amber, terracotta, espresso, and cream
 - keep it advanced and polished, never medical-looking
+- include the official Circadia logo lockup when the post is directly about Circadia
+
+## Brand Logo Rule
+
+If a post is directly about a product or brand partner, include the approved logo in the final Canva export.
+
+For NCS right now:
+
+- Circadia posts should include the official Circadia logo
+- keep the logo clean, small, and intentional
+- place it in a corner lockup, not as the main headline
+- only use rights-cleared PNG or SVG files
+
+Do not invent, redraw, or approximate a logo with typed text when the real mark is required.
 
 ## Photo And Video Rules
 

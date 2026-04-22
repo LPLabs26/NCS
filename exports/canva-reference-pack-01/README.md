@@ -29,6 +29,7 @@ Important:
 - Format: carousel
 - Pillar: Circadia Pro Skin Systems
 - Canva build: 6-slide education carousel. Use the first slide as a dark hero cover, then alternate cream and dark slides for rhythm.
+- Logo lockup: add the approved Official Circadia logo in the reserved top-right area before export.
 - Slide / overlay plan:
   - Slide 1: What is Circadia?
   - Slide 2: Professional line for licensed providers
@@ -91,6 +92,7 @@ Important:
 - Format: carousel
 - Pillar: Circadia Pro Skin Systems
 - Canva build: Split carousel with a daytime half and nighttime half. Keep sun cues warm and night cues deeper and calmer.
+- Logo lockup: add the approved Official Circadia logo in the reserved top-right area before export.
 - Slide / overlay plan:
   - Slide 1: Protect by day. Repair by night.
   - Slide 2: Morning = SPF, antioxidants, barrier support

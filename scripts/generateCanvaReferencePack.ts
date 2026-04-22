@@ -20,6 +20,7 @@ type ReferenceCard = {
   realMediaPriority: string;
   aiFallbackPrompt: string;
   compliance: string;
+  logoLockupLabel?: string;
 };
 
 const packName = "canva-reference-pack-01";
@@ -126,6 +127,7 @@ const cards: ReferenceCard[] = [
       "Luxury nighttime skincare editorial still life, dark espresso background, soft copper glow, serum bottle silhouettes, botanical shadows, elegant professional skincare mood, no labels, no people, vertical 4:5 composition.",
     compliance:
       "Do not show public Circadia pricing. Do not promote specific Circadia services unless owner has confirmed they are offered.",
+    logoLockupLabel: "Official Circadia logo",
   },
   {
     slug: "fresno-spf-reapplication-rules",
@@ -243,6 +245,7 @@ const cards: ReferenceCard[] = [
       "Split-scene skincare editorial, left side golden daylight with citrus glow, right side candlelit evening with deep amber highlights, elegant bottles and linen, no people, vertical 4:5 composition.",
     compliance:
       "Do not show public Circadia product pricing. Keep it education-first, not product-push.",
+    logoLockupLabel: "Official Circadia logo",
   },
   {
     slug: "first-brazilian-wax-read-this-first",
@@ -426,6 +429,31 @@ function renderCard(card: ReferenceCard, index: number) {
         letter-spacing: 0.12em;
         font-weight: 700;
       }
+      .logo-lockup {
+        position: absolute;
+        top: 72px;
+        right: 72px;
+        min-width: 260px;
+        padding: 18px 20px;
+        border-radius: 28px;
+        border: 1px dashed rgba(255,255,255,0.34);
+        background: rgba(255,255,255,0.08);
+        text-align: center;
+      }
+      .logo-lockup strong {
+        display: block;
+        font-size: 24px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+      .logo-lockup span {
+        display: block;
+        margin-top: 8px;
+        font-size: 18px;
+        letter-spacing: 0.04em;
+        color: ${theme.muted};
+        text-transform: none;
+      }
       .headline {
         position: absolute;
         left: 72px;
@@ -484,7 +512,11 @@ function renderCard(card: ReferenceCard, index: number) {
       <div class="orb o2"></div>
       <div class="orb o3"></div>
       <div class="badge">${escapeHtml(card.badge)}</div>
-      <div class="pill">${escapeHtml(card.format)}</div>
+      ${
+        card.logoLockupLabel
+          ? `<div class="logo-lockup"><strong>${escapeHtml(card.logoLockupLabel)}</strong><span>drop approved PNG/SVG here</span></div>`
+          : `<div class="pill">${escapeHtml(card.format)}</div>`
+      }
       <div class="headline">${headline}</div>
       <div class="body">${escapeHtml(card.body)}</div>
       <div class="cta">${escapeHtml(card.cta)}</div>
@@ -526,6 +558,9 @@ function renderReadme() {
     lines.push(`- Format: ${card.format}`);
     lines.push(`- Pillar: ${card.pillar}`);
     lines.push(`- Canva build: ${card.canvaBuild}`);
+    if (card.logoLockupLabel) {
+      lines.push(`- Logo lockup: add the approved ${card.logoLockupLabel} in the reserved top-right area before export.`);
+    }
     if (card.slidePlan) {
       lines.push("- Slide / overlay plan:");
       card.slidePlan.forEach((item) => lines.push(`  - ${item}`));

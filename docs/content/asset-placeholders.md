@@ -15,6 +15,7 @@ Use this file to track the real NCS media we still need so the Canva posts feel 
 
 - custom facial treatment clips
 - Circadia product styling with confirmed usage rights
+- official Circadia logo file with confirmed usage rights
 - barrier-support / calming facial room detail shots
 - lash lift close-ups with permission
 - brow lamination close-ups with permission
