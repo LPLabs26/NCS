@@ -16,6 +16,7 @@
     "social:add-admin": "tsx scripts/addSchedulerAdmin.ts",
     "social:meta-smoke": "tsx scripts/metaSmokeTest.ts",
     "social:check-assets": "tsx scripts/checkAssetUrls.ts",
+    "content:reference-pack": "tsx scripts/generateCanvaReferencePack.ts",
     "test": "tsx --test tests/*.test.ts"
   },
   "dependencies": {
