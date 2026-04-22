@@ -1,17 +1,26 @@
 import Link from "next/link";
 
+import { SafetyStatusBanner } from "@/components/admin/SafetyStatusBanner";
 import { SetupBanner } from "@/components/admin/SetupBanner";
+import { getAdminAccess } from "@/lib/auth";
 import { StatusBadge } from "@/components/admin/StatusBadge";
 import { smokeTestMetaConnection } from "@/lib/meta/instagram";
 import { getPostWarnings } from "@/lib/scheduler/validation";
-import { appTimezone, isDryRun, isLiveCronEnabled } from "@/lib/env";
+import { appTimezone, hasStorageEnv, isDryRun, isLiveCronEnabled } from "@/lib/env";
 import { formatInAppTimezone, truncate } from "@/lib/utils";
 import {
-  getAssetsByIds,
   getUpcomingPosts,
   isConfigured,
+  listAssets,
+  listPosts,
   withDisplayStatus,
 } from "@/lib/data/posts";
+import { analyzePublicAssetUrl } from "@/lib/storage/urlSafety";
+import type { AssetRow } from "@/types/database";
+
+function isAssetRow(asset: AssetRow | undefined): asset is AssetRow {
+  return Boolean(asset);
+}
 
 export default async function AdminOverviewPage() {
   if (!isConfigured()) {
@@ -22,26 +31,111 @@ export default async function AdminOverviewPage() {
     );
   }
 
-  const upcoming = (await getUpcomingPosts(30)).map(withDisplayStatus);
-  const warningRows = await Promise.all(
-    upcoming.map(async (post) => {
-      const assets = await getAssetsByIds(post.asset_ids);
-      return {
-        post,
-        warnings: getPostWarnings(post, assets),
-      };
-    }),
-  );
+  const [upcomingRaw, allPosts, allAssets, metaStatus, access] = await Promise.all([
+    getUpcomingPosts(30),
+    listPosts(),
+    listAssets(),
+    smokeTestMetaConnection(),
+    getAdminAccess(),
+  ]);
+  const upcoming = upcomingRaw.map(withDisplayStatus);
+  const assetMap = new Map(allAssets.map((asset) => [asset.id, asset]));
+  const warningRows = upcoming.map((post) => {
+    const assets = post.asset_ids
+      .map((assetId) => assetMap.get(assetId))
+      .filter(isAssetRow);
+    return {
+      post,
+      warnings: getPostWarnings(post, assets),
+    };
+  });
   const attentionRows = warningRows.filter((item) => item.warnings.length > 0);
-  const metaStatus = await smokeTestMetaConnection();
   const timezone = appTimezone();
   const counts = upcoming.reduce<Record<string, number>>((accumulator, post) => {
     accumulator[post.displayStatus] = (accumulator[post.displayStatus] ?? 0) + 1;
     return accumulator;
   }, {});
+  const packagePriceCount = allPosts.filter(
+    (post) => post.requires_price_verification && !post.price_verified,
+  ).length;
+  const circadiaServiceCount = allPosts.filter(
+    (post) =>
+      post.requires_owner_service_confirmation && !post.owner_service_confirmed,
+  ).length;
+  const circadiaBrandCount = allPosts.filter((post) => {
+    if (!post.requires_brand_asset_rights) {
+      return false;
+    }
+
+    const assets = post.asset_ids
+      .map((assetId) => assetMap.get(assetId))
+      .filter(isAssetRow);
+    return assets.length === 0 || assets.some((asset) => !asset.usage_rights_confirmed);
+  }).length;
+  const invalidAssetCount = allAssets.filter((asset) => {
+    const urlStatus = analyzePublicAssetUrl(asset.public_url);
+    return !urlStatus.ok || !asset.usage_rights_confirmed;
+  }).length;
+  const baseUrlStatus = analyzePublicAssetUrl(process.env.ASSET_PUBLIC_BASE_URL);
+  const storageConfigured = hasStorageEnv();
+  const storageStatus = !storageConfigured
+    ? {
+        tone: "warn" as const,
+        title: "Asset storage",
+        detail:
+          "Storage credentials are not fully configured yet. Uploads and Meta-ready public URLs still need setup.",
+      }
+    : !process.env.ASSET_PUBLIC_BASE_URL || !baseUrlStatus.ok
+      ? {
+          tone: "fail" as const,
+          title: "Asset storage",
+          detail:
+            "ASSET_PUBLIC_BASE_URL is missing or not HTTPS. Meta publishing requires stable public HTTPS asset URLs.",
+        }
+      : invalidAssetCount > 0
+        ? {
+            tone: "warn" as const,
+            title: "Asset storage",
+            detail: `${invalidAssetCount} asset(s) currently have public URL or usage-rights issues.`,
+          }
+        : {
+            tone: "pass" as const,
+            title: "Asset storage",
+            detail:
+              "Storage env is configured and current asset URLs look publish-safe.",
+          };
+  const metaBannerStatus = metaStatus.ok
+    ? {
+        tone: "pass" as const,
+        title: "Meta connection",
+        detail: metaStatus.details[1] ?? "Instagram account is reachable through the official Meta API.",
+      }
+    : metaStatus.configured
+      ? {
+          tone: "warn" as const,
+          title: "Meta connection",
+          detail: metaStatus.errors[0] ?? "Meta account setup still needs attention.",
+        }
+      : {
+          tone: "warn" as const,
+          title: "Meta connection",
+          detail: "Meta env is not configured yet. Smoke test this before any manual publish test.",
+        };
 
   return (
     <div className="space-y-8">
+      <SafetyStatusBanner
+        role={access?.role}
+        dryRun={isDryRun()}
+        liveCronEnabled={isLiveCronEnabled()}
+        metaStatus={metaBannerStatus}
+        storageStatus={storageStatus}
+        packagePriceCount={packagePriceCount}
+        circadiaServiceCount={circadiaServiceCount}
+        circadiaBrandCount={circadiaBrandCount}
+        invalidAssetCount={invalidAssetCount}
+      />
+
       <section className="grid gap-4 md:grid-cols-4">
         {[
           { label: "Next 30 days", value: upcoming.length },

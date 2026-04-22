@@ -2,10 +2,33 @@
 
 This checklist keeps the NCS Instagram scheduler safe while moving from local setup to the first real publish.
 
+## Safe rollout command order
+
+Run these in order:
+
+```bash
+npm ci
+npm run social:check
+npm run social:add-admin -- --email OWNER_EMAIL --role owner
+npm run social:seed
+npm run social:meta-smoke
+npm run social:check-assets
+npm run social:dry-run
+npm run lint
+npm run typecheck
+npm test
+npm run build
+```
+
+The dry-run command must end with:
+
+`DRY RUN COMPLETE — NO POSTS WERE PUBLISHED`
+
 ## Required env vars
 
 Set these in Vercel, your local `.env.local`, and any CI environment that needs them:
 
+- `NODE_ENV=development` locally, `NODE_ENV=production` in deployment
 - `META_API_VERSION`
 - `META_APP_ID`
 - `META_APP_SECRET`
@@ -18,11 +41,17 @@ Set these in Vercel, your local `.env.local`, and any CI environment that needs 
 - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
 - `ASSET_PUBLIC_BASE_URL`
 - `R2_ACCOUNT_ID`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`, `R2_BUCKET`
-- or `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_REGION`, `AWS_BUCKET`
+- or `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_REGION`, `AWS_S3_BUCKET`
 - `CRON_SECRET`
 - `APP_TIMEZONE=America/Los_Angeles`
 - `DRY_RUN=true`
 - `LIVE_CRON_ENABLED=false`
+
+Run the setup check any time you change env:
+
+```bash
+npm run social:check
+```
 
 ## Supabase migration
 
@@ -55,6 +84,14 @@ on conflict (email) do update set role = excluded.role;
 
 If you already know the Supabase auth user id, add `user_id` too.
 
+Safer CLI option:
+
+```bash
+npm run social:add-admin -- --email owner@example.com --role owner
+```
+
+Only owner/admin can approve, schedule, publish, price-verify, or confirm Circadia service promotion. Editors can create and edit drafts only.
+
 ## Public asset URL requirement
 
 Meta fetches media by URL. Every image or video must have a public HTTPS URL.
@@ -62,6 +99,12 @@ Meta fetches media by URL. Every image or video must have a public HTTPS URL.
 - R2/S3 objects must be reachable over HTTPS
 - `ASSET_PUBLIC_BASE_URL` must point to the public asset domain
 - do not attempt local-only URLs, signed URLs that expire too quickly, or HTTP URLs
+
+Check stored assets with:
+
+```bash
+npm run social:check-assets
+```
 
 ## Meta setup requirements
 
@@ -78,7 +121,7 @@ Use official Meta and Instagram Graph API setup only.
 Run the safe smoke test before any live publish:
 
 ```bash
-npm run smoke:meta
+npm run social:meta-smoke
 ```
 
 Or call:
@@ -101,7 +144,7 @@ LIVE_CRON_ENABLED=false
 Seed the starter calendar:
 
 ```bash
-npm run import:calendar
+npm run social:seed
 ```
 
 Import a custom CSV or JSON calendar:
@@ -110,7 +153,7 @@ Import a custom CSV or JSON calendar:
 npm run import:calendar -- ./path/to/calendar.csv
 ```
 
-This CLI import path uses Supabase service-role credentials and should only be run by a trusted owner/admin operator.
+This CLI import path uses Supabase service-role credentials and should only be run by a trusted owner/admin operator. `social:seed` is the owner-safe default because it forces draft-safe rollout values.
 
 Supported import columns:
 
@@ -157,15 +200,19 @@ Editors can still prepare captions, hashtags, CTAs, assets, and draft schedule t
 
 - Circadia is professional-grade skincare developed for licensed providers and trusted partners
 - do not show public retail product pricing
+- do not show public Circadia retail pricing in captions or public product education
 - use claim-safe language such as `designed to`, `can help`, `supports`, `great for`, `may improve the look of`, `results vary`, and `book a consult`
 - prohibited examples include `cures acne`, `guaranteed`, `permanent`, `medical treatment`, `fixes`, and `pain-free guaranteed`
 - before posting any specific Circadia service such as SWiCH, Oxygen Rx, MandeliClear, DermaFrost, or Calming Facial, require owner confirmation that NCS offers or is allowed to promote that service
+- use official Circadia marketing assets only with permission and confirmed usage rights
 
 ## Manual dry run
 
-With `DRY_RUN=true`, use the post editor's publish button or call:
+With `DRY_RUN=true`, run:
 
-- `GET /api/cron/publish` with `Authorization: Bearer <CRON_SECRET>`
+```bash
+npm run social:dry-run
+```
 
 This validates the post and logs what would have been published without sending anything live.
 
@@ -199,6 +246,7 @@ If anything looks wrong:
 3. Pause external cron jobs
 4. Review the failed post's stored error message
 5. Fix media, auth, or permissions before retrying
+6. Remove owner approval or reset the post back to `draft` if you need to stop a queued publish immediately
 
 ## Common Meta errors
 

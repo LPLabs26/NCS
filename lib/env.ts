@@ -57,6 +57,7 @@ export function hasMetaEnv(): boolean {
 }
 
 export function hasStorageEnv(): boolean {
+  const awsBucket = process.env.AWS_BUCKET ?? process.env.AWS_S3_BUCKET;
   return Boolean(
     (process.env.R2_ACCOUNT_ID &&
       process.env.R2_ACCESS_KEY_ID &&
@@ -65,7 +66,7 @@ export function hasStorageEnv(): boolean {
       (process.env.AWS_ACCESS_KEY_ID &&
         process.env.AWS_SECRET_ACCESS_KEY &&
         process.env.AWS_REGION &&
-        process.env.AWS_BUCKET),
+        awsBucket),
   );
 }
 
@@ -105,6 +106,8 @@ export interface StorageEnv {
 }
 
 export function getStorageEnv(): StorageEnv {
+  const awsBucket = process.env.AWS_BUCKET ?? process.env.AWS_S3_BUCKET;
+
   if (
     process.env.R2_ACCOUNT_ID &&
     process.env.R2_ACCESS_KEY_ID &&
@@ -123,13 +126,15 @@ export function getStorageEnv(): StorageEnv {
 
   return {
     provider: "aws",
-    bucket: requireValue("AWS_BUCKET"),
+    bucket: awsBucket ?? requireValue("AWS_S3_BUCKET"),
     region: requireValue("AWS_REGION"),
     accessKeyId: requireValue("AWS_ACCESS_KEY_ID"),
     secretAccessKey: requireValue("AWS_SECRET_ACCESS_KEY"),
     publicBaseUrl:
       process.env.ASSET_PUBLIC_BASE_URL ??
-      `https://${requireValue("AWS_BUCKET")}.s3.${requireValue("AWS_REGION")}.amazonaws.com`,
+      `https://${awsBucket ?? requireValue("AWS_S3_BUCKET")}.s3.${requireValue(
+        "AWS_REGION",
+      )}.amazonaws.com`,
   };
 }
 

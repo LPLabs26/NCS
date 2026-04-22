@@ -55,8 +55,12 @@ Publishing is implemented with the official Meta container -> publish flow so th
 - `app/api/cron/metrics/route.ts`
 - `app/api/assets/upload/route.ts`
 - `app/api/meta/smoke-test/route.ts`
+- `scripts/checkSchedulerSetup.ts`
 - `scripts/importContentCalendar.ts`
-- `scripts/smokeTestMetaConnection.ts`
+- `scripts/runDryPublishCheck.ts`
+- `scripts/addSchedulerAdmin.ts`
+- `scripts/metaSmokeTest.ts`
+- `scripts/checkAssetUrls.ts`
 
 ## Local setup
 
@@ -77,8 +81,50 @@ Apply these migrations:
 - `supabase/migrations/20260420_02_post_role_safety.sql`
 - `supabase/migrations/20260420_03_circadia_pillar.sql`
 
+## Post-merge rollout
+
+Use this exact order after cloning the merged repo:
+
+```bash
+npm ci
+npm run social:check
+npm run social:add-admin -- --email OWNER_EMAIL --role owner
+npm run social:seed
+npm run social:meta-smoke
+npm run social:check-assets
+npm run social:dry-run
+npm run lint
+npm run typecheck
+npm test
+npm run build
+```
+
+What each rollout command does:
+
+- `npm run social:check`
+  Checks env values, safety defaults, table presence, and required publish-safety columns without printing secrets.
+- `npm run social:add-admin -- --email OWNER_EMAIL --role owner`
+  Adds the first allowlisted owner/admin/editor/viewer entry by email using the Supabase service role.
+- `npm run social:seed`
+  Imports the starter NCS calendar in safe mode. Posts stay draft, `owner_approved=false`, and package/Circadia guardrails stay on.
+- `npm run social:meta-smoke`
+  Verifies Meta config against harmless account endpoints only. It does not upload, create containers, or publish.
+- `npm run social:check-assets`
+  Audits stored asset URLs and usage-rights confirmation so Meta-ready public HTTPS URLs are easy to verify.
+- `npm run social:dry-run`
+  Runs the publish readiness audit in dry-run mode only and ends with `DRY RUN COMPLETE — NO POSTS WERE PUBLISHED`.
+
+Rollout rules:
+
+- `DRY_RUN=true` means no posts should publish.
+- `LIVE_CRON_ENABLED=false` means cron should not live publish.
+- Owner/admin approval is required before any post can go live.
+- First live publish should be manual, never cron.
+- Cron should only be enabled after a successful manual live publish.
+
 ## Required env vars
 
+- `NODE_ENV=development`
 - `META_API_VERSION`
 - `META_APP_ID`
 - `META_APP_SECRET`
@@ -98,19 +144,19 @@ Apply these migrations:
 
 ## Import the content calendar
 
-Seed the NCS starter calendar:
+Seed the NCS starter calendar in safe mode:
 
 ```bash
-npm run import:calendar
+npm run social:seed
 ```
 
-Import a custom CSV or JSON file:
+Import a custom CSV or JSON file with the raw trusted-admin importer:
 
 ```bash
 npm run import:calendar -- ./path/to/calendar.csv
 ```
 
-The CLI importer uses Supabase service-role credentials and is intended only for a trusted owner/admin operator.
+The CLI import path uses Supabase service-role credentials and is intended only for a trusted owner/admin operator. The `social:seed` command is the safest default for the owner rollout because it forces draft-safe values.
 
 Supported import fields:
 
@@ -140,19 +186,20 @@ DRY_RUN=true
 LIVE_CRON_ENABLED=false
 ```
 
-Then:
+Then run:
 
-- use the manual publish button in the admin UI
-- or call `GET /api/cron/publish` with `Authorization: Bearer <CRON_SECRET>`
+```bash
+npm run social:dry-run
+```
 
-No live Instagram publish call will be made while `DRY_RUN=true`.
+This checks due posts, publish blockers, asset issues, approval issues, price-verification issues, and Circadia confirmation issues without publishing anything.
 
 ## Run the Meta smoke test
 
 CLI:
 
 ```bash
-npm run smoke:meta
+npm run social:meta-smoke
 ```
 
 API:
@@ -179,6 +226,7 @@ GitHub Actions runs the same checks in `.github/workflows/ci.yml`.
 Use the deployment checklist in:
 
 - `docs/social-scheduler-deployment.md`
+- `docs/first-post-dry-run.md`
 
 It covers:
 
@@ -212,6 +260,14 @@ insert into public.admin_users (email, role)
 values ('owner@example.com', 'owner')
 on conflict (email) do update set role = excluded.role;
 ```
+
+Or use the helper:
+
+```bash
+npm run social:add-admin -- --email owner@example.com --role owner
+```
+
+Only owner/admin can approve, schedule, publish, price-verify, or confirm Circadia service promotion. Editors can create and edit drafts only.
 
 ## Pricing reminder
 

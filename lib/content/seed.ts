@@ -2,6 +2,7 @@ import { addDays, set } from "date-fns";
 import { fromZonedTime } from "date-fns-tz";
 
 import { appTimezone } from "@/lib/env";
+import { applyOwnerSafeDefaultsToPost } from "@/lib/content/safety";
 import type { ContentTemplateInsert, PostFormat, PostInsert } from "@/types/database";
 
 type SeedPostBlueprint = {
@@ -407,7 +408,7 @@ export function buildSeedPosts(baseDate = new Date()): PostInsert[] {
       milliseconds: 0,
     });
 
-    return {
+    return applyOwnerSafeDefaultsToPost({
       title: item.title,
       platform: "instagram",
       format: item.format,
@@ -428,7 +429,7 @@ export function buildSeedPosts(baseDate = new Date()): PostInsert[] {
       owner_service_confirmed: false,
       requires_brand_asset_rights: item.requiresBrandAssetRights ?? false,
       hide_public_product_pricing: item.hidePublicProductPricing ?? false,
-    };
+    });
   });
 }
 

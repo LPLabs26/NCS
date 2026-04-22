@@ -9,7 +9,13 @@
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "import:calendar": "tsx scripts/importContentCalendar.ts",
-    "smoke:meta": "tsx scripts/smokeTestMetaConnection.ts",
+    "smoke:meta": "npm run social:meta-smoke",
+    "social:check": "tsx scripts/checkSchedulerSetup.ts",
+    "social:dry-run": "tsx scripts/runDryPublishCheck.ts",
+    "social:seed": "tsx scripts/importContentCalendar.ts --seed --safe",
+    "social:add-admin": "tsx scripts/addSchedulerAdmin.ts",
+    "social:meta-smoke": "tsx scripts/metaSmokeTest.ts",
+    "social:check-assets": "tsx scripts/checkAssetUrls.ts",
     "test": "tsx --test tests/*.test.ts"
   },
   "dependencies": {

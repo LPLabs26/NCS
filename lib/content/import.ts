@@ -2,6 +2,7 @@ import { parse } from "csv-parse/sync";
 
 import { appTimezone } from "@/lib/env";
 import { buildSeedPosts, seedTemplates } from "@/lib/content/seed";
+import { applyOwnerSafeDefaultsToPayload } from "@/lib/content/safety";
 import type { ContentTemplateInsert, PostInsert } from "@/types/database";
 
 export interface ParsedContentCalendar {
@@ -96,10 +97,10 @@ function toTemplateInsert(record: LooseRecord): ContentTemplateInsert {
 }
 
 export function buildSeedCalendarPayload(baseDate = new Date()): ParsedContentCalendar {
-  return {
+  return applyOwnerSafeDefaultsToPayload({
     posts: buildSeedPosts(baseDate),
     templates: seedTemplates,
-  };
+  });
 }
 
 export function parseContentCalendar(

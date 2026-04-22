@@ -225,6 +225,27 @@ test("publishDuePosts skips Circadia posts with public pricing in the caption", 
   assert.match(result.message, /Do not publish public Circadia retail pricing/);
 });
 
+test("publishDuePosts skips Circadia brand asset posts without rights-confirmed media", async () => {
+  const post = buildPost({
+    title: "Product education without pricing",
+    pillar: "Circadia Pro Skin Systems",
+    requires_brand_asset_rights: true,
+  });
+  const { run } = createDeps(post, [buildAsset({ usage_rights_confirmed: false })]);
+
+  const [result] = await run({
+    postId: post.id,
+    mode: "manual",
+    dryRun: true,
+  });
+
+  assert.equal(result.status, "skipped");
+  assert.match(
+    result.message,
+    /Circadia brand assets need confirmed usage rights before publishing|Usage rights are not confirmed/i,
+  );
+});
+
 test("DRY_RUN validates but does not call Meta publish endpoints", async () => {
   const post = buildPost();
   const { run, calls } = createDeps(post, [buildAsset()]);

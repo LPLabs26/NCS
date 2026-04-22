@@ -243,6 +243,20 @@ export async function getDueApprovedPosts(referenceDate = new Date()): Promise<P
   return data ?? [];
 }
 
+export async function getDuePostsForReview(referenceDate = new Date()): Promise<PostRow[]> {
+  const { data, error } = await service()
+    .from("posts")
+    .select("*")
+    .in("status", ["approved", "scheduled"])
+    .neq("status", "published")
+    .not("scheduled_at", "is", null)
+    .lte("scheduled_at", referenceDate.toISOString())
+    .order("scheduled_at", { ascending: true });
+
+  handleError(error);
+  return data ?? [];
+}
+
 export async function markPostPublishing(id: string) {
   const { error } = await service()
     .from("posts")

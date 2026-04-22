@@ -1,63 +1,11 @@
 import { validateAssetsForPost } from "@/lib/storage/media";
+import {
+  getCaptionComplianceErrors,
+  getConsentWarnings,
+  hasCircadiaServiceReference,
+  isCircadiaPostWithPublicPricing,
+} from "@/lib/content/compliance";
 import type { AssetRow, PostRow } from "@/types/database";
-
-const blockedCaptionPhrases = [
-  "cures acne",
-  "guaranteed",
-  "permanent",
-  "medical treatment",
-  "fixes",
-  "removes all",
-  "pain-free guaranteed",
-] as const;
-
-const consentReminderPatterns = [
-  { pattern: /before\s*\/?\s*after/i, message: "Before-and-after content requires explicit written client consent." },
-  { pattern: /\breview\b|\btestimonial\b/i, message: "Identifiable client reviews require permission before reposting." },
-  { pattern: /\bbrazilian\b|\bintimate\b|\bbikini\b/i, message: "Keep intimate waxing references consent-safe and avoid revealing details." },
-] as const;
-
-const circadiaServicePatterns = [
-  /\bswitch\b/i,
-  /\boxygen\s*rx\b/i,
-  /\bmandeliclear\b/i,
-  /\bdermafrost\b/i,
-  /\bcalming facial\b/i,
-] as const;
-
-const publicPricingPattern =
-  /(?:\$+\s*\d+(?:\.\d{2})?|\b\d+(?:\.\d{2})?\s*(?:usd|dollars?)\b)/i;
-
-function isCircadiaSpecific(post: Pick<PostRow, "title" | "caption" | "pillar">): boolean {
-  const content = `${post.title ?? ""}\n${post.caption ?? ""}\n${post.pillar ?? ""}`;
-  return /\bcircadia\b/i.test(content);
-}
-
-function hasCircadiaServiceReference(post: Pick<PostRow, "title" | "caption">): boolean {
-  const content = `${post.title ?? ""}\n${post.caption ?? ""}`;
-  return circadiaServicePatterns.some((pattern) => pattern.test(content));
-}
-
-function hasPublicCircadiaPricing(caption: string | null | undefined): boolean {
-  return publicPricingPattern.test(`${caption ?? ""}`);
-}
-
-export function getCaptionComplianceErrors(caption: string | null | undefined): string[] {
-  const content = `${caption ?? ""}`.toLowerCase();
-  return blockedCaptionPhrases
-    .filter((phrase) => content.includes(phrase))
-    .map((phrase) => `Caption contains blocked compliance language: "${phrase}".`);
-}
-
-export function getConsentWarnings(
-  title: string | null | undefined,
-  caption: string | null | undefined,
-): string[] {
-  const content = `${title ?? ""}\n${caption ?? ""}`;
-  return consentReminderPatterns
-    .filter(({ pattern }) => pattern.test(content))
-    .map(({ message }) => message);
-}
 
 export function getPostWarnings(post: PostRow, assets: AssetRow[]): string[] {
   const warnings: string[] = [];
@@ -92,10 +40,7 @@ export function getPostWarnings(post: PostRow, assets: AssetRow[]): string[] {
   if (hasCircadiaServiceReference(post) && !post.owner_service_confirmed) {
     warnings.push("Specific Circadia services need owner confirmation before they can be promoted.");
   }
-  if (
-    (post.hide_public_product_pricing || isCircadiaSpecific(post)) &&
-    hasPublicCircadiaPricing(post.caption)
-  ) {
+  if (isCircadiaPostWithPublicPricing(post)) {
     warnings.push("Do not show public Circadia retail pricing in captions.");
   }
 
@@ -126,10 +71,7 @@ export function getPostPublishBlockers(post: PostRow, assets: AssetRow[]): strin
       "Specific Circadia services require owner confirmation before they can be promoted.",
     );
   }
-  if (
-    (post.hide_public_product_pricing || isCircadiaSpecific(post)) &&
-    hasPublicCircadiaPricing(post.caption)
-  ) {
+  if (isCircadiaPostWithPublicPricing(post)) {
     blockers.push("Do not publish public Circadia retail pricing.");
   }
 

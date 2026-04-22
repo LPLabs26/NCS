@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
+import { roleCan } from "@/lib/access";
 import {
   canRoleSavePostInput,
   sanitizeImportedPayloadForRole,
@@ -41,6 +42,25 @@ test("editor cannot owner-approve through save helper", () => {
       }),
     ),
     false,
+  );
+});
+
+test("viewer cannot edit drafts", () => {
+  assert.equal(roleCan("viewer", "edit"), false);
+  assert.equal(canRoleSavePostInput("viewer", buildPostInsert()), false);
+});
+
+test("editor can create and edit drafts", () => {
+  assert.equal(roleCan("editor", "edit"), true);
+  assert.equal(canRoleSavePostInput("editor", buildPostInsert()), true);
+  assert.equal(
+    canRoleSavePostInput(
+      "editor",
+      buildPostInsert({
+        status: "needs_asset",
+      }),
+    ),
+    true,
   );
 });
 
@@ -89,6 +109,10 @@ test("editor cannot save approved or scheduled publishable posts", () => {
   );
 });
 
+test("editor cannot publish", () => {
+  assert.equal(roleCan("editor", "publish"), false);
+});
+
 test("editor imports are sanitized back to safe draft state", () => {
   const payload = sanitizeImportedPayloadForRole("editor", {
     posts: [
@@ -119,4 +143,6 @@ test("owner/admin can still approve and schedule posts", () => {
 
   assert.equal(canRoleSavePostInput("owner", sensitivePost), true);
   assert.equal(canRoleSavePostInput("admin", sensitivePost), true);
+  assert.equal(roleCan("owner", "publish"), true);
+  assert.equal(roleCan("admin", "publish"), true);
 });
