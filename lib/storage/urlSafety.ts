@@ -38,6 +38,19 @@ function isPrivateHostname(hostname: string): boolean {
   return Boolean(match && Number(match[1]) >= 16 && Number(match[1]) <= 31);
 }
 
+function isPlaceholderHostname(hostname: string): boolean {
+  const lower = hostname.toLowerCase();
+
+  return (
+    lower === "example.com" ||
+    lower === "example.org" ||
+    lower === "example.net" ||
+    lower.endsWith(".example.com") ||
+    lower.endsWith(".example.org") ||
+    lower.endsWith(".example.net")
+  );
+}
+
 export function analyzePublicAssetUrl(url: string | null | undefined) {
   if (!url) {
     return {
@@ -56,6 +69,10 @@ export function analyzePublicAssetUrl(url: string | null | undefined) {
 
     if (isPrivateHostname(parsed.hostname)) {
       issues.push("URL points to a local or private hostname.");
+    }
+
+    if (isPlaceholderHostname(parsed.hostname)) {
+      issues.push("URL points to a placeholder example domain instead of the real public asset host.");
     }
 
     if (

@@ -1,4 +1,5 @@
 import {
+  getLocalAssetFallbackStatus,
   hasStorageEnv,
   hasSupabaseBrowserEnv,
   hasSupabaseServiceEnv,
@@ -165,6 +166,7 @@ async function main() {
       process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
       { secret: true },
     ),
+    presenceLine("SUPABASE_ASSET_BUCKET", process.env.SUPABASE_ASSET_BUCKET),
     presenceLine("META_API_VERSION", process.env.META_API_VERSION),
     presenceLine("META_APP_ID", process.env.META_APP_ID),
     presenceLine("META_APP_SECRET", process.env.META_APP_SECRET, { secret: true }),
@@ -176,18 +178,20 @@ async function main() {
 
   const assetBaseUrl = process.env.ASSET_PUBLIC_BASE_URL;
   const assetUrlCheck = analyzePublicAssetUrl(assetBaseUrl);
+  const localAssetFallback = getLocalAssetFallbackStatus();
   envLines.push(
     hasStorageEnv()
       ? {
           level: "PASS",
           label: "Storage credentials",
-          message: "R2/S3-style storage credentials are configured.",
+          message: "Production asset storage credentials are configured.",
         }
       : {
           level: "WARN",
           label: "Storage credentials",
-          message:
-            "Storage credentials are not fully configured yet. Uploads will stay blocked until R2/S3 env is set.",
+          message: localAssetFallback.enabled
+            ? `Production asset storage is not configured yet. Local dry-run uploads can use ${localAssetFallback.baseUrl}, but Meta-ready storage still needs Supabase Storage or R2/S3 env.`
+            : `Storage credentials are not fully configured yet. ${localAssetFallback.detail}`,
         },
   );
 

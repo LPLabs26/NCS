@@ -6,7 +6,13 @@ import { getAdminAccess } from "@/lib/auth";
 import { StatusBadge } from "@/components/admin/StatusBadge";
 import { smokeTestMetaConnection } from "@/lib/meta/instagram";
 import { getPostWarnings } from "@/lib/scheduler/validation";
-import { appTimezone, hasStorageEnv, isDryRun, isLiveCronEnabled } from "@/lib/env";
+import {
+  appTimezone,
+  getLocalAssetFallbackStatus,
+  hasStorageEnv,
+  isDryRun,
+  isLiveCronEnabled,
+} from "@/lib/env";
 import { formatInAppTimezone, truncate } from "@/lib/utils";
 import {
   getUpcomingPosts,
@@ -78,19 +84,22 @@ export default async function AdminOverviewPage() {
   }).length;
   const baseUrlStatus = analyzePublicAssetUrl(process.env.ASSET_PUBLIC_BASE_URL);
   const storageConfigured = hasStorageEnv();
+  const localAssetFallback = getLocalAssetFallbackStatus();
   const storageStatus = !storageConfigured
     ? {
         tone: "warn" as const,
         title: "Asset storage",
         detail:
-          "Storage credentials are not fully configured yet. Uploads and Meta-ready public URLs still need setup.",
+          localAssetFallback.enabled
+            ? "Production asset storage is still missing, but dry-run uploads can use temporary app-hosted storage for rehearsal. Live Meta publishing still needs Supabase Storage or R2/S3."
+            : "Storage credentials are not fully configured yet. Uploads and Meta-ready public URLs still need setup.",
       }
     : !process.env.ASSET_PUBLIC_BASE_URL || !baseUrlStatus.ok
       ? {
           tone: "fail" as const,
           title: "Asset storage",
           detail:
-            "ASSET_PUBLIC_BASE_URL is missing or not HTTPS. Meta publishing requires stable public HTTPS asset URLs.",
+            "ASSET_PUBLIC_BASE_URL is missing, placeholder, or otherwise not publish-safe. Meta publishing requires a real public HTTPS asset host.",
         }
       : invalidAssetCount > 0
         ? {

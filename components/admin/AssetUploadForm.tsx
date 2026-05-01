@@ -3,7 +3,11 @@
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 
-export function AssetUploadForm() {
+interface Props {
+  storageNote?: string | null;
+}
+
+export function AssetUploadForm({ storageNote }: Props) {
   const router = useRouter();
   const [message, setMessage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -26,14 +30,24 @@ export function AssetUploadForm() {
             body: formData,
           });
 
-          const payload = (await response.json()) as { error?: string; asset?: { filename: string } };
+          const payload = (await response.json()) as {
+            error?: string;
+            asset?: { filename: string };
+            uploadMode?: "object-storage" | "supabase-storage" | "local-fallback";
+          };
 
           if (!response.ok) {
             setError(payload.error ?? "Upload failed.");
             return;
           }
 
-          setMessage(`Uploaded ${payload.asset?.filename ?? "asset"}.`);
+          setMessage(
+            payload.uploadMode === "local-fallback"
+              ? `Uploaded ${payload.asset?.filename ?? "asset"} using temporary dry-run storage.`
+              : payload.uploadMode === "supabase-storage"
+                ? `Uploaded ${payload.asset?.filename ?? "asset"} to Supabase Storage.`
+              : `Uploaded ${payload.asset?.filename ?? "asset"}.`,
+          );
           form.reset();
           router.refresh();
         });
@@ -46,6 +60,7 @@ export function AssetUploadForm() {
         <p className="mt-1 text-sm text-stone-600">
           Files are inspected before they are stored so publishing errors show up earlier.
         </p>
+        {storageNote ? <p className="mt-2 text-xs leading-6 text-amber-700">{storageNote}</p> : null}
       </div>
       <input
         type="file"

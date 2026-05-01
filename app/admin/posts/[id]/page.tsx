@@ -7,7 +7,7 @@ import { savePostAction, duplicatePostAction, publishNowAction } from "@/app/adm
 import { SetupBanner } from "@/components/admin/SetupBanner";
 import { getAdminAccess } from "@/lib/auth";
 import { roleCan } from "@/lib/access";
-import { appTimezone, isDryRun } from "@/lib/env";
+import { appTimezone, getLocalAssetFallbackStatus, isDryRun } from "@/lib/env";
 import {
   getPostById,
   hasLivePublishedPosts,
@@ -95,6 +95,7 @@ export default async function PostDetailPage({ params, searchParams }: Props) {
     editablePost.cta,
     editablePost.hashtags,
   );
+  const localAssetFallback = getLocalAssetFallbackStatus();
   const canPublishNow =
     !isNew &&
     canPublish &&
@@ -502,7 +503,15 @@ export default async function PostDetailPage({ params, searchParams }: Props) {
         </form>
 
         <div className="space-y-6">
-          {canEdit ? <AssetUploadForm /> : null}
+          {canEdit ? (
+            <AssetUploadForm
+              storageNote={
+                localAssetFallback.enabled
+                  ? "Dry-run-only local asset storage is active for rehearsal uploads. Live Meta publishing still requires Supabase Storage or R2/S3."
+                  : null
+              }
+            />
+          ) : null}
           <div className="glass-panel rounded-[2rem] p-6">
             <p className="text-sm font-semibold uppercase tracking-[0.22em] text-stone-500">
               Preview

@@ -89,6 +89,7 @@ Use this exact order after cloning the merged repo:
 npm ci
 npm run social:check
 npm run social:add-admin -- --email OWNER_EMAIL --role owner
+npm run social:setup-storage
 npm run social:seed
 npm run social:meta-smoke
 npm run social:check-assets
@@ -107,6 +108,8 @@ What each rollout command does:
   Checks env values, safety defaults, table presence, and required publish-safety columns without printing secrets.
 - `npm run social:add-admin -- --email OWNER_EMAIL --role owner`
   Adds the first allowlisted owner/admin/editor/viewer entry by email using the Supabase service role.
+- `npm run social:setup-storage`
+  Creates or verifies the public Supabase Storage bucket used for Meta-ready image/video URLs.
 - `npm run social:seed`
   Imports the starter NCS calendar in safe mode. Posts stay draft, `owner_approved=false`, and package/Circadia guardrails stay on.
 - `npm run social:meta-smoke`
@@ -139,7 +142,7 @@ Rollout rules:
 - `NEXT_PUBLIC_SUPABASE_URL`
 - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
 - `ASSET_PUBLIC_BASE_URL`
-- storage credentials for R2 or S3
+- `SUPABASE_ASSET_BUCKET=scheduler-assets` for Supabase Storage, or storage credentials for R2/S3
 - `CRON_SECRET`
 - `APP_TIMEZONE=America/Los_Angeles`
 - `DRY_RUN=true`

@@ -1,3 +1,5 @@
+import { analyzePublicAssetUrl } from "@/lib/storage/urlSafety";
+
 const APP_TIMEZONE_FALLBACK = "America/Los_Angeles";
 
 function requireValue(name: string): string {
@@ -57,6 +59,10 @@ export function hasMetaEnv(): boolean {
 }
 
 export function hasStorageEnv(): boolean {
+  return hasObjectStorageEnv() || hasSupabaseAssetStorageEnv();
+}
+
+export function hasObjectStorageEnv(): boolean {
   const awsBucket = process.env.AWS_BUCKET ?? process.env.AWS_S3_BUCKET;
   return Boolean(
     (process.env.R2_ACCOUNT_ID &&
@@ -67,6 +73,15 @@ export function hasStorageEnv(): boolean {
         process.env.AWS_SECRET_ACCESS_KEY &&
         process.env.AWS_REGION &&
         awsBucket),
+  );
+}
+
+export function hasSupabaseAssetStorageEnv(): boolean {
+  return Boolean(
+    process.env.SUPABASE_URL &&
+      process.env.SUPABASE_SERVICE_ROLE_KEY &&
+      process.env.SUPABASE_ASSET_BUCKET &&
+      process.env.ASSET_PUBLIC_BASE_URL,
   );
 }
 
@@ -114,6 +129,24 @@ export interface StorageEnv {
   publicBaseUrl: string;
 }
 
+export interface SupabaseAssetStorageEnv {
+  bucket: string;
+  publicBaseUrl: string;
+}
+
+export interface LocalAssetFallbackStatus {
+  enabled: boolean;
+  baseUrl: string | null;
+  detail: string;
+}
+
+export function getSupabaseAssetStorageEnv(): SupabaseAssetStorageEnv {
+  return {
+    bucket: requireValue("SUPABASE_ASSET_BUCKET"),
+    publicBaseUrl: requireValue("ASSET_PUBLIC_BASE_URL"),
+  };
+}
+
 export function getStorageEnv(): StorageEnv {
   const awsBucket = process.env.AWS_BUCKET ?? process.env.AWS_S3_BUCKET;
 
@@ -147,6 +180,60 @@ export function getStorageEnv(): StorageEnv {
   };
 }
 
+export function getLocalAssetFallbackStatus(
+  nodeEnv = process.env.NODE_ENV,
+): LocalAssetFallbackStatus {
+  if (hasStorageEnv()) {
+    return {
+      enabled: false,
+      baseUrl: null,
+      detail: "Production asset storage is already configured.",
+    };
+  }
+
+  if (!isDryRun()) {
+    return {
+      enabled: false,
+      baseUrl: null,
+      detail: "Temporary local asset fallback stays disabled when DRY_RUN is false.",
+    };
+  }
+
+  if (isProductionEnvironment(nodeEnv)) {
+    return {
+      enabled: false,
+      baseUrl: null,
+      detail: "Temporary local asset fallback is disabled in production. Configure Supabase Storage or R2/S3 instead.",
+    };
+  }
+
+  const publicAppUrl = getPublicAppUrl();
+  if (!publicAppUrl) {
+    return {
+      enabled: false,
+      baseUrl: null,
+      detail:
+        "Set NEXT_PUBLIC_APP_URL to a public HTTPS app URL to enable temporary dry-run uploads.",
+    };
+  }
+
+  const baseUrl = `${publicAppUrl}/scheduler-assets`;
+  const baseUrlStatus = analyzePublicAssetUrl(baseUrl);
+  if (!baseUrlStatus.ok) {
+    return {
+      enabled: false,
+      baseUrl,
+      detail: `NEXT_PUBLIC_APP_URL is not safe enough for temporary dry-run uploads. ${baseUrlStatus.issues.join(" ")}`,
+    };
+  }
+
+  return {
+    enabled: true,
+    baseUrl,
+    detail: `Temporary dry-run uploads can be served from ${baseUrl}.`,
+  };
+}
+
 export function getCronSecret(): string {
   return requireValue("CRON_SECRET");
 }
@@ -163,6 +250,7 @@ export const setupChecklist = [
   "IG_USER_ID",
   "PAGE_ACCESS_TOKEN",
   "ASSET_PUBLIC_BASE_URL",
+  "SUPABASE_ASSET_BUCKET",
   "CRON_SECRET",
   "APP_TIMEZONE",
   "DRY_RUN",
