@@ -4,6 +4,7 @@ scripts/__pycache__/
 scripts/inspect_instagram_*.py
 scripts/instagram_test_post.py
 exports/ready-post-queue-week-01/*.png
+public/scheduler-assets/
 
 node_modules/
 .next/

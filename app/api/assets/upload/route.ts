@@ -44,7 +44,7 @@ export async function POST(request: Request) {
       usage_rights_confirmed: formData.get("usage_rights_confirmed") === "true",
     });
 
-    return NextResponse.json({ asset });
+    return NextResponse.json({ asset, uploadMode: uploaded.storageMode });
   } catch (error) {
     return NextResponse.json(
       {

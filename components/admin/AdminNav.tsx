@@ -9,6 +9,7 @@ const links = [
   { href: "/admin/posts", label: "Posts" },
   { href: "/admin/calendar", label: "Calendar" },
   { href: "/admin/import", label: "Import" },
+  { href: "/admin/designs", label: "Designs" },
 ];
 
 interface AdminNavProps {

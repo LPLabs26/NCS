@@ -371,12 +371,11 @@ export async function smokeTestMetaConnection(): Promise<MetaSmokeTestResult> {
     const account = await graphRequest<{
       id: string;
       username?: string;
-      account_type?: string;
       media_count?: number;
     }>(igUserId, {
       method: "GET",
       query: {
-        fields: "id,username,account_type,media_count",
+        fields: "id,username,media_count",
       },
     });
 
@@ -405,7 +404,6 @@ export async function smokeTestMetaConnection(): Promise<MetaSmokeTestResult> {
         page.name ? `Connected Facebook Page: ${page.name} (${page.id})` : `Connected Facebook Page id: ${page.id}`,
         `Connected Instagram account id: ${account.id}`,
         account.username ? `Username: ${account.username}` : "Username not returned by Meta.",
-        account.account_type ? `Account type: ${account.account_type}` : "Account type not returned by Meta.",
       ],
       errors: [],
     };

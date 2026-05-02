@@ -40,6 +40,7 @@ Set these in Vercel, your local `.env.local`, and any CI environment that needs 
 - `NEXT_PUBLIC_SUPABASE_URL`
 - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
 - `ASSET_PUBLIC_BASE_URL`
+- `SUPABASE_ASSET_BUCKET` if using Supabase Storage for assets
 - `R2_ACCOUNT_ID`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`, `R2_BUCKET`
 - or `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_REGION`, `AWS_S3_BUCKET`
 - `CRON_SECRET`
@@ -96,9 +97,16 @@ Only owner/admin can approve, schedule, publish, price-verify, or confirm Circad
 
 Meta fetches media by URL. Every image or video must have a public HTTPS URL.
 
+- Supabase Storage is supported when `SUPABASE_ASSET_BUCKET` and `ASSET_PUBLIC_BASE_URL` are configured
 - R2/S3 objects must be reachable over HTTPS
 - `ASSET_PUBLIC_BASE_URL` must point to the public asset domain
 - do not attempt local-only URLs, signed URLs that expire too quickly, or HTTP URLs
+
+Create or verify the default Supabase Storage bucket:
+
+```bash
+npm run social:setup-storage
+```
 
 Check stored assets with:
 

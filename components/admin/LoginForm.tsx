@@ -2,6 +2,7 @@
 
 import { useState, useTransition } from "react";
 
+import { getPublicAppUrl } from "@/lib/env";
 import { createSupabaseBrowser } from "@/lib/supabase/browser";
 
 export function LoginForm() {
@@ -9,6 +10,10 @@ export function LoginForm() {
   const [message, setMessage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isPending, startTransition] = useTransition();
+  const configuredAppUrl = getPublicAppUrl();
+
+  const redirectOrigin = configuredAppUrl ?? window.location.origin;
+  const emailRedirectTo = `${redirectOrigin}/auth/callback`;
 
   return (
     <form
@@ -24,7 +29,7 @@ export function LoginForm() {
             const { error: authError } = await supabase.auth.signInWithOtp({
               email,
               options: {
-                emailRedirectTo: `${window.location.origin}/auth/callback`,
+                emailRedirectTo,
               },
             });
 
@@ -60,6 +65,9 @@ export function LoginForm() {
       >
         {isPending ? "Sending..." : "Send magic link"}
       </button>
+      <p className="text-xs text-stone-500">
+        Magic links will open at <span className="font-mono">{emailRedirectTo}</span>.
+      </p>
       {message ? <p className="text-sm text-emerald-700">{message}</p> : null}
       {error ? <p className="text-sm text-rose-700">{error}</p> : null}
     </form>

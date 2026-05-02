@@ -8,6 +8,11 @@ Confirm env values:
 
 - `DRY_RUN=true`
 - `LIVE_CRON_ENABLED=false`
+- if the login email will be opened on another computer, set `NEXT_PUBLIC_APP_URL` to the MacBook's reachable network URL instead of `localhost`
+
+Example:
+
+- `NEXT_PUBLIC_APP_URL=http://10.0.0.224:3001`
 
 ## Step 2
 
@@ -16,6 +21,8 @@ Run:
 ```bash
 npm run social:check
 ```
+
+Run the `social:*` commands from the repo root. They automatically load `.env.local` when it is present.
 
 Review the PASS, WARN, and FAIL lines. Fix the FAIL items before moving on.
 
