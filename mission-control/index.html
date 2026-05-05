@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NCS Mission Control</title>
-  <link rel="stylesheet" href="styles.css?v=8" />
+  <link rel="stylesheet" href="styles.css?v=9" />
 </head>
 <body>
   <main class="shell">
@@ -12,38 +12,39 @@
       <div>
         <p class="eyebrow">NCS Aesthetics</p>
         <h1>Mission Control</h1>
-        <p class="subcopy">Approval wall for the live posting pipeline. Review what is queued, tighten what needs work, and protect the evening hero slot.</p>
+        <p class="subcopy">Approval wall for the live posting pipeline. Patrice creates two fresh draft ideas each morning; live cron only publishes posts that are approved, scheduled, and fully validated.</p>
       </div>
       <div class="top-actions" aria-label="Filters">
-        <button id="filterAll" class="chip active">All</button>
+        <button id="filterAll" class="chip active">Active queue</button>
         <button id="filterReview" class="chip">Needs review</button>
         <button id="filterReady" class="chip">Approved</button>
         <button id="filterNeedsWork" class="chip">Needs work</button>
         <button id="filterDisapproved" class="chip">Disapproved</button>
+        <button id="filterBacklog" class="chip">Backlog</button>
         <button id="resetData" class="ghost">Reset</button>
       </div>
     </header>
 
-    <section class="schedule-strip" aria-label="Phase 1 posting schedule">
+    <section class="schedule-strip" aria-label="Current posting operations schedule">
       <div class="schedule-card">
-        <span>Morning lane</span>
-        <strong>8:30 AM PT</strong>
-        <small>Daily Tips</small>
+        <span>Fresh draft generator</span>
+        <strong>7:10 AM PT</strong>
+        <small>2 new drafts for review</small>
       </div>
       <div class="schedule-card">
-        <span>Midday lane</span>
-        <strong>12:30 PM PT</strong>
-        <small>Hydrafacial</small>
+        <span>Live publish checker</span>
+        <strong>Every 15 min</strong>
+        <small>Approved + scheduled only</small>
       </div>
       <div class="schedule-card">
-        <span>Evening hero</span>
-        <strong>7:30 PM PT</strong>
-        <small>Circadia</small>
+        <span>Autopilot fallback</span>
+        <strong>After 72h idle</strong>
+        <small>1 safe research draft</small>
       </div>
       <div class="schedule-card">
         <span>Operator rule</span>
-        <strong>Approve → Schedule → Confirm</strong>
-        <small>Manual posting in Phase 1</small>
+        <strong>Review → Approve → Schedule</strong>
+        <small>No daily quota</small>
       </div>
     </section>
 
@@ -53,7 +54,7 @@
       <div class="metric"><span>Needs work</span><strong id="countNeedsWork">0</strong><small id="needsWorkDetail">Requires comments</small></div>
       <div class="metric"><span>Disapproved</span><strong id="countDisapproved">0</strong><small id="disapprovedDetail">Pulled from queue</small></div>
       <div class="metric"><span>Next 72h covered</span><strong id="countNext72">0</strong><small id="next72Detail">Approved scheduled assets</small></div>
-      <div class="metric"><span>Hero posts approved</span><strong id="countHeroApproved">0</strong><small id="heroDetail">Evening lane protection</small></div>
+      <div class="metric"><span>2-lane approvals</span><strong id="countHeroApproved">0</strong><small id="heroDetail">Morning/midday legacy queue only</small></div>
     </section>
 
     <section class="ops-bar" aria-label="Operator controls and pulse">
@@ -79,6 +80,6 @@
     <section id="postGrid" class="post-grid" aria-label="Approval queue"></section>
   </main>
 
-  <script src="app.js?v=8"></script>
+  <script src="app.js?v=9"></script>
 </body>
 </html>
