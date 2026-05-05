@@ -288,24 +288,24 @@ function renderSummary() {
   const approvedCount = countActiveWhere(post => isApproved(post));
   const needsWorkCount = countActiveWhere(post => post.status === 'needs_work');
   const disapprovedCount = countActiveWhere(post => post.status === 'disapproved');
-  const next72Approved = countActiveWhere(post => isApproved(post) && withinNextHours(post, 72));
+  const next24Approved = countActiveWhere(post => isApproved(post) && withinNextHours(post, 24));
   const twoLaneApproved = countActiveWhere(post => ['Morning', 'Midday'].includes(post.daypart) && isApproved(post));
   const noteCount = countActiveWhere(post => post.comments && post.comments.trim());
-  const review72 = countActiveWhere(post => post.status === 'review' && withinNextHours(post, 72));
+  const review24 = countActiveWhere(post => post.status === 'review' && withinNextHours(post, 24));
   const backlogCount = countWhere(post => isBacklog(post));
 
   document.getElementById('countReview').textContent = reviewCount;
   document.getElementById('countApproved').textContent = approvedCount;
   document.getElementById('countNeedsWork').textContent = needsWorkCount;
   document.getElementById('countDisapproved').textContent = disapprovedCount;
-  document.getElementById('countNext72').textContent = next72Approved;
+  document.getElementById('countNext72').textContent = next24Approved;
   document.getElementById('countHeroApproved').textContent = twoLaneApproved;
 
-  document.getElementById('reviewDetail').textContent = review72 ? `${review72} need a decision in the next 72h` : 'No urgent review gaps in the next 72h';
+  document.getElementById('reviewDetail').textContent = review24 ? `${review24} need a decision in the next 24h` : 'No urgent review gaps in the next 24h';
   document.getElementById('approvedDetail').textContent = `${approvedCount} posts cleared for scheduling`;
   document.getElementById('needsWorkDetail').textContent = noteCount ? `${noteCount} cards already have operator notes` : 'Add notes before sending work back';
   document.getElementById('disapprovedDetail').textContent = disapprovedCount ? 'Pulled back from the queue' : 'No hard stops right now';
-  document.getElementById('next72Detail').textContent = next72Approved ? 'Coverage exists for near-term slots' : 'No approved scheduled assets in the next 72h';
+  document.getElementById('next72Detail').textContent = next24Approved ? 'Coverage exists for near-term slots' : 'No approved scheduled assets in the next 24h';
   document.getElementById('heroDetail').textContent = `${twoLaneApproved} active legacy assets; ${backlogCount} retired quota items in backlog`;
 }
 
@@ -313,15 +313,15 @@ function renderOpsPulse() {
   const approved = countActiveWhere(post => isApproved(post));
   const review = countActiveWhere(post => post.status === 'review');
   const needsWork = countActiveWhere(post => post.status === 'needs_work');
-  const next72Review = countActiveWhere(post => post.status === 'review' && withinNextHours(post, 72));
+  const next24Review = countActiveWhere(post => post.status === 'review' && withinNextHours(post, 24));
   const headlineParts = [
     `${approved} approved`,
     `${review} still in review`,
     `${needsWork} need rework`
   ];
   let headline = `${headlineParts.join(' · ')}.`;
-  if (next72Review) {
-    headline += ` ${next72Review} of those are tied to the next 72 hours, so they should be handled first.`;
+  if (next24Review) {
+    headline += ` ${next24Review} of those are tied to the next 24 hours, so they should be handled first.`;
   } else {
     headline += ' Near-term posting windows are covered or not yet scheduled.';
   }

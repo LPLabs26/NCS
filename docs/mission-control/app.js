@@ -7,7 +7,7 @@ const STORAGE_KEY = 'ncs-approval-wall-v6';
 
 let allPosts = [];
 let queueRows = [];
-let filter = 'all';
+let filter = 'active';
 let searchQuery = '';
 let hideNoticeTimer = null;
 
@@ -133,8 +133,20 @@ function isApproved(post) {
   return post.status === 'approved' || post.status === 'ready';
 }
 
+function isBacklog(post) {
+  return post.queueStatus === 'backlog';
+}
+
+function activePosts() {
+  return allPosts.filter(post => !isBacklog(post));
+}
+
 function countWhere(predicate) {
   return allPosts.filter(predicate).length;
+}
+
+function countActiveWhere(predicate) {
+  return activePosts().filter(predicate).length;
 }
 
 function inferGradient(post) {
@@ -208,6 +220,12 @@ function comparePosts(a, b) {
 function currentPosts() {
   let posts = [...allPosts];
 
+  if (filter === 'backlog') {
+    posts = posts.filter(post => isBacklog(post));
+  } else {
+    posts = posts.filter(post => !isBacklog(post));
+  }
+
   if (filter === 'review') {
     posts = posts.filter(post => post.status === 'review');
   } else if (filter === 'approved') {
@@ -266,43 +284,44 @@ function persist(reason = 'Saved locally.') {
 }
 
 function renderSummary() {
-  const reviewCount = countWhere(post => post.status === 'review');
-  const approvedCount = countWhere(post => isApproved(post));
-  const needsWorkCount = countWhere(post => post.status === 'needs_work');
-  const disapprovedCount = countWhere(post => post.status === 'disapproved');
-  const next72Approved = countWhere(post => isApproved(post) && withinNextHours(post, 72));
-  const heroApproved = countWhere(post => post.daypart === 'Evening' && isApproved(post));
-  const noteCount = countWhere(post => post.comments && post.comments.trim());
-  const review72 = countWhere(post => post.status === 'review' && withinNextHours(post, 72));
+  const reviewCount = countActiveWhere(post => post.status === 'review');
+  const approvedCount = countActiveWhere(post => isApproved(post));
+  const needsWorkCount = countActiveWhere(post => post.status === 'needs_work');
+  const disapprovedCount = countActiveWhere(post => post.status === 'disapproved');
+  const next24Approved = countActiveWhere(post => isApproved(post) && withinNextHours(post, 24));
+  const twoLaneApproved = countActiveWhere(post => ['Morning', 'Midday'].includes(post.daypart) && isApproved(post));
+  const noteCount = countActiveWhere(post => post.comments && post.comments.trim());
+  const review24 = countActiveWhere(post => post.status === 'review' && withinNextHours(post, 24));
+  const backlogCount = countWhere(post => isBacklog(post));
 
   document.getElementById('countReview').textContent = reviewCount;
   document.getElementById('countApproved').textContent = approvedCount;
   document.getElementById('countNeedsWork').textContent = needsWorkCount;
   document.getElementById('countDisapproved').textContent = disapprovedCount;
-  document.getElementById('countNext72').textContent = next72Approved;
-  document.getElementById('countHeroApproved').textContent = heroApproved;
+  document.getElementById('countNext72').textContent = next24Approved;
+  document.getElementById('countHeroApproved').textContent = twoLaneApproved;
 
-  document.getElementById('reviewDetail').textContent = review72 ? `${review72} need a decision in the next 72h` : 'No urgent review gaps in the next 72h';
+  document.getElementById('reviewDetail').textContent = review24 ? `${review24} need a decision in the next 24h` : 'No urgent review gaps in the next 24h';
   document.getElementById('approvedDetail').textContent = `${approvedCount} posts cleared for scheduling`;
   document.getElementById('needsWorkDetail').textContent = noteCount ? `${noteCount} cards already have operator notes` : 'Add notes before sending work back';
   document.getElementById('disapprovedDetail').textContent = disapprovedCount ? 'Pulled back from the queue' : 'No hard stops right now';
-  document.getElementById('next72Detail').textContent = next72Approved ? 'Coverage exists for near-term slots' : 'No approved scheduled assets in the next 72h';
-  document.getElementById('heroDetail').textContent = `${heroApproved} evening assets are approval-safe`;
+  document.getElementById('next72Detail').textContent = next24Approved ? 'Coverage exists for near-term slots' : 'No approved scheduled assets in the next 24h';
+  document.getElementById('heroDetail').textContent = `${twoLaneApproved} active legacy assets; ${backlogCount} retired quota items in backlog`;
 }
 
 function renderOpsPulse() {
-  const approved = countWhere(post => isApproved(post));
-  const review = countWhere(post => post.status === 'review');
-  const needsWork = countWhere(post => post.status === 'needs_work');
-  const next72Review = countWhere(post => post.status === 'review' && withinNextHours(post, 72));
+  const approved = countActiveWhere(post => isApproved(post));
+  const review = countActiveWhere(post => post.status === 'review');
+  const needsWork = countActiveWhere(post => post.status === 'needs_work');
+  const next24Review = countActiveWhere(post => post.status === 'review' && withinNextHours(post, 24));
   const headlineParts = [
     `${approved} approved`,
     `${review} still in review`,
     `${needsWork} need rework`
   ];
   let headline = `${headlineParts.join(' · ')}.`;
-  if (next72Review) {
-    headline += ` ${next72Review} of those are tied to the next 72 hours, so they should be handled first.`;
+  if (next24Review) {
+    headline += ` ${next24Review} of those are tied to the next 24 hours, so they should be handled first.`;
   } else {
     headline += ' Near-term posting windows are covered or not yet scheduled.';
   }
@@ -458,11 +477,12 @@ function renderGrid() {
 
 function renderFilters() {
   const mapping = {
-    filterAll: 'all',
+    filterAll: 'active',
     filterReview: 'review',
     filterReady: 'approved',
     filterNeedsWork: 'needs_work',
-    filterDisapproved: 'disapproved'
+    filterDisapproved: 'disapproved',
+    filterBacklog: 'backlog'
   };
 
   Object.entries(mapping).forEach(([id, value]) => {

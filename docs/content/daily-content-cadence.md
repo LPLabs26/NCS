@@ -7,7 +7,7 @@ The current daily cadence is:
 1. Patrice creates **2 fresh draft ideas** each morning.
 2. Natalie or an owner/admin approves only posts that are ready.
 3. The scheduler publishes only approved, owner-approved, scheduled, fully validated posts.
-4. If nobody takes action for 72 hours, the fallback may select **1 safe research-generated draft only**.
+4. If nobody takes action for 24 hours, the fallback may select **1 safe research-generated draft only**.
 
 This keeps the account active without forcing filler content.
 
@@ -15,7 +15,7 @@ This keeps the account active without forcing filler content.
 
 - **Daily draft generator:** 2 new ideas at `7:10 AM PT`
 - **Live publish checker:** runs every 15 minutes and skips when no approved post is due
-- **Fallback:** after 72 hours idle, selects 1 safe research-generated draft if one passes every guardrail
+- **Fallback:** after 24 hours idle, selects 1 safe research-generated draft if one passes every guardrail
 - **Backlog:** old Morning/Midday/Evening queue items remain inspiration, not a daily quota
 
 ## Draft idea mix

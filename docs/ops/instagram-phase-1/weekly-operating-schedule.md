@@ -6,7 +6,7 @@ Use this as the current operating rhythm for NCS social. The old three-post-per-
 
 - `7:10 AM PT` daily research draft generator: creates 2 fresh draft ideas and Canva briefs for review.
 - Every `15 minutes` live publish checker: skips unless a post is approved, owner-approved, scheduled, validated, and live mode is enabled.
-- After `72 hours` with no owner action: fallback may select 1 safe research-generated draft only, then schedule it for the live checker.
+- After `24 hours` with no owner action: fallback may select 1 safe research-generated draft only, then schedule it for the live checker.
 - Daily metrics job: collects supported metrics for already-published posts.
 
 ## Approval rule
