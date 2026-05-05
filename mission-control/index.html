@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NCS Mission Control</title>
-  <link rel="stylesheet" href="styles.css?v=9" />
+  <link rel="stylesheet" href="styles.css?v=10" />
 </head>
 <body>
   <main class="shell">
@@ -38,7 +38,7 @@
       </div>
       <div class="schedule-card">
         <span>Autopilot fallback</span>
-        <strong>After 72h idle</strong>
+        <strong>After 24h idle</strong>
         <small>1 safe research draft</small>
       </div>
       <div class="schedule-card">
@@ -53,7 +53,7 @@
       <div class="metric"><span>Approved</span><strong id="countApproved">0</strong><small id="approvedDetail">Ready to schedule</small></div>
       <div class="metric"><span>Needs work</span><strong id="countNeedsWork">0</strong><small id="needsWorkDetail">Requires comments</small></div>
       <div class="metric"><span>Disapproved</span><strong id="countDisapproved">0</strong><small id="disapprovedDetail">Pulled from queue</small></div>
-      <div class="metric"><span>Next 72h covered</span><strong id="countNext72">0</strong><small id="next72Detail">Approved scheduled assets</small></div>
+      <div class="metric"><span>Next 24h covered</span><strong id="countNext72">0</strong><small id="next72Detail">Approved scheduled assets</small></div>
       <div class="metric"><span>2-lane approvals</span><strong id="countHeroApproved">0</strong><small id="heroDetail">Morning/midday legacy queue only</small></div>
     </section>
 
@@ -80,6 +80,6 @@
     <section id="postGrid" class="post-grid" aria-label="Approval queue"></section>
   </main>
 
-  <script src="app.js?v=9"></script>
+  <script src="app.js?v=10"></script>
 </body>
 </html>

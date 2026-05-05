@@ -40,7 +40,7 @@ This system is not:
 
 - `7:10 AM PT`: create 2 fresh research-based draft posts and Canva briefs.
 - Every `15 minutes`: live publish checker scans for due approved posts.
-- After `72 hours` with no future owner-approved scheduled posts: fallback may pick 1 safe research-generated draft only.
+- After `24 hours` with no future owner-approved scheduled posts: fallback may pick 1 safe research-generated draft only.
 - Daily metrics: collect supported insights for published posts.
 
 The live checker is a gate, not a quota. If no approved post is due, it skips.
@@ -193,7 +193,7 @@ This is a quality target, not a forced publishing quota.
 
 ## Fallback rules
 
-If there is no owner action for 72 hours:
+If there is no owner action for 24 hours:
 
 - fallback may select 1 safe research-generated draft only
 - fallback must avoid package pricing, client permission issues, sensitive waxing content, and unresolved Circadia blockers
@@ -223,7 +223,7 @@ Review these first:
 2. Which Hydrafacial posts drive consult or booking behavior
 3. Which Circadia posts improve trust without sounding product-pushy
 4. Which timing windows actually perform for the local audience
-5. Whether the 72-hour fallback is helping or should stay conservative
+5. Whether the 24-hour fallback is helping or should stay conservative
 
 ## Operating principle
 
