@@ -1,72 +1,77 @@
 # Weekly Operating Schedule
 
-Use this as the default weekly rhythm. It keeps the three-lane model intact while rotating the angle so engagement does not flatten.
+Use this as the current operating rhythm for NCS social. The old three-post-per-day model is retired. Mission Control now supports a lighter review queue while the live scheduler publishes only posts that are approved, owner-approved, scheduled, and fully validated.
 
-## Approval cutoffs
+## Current automation rhythm
 
-- next-day morning and midday slots approved by `4:30 PM PT` the prior day
-- same-day evening hero approved by `11:30 AM PT`
-- if an evening asset misses approval, pull from approved Circadia backlog instead of improvising
+- `7:10 AM PT` daily research draft generator: creates 2 fresh draft ideas and Canva briefs for review.
+- Every `15 minutes` live publish checker: skips unless a post is approved, owner-approved, scheduled, validated, and live mode is enabled.
+- After `72 hours` with no owner action: fallback may select 1 safe research-generated draft only, then schedule it for the live checker.
+- Daily metrics job: collects supported metrics for already-published posts.
 
-## Monday: Reset and Re-entry
+## Approval rule
 
-- `8:30 AM PT` Daily Tips: routine cleanup or SPF reminder
-- `12:30 PM PT` Hydrafacial: why it stays bookable or who it fits best
-- `7:30 PM PT` Circadia hero: reset ritual or night repair story
-- Engagement move: ask one simple question about this week's skin goal
+Nothing from Mission Control should be treated as automatically publishable just because it exists in the queue.
 
-## Tuesday: Myth and Clarify
+Before a post can publish, it must have:
 
-- `8:30 AM PT` Daily Tips: myth correction or one common mistake
-- `12:30 PM PT` Hydrafacial: answer one hesitation or compare service levels
-- `7:30 PM PT` Circadia hero: explain repair versus over-treating
-- Engagement move: reply prompt in stories or caption
+- owner/admin approval in the scheduler dashboard
+- valid scheduled date and time
+- attached public HTTPS media
+- confirmed usage rights
+- no package-price blocker
+- no Circadia service or brand-asset blocker
+- claim-safe caption language
 
-## Wednesday: Consult and Guide
+## Daily review workflow
 
-- `8:30 AM PT` Daily Tips: prep tip before treatment or event
-- `12:30 PM PT` Hydrafacial: first-time client guidance
-- `7:30 PM PT` Circadia hero: barrier support or routine edit hero
-- Engagement move: DM keyword for consult guidance
+Each day, review the 2 new draft ideas from the generator:
 
-## Thursday: Event and Outcome
+- approve and schedule only the strongest ready post or posts
+- leave drafts unapproved if the asset, caption, timing, or compliance is not ready
+- use the backlog only as inspiration, not as a required daily slot
+- do not recreate the retired morning/midday/evening quota
 
-- `8:30 AM PT` Daily Tips: makeup-prep or hydration habit
-- `12:30 PM PT` Hydrafacial: event-prep angle or maintenance logic
-- `7:30 PM PT` Circadia hero: overnight support or glow-without-chaos story
-- Engagement move: save-this reminder
+## Suggested weekly content mix
 
-## Friday: Retention and Rebook
+The goal is steady, useful content without forcing three daily posts.
 
-- `8:30 AM PT` Daily Tips: consistency habit
-- `12:30 PM PT` Hydrafacial: why clients keep rebooking
-- `7:30 PM PT` Circadia hero: homecare as treatment support
-- Engagement move: ask what the audience wants help with next
+- Monday: skin reset, Hydrafacial education, or free consult CTA
+- Tuesday: SPF, acne, barrier, peel, or Circadia education
+- Wednesday: waxing prep, lash lift, brow lamination, or FAQ
+- Thursday: service walkthrough, behind-the-scenes, or treatment-room trust
+- Friday: openings, social proof, safe review graphic, or weekend booking CTA
+- Saturday: event prep, vacation prep, bridal prep, or maintenance routine
+- Sunday: next-week planning, homecare education, or consult reminder
 
-## Saturday: Self-Care and Luxury
+## Preferred publish windows
 
-- `8:30 AM PT` Daily Tips: weekend skin habit
-- `12:30 PM PT` Hydrafacial: polished glow or add-on detail
-- `7:30 PM PT` Circadia hero: calm ritual or recovery-focused post
-- Engagement move: story poll or easy either-or question
+Use these as scheduling suggestions, not fixed quotas:
 
-## Sunday: Plan and Prime
+- Morning education or reminder: `8:30 AM PT`
+- Midday service consideration: `12:30 PM PT`
+- Evening feature post when there is a truly strong asset: use an owner-approved after-work window
 
-- `8:30 AM PT` Daily Tips: next-week reset tip
-- `12:30 PM PT` Hydrafacial: monthly maintenance reminder
-- `7:30 PM PT` Circadia hero: week-ahead night routine or ritual reset
-- Engagement move: preview next week's focus in stories
+The scheduler can publish at any approved time. The live checker simply wakes up every 15 minutes and publishes due, validated posts.
 
-## Format defaults
+## Backlog rule
 
-- Morning: story first, static if already packaged
-- Midday: carousel, reel, or FAQ story
-- Evening: reel or strongest carousel first
+The old evening Circadia hero lane is now backlog. Backlog posts are useful as source material, but they are not part of a three-post daily requirement.
 
-## Daily completion rule
+Use backlog posts only when:
 
-Every day should end with:
+- the caption is still claim-safe
+- Natalie confirms any specific Circadia service mentioned
+- brand asset rights are confirmed
+- there is no public Circadia retail pricing
+- the post is intentionally approved and scheduled in the app
 
-- the post marked `posted` in `content-queue.csv`
-- any missed slot marked with a reason
-- one note about what performed or what stalled
+## Completion rule
+
+Each day should end with:
+
+- 2 fresh ideas reviewed or left safely in draft
+- any approved post scheduled in the app, not just marked in the CSV
+- blocked posts left unapproved with a clear note
+- no accidental second post approved
+- no live cron changes unless owner/admin intentionally approves them

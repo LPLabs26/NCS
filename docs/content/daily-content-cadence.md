@@ -1,139 +1,87 @@
 # Daily Content Cadence
 
-NCS now runs on one simple daily structure:
+NCS no longer runs on a required three-post-per-day structure.
 
-1. **Morning = Daily Tips**
-2. **Midday = Hydrafacial**
-3. **Evening = Circadia**
+The current daily cadence is:
 
-This is not a loose suggestion. It is the default publishing system.
+1. Patrice creates **2 fresh draft ideas** each morning.
+2. Natalie or an owner/admin approves only posts that are ready.
+3. The scheduler publishes only approved, owner-approved, scheduled, fully validated posts.
+4. If nobody takes action for 72 hours, the fallback may select **1 safe research-generated draft only**.
+
+This keeps the account active without forcing filler content.
 
 ## Core model
-- **Morning:** light touch
-- **Midday:** light touch
-- **Evening:** hero post
 
-The goal is to stay present all day without making the feed feel noisy, repetitive, or desperate.
+- **Daily draft generator:** 2 new ideas at `7:10 AM PT`
+- **Live publish checker:** runs every 15 minutes and skips when no approved post is due
+- **Fallback:** after 72 hours idle, selects 1 safe research-generated draft if one passes every guardrail
+- **Backlog:** old Morning/Midday/Evening queue items remain inspiration, not a daily quota
 
-## 1. Morning — Daily Tips
-**Role:** warm-up touchpoint
+## Draft idea mix
 
-**Job:**
-- give one useful skincare tip
-- create quick value
-- keep the brand visible early in the day
-- feel easy to consume in under 10 seconds
+Each morning, the two new ideas should usually come from different pillars:
 
-**Best formats:**
-- story frame set
-- quick talking story
-- single-slide tip graphic
-- short soft reel if needed
+- Hydrafacial authority
+- Fresno skin education
+- Circadia Pro Skin Systems
+- Waxing comfort and prep
+- Lashes and brows
+- Proof and personality
+- Offers and availability
 
-**What makes it work:**
-- one idea only
-- no heavy selling
-- no long caption dump
-- simple practical language
+## Suggested scheduling windows
 
-**Examples:**
-- morning cleansing reminder
-- SPF habit tip
-- hydration tip
-- pre-event skin prep tip
-- one myth correction in plain English
+These are good starting windows when a post is approved, but they are not required daily slots:
 
-**Tone:** helpful, quick, elegant, unfussy.
+- `8:30 AM PT` for fast education, SPF, routine tips, or story-style reminders
+- `12:30 PM PT` for service consideration and booking-intent education
+- an after-work feature window for stronger posts when the asset is worth it
 
-## 2. Midday — Hydrafacial
-**Role:** consideration touchpoint
+The live checker wakes up every 15 minutes. It does not publish because a slot exists; it publishes only when a validated post is due.
 
-**Job:**
-- keep Hydrafacial highly visible every day
-- answer hesitation before it becomes a DM
-- reinforce why it is a hero service
-- support bookings without sounding repetitive
+## What makes a draft publishable
 
-**Best formats:**
-- short educational carousel
-- treatment FAQ story
-- quick reel with one benefit focus
-- before/after style education post
+A draft is not publishable until it has:
 
-**What makes it work:**
-- one Hydrafacial angle at a time
-- explain clearly, not clinically
-- focus on glow, hydration, deep cleanse, texture, event prep, or maintenance
-- CTA can be direct, but still calm
-
-**Examples:**
-- what Hydrafacial actually helps with
-- who Hydrafacial is great for
-- Hydrafacial before an event
-- Hydrafacial vs waiting too long to treat dull skin
-- why clients rebook Hydrafacial
-
-**Tone:** confident, polished, results-driven, easy to understand.
-
-## 3. Evening — Circadia
-**Role:** hero post
-
-**Job:**
-- carry the strongest storytelling of the day
-- position Circadia as premium expert-supported homecare
-- connect skin rhythm, repair, ritual, and consistency
-- deepen trust and long-term retention
-
-**Best formats:**
-- strongest reel of the day
-- premium carousel
-- richer story-led education post
-- ritual-based conversion content
-
-**What makes it work:**
-- evening content should feel more intentional and complete
-- stronger visuals, better hook, better caption, better packaging
-- teach why nighttime support matters without becoming preachy
-- make homecare feel like support, not product pushing
-
-**Examples:**
-- protection by day, repair by night
-- why skin support changes after dark
-- Circadia ritual for barrier support
-- pairing in-studio treatments with smarter homecare
-- consistency over random skincare buying
-
-**Tone:** luxurious, calm, intelligent, slightly more cinematic than morning or midday.
-
-## Daily publishing rule
-If only one piece gets the most production attention, it should be the **evening Circadia hero post**.
-
-Morning and midday should still be good, but they are intentionally lighter:
-- faster to build
-- easier to review
-- lower pressure
-- less caption-heavy
+- owner/admin approval
+- scheduled date and time
+- attached media
+- public HTTPS asset URL
+- confirmed usage rights
+- claim-safe caption
+- no unresolved price blocker
+- no unresolved Circadia service confirmation blocker
+- no unresolved brand asset rights blocker
 
 ## Anti-spam rules
-To keep the system strong:
+
+To keep the account strong:
+
+- do not force an old daily quota
+- do not approve posts just to fill a lane
 - do not make every post a hard CTA
-- do not over-explain every service every day
 - do not recycle the exact same Hydrafacial promise repeatedly
-- do not make Daily Tips feel like filler
-- do not make Circadia feel like product pushing
+- do not make Circadia content feel like product pushing
+- do not publish client photos, reviews, or sensitive waxing content without permission
 
 Instead:
-- keep morning useful
-- keep midday clear
-- keep evening elevated
+
+- keep drafts useful
+- approve selectively
+- schedule intentionally
+- let the system skip when nothing safe is ready
 
 ## Simple decision tree
-- Need a fast value touch? → **Daily Tips**
-- Need to drive the hero treatment? → **Hydrafacial**
-- Need the strongest post of the day? → **Circadia**
+
+- Need a fast value touch? Use a skin tip, SPF reminder, or story-style draft.
+- Need booking intent? Use Hydrafacial, facial, wax, lashes, brows, or consult education.
+- Need trust and retention? Use Circadia, homecare, barrier, peel, or Natalie/personality content.
+- Nothing is ready? Leave it unapproved. The scheduler should skip.
 
 ## Team responsibilities
-- **Samir:** protects the structure and approves the daily angle
-- **Michael:** writes and packages the three daily assets
-- **Patrice:** checks quality, repetition, and tone
-- **Peter:** schedules, tracks, and confirms the cadence was completed
+
+- **Natalie / owner-admin:** approves, schedules, price-verifies, and confirms sensitive service or asset rights.
+- **Patrice:** runs the daily draft, dry-run, asset, and publishing checks from the Mac mini.
+- **Mission Control:** shows active review items and keeps retired quota content in backlog.
+- **GitHub main:** remains the source of truth for code and operating docs.
