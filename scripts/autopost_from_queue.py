@@ -152,7 +152,7 @@ body{{margin:0;background:#ddd;font-family:-apple-system,BlinkMacSystemFont,'Seg
 .body{{position:absolute;left:84px;right:120px;top:650px;font-size:42px;line-height:1.22;color:rgba(0,0,0,.72)}}
 .cta{{position:absolute;left:78px;bottom:100px;background:#2e251f;color:#fff;padding:28px 42px;border-radius:999px;font-size:34px;font-weight:700}}
 .brand{{position:absolute;right:72px;bottom:112px;font-size:28px;color:rgba(0,0,0,.48)}}
-</style></head><body><div class="frame"><div class="glow g1"></div><div class="glow g2"></div><div class="glow g3"></div><div class="badge">{category}</div><div class="headline">{hook}</div><div class="body">{body}</div><div class="cta">{cta}</div><div class="brand">NCS Aesthetics</div></div></body></html>'''
+</style></head><body><div class="frame"><div class="glow g1"></div><div class="glow g2"></div><div class="glow g3"></div><div class="badge">{category}</div><div class="headline">{hook}</div><div class="body">{body}</div><div class="cta">{cta}</div><div class="brand">NCS Aesthetics-La Dama Salon</div></div></body></html>'''
 
 
 def render_html_to_png(html_path: Path, png_path: Path):

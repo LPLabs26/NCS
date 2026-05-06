@@ -225,7 +225,7 @@ function renderCard(card: ReferenceCard, index: number) {
       <div class="headline">${headline}</div>
       <div class="body">${escapeHtml(card.body)}</div>
       <div class="cta">${escapeHtml(card.cta)}</div>
-      <div class="brand">NCS Aesthetics</div>
+      <div class="brand">NCS Aesthetics-La Dama Salon</div>
       <div class="meta">
         <span>${String(index + 1).padStart(2, "0")}</span>
         <span>${escapeHtml(card.pillar)}</span>

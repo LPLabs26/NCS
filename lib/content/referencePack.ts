@@ -23,7 +23,22 @@ export type ReferenceCard = {
 export const referencePackName = "canva-reference-pack-01";
 export const referencePackPublicPath = "/reference-pack-01";
 
-export const referenceCards: ReferenceCard[] = [
+function ensureBookingLinkInBio(value: string): string {
+  if (/booking link is in bio|link in bio/i.test(value)) return value;
+  return `${value.trim()}\n\nBooking link is in bio.`;
+}
+
+function normalizeCta(value: string): string {
+  return value.replace(/booking link(?! in bio)/gi, "booking link in bio");
+}
+
+function normalizeHashtags(tags: string[]): string[] {
+  return Array.from(
+    new Set(tags.map((tag) => (tag.toLowerCase() === "#northfresno" ? "#LaDamaSalon" : tag))),
+  );
+}
+
+const rawReferenceCards: ReferenceCard[] = [
   {
     slug: "not-sure-what-to-book-start-here",
     title: "Not sure what to book? Start here.",
@@ -36,7 +51,7 @@ export const referenceCards: ReferenceCard[] = [
     theme: "shell",
     caption:
       "Your skin does not need a random facial. It needs a plan.\n\nBook a free consult and we’ll talk through your skin goals, current routine, lifestyle, and what treatment makes the most sense for you.",
-    hashtags: ["#SkinConsult", "#FresnoFacials", "#NCSAesthetics", "#NorthFresno"],
+    hashtags: ["#SkinConsult", "#FresnoFacials", "#NCSAesthetics", "#LaDamaSalon"],
     canvaBuild:
       "Text-led static post. Keep the headline dominant, use lots of breathing room, and let the CTA pill carry the action.",
     realMediaPriority: "Optional. This works well as a branded text graphic with no photo.",
@@ -92,7 +107,7 @@ export const referenceCards: ReferenceCard[] = [
       "#FresnoSkincare",
       "#CentralValleySkin",
       "#ClovisSkincare",
-      "#NorthFresno",
+      "#LaDamaSalon",
       "#NCSAesthetics",
     ],
     canvaBuild:
@@ -119,14 +134,14 @@ export const referenceCards: ReferenceCard[] = [
     badge: "Hydrafacial",
     headline: "Which\nHydrafacial?",
     body: "Express glow, signature reset, or the most elevated experience?",
-    cta: "Tap booking link",
+    cta: "Tap booking link in bio",
     theme: "terracotta",
     caption:
       "Every skin goal does not need the same treatment. Here’s the simple breakdown so you can book with confidence.",
     hashtags: [
       "#FresnoHydrafacial",
       "#HydrafacialAuthority",
-      "#NorthFresno",
+      "#LaDamaSalon",
       "#NCSAesthetics",
     ],
     canvaBuild:
@@ -157,7 +172,7 @@ export const referenceCards: ReferenceCard[] = [
     theme: "terracotta",
     caption:
       "If your skin feels rough, dull, oily, or like your products are just sitting on top, it might be time for a Hydrafacial reset.",
-    hashtags: ["#FresnoHydrafacial", "#FresnoSkincare", "#NorthFresno", "#NCSAesthetics"],
+    hashtags: ["#FresnoHydrafacial", "#FresnoSkincare", "#LaDamaSalon", "#NCSAesthetics"],
     canvaBuild:
       "Reel cover plus 4 quick text overlays for the edit. Keep the cover bold and the text overlays punchy.",
     slidePlan: [
@@ -313,3 +328,10 @@ export const referenceCards: ReferenceCard[] = [
       "Do not use revealing client imagery without explicit written consent.",
   },
 ];
+
+export const referenceCards: ReferenceCard[] = rawReferenceCards.map((card) => ({
+  ...card,
+  caption: ensureBookingLinkInBio(card.caption),
+  cta: normalizeCta(card.cta),
+  hashtags: normalizeHashtags(card.hashtags),
+}));
