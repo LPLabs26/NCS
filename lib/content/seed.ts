@@ -25,7 +25,6 @@ const hashtagBank = [
   "#FresnoEsthetician",
   "#FresnoSkincare",
   "#FresnoHydrafacial",
-  "#NorthFresno",
   "#NCSAesthetics",
   "#LaDamaSalon",
 ];
@@ -41,6 +40,23 @@ const circadiaTags = [
   "#ProfessionalSkincare",
   "#HomecareEducation",
 ];
+
+const bookingLinkLine = "Booking link is in bio.";
+
+function ensureBookingLinkInBio(value: string): string {
+  if (/booking link is in bio|link in bio/i.test(value)) return value;
+  return `${value.trim()}\n\n${bookingLinkLine}`;
+}
+
+function normalizeCta(value: string): string {
+  return value.replace(/booking link(?! in bio)/gi, "booking link in bio");
+}
+
+function normalizeHashtags(tags: string[]): string[] {
+  return Array.from(
+    new Set(tags.map((tag) => (tag.toLowerCase() === "#northfresno" ? "#LaDamaSalon" : tag))),
+  );
+}
 
 const seedBlueprints: SeedPostBlueprint[] = [
   {
@@ -63,13 +79,13 @@ const seedBlueprints: SeedPostBlueprint[] = [
     format: "carousel",
     pillar: "Fresno skin education",
     caption:
-      "Fresno sun does not play. If you are working on pigment, texture, acne marks, or aging prevention, SPF has to be part of the plan.\n\nApplying SPF once is not enough outdoors. Reapply every 2 hours, reapply after sweating, and do not forget the neck, ears, chest, and hands.\n\nSave this before your next outdoor day.",
+      "Fresno sun does not play. If you are working on pigment, texture, acne marks, or aging prevention, SPF has to be part of the plan.\n\nApplying SPF once is not enough outdoors. Reapply every 2 hours, reapply after sweating, and do not forget the neck, ears, chest, and hands.\n\nSave this before your next outdoor day.\n\nBooking link is in bio.",
     cta: "Save + book consult.",
     hashtags: [
       "#FresnoSkincare",
       "#CentralValleySkin",
       "#ClovisSkincare",
-      "#NorthFresno",
+      "#LaDamaSalon",
       "#NCSAesthetics",
     ],
   },
@@ -81,7 +97,7 @@ const seedBlueprints: SeedPostBlueprint[] = [
     format: "story",
     pillar: "Fresno skin education",
     caption:
-      "Story prompt for a question box or poll: acne, texture, pigment, dryness, congestion, or prepping for an event. Use answers to guide follow-up stories and consult CTAs.",
+      "Story prompt for a question box or poll: acne, texture, pigment, dryness, congestion, or prepping for an event. Use answers to guide follow-up stories and consult CTAs.\n\nBooking link is in bio.",
     cta: "Reply to the story.",
     hashtags: ["#FresnoSkin", "#SkinTips", "#NCSAesthetics"],
   },
@@ -93,7 +109,7 @@ const seedBlueprints: SeedPostBlueprint[] = [
     format: "reel",
     pillar: "Hydrafacial authority",
     caption:
-      "First-time clients usually want to know what actually happens during a Hydrafacial. This walkthrough is designed to show the treatment flow, what we look for during consult, and how we choose the right booster support for your skin. Results vary, and a consult helps us choose the best fit.",
+      "First-time clients usually want to know what actually happens during a Hydrafacial. This walkthrough is designed to show the treatment flow, what we look for during consult, and how we choose the right booster support for your skin. Results vary, and a consult helps us choose the best fit.\n\nBooking link is in bio.",
     cta: "Book free consult.",
     hashtags: ["#Hydrafacial", "#FresnoFacials", "#FresnoHydrafacial", "#NCSAesthetics"],
   },
@@ -105,8 +121,8 @@ const seedBlueprints: SeedPostBlueprint[] = [
     format: "image",
     pillar: "Offers and availability",
     caption:
-      "Need a weekday glow reset, waxing appointment, or lash and brow maintenance slot? Share this week’s openings with a clear booking CTA and a short note that times can change quickly.",
-    cta: "Tap booking link.",
+      "Need a weekday glow reset, waxing appointment, or lash and brow maintenance slot? Share this week’s openings with a clear booking CTA and a short note that times can change quickly.\n\nBooking link is in bio.",
+    cta: "Tap the booking link in bio.",
     hashtags: ["#FresnoBeauty", "#BookNow", "#GlossGenius", "#NCSAesthetics"],
   },
   {
@@ -117,7 +133,7 @@ const seedBlueprints: SeedPostBlueprint[] = [
     format: "carousel",
     pillar: "Circadia Pro Skin Systems",
     caption:
-      "You’ve seen “Circadia Pro” in my bio — here’s what that means.\n\nCircadia is a professional skincare line built around the skin’s natural rhythms: protect during the day, repair at night.\n\nAt NCS Aesthetics, Circadia helps me customize facials, support your skin barrier, prep for peels, and build routines that actually make sense for your skin.\n\nYour skin does not need random products. It needs a plan.",
+      "You’ve seen “Circadia Pro” in my bio — here’s what that means.\n\nCircadia is a professional skincare line built around the skin’s natural rhythms: protect during the day, repair at night.\n\nAt NCS Aesthetics, Circadia helps me customize facials, support your skin barrier, prep for peels, and build routines that actually make sense for your skin.\n\nYour skin does not need random products. It needs a plan.\n\nBooking link is in bio.",
     cta: "Book a free consult.",
     hashtags: ["#CircadiaPro", "#ProfessionalSkincare", "#HomecareEducation", "#NCSAesthetics"],
   },
@@ -129,7 +145,7 @@ const seedBlueprints: SeedPostBlueprint[] = [
     format: "reel",
     pillar: "Circadia Pro Skin Systems",
     caption:
-      "A custom facial means I choose products based on your skin that day.\n\nYour skin can change with weather, stress, hormones, products, travel, and lifestyle.\n\nThat’s why a custom facial is not one-size-fits-all. During your appointment, I look at your skin goals, current routine, sensitivity, congestion, dryness, texture, and barrier health before choosing the products and steps that make the most sense.",
+      "A custom facial means I choose products based on your skin that day.\n\nYour skin can change with weather, stress, hormones, products, travel, and lifestyle.\n\nThat’s why a custom facial is not one-size-fits-all. During your appointment, I look at your skin goals, current routine, sensitivity, congestion, dryness, texture, and barrier health before choosing the products and steps that make the most sense.\n\nBooking link is in bio.",
     cta: "Book the NCS Custom Facial.",
     hashtags: ["#CustomFacial", "#CircadiaPro", "#BarrierSupport", "#NCSAesthetics"],
   },
@@ -141,9 +157,9 @@ const seedBlueprints: SeedPostBlueprint[] = [
     format: "carousel",
     pillar: "Hydrafacial authority",
     caption:
-      "Every skin goal does not need the same treatment. Here is the simple breakdown so you can book with confidence.\n\nExpress Hydrafacial: quick glow.\nHydrafacial: full treatment plus booster support.\nPlatinum Hydrafacial: elevated treatment with lymphatic and extra support.\n\nStill unsure? Book a free consult.",
-    cta: "Tap the booking link.",
-    hashtags: ["#HydrafacialAuthority", "#FresnoHydrafacial", "#NCSAesthetics", "#NorthFresno"],
+      "Every skin goal does not need the same treatment. Here is the simple breakdown so you can book with confidence.\n\nExpress Hydrafacial: quick glow.\nHydrafacial: full treatment plus booster support.\nPlatinum Hydrafacial: elevated treatment with lymphatic and extra support.\n\nStill unsure? Book a free consult.\n\nBooking link is in bio.",
+    cta: "Tap the booking link in bio.",
+    hashtags: ["#HydrafacialAuthority", "#FresnoHydrafacial", "#NCSAesthetics", "#LaDamaSalon"],
   },
   {
     dayOffset: 9,
@@ -153,7 +169,7 @@ const seedBlueprints: SeedPostBlueprint[] = [
     format: "reel",
     pillar: "Hydrafacial authority",
     caption:
-      "Yes, the extraction jar is satisfying. But the real goal is skin that feels cleaner, smoother, and more supported over time.\n\nHydrafacial is designed to help with congestion, texture, and pre-event prep while fitting into a maintenance plan. Results vary.",
+      "Yes, the extraction jar is satisfying. But the real goal is skin that feels cleaner, smoother, and more supported over time.\n\nHydrafacial is designed to help with congestion, texture, and pre-event prep while fitting into a maintenance plan. Results vary.\n\nBooking link is in bio.",
     cta: "Book Hydrafacial.",
     hashtags: ["#HydrafacialResults", "#FresnoHydrafacial", "#NCSAesthetics", "#CentralValleySkin"],
   },
@@ -165,7 +181,7 @@ const seedBlueprints: SeedPostBlueprint[] = [
     format: "story",
     pillar: "Offers and availability",
     caption:
-      "Story prompt for openings, countdown stickers, and a Q&A box. Use it to gather objections before turning answers into reels or consult reminders.",
+      "Story prompt for openings, countdown stickers, and a Q&A box. Use it to gather objections before turning answers into reels or consult reminders.\n\nBooking link is in bio.",
     cta: "Ask a question.",
     hashtags: ["#StoryPrompt", "#FresnoBeauty", "#NCSAesthetics"],
   },
@@ -189,7 +205,7 @@ const seedBlueprints: SeedPostBlueprint[] = [
     format: "image",
     pillar: "Proof and personality",
     caption:
-      "One thing clients mention often: feeling comfortable, heard, and educated during their appointment.\n\nThat is the goal every time — a treatment plan that makes sense for your skin, your routine, and your comfort level.\n\nClient reviews should only be posted with permission.",
+      "One thing clients mention often: feeling comfortable, heard, and educated during their appointment.\n\nThat is the goal every time — a treatment plan that makes sense for your skin, your routine, and your comfort level.\n\nClient reviews should only be posted with permission.\n\nBooking link is in bio.",
     cta: "Book with confidence.",
     hashtags: ["#ClientExperience", "#FresnoEsthetician", "#NCSAesthetics", "#LaDamaSalon"],
   },
@@ -201,7 +217,7 @@ const seedBlueprints: SeedPostBlueprint[] = [
     format: "carousel",
     pillar: "Circadia Pro Skin Systems",
     caption:
-      "Your morning and night routines should not do the same job.\n\nMorning skincare is about protection: SPF, antioxidants, barrier support, and defending your skin from Fresno sun, heat, and daily exposure.\n\nNight skincare is about repair: cleansing, hydration, corrective ingredients, and giving your skin what it needs while you sleep.\n\nThis is one of the reasons I love Circadia — the line is built around working with your skin’s natural rhythm.",
+      "Your morning and night routines should not do the same job.\n\nMorning skincare is about protection: SPF, antioxidants, barrier support, and defending your skin from Fresno sun, heat, and daily exposure.\n\nNight skincare is about repair: cleansing, hydration, corrective ingredients, and giving your skin what it needs while you sleep.\n\nThis is one of the reasons I love Circadia — the line is built around working with your skin’s natural rhythm.\n\nBooking link is in bio.",
     cta: "Save this and book a custom facial.",
     hashtags: ["#ProtectByDay", "#RepairByNight", "#CircadiaPro", "#NCSAesthetics"],
   },
@@ -213,7 +229,7 @@ const seedBlueprints: SeedPostBlueprint[] = [
     format: "reel",
     pillar: "Circadia Pro Skin Systems",
     caption:
-      "If your skin is red, reactive, or irritated, more exfoliation may not be the answer.\n\nSometimes the best facial is not the strongest facial.\n\nReactive skin often needs calming, hydration, barrier support, and a slower plan before jumping into stronger treatments.\n\nIf your skin burns, flushes, feels tight, or reacts to everything, start with a consult so we can choose the right approach.",
+      "If your skin is red, reactive, or irritated, more exfoliation may not be the answer.\n\nSometimes the best facial is not the strongest facial.\n\nReactive skin often needs calming, hydration, barrier support, and a slower plan before jumping into stronger treatments.\n\nIf your skin burns, flushes, feels tight, or reacts to everything, start with a consult so we can choose the right approach.\n\nBooking link is in bio.",
     cta: "Book a free consult.",
     hashtags: ["#BarrierSupport", "#SensitiveSkin", "#CircadiaPro", "#NCSAesthetics"],
   },
@@ -275,7 +291,7 @@ const seedBlueprints: SeedPostBlueprint[] = [
     caption:
       "Your skin does not need a random facial. It needs a plan.\n\nBook a free consult and we’ll talk through your skin goals, current routine, lifestyle, and what treatment makes the most sense for you.\n\nGood for:\n- First-time clients\n- Acne concerns\n- Texture\n- Pigmentation\n- Sensitive skin\n- Choosing between facial options",
     cta: "Book free consult.",
-    hashtags: ["#SkinConsult", "#FresnoFacials", "#NCSAesthetics", "#NorthFresno"],
+    hashtags: ["#SkinConsult", "#FresnoFacials", "#NCSAesthetics", "#LaDamaSalon"],
   },
   {
     dayOffset: 20,
@@ -414,9 +430,9 @@ export function buildSeedPosts(baseDate = new Date()): PostInsert[] {
       format: item.format,
       pillar: item.pillar,
       status: "draft",
-      caption: item.caption,
-      hashtags: item.hashtags,
-      cta: item.cta,
+      caption: ensureBookingLinkInBio(item.caption),
+      hashtags: normalizeHashtags(item.hashtags),
+      cta: normalizeCta(item.cta),
       scheduled_at: fromZonedTime(scheduledLocal, timezone).toISOString(),
       timezone,
       asset_ids: [],
@@ -439,7 +455,7 @@ export const seedTemplates: ContentTemplateInsert[] = [
     pillar: "Hydrafacial authority",
     hook: "Fresno heat + SPF + sweat = congested skin.",
     caption_template:
-      "If your skin feels rough, dull, oily, or like your products are just sitting on top, it might be time for a Hydrafacial reset. This treatment is designed to deeply cleanse, exfoliate, extract, hydrate, and support your glow in one appointment. Results vary.",
+      "If your skin feels rough, dull, oily, or like your products are just sitting on top, it might be time for a Hydrafacial reset. This treatment is designed to deeply cleanse, exfoliate, extract, hydrate, and support your glow in one appointment. Results vary. Booking link is in bio.",
     cta: "Book Hydrafacial.",
     hashtags: ["#FresnoHydrafacial", "#FresnoSkincare", "#NCSAesthetics"],
   },
@@ -448,7 +464,7 @@ export const seedTemplates: ContentTemplateInsert[] = [
     pillar: "Offers and availability",
     hook: "Not sure what to book? Start here.",
     caption_template:
-      "Your skin does not need a random facial. It needs a plan. Book a free consult and we’ll talk through your skin goals, routine, lifestyle, and what treatment makes the most sense for you.",
+      "Your skin does not need a random facial. It needs a plan. Book a free consult and we’ll talk through your skin goals, routine, lifestyle, and what treatment makes the most sense for you. Booking link is in bio.",
     cta: "Book free consult.",
     hashtags: ["#SkinConsult", "#FresnoEsthetician", "#NCSAesthetics"],
   },
@@ -457,7 +473,7 @@ export const seedTemplates: ContentTemplateInsert[] = [
     pillar: "Waxing comfort and prep",
     hook: "First Brazilian wax? Read this first.",
     caption_template:
-      "A smoother wax starts before the appointment. Let hair grow enough for removal, avoid heavy exfoliation right before, wear loose clothing, skip lotions and oils the day of, and ask questions because comfort matters here.",
+      "A smoother wax starts before the appointment. Let hair grow enough for removal, avoid heavy exfoliation right before, wear loose clothing, skip lotions and oils the day of, and ask questions because comfort matters here. Booking link is in bio.",
     cta: "Book wax.",
     hashtags: ["#FresnoWaxing", "#BrazilianWaxPrep", "#NCSAesthetics"],
   },
@@ -466,7 +482,7 @@ export const seedTemplates: ContentTemplateInsert[] = [
     pillar: "Lashes and brows",
     hook: "For the girls who want lashes without daily mascara.",
     caption_template:
-      "A lash lift with tint gives your natural lashes a lifted, darker, more polished look without extensions. Great for busy mornings, vacations, low-maintenance beauty, and natural lash enhancement.",
+      "A lash lift with tint gives your natural lashes a lifted, darker, more polished look without extensions. Great for busy mornings, vacations, low-maintenance beauty, and natural lash enhancement. Booking link is in bio.",
     cta: "Book lash lift.",
     hashtags: ["#FresnoLashLift", "#LashLift", "#NCSAesthetics"],
   },
@@ -475,7 +491,7 @@ export const seedTemplates: ContentTemplateInsert[] = [
     pillar: "Circadia Pro Skin Systems",
     hook: "You’ve seen Circadia Pro in my bio. Here’s what that means.",
     caption_template:
-      "Circadia is a professional skincare line built around the skin’s natural rhythms: protect during the day, repair at night. At NCS Aesthetics, Circadia helps me customize facials, support your barrier, prep for peels, and build routines that actually make sense for your skin. Results vary.",
+      "Circadia is a professional skincare line built around the skin’s natural rhythms: protect during the day, repair at night. At NCS Aesthetics, Circadia helps me customize facials, support your barrier, prep for peels, and build routines that actually make sense for your skin. Results vary. Booking link is in bio.",
     cta: "Book a free consult.",
     hashtags: ["#Circadia", "#CircadiaPro", "#ProfessionalSkincare", "#NCSAesthetics"],
   },
@@ -484,7 +500,7 @@ export const seedTemplates: ContentTemplateInsert[] = [
     pillar: "Circadia Pro Skin Systems",
     hook: "A custom facial means I choose products based on your skin that day.",
     caption_template:
-      "Your skin can change with weather, stress, hormones, products, travel, and lifestyle. That is why a custom facial is not one-size-fits-all. I look at your goals, routine, sensitivity, congestion, dryness, texture, and barrier health before choosing what makes the most sense. Results vary.",
+      "Your skin can change with weather, stress, hormones, products, travel, and lifestyle. That is why a custom facial is not one-size-fits-all. I look at your goals, routine, sensitivity, congestion, dryness, texture, and barrier health before choosing what makes the most sense. Results vary. Booking link is in bio.",
     cta: "Book the NCS Custom Facial.",
     hashtags: ["#CustomFacial", "#CircadiaPro", "#BarrierSupport", "#NCSAesthetics"],
   },
@@ -493,7 +509,7 @@ export const seedTemplates: ContentTemplateInsert[] = [
     pillar: "Circadia Pro Skin Systems",
     hook: "Why I require a consult before chemical peels.",
     caption_template:
-      "Chemical peels can be amazing, but they need to be planned correctly. Before booking a peel, we need to look at your routine, sun exposure, sensitivity, active ingredients, pigmentation concerns, downtime expectations, and aftercare. A peel should never be random. It should be part of a plan.",
+      "Chemical peels can be amazing, but they need to be planned correctly. Before booking a peel, we need to look at your routine, sun exposure, sensitivity, active ingredients, pigmentation concerns, downtime expectations, and aftercare. A peel should never be random. It should be part of a plan. Booking link is in bio.",
     cta: "Book a consult first.",
     hashtags: ["#PeelEducation", "#ConsultFirst", "#CircadiaPro", "#NCSAesthetics"],
   },
@@ -502,7 +518,7 @@ export const seedTemplates: ContentTemplateInsert[] = [
     pillar: "Circadia Pro Skin Systems",
     hook: "Product education > random product buying.",
     caption_template:
-      "Professional skincare works best when it is matched to your skin. Instead of guessing online, ask what actually fits your goals and what belongs in your routine. Do not show public retail pricing. Use official Circadia assets only with permission and confirmed usage rights.",
+      "Professional skincare works best when it is matched to your skin. Instead of guessing online, ask what actually fits your goals and what belongs in your routine. Do not show public retail pricing. Use official Circadia assets only with permission and confirmed usage rights. Booking link is in bio.",
     cta: "Ask at your next appointment.",
     hashtags: circadiaTags,
   },
