@@ -1,49 +1,54 @@
 const dashboardLinks = [
   {
+    title: 'Instagram Scheduler',
+    href: '/admin',
+    copy: 'Primary app for post drafts, assets, approvals, calendar scheduling, and Meta publish checks.'
+  },
+  {
     title: 'Mission Control',
     href: '../mission-control/index.html',
-    copy: 'Main operator dashboard for pipeline, approvals, posting map, and KPI pulse.'
+    copy: 'Approval wall for the three-lane posting system with the Phase 1 schedule visible at the top.'
   },
   {
-    title: 'Repo index',
-    href: '../INDEX.md',
-    copy: 'Fast scan of the brand, content, ops, and research docs already living in this system.'
+    title: 'Phase 1 operator kit',
+    href: '../docs/ops/instagram-phase-1/README.md',
+    copy: 'Canonical folder for the strategy, weekly schedule, queue, maintenance loop, and reporting.'
   },
   {
-    title: 'Docs home',
-    href: '../docs/index.html',
-    copy: 'Existing docs surface for deeper strategy and internal references.'
+    title: 'Weekly schedule',
+    href: '../docs/ops/instagram-phase-1/weekly-operating-schedule.md',
+    copy: 'Seven-day rhythm for the Morning / Midday / Evening system.'
   }
 ];
 
 const workflowSteps = [
-  '08:00 — generate 3 new hooks tied to offers, seasonality, or gaps in the books.',
-  '10:00 — scan open appointments and create a same-day story package if needed.',
-  '13:00 — bundle captions, covers, and CTA notes into one clean approval stack.',
-  'Before posting — Natalie approves, tweaks lightly, or rejects.',
-  '16:00 — send a brief with what shipped, what is blocked, and tomorrow’s biggest move.'
+  'Start with the queue: fill every slot for the coming week in the Phase 1 CSV.',
+  'Batch approvals instead of sending random one-off requests.',
+  'Post in the three daily windows: 8:30 AM, 12:30 PM, and 7:30 PM PT.',
+  'Treat the evening Circadia slot as the hero post and protect its quality first.',
+  'End the week with a short review and one concrete schedule adjustment.'
 ];
 
 const resourceLinks = [
   {
-    title: '30-day content plan',
-    href: '../docs/content/30-day-content-plan.md',
-    copy: 'Strategic long-range content ideas already mapped in the repo.'
+    title: 'Strategy',
+    href: '../docs/ops/instagram-phase-1/strategy.md',
+    copy: 'Cadence, timing, approvals, engagement rules, and what Phase 1 does not automate.'
   },
   {
-    title: 'Offer ladder strategy',
-    href: '../docs/brand/offer-ladder-strategy.md',
-    copy: 'Messaging hierarchy for Hydrafacial, custom facials, peels, and upsells.'
+    title: 'Content queue',
+    href: '../docs/ops/instagram-phase-1/content-queue.csv',
+    copy: 'Live queue and status tracker for every Instagram slot.'
   },
   {
-    title: 'Weekly workflow SOP',
-    href: '../docs/ops/weekly-workflow-sop.md',
-    copy: 'Operational rhythm for running content and follow-up without chaos.'
+    title: 'Performance log',
+    href: '../docs/ops/instagram-phase-1/performance-log.csv',
+    copy: 'Weekly scorecard for completion, engagement, and booking signals.'
   },
   {
-    title: 'Reel template',
-    href: '../templates/reel-template.md',
-    copy: 'Reusable format for scripting and packaging short-form video ideas.'
+    title: 'Maintenance workflow',
+    href: '../docs/ops/instagram-phase-1/maintenance-workflow.md',
+    copy: 'Simple review loop for keeping the schedule sharp instead of noisy.'
   }
 ];
 

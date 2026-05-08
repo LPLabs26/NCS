@@ -1,5 +1,10 @@
 const dashboardLinks = [
   {
+    title: 'Instagram Scheduler',
+    href: '/admin',
+    copy: 'Primary app for post drafts, assets, approvals, calendar scheduling, and Meta publish checks.'
+  },
+  {
     title: 'Mission Control',
     href: '../mission-control/index.html',
     copy: 'Main dashboard for the three-lane publishing system, approvals, posting map, and KPI pulse.'
@@ -8,11 +13,6 @@ const dashboardLinks = [
     title: 'Daily cadence doc',
     href: '../docs/content/daily-content-cadence.md',
     copy: 'The exact Morning / Midday / Evening structure: Daily Tips, Hydrafacial, Circadia.'
-  },
-  {
-    title: 'Dashboard blueprint',
-    href: '../docs/ops/google-sheets-dashboard-blueprint.md',
-    copy: 'How to mirror the same system inside Google Sheets and weekly reporting.'
   }
 ];
 
@@ -29,21 +29,6 @@ const resourceLinks = [
     title: 'Daily content cadence',
     href: '../docs/content/daily-content-cadence.md',
     copy: 'Operating rules for Daily Tips, Hydrafacial, and Circadia across the day.'
-  },
-  {
-    title: 'Natalie dashboard spec',
-    href: '../docs/ops/natalie-dashboard-spec.md',
-    copy: 'Defines the dashboard around the exact three-lane model.'
-  },
-  {
-    title: 'Dashboard blueprint',
-    href: '../docs/ops/google-sheets-dashboard-blueprint.md',
-    copy: 'Google Sheets tab structure, fields, and sample tracking rules.'
-  },
-  {
-    title: 'Seeded data plan',
-    href: '../templates/google-sheets-csv/sample-seeded-data.md',
-    copy: 'Explains how the demo week should teach the system instantly.'
   }
 ];
 

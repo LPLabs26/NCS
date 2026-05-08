@@ -7,7 +7,7 @@
 - start the 30-day content plan
 
 ## Phase 2 - Tracking
-- build Google Sheets dashboard
+- use the Instagram Scheduler as the operating dashboard
 - track bookings, leads, and openings weekly
 - begin writing weekly reports
 
@@ -20,5 +20,5 @@
 ## Phase 4 - Scale
 - systemize winning content
 - formalize recurring lead follow-up
-- refine dashboard and KPI tracking
+- refine scheduler-based KPI tracking
 - create stronger recurring maintenance campaigns

@@ -6,7 +6,7 @@ export default function HomePage() {
       <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
         <section className="space-y-6">
           <p className="text-sm font-semibold uppercase tracking-[0.36em] text-stone-500">
-            NCS Aesthetics Internal App
+            NCS Aesthetics · La Dama Salon
           </p>
           <h1 className="font-display text-5xl leading-tight text-stone-900 sm:text-6xl">
             Build, approve, schedule, and publish Instagram content without leaving the studio.
@@ -21,7 +21,7 @@ export default function HomePage() {
               href="/admin"
               className="rounded-full bg-stone-900 px-6 py-3 text-sm font-semibold text-white transition hover:bg-stone-700"
             >
-              Open admin dashboard
+              Open Instagram Scheduler
             </Link>
             <Link
               href="/admin/import"
@@ -38,6 +38,7 @@ export default function HomePage() {
             </p>
             <div className="grid gap-4 sm:grid-cols-2">
               {[
+                "Instagram Scheduler",
                 "Instagram-ready post library",
                 "Calendar and list planning views",
                 "Asset upload with metadata checks",

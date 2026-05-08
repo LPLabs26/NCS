@@ -18,10 +18,6 @@ This repo workspace collects the most important operating surfaces for NCS.
 - Mission Control: `docs/mission-control/index.html`
 - Executive dashboard: `docs/site/index.html`
 
-## Google Sheets pack
-- Import-ready CSV pack: `exports/google-sheets-live/`
-- Setup notes: `exports/google-sheets-live/README.md`
-
 ## Competitor intelligence
 - Tracker: `research/competitors/fresno-competitor-tracker.md`
 - Deep dive: `research/competitors/fresno-competitor-deep-dive.md`
@@ -42,5 +38,4 @@ Inside `/Volumes/Patrice/workspaces/NCS/`:
 - Active repo moved to disk4 and `/Users/patrice/code` now points there
 - Long-term archive structure is established on disk6
 - Mission Control has a stronger operator-grade first pass in progress
-- Google Sheets import pack is built locally
-- Live Google Sheet creation is still blocked until Google OAuth is configured on this machine
+- Instagram Scheduler is the source of truth for posting operations

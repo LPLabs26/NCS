@@ -64,7 +64,7 @@ NCS should sell more than one-off appointments. It should sell:
 
 ## Operational priorities
 ### First priority
-Build the Google Sheets dashboard so bookings, leads, content, and openings can be tracked in one place.
+Use the Instagram Scheduler as the operating dashboard so content, approvals, publishing, and performance signals are tracked in one place.
 
 ### Second priority
 Run the first 7-day launch pack and start the 30-day content plan.
