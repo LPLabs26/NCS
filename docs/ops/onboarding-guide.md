@@ -10,7 +10,7 @@ Use this repo to manage:
 - booking support
 - lead conversion messaging
 - competitor tracking
-- dashboard planning
+- scheduler operations
 - retention strategy
 
 ## Start here
@@ -33,10 +33,10 @@ Use this repo to manage:
 - `docs/ops/client-dm-and-rebooking-sop.md`
 - `docs/ops/retention-strategy.md`
 
-### 4. Then review tracking and dashboard planning
-- `docs/ops/google-sheets-dashboard-blueprint.md`
-- `docs/ops/google-sheets-logic-spec.md`
-- `templates/google-sheets-csv/`
+### 4. Then review scheduler operations
+- `README.md`
+- `app/admin/page.tsx`
+- `app/admin/calendar/page.tsx`
 
 ## Recommended weekly workflow
 ### Monday

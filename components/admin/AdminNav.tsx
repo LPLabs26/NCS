@@ -24,7 +24,7 @@ export function AdminNav({ authConfigured, liveCronEnabled, role }: AdminNavProp
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-4">
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.32em] text-stone-500">
-            NCS Aesthetics
+            La Dama Salon
           </p>
           <h1 className="font-display text-2xl text-stone-900">Social Scheduler</h1>
         </div>

@@ -3,9 +3,8 @@
 ## Immediate
 1. Publish from the active Phase 1 queue and keep the morning / midday / evening cadence moving weekly.
 2. Verify the GitHub Pages deployment surface and confirm the front door plus Mission Control routes behave correctly.
-3. Build the live Google Sheets dashboard from the CSV templates.
-4. Start weekly KPI tracking for leads, bookings, and content output.
-5. Finish Fresno competitor verification with 3-5 real local esthetician brands.
+3. Start weekly KPI tracking for leads, bookings, and content output inside the scheduler workflow.
+4. Finish Fresno competitor verification with 3-5 real local esthetician brands.
 
 ## Medium-term
 1. Turn the documented recurring routines into live scheduled automations.

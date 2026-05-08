@@ -7,7 +7,7 @@ A lightweight business operating system for NCS Aesthetics designed to help mana
 - lead conversion
 - booking support
 - client retention
-- dashboard planning
+- scheduler operations
 
 ## Core strategic direction
 NCS should position itself as a:
@@ -23,10 +23,10 @@ with:
 2. create more proof and educational content
 3. reduce booking hesitation for first-time clients
 4. make retention feel guided and natural
-5. build a simple dashboard for weekly visibility
+5. use the Instagram Scheduler for weekly visibility
 
 ## Best immediate priorities
-1. build the Google Sheets dashboard
+1. run the Instagram Scheduler as the source of truth
 2. run the 30-day content plan
 3. use DM scripts and booking SOPs consistently
 4. monitor competitors weekly

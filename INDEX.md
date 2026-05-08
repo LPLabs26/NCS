@@ -55,14 +55,11 @@
 - `docs/ops/content-production-sop.md`
 - `docs/ops/decision-rules.md`
 - `docs/ops/executive-summary.md`
-- `docs/ops/google-sheets-dashboard-blueprint.md`
-- `docs/ops/google-sheets-logic-spec.md`
 - `docs/ops/implementation-roadmap.md`
 - `docs/ops/launch-checklist.md`
 - `docs/ops/natalie-admin-sop.md`
 - `docs/ops/natalie-approvals.md`
 - `docs/ops/natalie-content-requests.md`
-- `docs/ops/natalie-dashboard-spec.md`
 - `docs/ops/onboarding-guide.md`
 - `docs/ops/reporting-rhythm.md`
 - `docs/ops/retention-strategy.md`
@@ -82,7 +79,6 @@
 - `templates/weekly-brief-template.md`
 - `templates/approval-batch-template.md`
 - `templates/natalie-idea-intake-template.md`
-- `templates/google-sheets-csv/`
 
 ## Exports
 - `exports/instagram-first-batch/`

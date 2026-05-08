@@ -1,5 +1,10 @@
 const dashboardLinks = [
   {
+    title: 'Instagram Scheduler',
+    href: '/admin',
+    copy: 'Primary app for post drafts, assets, approvals, calendar scheduling, and Meta publish checks.'
+  },
+  {
     title: 'Mission Control',
     href: '../mission-control/index.html',
     copy: 'Approval wall for the three-lane posting system with the Phase 1 schedule visible at the top.'

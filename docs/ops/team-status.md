@@ -1,9 +1,9 @@
 # NCS Team Status
 
-Updated: 2026-04-01 08:16:26 PDT
+Updated: 2026-05-05 12:30:50 PDT
 
 ## Working surfaces
-- Active repo: /Volumes/Patrice/code/NCS
+- Active repo: /Users/jorgesanchez/Documents/Patrice
 - Public dashboard: https://lplabs26.github.io/NCS/
 - Mission Control: https://lplabs26.github.io/NCS/mission-control/
 - Executive dashboard: https://lplabs26.github.io/NCS/site/
@@ -15,7 +15,7 @@ Updated: 2026-04-01 08:16:26 PDT
 
 ## Queue snapshot
 - Approved queue items: 12
-- Needs review: 6
+- Needs review: 26
 - Backlog items: 3
 - Approved evening hero posts: 4
 

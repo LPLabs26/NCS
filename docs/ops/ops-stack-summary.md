@@ -13,13 +13,13 @@
 - booking gap-fill SOP
 - client journey
 - retention strategy
-- dashboard blueprint
+- Instagram Scheduler
 - reporting system
 - weekly workflow
 - onboarding and launch guides
 
 ## What still depends on implementation
-- Google Sheets live dashboard
+- scheduler KPI tracking
 - real weekly data entry
 - real content production
 - real booking / lead tracking
